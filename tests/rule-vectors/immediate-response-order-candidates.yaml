@@ -1,0 +1,242 @@
+schema_version: 0.1.0
+rule_core_version: 0.11.0-preview-vrc
+source_set: SRCSET-20260923-INITIAL
+status: approved
+vectors:
+  - vector_id: RV-ENABLER-NV-BOTH-LEGAL-001
+    title: "STC-NV-07とSTC-NV-08が同じ移動終了でともに合法候補"
+    status: approved
+    initial_state: { holder_side: RED, holder_has_components: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08], triggering_BLUE_ship_exists: true, same_move_end_satisfies_both_markers: true }
+    operation: { type: evaluate_immediate_enabler_candidates, trigger: BLUE_ship_move_ended }
+    fixed_randomness: none
+    expected_events: [{ assertion: both_components_are_legal_candidates }]
+    expected_final_state: { legal_component_ids: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08], order_decider: RED_player, cards_consumed_before_selection: 0 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-NV-ORDER-07-08-001
+    title: "REDがSTC-NV-07→STC-NV-08を選択"
+    status: approved
+    initial_state: { holder_side: RED, both_components_legal: true, triggering_BLUE_ship_exists: true, triggering_BLUE_ship_remaining_capacity: 4 }
+    operation: { type: choose_and_resolve_immediate_enablers_sequentially, ordered_component_ids: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08] }
+    fixed_randomness: { STC-NV-07_attack_D4: 2, STC-NV-07_damage_D4: 1, STC-NV-08_attack_D4: 2, STC-NV-08_damage_D4: 1 }
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-07 }, { assertion: STC-NV-07_attack_resolved_before_STC-NV-08_activation }, { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-08 }, { assertion: STC-NV-08_attack_resolved_second }]
+    expected_final_state: { resolution_order: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08], both_cards_consumed: true, both_markers_removed: true, triggering_BLUE_ship_exists: true }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-NV-ORDER-08-07-001
+    title: "REDがSTC-NV-08→STC-NV-07を選択"
+    status: approved
+    initial_state: { holder_side: RED, both_components_legal: true, triggering_BLUE_ship_exists: true, triggering_BLUE_ship_remaining_capacity: 4 }
+    operation: { type: choose_and_resolve_immediate_enablers_sequentially, ordered_component_ids: [COMP-ENABLER-STC-NV-08, COMP-ENABLER-STC-NV-07] }
+    fixed_randomness: { STC-NV-08_attack_D4: 2, STC-NV-08_damage_D4: 1, STC-NV-07_attack_D4: 2, STC-NV-07_damage_D4: 1 }
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-08 }, { assertion: STC-NV-08_attack_resolved_before_STC-NV-07_activation }, { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-07 }, { assertion: STC-NV-07_attack_resolved_second }]
+    expected_final_state: { resolution_order: [COMP-ENABLER-STC-NV-08, COMP-ENABLER-STC-NV-07], both_cards_consumed: true, both_markers_removed: true, triggering_BLUE_ship_exists: true }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-NV-TARGET-REMAINS-001
+    title: "先行攻撃後も対象艦が残り後続攻撃を解決"
+    status: approved
+    initial_state: { holder_side: RED, selected_first: COMP-ENABLER-STC-NV-07, selected_later: COMP-ENABLER-STC-NV-08, triggering_BLUE_ship_exists: true, triggering_BLUE_ship_remaining_capacity: 3 }
+    operation: { type: resolve_first_then_revalidate_and_resolve_later }
+    fixed_randomness: { first_attack_D4: 2, first_damage_D4: 1, later_attack_D4: 2, later_damage_D4: 1 }
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-07 }, { assertion: target_revalidated_as_existing }, { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-08 }]
+    expected_final_state: { later_attack_executed: true, later_card_consumed: true, later_marker_removed: true, triggering_BLUE_ship_exists: true }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-NV-TARGET-REMOVED-001
+    title: "先行攻撃で対象艦が除去され後続カードは未発動"
+    status: approved
+    initial_state: { holder_side: RED, selected_first: COMP-ENABLER-STC-NV-07, selected_later: COMP-ENABLER-STC-NV-08, triggering_BLUE_ship_exists: true, triggering_BLUE_ship_remaining_capacity: 1, later_card_location: hand, later_marker_location: map, later_use_count_consumed: false }
+    operation: { type: resolve_first_then_revalidate_later_target }
+    fixed_randomness: { first_attack_D4: 2, first_damage_D4: 1 }
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-07 }, { assertion: triggering_BLUE_ship_removed }, { assertion: later_component_not_activated }]
+    expected_final_state: { triggering_BLUE_ship_exists: false, first_component_id: COMP-ENABLER-STC-NV-07, first_card_state: used, first_marker_state: removed_as_printed, later_component_id: COMP-ENABLER-STC-NV-08, later_attack_executed: false, later_card_location: hand, later_marker_location: map, later_use_count_consumed: false }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-NV-TARGET-REMOVED-08-FIRST-001
+    title: "STC-NV-08先行攻撃で対象艦が除去されSTC-NV-07は未発動"
+    status: approved
+    initial_state: { holder_side: RED, selected_first: COMP-ENABLER-STC-NV-08, selected_later: COMP-ENABLER-STC-NV-07, triggering_BLUE_ship_exists: true, triggering_BLUE_ship_remaining_capacity: 1, later_card_location: hand, later_marker_location: map, later_use_count_consumed: false }
+    operation: { type: resolve_first_then_revalidate_later_target }
+    fixed_randomness: { first_attack_D4: 2, first_damage_D4: 1 }
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-NV-08 }, { assertion: triggering_BLUE_ship_removed }, { assertion: later_component_not_activated }]
+    expected_final_state: { triggering_BLUE_ship_exists: false, first_component_id: COMP-ENABLER-STC-NV-08, first_card_state: used, first_marker_state: removed_as_printed, later_component_id: COMP-ENABLER-STC-NV-07, later_attack_executed: false, later_card_location: hand, later_marker_location: map, later_use_count_consumed: false }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-CYBER-NO-DETERMINATION-INELIGIBLE-001
+    title: "判定のないサイバーカードへ効果のない対抗カードは不適格"
+    status: approved
+    initial_state: { counter_component_id: COMP-ENABLER-US-CY-03, triggering_cyber_component_has_determination: false, counter_card_location: hand, counter_use_count_consumed: false }
+    operation: { type: evaluate_immediate_enabler_candidates }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { counter_component_legal_to_play: false, counter_component_presented_as_legal_option: false, counter_card_location: hand, counter_use_count_consumed: false }
+    duration: not_applicable
+    visibility: not_stated
+    interaction_type: not_applicable
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-03, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-CYBER-US-CY-05-DAY1-INELIGIBLE-001
+    title: "Day1のミュトスへサイバーカウンターメジャーは使用不可"
+    status: approved
+    initial_state: { day: 1, US_CY_05_component_id: COMP-ENABLER-US-CY-05, STC_CY_04_component_id: COMP-ENABLER-STC-CY-04, US_CY_01_determination: automatic_success, STC_CY_04_use_count_consumed: false }
+    operation: { type: evaluate_counter_enabler_eligibility, counter_component_id: COMP-ENABLER-STC-CY-04 }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { STC_CY_04_legal_to_play: false, STC_CY_04_presented_as_legal_option: false, US_CY_01_determination: automatic_success, STC_CY_04_use_count_consumed: false }
+    duration: not_applicable
+    visibility: not_stated
+    interaction_type: not_applicable
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-CYBER-US-CY-05-DAY2-INELIGIBLE-001
+    title: "Day2のミュトスへサイバーカウンターメジャーは使用不可"
+    status: approved
+    initial_state: { day: 2, US_CY_05_component_id: COMP-ENABLER-US-CY-05, STC_CY_04_component_id: COMP-ENABLER-STC-CY-04, US_CY_01_determination: automatic_success, STC_CY_04_use_count_consumed: false }
+    operation: { type: evaluate_counter_enabler_eligibility, counter_component_id: COMP-ENABLER-STC-CY-04 }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { STC_CY_04_legal_to_play: false, STC_CY_04_presented_as_legal_option: false, US_CY_01_determination: automatic_success, STC_CY_04_use_count_consumed: false }
+    duration: not_applicable
+    visibility: not_stated
+    interaction_type: not_applicable
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-CYBER-US-CY-05-DAY3-CANCEL-001
+    title: "Day3以降のミュトスADVとサイバーカウンターメジャーDISが相殺"
+    status: approved
+    initial_state: { day: 3, US_CY_05_component_id: COMP-ENABLER-US-CY-05, STC_CY_04_component_id: COMP-ENABLER-STC-CY-04, US_CY_01_base_roll_mode: normal, STC_CY_04_use_count_consumed: false }
+    operation: { type: play_counter_and_resolve_US_CY_01_determination, counter_component_id: COMP-ENABLER-STC-CY-04 }
+    fixed_randomness: { D4: 3 }
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-CY-04 }, { assertion: US_CY_05_ADV_and_STC_CY_04_DIS_cancel }, { assertion: one_normal_D4_roll_used }]
+    expected_final_state: { US_CY_01_roll_mode: normal, adopted_D4: 3, STC_CY_04_use_count_consumed: true }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式カード印字と承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-US-AF-10-PASS-BEFORE-MD-001
+    title: "BLUEがUS-AF-10不使用を確定した後にREDがMD判断"
+    status: approved
+    initial_state: { BLUE_aircraft_attacks_ADA: true, BLUE_has_component: COMP-ENABLER-US-AF-10, US_AF_10_decision: pending, RED_MD_decision: not_started }
+    operation: { type: decline_US_AF_10_then_offer_RED_MD_decision }
+    fixed_randomness: none
+    expected_events: [{ assertion: BLUE_declines_US_AF_10 }, { assertion: RED_MD_response_window_opens_after_BLUE_choice }]
+    expected_final_state: { US_AF_10_used: false, RED_knows_US_AF_10_was_not_used: true, RED_MD_decision: pending, attack_roll_condition: normal }
+    duration: immediate
+    visibility: { RED_knows_US_AF_10_choice_before_MD: true }
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式ルール、正式カード印字及び承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-US-AF-10-DECLARED-BEFORE-MD-001
+    title: "BLUEのUS-AF-10宣言後にREDが公開情報を前提としてMD判断"
+    status: approved
+    initial_state: { BLUE_aircraft_attacks_ADA: true, BLUE_has_component: COMP-ENABLER-US-AF-10, US_AF_10_decision: pending, RED_MD_decision: not_started }
+    operation: { type: play_US_AF_10_then_offer_RED_MD_decision, component_id: COMP-ENABLER-US-AF-10 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-AF-10 }, { assertion: RED_MD_response_window_opens_after_US_AF_10_declaration }]
+    expected_final_state: { US_AF_10_used: true, RED_knows_US_AF_10_used: true, RED_MD_decision: pending, attack_roll_condition: ADV }
+    duration: triggering_attack
+    visibility: { US_AF_10_declaration_recipients: [BLUE, RED] }
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式ルール、正式カード印字及び承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-US-EW-03-AFTER-RED-MD-001
+    title: "REDのMD宣言後にBLUEへUS-EW-03応答機会"
+    status: approved
+    initial_state: { BLUE_aircraft_attacks_ADA: true, US_AF_10_choice_completed: true, RED_MD_decision: pending, BLUE_has_component: COMP-ENABLER-US-EW-03, MD_D4_roll_started: false }
+    operation: { type: RED_declares_MD }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-MD-DECLARED }, { assertion: response_window_opens_for_COMP_ENABLER_US_EW_03_before_MD_roll }]
+    expected_final_state: { RED_MD_declared: true, US_EW_03_legal_to_play: true, MD_D4_roll_started: false }
+    duration: immediate
+    visibility: { MD_declaration_recipients: [BLUE, RED] }
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-ENABLER-0830-1-US-EW-03, FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001, DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式ルール、正式カード印字及び承認済み追加裁定だけを使用するcandidate。"
+
+  - vector_id: RV-ENABLER-US-AF-10-ADV-RESUMES-AFTER-MD-001
+    title: "MDで攻撃が終了しない場合にUS-AF-10のADVを維持して攻撃へ復帰"
+    status: approved
+    initial_state: { BLUE_aircraft_attacks_ADA: true, US_AF_10_used: true, attack_roll_condition: ADV, RED_MD_declared: true, RED_MD_value: 2, attack_ended: false }
+    operation: { type: resolve_MD_then_resume_unresolved_attack }
+    fixed_randomness: { MD_D4: 1 }
+    expected_events: [{ event_id: EVENT-MD-RESOLVED, result: failure }, { assertion: unresolved_attack_resumes_after_MD }]
+    expected_final_state: { attack_ended: false, attack_resumed: true, attack_roll_condition: ADV, US_AF_10_effect_active_for_triggering_attack: true }
+    duration: triggering_attack
+    visibility: { MD_result_recipients: [BLUE, RED] }
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001, DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-24" }
+    rights_scope: "正式ルール、正式カード印字及び承認済み追加裁定だけを使用するcandidate。"

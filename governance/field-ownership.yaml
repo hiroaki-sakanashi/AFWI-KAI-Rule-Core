@@ -1,0 +1,99 @@
+schema_version: 0.1.0
+policy: 数値・条件・識別子は規範YAMLを正本とし、規範Markdownは意味と手順を所有する。生成物は正本ではなく直接編集しない。
+fields:
+  - field_pattern: rates.*.{initial_value,bounds,change}
+    owner: rule-core/data/rates.yaml
+    consumers: [rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json, rule-core/tests/rule-vectors/rates.yaml]
+    notes: 初期値、範囲、増減量、閾値、変更条件の唯一の構造化正本。
+  - field_pattern: rate_rules.*.parameters
+    owner: rule-core/data/rates.yaml
+    consumers: [rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json, rule-core/tests/rule-vectors/rates.yaml]
+    notes: 効果、式、タイミング、シナリオ差分の唯一の構造化正本。
+  - field_pattern: rates.*.change.boundary_behavior|rate_rules.RC-RATE-BOUNDARY-001.parameters
+    owner: rule-core/data/rates.yaml
+    consumers: [rule-core/rules/rates.md, rule-core/tests/rule-vectors/rate-boundary-candidates.yaml, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json]
+    notes: DEC-RATE-BOUNDARY-001に基づく実値制限、任意・強制・複数効果、Event及びATO終了時判定の機械可読な正本。Digital内部Command形式は所有しない。
+  - field_pattern: states.*.state_id
+    owner: rule-core/data/state-and-event-ids.yaml
+    consumers: [rule-core/data/rates.yaml, rule-core/tests/rule-vectors/rates.yaml, rule-core/generated/digital/rates.json]
+    notes: 公開状態IDの正本。
+  - field_pattern: events.*.event_id
+    owner: rule-core/data/state-and-event-ids.yaml
+    consumers: [rule-core/data/rates.yaml, rule-core/tests/rule-vectors/rates.yaml, rule-core/generated/digital/rates.json]
+    notes: 規範イベントIDの正本。
+  - field_pattern: rules.rates.procedure_and_meaning
+    owner: rule-core/rules/rates.md
+    consumers: [human_review]
+    notes: YAMLの数値を再定義せず、規則の意味、処理手順、適用範囲、未確定境界を説明する。
+  - field_pattern: generated.*
+    owner: rule-core/pipeline/generate-rate-artifacts.py
+    consumers: [human_reference, digital_intake_trial]
+    notes: 規範YAMLから再生成する非規範成果物。直接編集禁止。
+  - field_pattern: components.enablers.*
+    owner: rule-core/data/enablers.yaml
+    consumers: [rule-core/rules/enablers.md, rule-core/tests/rule-vectors/immediate-enablers.yaml, rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml, rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml, rule-core/generated/vrc-priority-reference.md, rule-core/generated/digital/vrc-priority.json, rule-core/generated/immediate-enablers-expansion-reference.md, rule-core/generated/digital/immediate-enablers-expansion.json, rule-core/generated/immediate-response-order-reference.md, rule-core/generated/digital/immediate-response-order.json]
+    notes: 即応カード18枚のComponent ID、印字コード、trigger、Actor、Target、effect、カード状態及び承認済みカード間相互作用の唯一の構造化正本。既存47 vectorおよび2026-09-24追加裁定3件の14 vectorは承認済み。US-IW-01とSTC-IW-01の地理効果は承認済みarea IDを参照する。
+  - field_pattern: components.enablers.*.{response_policy,eligibility_policy,response_sequence,decision_ids}
+    owner: rule-core/governance/decisions.yaml
+    consumers: [rule-core/data/enablers.yaml, rule-core/rules/enablers.md, rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml, rule-core/generated/immediate-response-order-reference.md, rule-core/generated/digital/immediate-response-order.json]
+    notes: 複数即応の合法性、選択権、逐次解決、サイバー対抗範囲、US-AF-10とMD順序の意味正本は承認済みdecision。data/enablers.yamlは機械可読な反映先であり、Digital内部continuation方式を所有しない。
+  - field_pattern: component_ids.lifecycle
+    owner: rule-core/governance/component-id-registry.yaml
+    consumers: [rule-core/data/enablers.yaml, rule-core/data/squadrons.yaml, rule-core/governance/traceability.yaml]
+    notes: Component IDの命名、再利用禁止、印字コード分離、後継関係、deprecated履歴保持の正本。
+  - field_pattern: components.squadrons.*
+    owner: rule-core/data/squadrons.yaml
+    consumers: [rule-core/generated/squadrons-reference.md, rule-core/generated/digital/squadrons.json, rule-core/governance/traceability.yaml]
+    notes: KJ-500とKQ-200の承認済み構造化転記およびY-9Gの同定情報を所有する部分正本。共通アクティベート手順や未採番のState/Eventを所有しない。
+  - field_pattern: components.squadrons.*.digital_mapping
+    owner: rule-core/data/squadrons.yaml
+    consumers: [content/component-version-provenance.json, rule-core/generated/digital/squadrons.json]
+    notes: 既存Digital IDとの非規範対応。Digital IDをComponent IDまたはゲーム規則の正本にしない。
+  - field_pattern: rules.combat.MD
+    owner: rule-core/rules/combat.md
+    consumers: [rule-core/tests/rule-vectors/md.yaml, rule-core/generated/vrc-priority-reference.md]
+    notes: MDの資格、宣言、解決、レイヤード順序の意味正本。
+  - field_pattern: rules.intel.activity
+    owner: rule-core/rules/detection-and-intel.md
+    consumers: [rule-core/tests/rule-vectors/intel.yaml, rule-core/generated/vrc-priority-reference.md]
+    notes: インテル対象、消費、公開、捕捉の意味正本。
+  - field_pattern: rules.interaction_and_visibility
+    owner: rule-core/rules/interaction-and-visibility.md
+    consumers: [versus_interaction_classification, rule-core/generated/vrc-priority-reference.md]
+    notes: 改訂11の既存interaction typeと公開範囲の対応。
+  - field_pattern: geography.{hex_grid,boundaries,areas}
+    owner: rule-core/data/geography.yaml
+    consumers: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml, rule-core/generated/reviews/geography-generation-boundaries-owner-review.md, rule-core/generated/reviews/geography-generation-boundaries-owner-review.json]
+    notes: 印字ヘックスID、承認済み境界位置、承認済み東西area membershipの正本。橙境界では所有者anchorと視覚転記connectorの由来区分を保持しつつ、完全45辺を所有者承認済みとして扱う。画像座標はsource locatorでありゲーム上のUI座標ではない。
+  - field_pattern: components.enablers.{US-IW-01,STC-IW-01}.{trigger,effect,duration,card_state}
+    owner: rule-core/data/enablers.yaml
+    consumers: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml, rule-core/generated/reviews/geography-generation-boundaries-owner-review.md]
+    notes: 偽兆候2枚、参照方向、使用時点、保持・再選択はカード側が所有する。地理YAMLへカード効果を混入させない。
+  - field_pattern: rule_vectors.strategic_rate_response_chain.*
+    owner: rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml
+    consumers: [rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.json, digital_conformance_trial]
+    notes: US-SP-03／US-IW-04からSTC-IW-04へ至る承認済み7分岐の入力、D4、イベント順、最終レート、カード状態、元処理への復帰を所有する。Digital内部continuation方式は所有しない。
+  - field_pattern: rule_vectors.rate_boundary.*
+    owner: rule-core/tests/rule-vectors/rate-boundary-candidates.yaml
+    consumers: [rule-core/generated/reviews/rate-boundary-candidate-owner-review.md, rule-core/generated/reviews/rate-boundary-candidate-owner-review.json, rule-core/generated/digital/rates.json]
+    notes: DEC-RATE-BOUNDARY-001を検証する承認済み20件の入力、期待Event、期待最終状態及びfingerprintを所有する。
+  - field_pattern: squadron_activation.rule_core_ids.*
+    owner: rule-core/data/squadron-activation.yaml
+    consumers: [rule-core/rules/squadron-activation.md, rule-core/governance/rule-id-registry.yaml, rule-core/governance/traceability.yaml]
+    notes: 配備、activation、generation、通常帰還の共通ID、名称、定義、適用・除外範囲及びinteraction typeの構造化正本。
+  - field_pattern: states.STATE-SQUADRON-*|states.STATE-BASE-*|states.STATE-COMMAND-STARS-AVAILABLE
+    owner: rule-core/data/state-and-event-ids.yaml
+    consumers: [rule-core/data/squadron-activation.yaml, rule-core/rules/squadron-activation.md, future_rule_vectors, future_digital_intake]
+    notes: 採用済みスコードロンactivation State IDとfield-level visibilityの正本。未捕捉identityの開示はSTATE-SQUADRON-ACQUIREDへ委ねる。
+  - field_pattern: events.EVENT-SQUADRON-*
+    owner: rule-core/data/state-and-event-ids.yaml
+    consumers: [rule-core/data/squadron-activation.yaml, rule-core/rules/squadron-activation.md, future_rule_vectors, future_digital_intake, AAR_projection]
+    notes: 採用済みスコードロンactivation Event ID、公開field、管理陣営限定field及び相手陣営向けredactionの正本。UI候補やDigital内部continuationは所有しない。
+  - field_pattern: squadron_activation.visibility_contract
+    owner: rule-core/governance/decisions.yaml
+    consumers: [rule-core/data/squadron-activation.yaml, rule-core/data/state-and-event-ids.yaml, rule-core/rules/squadron-activation.md]
+    notes: DEC-SQUADRON-ACTIVATION-VISIBILITY-001が管理陣営、相手陣営及び捕捉状態によるfield-level visibilityの意味正本。構造化YAMLは機械可読な反映先。
+  - field_pattern: rule_vectors.squadron_activation_candidates.*
+    owner: rule-core/tests/rule-vectors/squadron-activation-candidates.yaml
+    consumers: [rule-core/generated/reviews/squadron-activation-owner-review.md, rule-core/generated/reviews/squadron-activation-owner-review.json, rule-core/generated/digital/squadron-activation-candidates.json]
+    notes: KJ-500及びKQ-200の未承認end-to-end受入試験入力・期待Event・期待最終状態を所有する。広東はacceptance_fixture_choiceであり、機種固有基地を定めない。AAR期待15件及びDigital本体を所有しない。

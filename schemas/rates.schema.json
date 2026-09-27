@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/rates.schema.json",
+  "title": "AFWI-KAI normative rate data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "status", "rates", "rate_rules"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "source_set": { "type": "string" },
+    "status": { "enum": ["draft", "reviewed"] },
+    "rates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rate_id", "name_ja", "rate_kind", "holder", "current_value", "initial_value", "bounds", "change", "state_id", "public", "rule_core_ids", "source_fragment_ids", "decision_ids", "applicability", "status"],
+        "properties": {
+          "rate_id": { "type": "string", "pattern": "^RATE-[A-Z0-9-]+$" },
+          "name_ja": { "type": "string" },
+          "rate_kind": { "enum": ["space", "cyber", "strategic"] },
+          "holder": { "type": "string" },
+          "current_value": { "type": "object" },
+          "initial_value": {},
+          "bounds": { "type": "object" },
+          "change": { "type": "object" },
+          "state_id": { "type": "string", "pattern": "^STATE-[A-Z0-9-]+$" },
+          "public": { "type": "boolean" },
+          "rule_core_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string" } },
+          "applicability": { "type": "object" },
+          "status": { "enum": ["draft", "reviewed"] }
+        }
+      }
+    },
+    "rate_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule_core_id", "type", "parameters", "source_fragment_ids", "status"],
+        "properties": {
+          "rule_core_id": { "type": "string", "pattern": "^RC-RATE-[A-Z0-9-]+$" },
+          "type": { "type": "string" },
+          "parameters": { "type": "object" },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" } },
+          "status": { "enum": ["draft", "reviewed"] }
+        }
+      }
+    }
+  }
+}

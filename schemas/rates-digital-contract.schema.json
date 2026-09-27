@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/rates-digital-contract.schema.json",
+  "title": "AFWI-KAI rate Digital intake candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "digitalContractVersion", "ruleCoreVersion", "sourceSet", "artifactStatus", "rateIds", "stateIds", "eventIds", "rates", "rateRules", "approvedRuleVectorIds", "candidateRuleVectorIds", "candidateRuleVectors"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "digitalContractVersion": { "type": "string" },
+    "ruleCoreVersion": { "type": "string" },
+    "sourceSet": { "type": "string" },
+    "artifactStatus": { "const": "candidate" },
+    "rateIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RATE-" } },
+    "stateIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^STATE-" } },
+    "eventIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^EVENT-" } },
+    "rates": { "type": "array" },
+    "rateRules": { "type": "array" },
+    "approvedRuleVectorIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RV-RATE-" } },
+    "candidateRuleVectorIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RV-RATE-" } },
+    "candidateRuleVectors": { "type": "array", "items": { "type": "object" } }
+  }
+}

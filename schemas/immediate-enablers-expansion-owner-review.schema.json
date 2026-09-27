@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/immediate-enablers-expansion-owner-review.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_type", "non_normative", "generated_at", "generator", "card_count", "vector_count", "trigger_vector_count", "effect_vector_count", "approved_count", "geography_reviewable_count", "geography_blocked_count", "approval_record", "fingerprint_method", "cards", "vectors", "simultaneous_timing_review"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "immediate_enablers_expansion_owner_review" },
+    "non_normative": { "const": true },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "generator": { "const": "rule-core/pipeline/generate-immediate-enablers-expansion-artifacts.py" },
+    "card_count": { "const": 9 },
+    "vector_count": { "const": 29 },
+    "trigger_vector_count": { "const": 18 },
+    "effect_vector_count": { "const": 11 },
+    "approved_count": { "const": 29 },
+    "geography_reviewable_count": { "const": 0 },
+    "geography_blocked_count": { "const": 0 },
+    "approval_record": {
+      "type": "object",
+      "required": ["approved_by", "approved_at", "approved_vector_count", "candidate_vector_count", "corrected_vector_id", "pre_correction_fingerprint_sha256", "post_correction_fingerprint_sha256"]
+    },
+    "fingerprint_method": { "type": "object" },
+    "cards": { "type": "array", "minItems": 9, "maxItems": 9, "items": { "type": "object" } },
+    "vectors": { "type": "array", "minItems": 29, "maxItems": 29, "items": { "type": "object" } },
+    "simultaneous_timing_review": { "type": "array", "minItems": 4, "items": { "type": "object" } }
+  }
+}

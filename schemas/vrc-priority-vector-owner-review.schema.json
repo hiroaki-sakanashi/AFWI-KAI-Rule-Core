@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/vrc-priority-vector-owner-review.schema.json",
+  "title": "AFWI-KAI VRC priority rule vector owner review metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "review_type", "non_normative", "generated_at", "generator",
+    "rule_core_version", "source_set", "target_count", "domain_counts", "source_files",
+    "fingerprint_method", "approval", "reviews"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "vrc_priority_rule_vector_owner_review" },
+    "non_normative": { "const": true },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "generator": { "const": "rule-core/pipeline/generate-vrc-priority-vector-owner-review.py" },
+    "rule_core_version": { "const": "0.11.0-preview-vrc" },
+    "source_set": { "const": "SRCSET-20260923-INITIAL" },
+    "target_count": { "const": 35 },
+    "domain_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["md", "immediate_enablers", "intel", "cyber_dominance"],
+      "properties": {
+        "md": { "const": 9 },
+        "immediate_enablers": { "const": 18 },
+        "intel": { "const": 6 },
+        "cyber_dominance": { "const": 2 }
+      }
+    },
+    "source_files": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["domain", "label", "path", "sha256", "count"],
+        "properties": {
+          "domain": { "enum": ["md", "immediate_enablers", "intel", "cyber_dominance"] },
+          "label": { "type": "string" },
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "count": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "fingerprint_method": {
+      "type": "object", "additionalProperties": false,
+      "required": ["algorithm", "serialization", "normalization", "scope", "note"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "serialization": { "const": "RFC 8259 JSON" },
+        "normalization": { "type": "string" },
+        "scope": { "type": "array", "minItems": 10, "items": { "type": "string" } },
+        "note": { "type": "string" }
+      }
+    },
+    "approval": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "approved_by", "approved_at"],
+      "properties": {
+        "status": { "enum": ["approved", "mixed"] },
+        "approved_by": { "type": ["string", "null"] },
+        "approved_at": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "reviews": {
+      "type": "array", "minItems": 35, "maxItems": 35,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": [
+          "overall_index", "source_index", "source_file", "domain", "domain_label",
+          "vector_id", "title", "review_summary", "status", "reviewability", "traceability_errors",
+          "rule_core_ids", "component_ids", "state_ids", "event_ids", "source_fragment_ids",
+          "scenario_scope", "actor", "target", "interaction_types", "knowledge_visibility_effect",
+          "related_unresolved_candidates", "baseline_fingerprint_sha256",
+          "previous_generation_fingerprint_sha256", "pre_generation_fingerprint_sha256",
+          "fingerprint_changed_from_baseline", "fingerprint_changed_from_previous_generation",
+          "pre_approval_full_record_fingerprint_sha256", "full_record_fingerprint_sha256",
+          "pre_approval_normative_payload_fingerprint_sha256", "normative_payload_fingerprint_sha256",
+          "approval"
+        ],
+        "properties": {
+          "overall_index": { "type": "integer", "minimum": 1, "maximum": 35 },
+          "source_index": { "type": "integer", "minimum": 1 },
+          "source_file": { "type": "string" },
+          "domain": { "enum": ["md", "immediate_enablers", "intel", "cyber_dominance"] },
+          "domain_label": { "type": "string" },
+          "vector_id": { "type": "string", "pattern": "^RV-[A-Z0-9-]+$" },
+          "title": { "type": "string" },
+          "review_summary": { "type": "string" },
+          "status": { "enum": ["candidate", "approved"] },
+          "reviewability": { "enum": ["eligible_for_owner_review", "needs_traceability_correction"] },
+          "traceability_errors": { "type": "array", "items": { "type": "string" } },
+          "rule_core_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^RC-[A-Z0-9-]+$" } },
+          "component_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^COMP-[A-Z0-9-]+$" } },
+          "state_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^STATE-[A-Z0-9-]+$" } },
+          "event_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^EVENT-[A-Z0-9-]+$" } },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^FRAG-[A-Z0-9-]+$" } },
+          "scenario_scope": { "type": "string" },
+          "actor": { "type": "string" },
+          "target": { "type": "string" },
+          "interaction_types": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["response_window", "automatic_resolution", "sequential_action", "not_applicable", "not_stated"] } },
+          "knowledge_visibility_effect": {},
+          "related_unresolved_candidates": {
+            "type": "array",
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["candidate", "status", "relation"],
+              "properties": {
+                "candidate": { "type": "string" },
+                "status": { "const": "not_stated" },
+                "relation": { "type": "string" }
+              }
+            }
+          },
+          "baseline_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "previous_generation_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "pre_generation_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "fingerprint_changed_from_baseline": { "type": "boolean" },
+          "fingerprint_changed_from_previous_generation": { "type": "boolean" },
+          "pre_approval_full_record_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "full_record_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "pre_approval_normative_payload_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "normative_payload_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "approval": {
+            "type": "object", "additionalProperties": false,
+            "required": ["approved_by", "approved_at"],
+            "properties": {
+              "approved_by": { "type": ["string", "null"] },
+              "approved_at": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

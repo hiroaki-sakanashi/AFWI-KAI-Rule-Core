@@ -1,0 +1,378 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+states:
+  - state_id: STATE-RATE-SPACE-US
+    name_ja: US宇宙レート現在値
+    visibility: public
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+  - state_id: STATE-RATE-SPACE-PRC
+    name_ja: PRC宇宙レート現在値
+    visibility: public
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+  - state_id: STATE-RATE-CYBER-US
+    name_ja: USサイバーレート現在値
+    visibility: public
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+  - state_id: STATE-RATE-CYBER-PRC
+    name_ja: PRCサイバーレート現在値
+    visibility: public
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+  - state_id: STATE-RATE-STRATEGIC
+    name_ja: 共有戦略レート現在値
+    visibility: public
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+  - state_id: STATE-CYBER-DOMINANCE
+    name_ja: サイバードミナンス
+    visibility: public
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - state_id: STATE-MD-LAYER-PENDING
+    name_ja: 宣言済みMD層の解決待ち
+    visibility: public
+    public_content: [MD_in_progress]
+    hidden_from_opponent: [MD_asset_identity]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    duration: retained_as_known_information
+    revoke_trigger: not_applicable
+    status: reviewed
+  - state_id: STATE-MD-ANTI-AIR-AMMUNITION
+    name_ja: MD使用アセットの対空残弾数
+    visibility: public_with_redacted_asset_identity
+    public_content: [anti_air_ammunition_remaining]
+    owner_content: [MD_asset_identity, anti_air_ammunition_remaining]
+    hidden_from_opponent: [MD_asset_identity]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-TOKEN-0901-1-ENTIRE]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    duration: retained_as_known_information
+    revoke_trigger: not_applicable
+    status: reviewed
+  - state_id: STATE-INTEL-CONFIRMATIONS-REMAINING
+    name_ja: インテル確認可能残数
+    visibility: public
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    status: reviewed
+  - state_id: STATE-COMPONENT-REVEALED
+    name_ja: コンポーネント公開済み
+    visibility: public
+    rule_core_ids: [RC-INTEL-ACTIVITY-001, RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    status: reviewed
+  - state_id: STATE-SQUADRON-ACQUIRED
+    name_ja: スコードロン捕捉済み
+    visibility: public
+    rule_core_ids: [RC-INTEL-ACTIVITY-001, RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    status: reviewed
+  - state_id: STATE-SQUADRON-PLATE-DEPLOYMENT
+    name_ja: スコードロンプレート配備状態
+    visibility: owner_only_until_acquired
+    owner_content: [component_id, plate_id, plate_identity, base_group_id, deployed]
+    public_content: []
+    hidden_from_opponent: [component_id, plate_id, plate_identity, base_group_id, deployed]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    value_type: record
+    allowed_values: { component_id: COMP-SQUADRON-*, base_group_id: base_group_id, deployed: boolean }
+    persistence: persistent_across_ATO_unless_removed_by_rule
+    rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - state_id: STATE-SQUADRON-TOKEN-CUSTODY
+    name_ja: スコードロン由来token所在状態
+    visibility: field_level_with_public_aggregate
+    owner_content: [token_id, source_plate_id, zone, hex_id]
+    public_content: [token_count, placement_hex_ids, return_from_hex_ids]
+    hidden_from_opponent: [token_id, source_plate_id, token_to_source_plate_mapping]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    public_projection: 個別token recordを直接公開せず、盤上配置数・配置hex又は帰還数・帰還元hexを公開する。
+    value_type: record_per_physical_token
+    allowed_values: { zone: [token_pool, map, removed_tray], hex_id: string_or_not_applicable, source_plate_id: COMP-SQUADRON-* }
+    persistence: persistent
+    rule_core_ids: [RC-SQUADRON-GENERATION-001, RC-SQUADRON-RETURN-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-TOKEN-0901-1-P5-6-KJ-500, FRAG-TOKEN-0901-1-P5-6-KQ-200]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - state_id: STATE-COMMAND-STARS-AVAILABLE
+    name_ja: 使用可能★数
+    visibility: owner_only_with_public_transaction_events
+    owner_content: [available_star_count]
+    public_content: []
+    hidden_from_opponent: [available_star_count]
+    value_type: integer
+    allowed_values: 0..40_per_faction_subject_to_other_approved_rules
+    persistence: persistent_resource_state
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - state_id: STATE-BASE-SORTIE-CAPACITY
+    name_ja: 基地群出撃キャパシティ状態
+    visibility: public
+    public_content: [base_group_id, effective_capacity, committed_cost, remaining_capacity]
+    owner_content: [base_group_id, effective_capacity, committed_cost, remaining_capacity]
+    hidden_from_opponent: []
+    value_type: record_per_base_group
+    allowed_values: { effective_capacity: non_negative_integer, committed_cost: non_negative_integer, remaining_capacity: derived_non_negative_integer }
+    persistence: persistent_during_ATO_committed_stars_return_at_ATO_end
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - state_id: STATE-BASE-AIR-OPERATIONS-INFRASTRUCTURE-DAMAGE
+    name_ja: 基地群航空運用インフラ被害
+    visibility: public
+    public_content: [base_group_id, damage_level]
+    owner_content: [base_group_id, damage_level]
+    hidden_from_opponent: []
+    value_type: integer_damage_level_per_base_group
+    allowed_values: printed_board_track_for_base_group
+    persistence: persistent_affects_sortie_capacity_from_following_day
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - state_id: STATE-BASE-MAINTENANCE-SUPPLY-DAMAGE
+    name_ja: 基地群整備補給基盤被害
+    visibility: public
+    public_content: [base_group_id, damage_level]
+    owner_content: [base_group_id, damage_level]
+    hidden_from_opponent: []
+    value_type: integer_damage_level_per_base_group
+    allowed_values: printed_board_track_for_base_group
+    persistence: persistent_affects_token_generation_immediately
+    rule_core_ids: [RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - state_id: STATE-SQUADRON-ACTIVATION-IN-PROGRESS
+    name_ja: スコードロンactivation進行中
+    visibility: field_level
+    owner_content: [plate_id, base_group_id, requested_token_count, maximum_token_count, required_star_cost, paid_star_cost, maintenance_roll, actual_generated_count, ground_abort_count]
+    public_content: [requested_token_count, required_star_cost, paid_star_cost, maintenance_roll, actual_generated_count, ground_abort_count]
+    hidden_from_opponent: [plate_id, base_group_id, maximum_token_count]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    internal_fields_excluded: [continuation, stack, resume_token]
+    value_type: temporary_structured_record
+    allowed_values: { plate_id: COMP-SQUADRON-*, base_group_id: base_group_id, requested_token_count: positive_integer, maximum_token_count: positive_integer, required_star_cost: non_negative_integer, paid_star_cost: non_negative_integer, maintenance_roll: D4_or_not_yet_resolved, actual_generated_count: non_negative_integer_or_not_yet_resolved, ground_abort_count: non_negative_integer_or_not_yet_resolved }
+    persistence: temporary_until_EVENT-SQUADRON-ACTIVATION-COMPLETED
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+events:
+  - event_id: EVENT-RATE-INITIALIZED
+    name_ja: レート初期化
+    visibility: public
+    rule_core_ids: [RC-RATE-MODEL-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES]
+    status: reviewed
+  - event_id: EVENT-RATE-CHANGE-ATTEMPTED
+    name_ja: レート変更判定
+    visibility: public
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - event_id: EVENT-RATE-CHANGED
+    name_ja: レート変更
+    visibility: public
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001, RC-RATE-STRATEGIC-SCENARIO-001, RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    status: reviewed
+  - event_id: EVENT-RATE-UNCHANGED
+    name_ja: レート変更なし
+    visibility: public
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - event_id: EVENT-CYBER-DOMINANCE-ESTABLISHED
+    name_ja: サイバードミナンス成立
+    visibility: public
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - event_id: EVENT-RATE-DERIVED-MODIFIER-APPLIED
+    name_ja: レート由来修正適用
+    visibility: public
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - event_id: EVENT-STRATEGIC-DISMISSAL
+    name_ja: 戦略レートによる更送
+    visibility: public
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001, RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    status: reviewed
+  - event_id: EVENT-MD-DECLARED
+    name_ja: MD宣言
+    visibility: public
+    public_content: [MD_declared, anti_air_ammunition_spent_1, anti_air_ammunition_remaining]
+    hidden_from_opponent: [MD_asset_identity]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    duration: retained_as_known_information
+    revoke_trigger: not_applicable
+    status: reviewed
+  - event_id: EVENT-MD-PASSED
+    name_ja: MD不実施
+    visibility: public
+    public_content: [MD_not_performed]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    duration: retained_as_known_information
+    revoke_trigger: not_applicable
+    status: reviewed
+  - event_id: EVENT-MD-RESOLVED
+    name_ja: MD結果確定
+    visibility: public_with_redacted_raw_D4
+    public_content: [applied_ADV, applied_DIS, other_applied_roll_conditions, full_intercept, partial_intercept, failure]
+    owner_content: [raw_D4_result, applied_ADV, applied_DIS, other_applied_roll_conditions, full_intercept, partial_intercept, failure]
+    hidden_from_opponent: [raw_D4_result, secret_causes_governed_by_other_rules]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    duration: retained_as_known_information
+    revoke_trigger: not_applicable
+    status: reviewed
+  - event_id: EVENT-IMMEDIATE-ENABLER-PLAYED
+    name_ja: 即応イネーブラー使用
+    visibility: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    status: reviewed
+  - event_id: EVENT-INTEL-TARGET-CONFIRMED
+    name_ja: インテル確認対象選択
+    visibility: public
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    status: reviewed
+  - event_id: EVENT-COMPONENT-REVEALED
+    name_ja: コンポーネント公開
+    visibility: public
+    rule_core_ids: [RC-INTEL-ACTIVITY-001, RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    status: reviewed
+  - event_id: EVENT-INTEL-ACQUISITION-SUCCEEDED
+    name_ja: インテルによるスコードロン捕捉成功
+    visibility: public
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    status: reviewed
+  - event_id: EVENT-INTEL-ACQUISITION-FAILED
+    name_ja: インテルによるスコードロン捕捉失敗
+    visibility: not_stated
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    status: reviewed
+  - event_id: EVENT-CYBER-DOMINANCE-EXPIRED
+    name_ja: サイバードミナンス有効期間終了
+    visibility: public
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-PLATE-DEPLOYED
+    name_ja: スコードロンプレート配備
+    visibility: owner_only_until_acquired
+    owner_content: [component_id, plate_id, base_group_id, initial_acquisition_state]
+    public_content: []
+    hidden_from_opponent: [component_id, plate_id, plate_identity, base_group_id]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-ACTIVATION-DECLARED
+    name_ja: スコードロンactivation宣言
+    visibility: field_level
+    owner_content: [plate_id, base_group_id, requested_token_count, maximum_token_count, available_pool_token_count, required_star_cost]
+    public_content: [event_occurrence, requested_token_count, required_star_cost]
+    hidden_from_opponent: [plate_id, plate_identity, base_group_id, maximum_token_count, available_pool_token_count]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-SORTIE-COST-PAID
+    name_ja: スコードロン出撃コスト支払
+    visibility: field_level
+    owner_content: [plate_id, base_group_id, required_star_cost, paid_star_cost, available_stars_before, available_stars_after, sortie_capacity_before, sortie_capacity_after]
+    public_content: [required_star_cost, paid_star_cost, sortie_capacity_before, sortie_capacity_after]
+    hidden_from_opponent: [plate_id, plate_identity, base_group_id, available_stars_before, available_stars_after]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-MAINTENANCE-RESOLVED
+    name_ja: スコードロン整備補給判定解決
+    visibility: field_level
+    owner_content: [plate_id, base_group_id, requested_token_count, D4_result, maintenance_damage_level, printed_formula, computed_generation_limit, actual_generated_count, ground_abort_count]
+    public_content: [requested_token_count, D4_result, maintenance_damage_level, actual_generated_count, ground_abort_count]
+    hidden_from_opponent: [plate_id, plate_identity, base_group_id, printed_formula, computed_generation_limit]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    rule_core_ids: [RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-GROUND-ABORT-RESOLVED
+    name_ja: スコードロン地上断念処理
+    visibility: field_level
+    owner_content: [plate_id, base_group_id, ground_abort_count, tokens_remaining_in_pool, dispersed_base, removed_token_ids]
+    public_content: [ground_abort_count]
+    hidden_from_opponent: [plate_id, plate_identity, base_group_id, tokens_remaining_in_pool, removed_token_ids, token_to_source_plate_mapping]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    rule_core_ids: [RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-TOKENS-GENERATED
+    name_ja: スコードロンtoken生成・配置
+    visibility: field_level_with_redacted_identity
+    owner_content: [plate_id, base_group_id, requested_token_count, actual_generated_count, token_ids, placement_hex_ids, placement_rule]
+    public_content: [actual_generated_count, placement_hex_ids]
+    hidden_from_opponent: [component_id, plate_id, plate_identity, base_group_id, token_ids, token_to_source_plate_mapping]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    public_projection: 未捕捉である間は生成token数と配置hexだけを公開する。
+    rule_core_ids: [RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-ACTIVATION-COMPLETED
+    name_ja: スコードロンactivation完了
+    visibility: field_level
+    owner_content: [plate_id, base_group_id, requested_token_count, maximum_token_count, required_star_cost, paid_star_cost, actual_generated_count, ground_abort_count, generated_token_ids]
+    public_content: [event_occurrence, requested_token_count, required_star_cost, paid_star_cost, actual_generated_count, ground_abort_count]
+    hidden_from_opponent: [plate_id, plate_identity, base_group_id, maximum_token_count, generated_token_ids, token_to_source_plate_mapping]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed
+  - event_id: EVENT-SQUADRON-TOKENS-RETURNED
+    name_ja: スコードロン由来航空機token通常帰還
+    visibility: field_level_with_redacted_identity
+    owner_content: [token_ids, return_reason, from_hex_ids, to_zone, reset_fields]
+    public_content: [event_occurrence, from_hex_ids]
+    hidden_from_opponent: [token_ids, component_id, plate_id, plate_identity, source_plate_id, token_to_source_plate_mapping]
+    identity_reveal_state_id: STATE-SQUADRON-ACQUIRED
+    public_projection: 未捕捉tokenについてはtoken_idsの件数、帰還元hex及びEvent発生だけを公開する。
+    rule_core_ids: [RC-SQUADRON-RETURN-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    status: reviewed

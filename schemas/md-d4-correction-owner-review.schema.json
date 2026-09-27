@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/md-d4-correction-owner-review.schema.json",
+  "title": "AFWI-KAI MD D4 correction owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_type", "non_normative", "generated_at", "generator", "target_vector_file", "target_count", "fingerprint_method", "decision_id", "reviews"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "md_d4_correction_reapproval" },
+    "non_normative": { "const": true },
+    "generated_at": { "const": "2026-09-23" },
+    "generator": { "type": "string" },
+    "target_vector_file": { "const": "rule-core/tests/rule-vectors/md.yaml" },
+    "target_count": { "const": 4 },
+    "fingerprint_method": { "type": "object" },
+    "decision_id": { "const": "DEC-COMBAT-MD-DICE-001" },
+    "reviews": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["vector_id", "title", "status", "approval", "dice_type_before", "dice_type_after", "fixed_roll", "expected_events", "expected_final_state", "expected_result_changed", "before_normative_payload_fingerprint_sha256", "after_normative_payload_fingerprint_sha256", "source_fragment_ids", "decision_ids", "owner_response"],
+        "properties": {
+          "vector_id": { "type": "string" },
+          "title": { "type": "string" },
+          "status": { "const": "approved" },
+          "approval": { "const": { "approved_by": "ルール所有者", "approved_at": "2026-09-23" } },
+          "dice_type_before": { "enum": ["D6", "naval_D6"] },
+          "dice_type_after": { "enum": ["D4", "naval_D4"] },
+          "fixed_roll": { "type": "integer" },
+          "expected_events": { "type": "array" },
+          "expected_final_state": { "type": "object" },
+          "expected_result_changed": { "const": false },
+          "before_normative_payload_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "after_normative_payload_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "decision_ids": { "const": ["DEC-COMBAT-MD-DICE-001"] },
+          "owner_response": {
+            "const": {
+              "selection": "D6からD4への訂正で正しい",
+              "approved_by": "ルール所有者",
+              "approved_at": "2026-09-23"
+            }
+          }
+        }
+      }
+    }
+  }
+}

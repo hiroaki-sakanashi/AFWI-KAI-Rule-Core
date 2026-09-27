@@ -1,0 +1,356 @@
+schema_version: 0.1.0
+register_status: approved
+decisions:
+  - decision_id: DEC-COMBAT-MD-VISIBILITY-001
+    category: addition
+    owner_final_text: >-
+      MDの宣言及びMDを行わないpassはBLUE・RED両陣営へ公開する。MDに使用した個別アセットidentityは
+      管理陣営には既知だが、MD処理を理由として相手陣営へ追加公開しない。ただし別規則により既に公開済みのidentityを
+      再秘匿しない。MD宣言時の対空弾薬1消費及び消費後残弾数は両陣営へ公開する。MD判定の生D4出目は
+      防御側には既知とし、相手陣営へはMD処理を理由として公開しない。MD判定へ適用されたADV、DISその他の判定条件と、
+      完全迎撃、部分迎撃又は失敗の結果は両陣営へ公開する。ただし判定条件の原因となる別の秘密情報は、
+      その情報を規律する別のRule Core契約によらない限り追加公開しない。一度公開された情報は既知情報として保持し、
+      MD処理終了後も再秘匿しないため、revoke triggerはnot_applicableとする。この公開契約は海軍アセットからADAへ進む
+      レイヤードMDの各層へ共通適用し、第1層結果は第2層ADA response windowの前に両陣営へ公開する。
+    scope: "共通MD、レイヤードMD及びMD宣言をtriggerとする即応におけるknowledge/visibility"
+    affected_rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001, RC-ENABLER-IMMEDIATE-001]
+    source_relationship: >-
+      SRC-RULE-0910-2-PDF p.12はMDの宣言、pass後の攻撃継続、弾薬消費、D4結果及びレイヤード順序を定め、
+      SRC-ENABLER-0830-1 p.41はBLUEのMD宣言直後をSTC-RF-05のtriggerとする。SRC-TOKEN-0901-1はMD値と
+      対空残弾表示を担うが、いずれも陣営別recipients、公開content、duration及びrevokeを十分に定めないため、
+      本追加裁定が正式なゲーム意味として補う。
+    normative_information:
+      - "MD宣言の事実はBLUE・RED両陣営へ公開"
+      - "MDを行わないpassの事実はBLUE・RED両陣営へ公開"
+      - "使用MDアセットidentityは管理陣営に既知だが相手陣営へMDを理由に追加公開しない"
+      - "別規則で既に公開済みのアセットidentityは再秘匿しない"
+      - "対空弾薬1消費と消費後残弾数はBLUE・RED両陣営へ公開"
+      - "生D4出目は防御側に既知、相手陣営へMDを理由に公開しない"
+      - "適用されたADV・DISその他の判定条件はBLUE・RED両陣営へ公開"
+      - "判定条件の原因となる別の秘密情報は自動公開しない"
+      - "完全迎撃・部分迎撃・失敗はBLUE・RED両陣営へ公開"
+      - "公開済み情報は既知として保持し、revoke triggerはnot_applicable"
+      - "レイヤードMD第1層結果は第2層response window前にBLUE・RED両陣営へ公開"
+    manufacturing_information_boundary: >-
+      物理コンポーネントの見え方やDigitalのprojection方式を規範根拠としない。Digitalは本裁定のrecipient/content境界を
+      実装するが、response stack、resume point、通信payload又はUI表示方式をRule Coreのゲーム意味へ加えない。
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-ENABLER-0830-1-STC-RF-05, FRAG-TOKEN-0901-1-ENTIRE]
+    original_decided_at: "2026-09-24"
+    reconfirmed_at: "2026-09-24"
+    registered_at: "2026-09-24"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-COMBAT-MD-DICE-001
+    category: correction
+    owner_final_text: >-
+      MD判定にはD4を使用する。ADAおよびMD艦艇に置くD6は対空残弾数を示すカウンターであり、MD判定では振らない。
+    scope: "MD判定用ダイスと、ADA・MD艦艇の対空残弾表示用D6の役割分離"
+    affected_rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-LAYERED-001]
+    source_relationship: >-
+      SRC-RULE-0910-2-PDF p.12はMD結果を出目4、MD値以上4未満、MD値未満として定義し、
+      SRC-TOKEN-0901-1のADA・MD艦艇現物はMD値と対空弾薬の資源表示を担う。
+      物理的なD6が残弾表示用であり判定には使わないという境界は正式資料だけでは明示が十分でないため、本訂正裁定が補う。
+    normative_information:
+      - "MD判定の乱数はD4"
+      - "出目4は完全迎撃"
+      - "MD判定値以上4未満は部分迎撃"
+      - "MD判定値未満は失敗"
+      - "ADAおよびMD艦艇の対空残弾は整数の資源状態"
+      - "物理的なD6は対空残弾表示用カウンターであり、判定では振らない"
+    manufacturing_information_boundary: >-
+      D6という物理表示方法をDigitalの実装要件にしない。Digitalは対空残弾数を整数状態として保持し、
+      残弾表示用D6をfixed_randomness、roll又はrandom inputとして扱わない。
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-TOKEN-0901-1-ENTIRE]
+    original_decided_at: unknown
+    reconfirmed_at: "2026-09-23"
+    registered_at: "2026-09-23"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-EMI-COMPONENT-001
+    category: addition
+    owner_final_text: >-
+      SRC-EMI-0811を現在の正式なEMIコンポーネント資料とする。実際のEMIコンポーネントは、
+      マップ上の1ヘックスと全く同じ大きさの六角形半透明ボードへ対応するEMIシールを貼ったもので、
+      BLUE用1個とRED用1個の独立した完成コンポーネントである。PDF上のtop/bottomは印刷・製作用の配置にすぎず、
+      ゲーム上の上下関係、配置順、優先順位、表裏関係、1個の両面コンポーネント、または2個を重ねることを意味しない。
+      1ヘックスと同じ大きさ、六角形、半透明、各陣営1個、対応シールによる識別はゲーム上のコンポーネント仕様とする。
+      シールの印刷、切り抜き、貼付方法など、合法手、対象範囲、効果または判定に影響しない製作手順はルール本文へ含めない。
+    scope: "EMI物理コンポーネントの形状、占有・表示単位、表示特性、個数、陣営別識別、独立性"
+    affected_rule_core_ids: [RC-EMI-COMPONENT-001]
+    applies_to_component_ids: [COMP-EMI-BLUE, COMP-EMI-RED]
+    source_relationship: >-
+      SRC-EMI-0811はBLUE/REDシールの識別表示と印字内容を提供する。
+      元PDFだけでは確定できない完成物の形状、寸法、半透明性、個数、独立性、top/bottomの非ゲーム属性を本追加裁定が補う。
+    normative_information:
+      - "陣営はBLUEまたはRED"
+      - "完成物の形状は六角形"
+      - "占有・表示単位はマップ上の1ヘックスと全く同じ大きさ"
+      - "表示特性は半透明"
+      - "各陣営1個"
+      - "対応するEMIシールで識別"
+      - "BLUE用とRED用は別々の物理コンポーネント"
+    manufacturing_information_boundary: >-
+      PDF上のtop/bottomはsource fragmentの位置情報に限る。シールの印刷、切り抜き、貼付方法その他、
+      ゲーム上の合法手、対象範囲、効果または判定へ影響しない製作手順はRule Coreのルール本文へ入れない。
+    source_ids: [SRC-EMI-0811]
+    source_fragment_ids: [FRAG-EMI-0811-BLUE-COMPONENT, FRAG-EMI-0811-RED-COMPONENT]
+    original_decided_at: unknown
+    reconfirmed_at: "2026-09-23"
+    registered_at: "2026-09-23T08:37:49+09:00"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-ENABLER-NV-MULTIPLE-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - 同じBLUE艦の同じ移動終了が両カードの条件を満たす場合、REDはSTC-NV-07とSTC-NV-08の両方を使用できる。
+      - 使用・解決順はREDプレイヤーが決める。
+      - STC-NV-07とSTC-NV-08の潜水艦攻撃について、BLUE艦へ与えるヒット数の期待値は、どちらを先に解決しても変わらない。
+      - ただし、カードは一括して発動・消費せず、REDが選んだ順に1枚ずつ使用・解決する。
+      - 先の潜水艦攻撃で対象BLUE艦が撃破・除去された場合、後続カードは未発動扱いとする。
+      - 未発動となった後続カードは手札に残す。
+      - 未発動となった後続カードに対応する兆候マーカーも盤上に残す。
+      - 後続カードの使用回数は消費しない。
+      - 対象艦が存在しないため、後続攻撃は実行しない。
+      - 先に使用したカードは使用済みとなり、それに対応する兆候マーカーはカード記載どおり処理される。
+      - REDがSTC-NV-07とSTC-NV-08のどちらを先に解決するかによって、対象艦撃破後にどちらのカードと兆候マーカーが残るかが変わり、ゲーム上の状態に差異が生じ得る。
+      - 解決順はREDプレイヤーが決定するため、これはREDプレイヤーにとって実質的な選択である。
+    scope: "同じBLUE艦の同じ移動終了でSTC-NV-07とSTC-NV-08がともに成立する場合の選択権、逐次解決及び対象消失時の後続カード処理"
+    affected_rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    applies_to_component_ids: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08]
+    source_relationship: >-
+      SRC-ENABLER-0830-1の両カードは同じtrigger、対象及び攻撃処理を個別に定めるが、両方が同時に成立した場合の
+      複数使用、順序決定、逐次発動及び先行攻撃で対象が失われた場合の後続カード状態を定めない。本追加裁定がその範囲を補う。
+    normative_information:
+      - "両カードは同じ移動終了に対して使用可能"
+      - "REDが使用・解決順を選ぶ"
+      - "カードは選択順に1枚ずつ使用・解決する"
+      - "後続発動前に対象艦の存在を再確認する"
+      - "対象艦が除去済みなら後続カードは未発動、手札維持、マーカー維持、使用回数不消費、攻撃不実行"
+      - "先行カードは使用済みとなり、対応する兆候マーカーはカード記載どおり処理する"
+      - "ヒット数の期待値は順序で変わらないが、対象艦除去後に残るカードと兆候マーカーは順序により変わり得る"
+    rationale: "両攻撃のBLUE艦へ与えるヒット数の期待値は順序で変わらない。一方、1枚目で対象艦が除去されると2枚目は未発動となるため、どちらのカードと兆候マーカーが残るかは順序により変わり、ゲーム状態に差異が生じ得る。よって順序はREDプレイヤーの実質的な選択である。"
+    correction_history:
+      - corrected_at: "2026-09-24"
+        corrected_by: ルール所有者
+        correction_scope: "攻撃順とヒット数の期待値、カード・兆候マーカー残存状態の区別"
+        reason: "攻撃のヒット数の期待値と、対象艦除去後に残るカード・兆候マーカーによるゲーム状態を区別するため。"
+        effect_on_resolution_rule: none
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08]
+    original_decided_at: "2026-09-24"
+    reconfirmed_at: "2026-09-24"
+    registered_at: "2026-09-24"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-ENABLER-CYBER-COUNTER-SCOPE-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - 判定を持たないサイバー関連カードに対して、効果が生じないサイバー対抗カードを使用することはできない。
+      - 効果のないカードは合法な選択肢として提示しない。
+      - 使用回数を意図的に消費する目的でも使用できない。
+      - 不適格なカードは手札または利用可能状態を維持し、使用回数を消費しない。
+      - Day1及びDay2では、US-CY-05によりUS-CY-01の判定が自動成功となる。
+      - 自動成功はDIS化の対象にならない。
+      - したがってDay1及びDay2では、STC-CY-04はUS-CY-05への合法な対抗選択肢にならない。
+      - Day3以降では、US-CY-05がUS-CY-01判定をADVにする。
+      - STC-CY-04は同じUS-CY-01判定をDISにする。
+      - ADVとDISは相殺し、通常のD4判定になる。
+      - Day3以降にSTC-CY-04を使用した場合は、その使用回数を通常どおり消費する。
+    scope: "判定を対象とするサイバー対抗カードの合法性と、ミュトスに対するサイバーカウンターメジャーのDay別処理"
+    affected_rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    applies_to_component_ids: [COMP-ENABLER-STC-CY-04, COMP-ENABLER-US-CY-03, COMP-ENABLER-US-CY-05]
+    source_relationship: >-
+      SRC-ENABLER-0830-1は判定がないカードには対抗効果がないこと、ミュトスのDay別効果及び
+      サイバーカウンターメジャーのDIS効果を定めるが、効果のない使用の合法性と相互作用の範囲を十分に定めない。
+      本追加裁定がその範囲を補う。
+    normative_information:
+      - "判定を持たないサイバー関連カードに効果のない対抗カードは使用不可"
+      - "不適格カードは合法候補へ提示せず、手札又は利用可能状態と使用回数を維持"
+      - "Day1・Day2のミュトスによる自動成功はDIS化対象外でサイバーカウンターメジャーは使用不可"
+      - "Day3以降は同じUS-CY-01判定へのADVとDISが相殺して通常D4"
+      - "Day3以降の合法なサイバーカウンターメジャー使用は使用回数を消費"
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-04, FRAG-ENABLER-0830-1-US-CY-03, FRAG-ENABLER-0830-1-US-CY-05]
+    original_decided_at: "2026-09-24"
+    reconfirmed_at: "2026-09-24"
+    registered_at: "2026-09-24"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-ENABLER-US-AF-10-MD-TIMING-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - BLUE航空機がADAを攻撃する場合、BLUEによるUS-AF-10の使用判断・使用宣言を先に行う。
+      - その後、REDがMDを宣言するか判断する。
+      - REDはUS-AF-10が使用されたか否かを知った状態でMD判断を行う。
+      - REDがMDを宣言した場合、その後にUS-EW-03の応答機会が生じる。
+      - 処理順は次のとおり。
+
+      1. ADAへの攻撃を宣言
+      2. BLUEがUS-AF-10を使用するか判断
+      3. 使用する場合はUS-AF-10を宣言
+      4. REDがMDを使用するか判断
+      5. REDがMDを宣言した場合、BLUEにUS-EW-03の応答機会
+      6. MD処理
+      7. 未解決であれば、US-AF-10のADVを反映して攻撃処理へ進む
+    scope: "BLUE航空機によるADA攻撃でのUS-AF-10判断、RED MD判断、US-EW-03応答、MD解決及び攻撃復帰の順序"
+    affected_rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001]
+    applies_to_component_ids: [COMP-ENABLER-US-AF-10, COMP-ENABLER-US-EW-03]
+    source_relationship: >-
+      SRC-ENABLER-0830-1はUS-AF-10とUS-EW-03の個別triggerを、SRC-RULE-0910-2-PDF p.12はMD判断と解決を定めるが、
+      BLUE航空機のADA攻撃におけるUS-AF-10とMD判断の先後及びMD後の攻撃復帰を十分に定めない。本追加裁定がその順序を補う。
+    normative_information:
+      - "ADA攻撃宣言後、BLUEがUS-AF-10使用を先に判断"
+      - "REDはUS-AF-10使用・不使用を知ってからMDを判断"
+      - "REDのMD宣言後にBLUEのUS-EW-03応答機会"
+      - "MD解決後に攻撃が未解決ならUS-AF-10のADVを維持して攻撃へ復帰"
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-ENABLER-0830-1-US-AF-10, FRAG-ENABLER-0830-1-US-EW-03]
+    original_decided_at: "2026-09-24"
+    reconfirmed_at: "2026-09-24"
+    registered_at: "2026-09-24"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-RATE-BOUNDARY-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - US宇宙レート、PRC宇宙レート、USサイバーレート、PRCサイバーレートは0から4まで、共有戦略レートはPRC優勢6から中央0を経てUS優勢6までの実値だけを保持する。
+      - `4+`及び`6+`は表示上の端点であり、端点を越えた隠れた値や同方向への余剰変更量を保持しない。変更後の値は必ず表示範囲内へ制限する。
+      - 戦略レートの端点6は実際の現在値である。反対方向への変更は6を起点に変更量を差し引き、両陣営方向へ対称的に適用する。
+      - 任意選択効果の唯一の効果が端点と同方向へのレート変更で実値を変えない場合、その効果を合法候補として提示せず、宣言、判定、使用回数消費、公開・捨て札・除外・山札戻し等の使用後処理、`EVENT-RATE-CHANGED`を行わない。不正な直接Commandも状態不変で拒否する。
+      - 強制変更が端点と同方向である場合、起点となる強制処理は解決済みとするが、値は端点に留め、超過量を保持せず、`EVENT-RATE-CHANGED`及び実際のレート変更を条件とする後続triggerを発生させない。強制処理自体の別Eventは維持する。
+      - 複数の独立効果を持つカードは、少なくとも一つの効果が実際に状態を変更できれば使用可能とする。各効果を個別評価し、端点で変化しないレート部分には`EVENT-RATE-CHANGED`を発生させず、他の有効な効果は通常どおり処理する。
+      - サイバーレート0でSTC-CY-05が元の上昇を取り消せる場合、カードは使用可能である。元の上昇を取り消し、その後の追加-1は下限0で止め、最終値を0とし、カードの使用状態を通常どおり更新する。起点の上昇取消しと追加低下を区別して記録し、追加低下部分で値が変わらない場合は新しい`EVENT-RATE-CHANGED`を発生させない。
+      - サイバーレート4のATO終了時効果と共有戦略レート6のATO終了時効果は維持する。戦略レートの更迭はATO終了時の実値で判定し、ATO終了前に6から反対方向へ移動した場合、一度6へ到達した履歴だけでは更迭しない。
+    scope: "全5 Rate IDの表示端点、実値制限、任意・強制・複数効果の境界処理、STC-CY-05及びATO終了時端点判定"
+    affected_rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-CYBER-INCREASE-001, RC-RATE-STRATEGIC-END-001]
+    applies_to_component_ids: [COMP-ENABLER-STC-CY-05, COMP-ENABLER-US-SP-03, COMP-ENABLER-US-IW-04, COMP-ENABLER-STC-IW-04]
+    applies_to_rate_ids: [RATE-SPACE-US, RATE-SPACE-PRC, RATE-CYBER-US, RATE-CYBER-PRC, RATE-STRATEGIC]
+    source_relationship: >-
+      正式ルール、A3ボード及びイネーブラーカードは各レートの表示範囲、端点効果、変更方向及び変更量を定めるが、
+      端点と同方向への変更要求の合法性、消費、超過値、Event及び後続triggerを十分に定めない。本追加裁定がその範囲だけを補う。
+    normative_information:
+      - "全5レートの実値は表示範囲へ制限し、隠れた超過値を保持しない"
+      - "値を変えない単独任意効果は不適格で、宣言・判定・消費・使用後処理を行わない"
+      - "値を変えない強制変更は起点処理のみ解決し、レート変更Eventと後続triggerを生じない"
+      - "複数効果は各効果を個別評価し、少なくとも一つが状態を変えられればカードを使用できる"
+      - "STC-CY-05の取消しと追加低下を分離し、0での追加低下は値不変Eventを生じない"
+      - "端点効果はATO終了時の実値で判定する"
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2, FRAG-ENABLER-0830-1-STC-CY-05]
+    original_decided_at: "2026-09-25"
+    reconfirmed_at: "2026-09-25"
+    registered_at: "2026-09-25"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-SQUADRON-ACTIVATION-VISIBILITY-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - 管理陣営は、Component ID、プレート、生成予定数、★、基地状態、D4、実生成数、地上断念、token ID、生成位置をすべて知る。
+      - 相手陣営にも、activationが行われたこと、生成予定数、必要・支払★、D4結果、実生成数、地上断念数、生成されたtoken数及び盤上位置、処理完了を公開する。
+      - 基地群の出撃キャパシティ、航空運用インフラ被害、整備補給基盤被害は両陣営に公開する。
+      - 未捕捉スコードロンについて、Component ID、プレートの正体、個別tokenと出所プレートの対応は管理陣営だけが知る。
+      - 相手陣営へのスコードロンの正体の開示は、既存のSTATE-SQUADRON-ACQUIRED及び捕捉・インテル規則に従う。
+      - EVENT-SQUADRON-TOKENS-GENERATEDでは、相手陣営へtoken数と配置hexを公開するが、未捕捉である間はComponent ID、plate ID及び出所対応を開示しない。
+      - 通常帰還では、token数、帰還元hex及び帰還処理の発生を公開するが、未捕捉tokenのComponent IDと出所プレートは開示しない。
+      - Digital内部のcontinuation、stack、resume tokenはRule Coreの公開状態に含めない。
+    scope: "スコードロン配備、activation、generation、地上断念、token配置及び通常帰還のfield-level visibility"
+    affected_rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001, RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001, RC-SQUADRON-RETURN-001]
+    applies_to_component_ids: [COMP-SQUADRON-STC-SQ-04, COMP-SQUADRON-STC-SQ-13]
+    source_relationship: >-
+      SRC-RULE-0910-2-PDF、SRC-BOARD-A3-0915、SRC-BOARD-A4-0815-01、SRC-SQUADRON-0901及びSRC-TOKEN-0901-1は
+      activation、生成、基地状態及び物理コンポーネントを定めるが、陣営別のfield-level visibilityを十分に定めない。
+      本追加裁定は規則内容を変更せず、管理陣営と相手陣営のknowledge境界だけを補う。
+    normative_information:
+      - "管理陣営はactivation及びgenerationの全規範fieldを知る"
+      - "相手陣営にはactivation発生、予定数、必要・支払★、D4結果、実生成数、地上断念数、生成token数・位置、完了を公開"
+      - "基地群出撃キャパシティ、航空運用インフラ被害、整備補給基盤被害は両陣営へ公開"
+      - "未捕捉時のComponent ID、plate identity、個別token IDと出所plate対応は管理陣営限定"
+      - "正体開示はSTATE-SQUADRON-ACQUIRED及び捕捉・インテル規則に従う"
+      - "通常帰還はtoken数、帰還元hex、発生を公開し、未捕捉identityと出所対応は非公開"
+      - "Digital内部continuation、stack、resume tokenは規範公開状態ではない"
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915, SRC-BOARD-A4-0815-01, SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE, FRAG-SQUADRON-0901-P2-STC-SQ-04, FRAG-SQUADRON-0901-P3-STC-SQ-13, FRAG-TOKEN-0901-1-P5-6-KJ-500, FRAG-TOKEN-0901-1-P5-6-KQ-200]
+    original_decided_at: "2026-09-25"
+    reconfirmed_at: "2026-09-25"
+    registered_at: "2026-09-25"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-CYBER-TARGET-GROUP-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - `cyber-target-groups.md`をAFWI-KAI Rule Coreの正式規範文書とする。
+      - 同文書第1節から第5節、第7節及び第8節を規範とする。
+      - 第6節のDigital mapping及び第9節の実装案は非規範とする。
+      - Cyber Target Groupは陣営込みのInternal Group ID、Player Label、Included Tokensを分離して保持する。
+      - 第4節のUS 16 group、PRC 17 groupを正式membershipとする。
+      - 所属tokenが盤上に存在しないgroupも合法な指定対象とする。
+      - 当日持続中に新たに生成された所属tokenにも、選択groupに成立済みの機能停止効果を適用する。
+      - groupへの効果帰属はindividual card effect durationを変更せず、カード印字の当日終了までという期間に従う。
+    scope: "US-CY-02／STC-CY-01の対象単位となるCyber Target Groupのモデル、membership、選択及び後発tokenへの適用"
+    affected_rule_core_ids: [RC-CYBER-TARGET-GROUP-MODEL-001, RC-CYBER-TARGET-GROUP-MEMBERSHIP-001, RC-CYBER-TARGET-GROUP-SELECTION-001, RC-CYBER-TARGET-GROUP-PERSISTENCE-001]
+    source_relationship: >-
+      SRC-ENABLER-0830-1のSTC-CY-01及びUS-CY-02は敵の同一名称token 1種と当日終了までの機能停止を定める。
+      SRC-SQUADRON-0901及びSRC-TOKEN-0901-1は正式コンポーネント名を提供するが、group境界、盤上不在groupの選択、
+      後発tokenへの波及を一意に定めないため、本追加裁定がその範囲を確定する。
+    normative_information:
+      - "Cyber Target Groupの三層構造、陣営境界及び一意所属"
+      - "US 16 group、PRC 17 groupの正式membership"
+      - "盤上不在groupの指定可否"
+      - "当日持続中の後発tokenへの適用"
+      - "カード固有duration、判定、ADV／DIS及び使い切り状態は不変"
+    source_ids: [SRC-ENABLER-0830-1, SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE]
+    manufacturing_information_boundary: >-
+      cyber-target-groups.md第6節及び第9節のruntime typeId、保存移行、UI及び実装手順をゲーム規範へ昇格させない。
+    original_decided_at: "2026-09-27"
+    reconfirmed_at: "2026-09-27"
+    registered_at: "2026-09-27"
+    approved_by: ルール所有者
+    status: approved
+
+  - decision_id: DEC-TURN-BASE-STAR-PAYMENT-001
+    category: addition
+    decision_type: additional
+    owner_final_text: |-
+      - ターン基本★は①から★1又は②から★2のいずれかで支払い、①と②を混合しない。
+      - ②から支払えるのは②合計が★8以上の場合に限る。
+      - ②から支払うプレイヤーは、中止する次ATO準備を選択する。
+      - ★2単位の準備では準備全体を取り消し、対応する★2を②から③へ移す。
+      - スコードロン準備では中止するスコードロンプレート準備をプレイヤーが選択する。
+      - イネーブラー、ADA弾補給、基地復旧は正式source及び既存Rule Coreの管理粒度を超えて細分化しない。
+      - 分散配置準備は★3で一体であり、選択時は基本支払いの★2に加えて残余★1も③へ移し、準備全体を取り消す。
+      - A1処理後も②合計は★6以上でなければならない。②=★8では★2準備のみ選択でき、②>=★9で★3分散配置準備を選択できる。
+    scope: "ターン基本★の支払元、取消準備のプレイヤー選択、分散配置準備の全取消し及び処理後②最低★6"
+    affected_rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_relationship: >-
+      SRC-RULE-0910-2-PDF p.8は①から★1又は②から★2を③へ移すこと、②支払には②合計★8以上を要すること、
+      パスには支払い不要であることを定める。取消対象準備の選択、★3分散配置準備の残余★1及び処理後最低★6を
+      一意に定めないため、本追加裁定がその範囲を補う。
+    normative_information:
+      - "①★1又は②★2の排他的な支払元"
+      - "中止する次ATO準備のプレイヤー選択"
+      - "分散配置準備選択時は★3全てを③へ移し準備全体を取消"
+      - "処理後②最低★6"
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    original_decided_at: "2026-09-27"
+    reconfirmed_at: "2026-09-27"
+    registered_at: "2026-09-27"
+    approved_by: ルール所有者
+    status: approved

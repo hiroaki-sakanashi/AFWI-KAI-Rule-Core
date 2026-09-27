@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/vrc-priority-digital-contract.schema.json",
+  "title": "AFWI-KAI VRC priority digital intake candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "artifactStatus", "ruleCoreVersion", "sourceSet", "componentIds", "stateIds", "eventIds", "interactionAssignments", "components", "approvedRuleVectorIds", "candidateRuleVectorIds"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "artifactStatus": { "const": "candidate" },
+    "ruleCoreVersion": { "type": "string" },
+    "sourceSet": { "type": "string" },
+    "componentIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^COMP-ENABLER-[A-Z0-9-]+$" } },
+    "stateIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^STATE-[A-Z0-9-]+$" } },
+    "eventIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^EVENT-[A-Z0-9-]+$" } },
+    "interactionAssignments": { "type": "array", "items": { "type": "object" } },
+    "components": { "type": "array", "items": { "type": "object" } },
+    "approvedRuleVectorIds": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "candidateRuleVectorIds": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/rate-boundary-owner-review.schema.json",
+  "title": "AFWI-KAI rate boundary owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "document_type", "generated_at", "normative_authority", "source_vector_file", "decision_id", "rule_core_id", "vector_count", "fingerprint_method", "approval_record", "reviews"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "document_type": { "const": "non_normative_owner_review" },
+    "generated_at": { "type": "string" },
+    "normative_authority": { "const": false },
+    "source_vector_file": { "type": "string" },
+    "decision_id": { "const": "DEC-RATE-BOUNDARY-001" },
+    "rule_core_id": { "const": "RC-RATE-BOUNDARY-001" },
+    "vector_count": { "const": 20 },
+    "fingerprint_method": { "type": "string" },
+    "approval_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "approved_by", "approved_at", "approved_vector_count"],
+      "properties": {"status":{"const":"approved"},"approved_by":{"const":"ルール所有者"},"approved_at":{"const":"2026-09-25"},"approved_vector_count":{"const":20}}
+    },
+    "reviews": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["number", "vector_id", "title", "summary_ja", "status", "initial_rate", "effect_kind", "origin", "legal_candidate", "determination_performed", "card_final_state", "requested_change", "actual_change", "final_rate", "expected_events", "events_not_emitted", "downstream_trigger", "rule_core_ids", "decision_ids", "source_fragment_ids", "fingerprint_sha256", "approval", "owner_answer"],
+        "properties": {
+          "number": { "type": "integer" },
+          "vector_id": { "type": "string" },
+          "title": { "type": "string" },
+          "summary_ja": { "type": "string", "minLength": 1 },
+          "status": { "const": "approved" },
+          "initial_rate": { "type": "object" },
+          "effect_kind": { "type": "string" },
+          "origin": {},
+          "legal_candidate": {},
+          "determination_performed": {},
+          "card_final_state": {},
+          "requested_change": {},
+          "actual_change": {},
+          "final_rate": { "type": "object" },
+          "expected_events": { "type": "array" },
+          "events_not_emitted": { "type": "array" },
+          "downstream_trigger": {},
+          "rule_core_ids": { "type": "array" },
+          "decision_ids": { "type": "array" },
+          "source_fragment_ids": { "type": "array" },
+          "fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "approval": {"type":"object","required":["approved_by","approved_at"],"properties":{"approved_by":{"const":"ルール所有者"},"approved_at":{"const":"2026-09-25"}}},
+          "owner_answer": { "const": "この記述で正しい" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+schema_version: 0.1.0
+rule_core_version: 0.15.0-preview-squadron-activation
+status: approved
+approved_by: ルール所有者
+approved_at: "2026-09-25"
+decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+rule_core_ids:
+  - rule_core_id: RC-SQUADRON-DEPLOYMENT-001
+    name_ja: スコードロンプレートの配備
+    definition: ATO準備で選択したスコードロンプレートを基地群へ配備し、新規配備時は未捕捉とする共通規則。
+    scope: ATO開始時の展開準備解決、配備基地群、初期未捕捉状態
+    excludes: activation、出撃コスト、整備補給判定、トークン生成、捕捉判定
+    actor: 各陣営プレイヤー
+    target: 選択したスコードロンプレートと配備基地群
+    interaction_type: ordered_setup
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE]
+    status: approved
+  - rule_core_id: RC-SQUADRON-ACTIVATION-001
+    name_ja: スコードロン共通activation
+    definition: 配備済みプレート、生成予定数及び配備基地群を選び、印字出撃コストと基地残余キャパシティを確認してコストを支払う共通規則。
+    scope: 選択、生成予定数宣言、最大数・利用可能token確認、出撃可否、★支払、同一ATO内の再activation
+    excludes: 整備補給D4、実生成数、地上断念、token配置、個別スコードロン性能
+    actor: 当該スコードロンを管理するプレイヤー
+    target: 配備済みスコードロンプレート、配備基地群、生成予定token
+    interaction_type: sequential_action
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE]
+    status: approved
+  - rule_core_id: RC-SQUADRON-GENERATION-001
+    name_ja: スコードロンtoken生成
+    definition: 支払済みactivationについて基地群の整備補給欄に従いD4を解決し、実生成数、地上断念及びtoken配置を確定する共通規則。
+    scope: 整備補給判定、実生成数、0以下、地上断念、分散配置時の除去、通常又は兆候marker経由の配置
+    excludes: activation合法性と支払、艦船・ADA生成、個別token性能、移動・捕捉・攻撃
+    actor: activationを宣言したプレイヤー及び自動判定
+    target: 宣言した生成予定token、配備基地群、生成hex
+    interaction_type: automatic_resolution
+    placement_interaction_type: sequential_action
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    status: approved
+  - rule_core_id: RC-SQUADRON-RETURN-001
+    name_ja: スコードロン由来航空機tokenの通常帰還
+    definition: ATO終了時又は規定された帰還契機に、残存する航空機tokenをtoken poolへ戻し、捕捉・弾薬・燃料をresetして再生成可能にする共通規則。
+    scope: 通常帰還、ATO終了時帰還、token poolへの復帰と明記されたreset
+    excludes: 撃破token、plate撃破時の飛行中token除去、艦載機の帰投先喪失、activation処理
+    actor: cleanup又は規定された自動処理
+    target: 残存するスコードロン由来航空機token
+    interaction_type: automatic_resolution
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION]
+    status: approved
+
+visibility_contract:
+  managing_side: all_normative_fields
+  opposing_side_public_fields:
+    - activation_occurred
+    - requested_token_count
+    - required_star_cost
+    - paid_star_cost
+    - D4_result
+    - actual_generated_count
+    - ground_abort_count
+    - generated_token_count
+    - placement_hex_ids
+    - activation_completed
+    - base_sortie_capacity
+    - air_operations_infrastructure_damage
+    - maintenance_supply_damage
+    - returned_token_count
+    - return_from_hex_ids
+    - return_occurred
+  opposing_side_hidden_until_acquired:
+    - component_id
+    - plate_id
+    - plate_identity
+    - token_ids
+    - token_to_source_plate_mapping
+  identity_reveal_governed_by: STATE-SQUADRON-ACQUIRED
+  internal_fields_excluded: [continuation, stack, resume_token]
+
+application_examples:
+  - component_id: COMP-SQUADRON-STC-SQ-04
+    printed_name: KJ-500
+    maximum_token_count: 1
+    sortie_cost: 2
+    requested_token_count: 1
+    placement: correct_base_group_hex
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001]
+    status: approved
+  - component_id: COMP-SQUADRON-STC-SQ-13
+    printed_name: KQ-200
+    maximum_token_count: 1
+    sortie_cost: 2
+    requested_token_count: 1
+    placement: correct_base_group_hex
+    rule_core_ids: [RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001]
+    status: approved

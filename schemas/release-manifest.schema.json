@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/release-manifest.schema.json",
+  "title": "AFWI-KAI Rule Core Release Manifest",
+  "description": "不変なRule Core releaseのscope、snapshot、artifact、互換性、権利及び承認を固定するSchema。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "specification_version",
+    "status",
+    "issued_at",
+    "effective_date",
+    "content_commit",
+    "git_tag",
+    "supersedes",
+    "normative_scope",
+    "excluded_scope",
+    "approved_vector_count",
+    "approved_fingerprint",
+    "source_set_count",
+    "source_aggregate",
+    "source_set_snapshot",
+    "unresolved_snapshot",
+    "decisions_snapshot",
+    "known_issues",
+    "digital_compatibility",
+    "rights_status",
+    "technical_rc_freeze_validation",
+    "external_fixed_sources",
+    "external_internal_evidence",
+    "artifact_sets",
+    "approval",
+    "release_notes"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "release_id": { "type": "string", "pattern": "^RC-[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}-[0-9]{2}$" },
+    "specification_version": { "type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$" },
+    "status": { "enum": ["preview", "release-candidate", "stable"] },
+    "issued_at": { "type": "string", "format": "date" },
+    "effective_date": { "type": ["string", "null"], "format": "date" },
+    "content_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "git_tag": { "type": "string", "minLength": 1 },
+    "repository": { "type": ["string", "null"] },
+    "supersedes": { "type": ["string", "null"], "pattern": "^RC-[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}-[0-9]{2}$" },
+    "content_equivalent_to": { "type": ["string", "null"], "pattern": "^RC-[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}-[0-9]{2}$" },
+    "normative_scope": { "$ref": "#/$defs/scope" },
+    "excluded_scope": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/exclusion" },
+      "uniqueItems": true
+    },
+    "coverage_status": { "enum": ["complete_for_declared_scope", "provisional_with_explicit_exclusions"] },
+    "approved_vector_count": { "type": "integer", "minimum": 0 },
+    "approved_fingerprint": { "$ref": "#/$defs/sha256" },
+    "source_set_count": { "type": "integer", "minimum": 1 },
+    "source_aggregate": { "$ref": "#/$defs/sha256" },
+    "candidate_vector_count": { "type": "integer", "minimum": 0 },
+    "candidate_vectors_included_as_normative": { "const": false },
+    "source_set_snapshot": { "$ref": "#/$defs/snapshot" },
+    "unresolved_snapshot": { "$ref": "#/$defs/snapshot" },
+    "decisions_snapshot": { "$ref": "#/$defs/snapshot" },
+    "coverage_snapshot": { "$ref": "#/$defs/snapshot" },
+    "traceability_snapshot": { "$ref": "#/$defs/snapshot" },
+    "field_ownership_snapshot": { "$ref": "#/$defs/snapshot" },
+    "known_issues": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knownIssue" }
+    },
+    "digital_compatibility": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/digitalCompatibility" }
+    },
+    "rights_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["release_package_status", "declarations"],
+      "properties": {
+        "release_package_status": { "enum": ["cleared", "partially_cleared", "internal_only", "blocked"] },
+        "declarations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/rightsDeclaration" }
+        }
+      }
+    },
+    "technical_rc_freeze_validation": { "$ref": "#/$defs/technicalFreezeValidation" },
+    "external_fixed_sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/externalFixedSource" },
+      "uniqueItems": true
+    },
+    "external_internal_evidence": { "$ref": "#/$defs/externalEvidenceSummary" },
+    "artifact_sets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/artifactSet" }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved_by", "approved_at", "evidence"],
+      "properties": {
+        "approved_by": { "type": "string", "minLength": 1 },
+        "approved_at": { "type": "string", "format": "date" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/artifactRef" } }
+      }
+    },
+    "release_notes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "breaking_change", "changes"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "breaking_change": { "enum": ["breaking", "non_breaking", "initial_release", "not_applicable"] },
+        "changes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "hash_profile", "content_kind", "media_type", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "hash_profile": { "const": "afwi-content-sha256-v1" },
+        "content_kind": { "enum": ["text", "binary"] },
+        "media_type": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "hash_profile", "content_kind", "media_type", "sha256"],
+      "properties": {
+        "id": { "type": ["string", "null"] },
+        "path": { "type": "string", "minLength": 1 },
+        "hash_profile": { "const": "afwi-content-sha256-v1" },
+        "content_kind": { "enum": ["text", "binary"] },
+        "media_type": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "rule_core_ids", "component_ids", "vector_ids"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "rule_core_ids": { "type": "array", "items": { "type": "string", "pattern": "^RC-" }, "uniqueItems": true },
+        "component_ids": { "type": "array", "items": { "type": "string", "pattern": "^COMP-" }, "uniqueItems": true },
+        "vector_ids": { "type": "array", "items": { "type": "string", "pattern": "^RV-" }, "uniqueItems": true },
+        "scenario_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope_id", "reason", "blocking_issue_ids"],
+      "properties": {
+        "scope_id": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "blocking_issue_ids": { "type": "array", "items": { "type": "string", "pattern": "^ISSUE-" }, "uniqueItems": true }
+      }
+    },
+    "knownIssue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["issue_id", "classification", "release_impact", "description"],
+      "properties": {
+        "issue_id": { "type": "string", "minLength": 1 },
+        "classification": { "enum": ["blocker", "non_blocking", "environmental", "historical_validation", "rights"] },
+        "release_impact": { "enum": ["blocks_publication", "limits_scope", "limits_digital_compatibility", "none_for_declared_scope"] },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "digitalCompatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["implementation_id", "status", "tested_vector_ids", "excluded_scope", "evidence"],
+      "properties": {
+        "implementation_id": { "type": "string", "minLength": 1 },
+        "implementation_version": { "type": ["string", "null"] },
+        "status": { "enum": ["untested", "partial", "conformant_for_declared_scope", "nonconformant", "unsupported"] },
+        "tested_vector_ids": { "type": "array", "items": { "type": "string", "pattern": "^RV-" }, "uniqueItems": true },
+        "excluded_scope": { "type": "array", "items": { "type": "string" } },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/artifactRef" } }
+      }
+    },
+    "rightsDeclaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_class", "distribution_class", "status", "basis"],
+      "properties": {
+        "artifact_class": { "type": "string", "minLength": 1 },
+        "distribution_class": { "enum": ["public", "developer-only", "internal archive", "rights-pending"] },
+        "status": { "enum": ["cleared", "pending", "restricted", "not_applicable"] },
+        "basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "technicalFreezeValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "validated_content_commit", "independent_run_count", "clean_checkout_required",
+        "canonical_result_fingerprint", "validator_json_sha256", "historical_validators_invoked"
+      ],
+      "properties": {
+        "status": { "const": "pass" },
+        "validated_content_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "independent_run_count": { "const": 2 },
+        "clean_checkout_required": { "const": true },
+        "canonical_result_fingerprint": { "$ref": "#/$defs/sha256" },
+        "validator_json_sha256": { "$ref": "#/$defs/sha256" },
+        "historical_validators_invoked": { "const": false }
+      }
+    },
+    "externalFixedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "receipt_path", "availability_status", "distribution_class", "included_in_public_package"],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^SRC-" },
+        "receipt_path": { "type": "string", "minLength": 1 },
+        "availability_status": { "const": "external_fixed" },
+        "distribution_class": { "const": "rights-pending" },
+        "included_in_public_package": { "const": false }
+      }
+    },
+    "externalEvidenceSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "declaration_path", "distribution_class", "rights_status", "public_normative_artifact"],
+      "properties": {
+        "count": { "const": 15 },
+        "declaration_path": { "type": "string", "minLength": 1 },
+        "distribution_class": { "const": "internal archive" },
+        "rights_status": { "const": "rights-pending" },
+        "public_normative_artifact": { "const": false }
+      }
+    },
+    "artifactSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["set_id", "role", "distribution_class", "artifacts"],
+      "properties": {
+        "set_id": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["normative", "developer", "review-evidence", "source-reference", "internal-audit"] },
+        "distribution_class": { "enum": ["public", "developer-only", "internal archive", "rights-pending"] },
+        "artifacts": { "type": "array", "items": { "$ref": "#/$defs/artifactRef" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,162 @@
+schema_version: 0.1.0
+rule_core_version: 0.11.0-preview-vrc
+source_set: SRCSET-20260923-INITIAL
+status: approved
+vectors:
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001
+    title: "US-SP-03のBLUE方向変更後にSTC-IW-04をpass"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-SP-03, COMP-ENABLER-STC-IW-04], US_SP_03_trigger_satisfied: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-SP-03, response_component_id: COMP-ENABLER-STC-IW-04, RED_response: pass }
+    fixed_randomness: none
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-SP-03 }
+      - { event_id: EVENT-RATE-CHANGED, direction: BLUE, amount: 1, origin_component_id: COMP-ENABLER-US-SP-03 }
+      - { assertion: response_window_opens_for_COMP_ENABLER_STC_IW_04 }
+      - { assertion: RED_passes_COMP_ENABLER_STC_IW_04 }
+      - { assertion: US_SP_03_processing_completes_once_after_response }
+    expected_final_state: { strategic_rate: { direction: BLUE_advantage, value: 1 }, US_SP_03_card_disposition: reselectable, STC_IW_04_card_location: hand, STC_IW_04_use_count_consumed: false, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-SP-03及びSTC-IW-04カード効果を中間レート0で連結する承認済みvector。"
+
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001
+    title: "US-SP-03のBLUE方向変更後にSTC-IW-04が成功"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-SP-03, COMP-ENABLER-STC-IW-04], US_SP_03_trigger_satisfied: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-SP-03, response_component_id: COMP-ENABLER-STC-IW-04, RED_response: use_and_resolve }
+    fixed_randomness: { STC_IW_04_D4: 2 }
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-SP-03 }
+      - { event_id: EVENT-RATE-CHANGED, direction: BLUE, amount: 1, origin_component_id: COMP-ENABLER-US-SP-03 }
+      - { assertion: response_window_opens_for_COMP_ENABLER_STC_IW_04 }
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-IW-04 }
+      - { event_id: EVENT-RATE-CHANGED, triggering_change_invalidated: true, direction: RED, amount: 1, origin_component_id: COMP-ENABLER-STC-IW-04 }
+      - { assertion: US_SP_03_processing_completes_once_after_response }
+    expected_final_state: { strategic_rate: { direction: RED_advantage, value: 1 }, triggering_BLUE_change: invalidated, adopted_STC_IW_04_D4: 2, US_SP_03_card_disposition: reselectable, STC_IW_04_card_disposition: discarded, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-SP-03及びSTC-IW-04成功vectorの演算とイベント順を連結する承認済みvector。"
+
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001
+    title: "US-SP-03のBLUE方向変更後にSTC-IW-04が失敗"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-SP-03, COMP-ENABLER-STC-IW-04], US_SP_03_trigger_satisfied: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-SP-03, response_component_id: COMP-ENABLER-STC-IW-04, RED_response: use_and_resolve }
+    fixed_randomness: { STC_IW_04_D4: 3 }
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-SP-03 }
+      - { event_id: EVENT-RATE-CHANGED, direction: BLUE, amount: 1, origin_component_id: COMP-ENABLER-US-SP-03 }
+      - { assertion: response_window_opens_for_COMP_ENABLER_STC_IW_04 }
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-IW-04 }
+      - { assertion: triggering_BLUE_change_remains }
+      - { assertion: US_SP_03_processing_completes_once_after_response }
+    expected_final_state: { strategic_rate: { direction: BLUE_advantage, value: 1 }, triggering_BLUE_change: remains, adopted_STC_IW_04_D4: 3, US_SP_03_card_disposition: reselectable, STC_IW_04_card_disposition: discarded, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-SP-03及びSTC-IW-04失敗vectorの演算とイベント順を連結する承認済みvector。"
+
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001
+    title: "US-IW-04自身が失敗しSTC-IW-04を開かない"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-IW-04, COMP-ENABLER-STC-IW-04], PRC_base_group_attack_hit_roll_failed: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-IW-04, source_determination: resolve, response_component_id: COMP-ENABLER-STC-IW-04 }
+    fixed_randomness: { US_IW_04_D4: 1 }
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-IW-04 }
+      - { assertion: US_IW_04_determination_failed }
+      - { assertion: no_strategic_rate_change_event }
+      - { assertion: no_response_window_for_COMP_ENABLER_STC_IW_04 }
+      - { assertion: US_IW_04_processing_completes_once }
+    expected_final_state: { strategic_rate: { center: 0 }, adopted_US_IW_04_D4: 1, US_IW_04_card_disposition: reselectable, STC_IW_04_card_location: hand, STC_IW_04_use_count_consumed: false, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-IW-04失敗及びSTC-IW-04 trigger不成立vectorを連結する承認済みvector。"
+
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001
+    title: "US-IW-04成功後にSTC-IW-04をpass"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-IW-04, COMP-ENABLER-STC-IW-04], PRC_base_group_attack_hit_roll_failed: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-IW-04, source_determination: resolve, response_component_id: COMP-ENABLER-STC-IW-04, RED_response: pass }
+    fixed_randomness: { US_IW_04_D4: 2 }
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-IW-04 }
+      - { event_id: EVENT-RATE-CHANGED, direction: BLUE, amount: 1, origin_component_id: COMP-ENABLER-US-IW-04 }
+      - { assertion: response_window_opens_for_COMP_ENABLER_STC_IW_04 }
+      - { assertion: RED_passes_COMP_ENABLER_STC_IW_04 }
+      - { assertion: US_IW_04_processing_completes_once_after_response }
+    expected_final_state: { strategic_rate: { direction: BLUE_advantage, value: 1 }, adopted_US_IW_04_D4: 2, US_IW_04_card_disposition: reselectable, STC_IW_04_card_location: hand, STC_IW_04_use_count_consumed: false, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-IW-04成功及びSTC-IW-04 trigger vectorをpassまで連結する承認済みvector。"
+
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001
+    title: "US-IW-04成功後にSTC-IW-04も成功"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-IW-04, COMP-ENABLER-STC-IW-04], PRC_base_group_attack_hit_roll_failed: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-IW-04, source_determination: resolve, response_component_id: COMP-ENABLER-STC-IW-04, RED_response: use_and_resolve }
+    fixed_randomness: { US_IW_04_D4: 2, STC_IW_04_D4: 2 }
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-IW-04 }
+      - { event_id: EVENT-RATE-CHANGED, direction: BLUE, amount: 1, origin_component_id: COMP-ENABLER-US-IW-04 }
+      - { assertion: response_window_opens_for_COMP_ENABLER_STC_IW_04 }
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-IW-04 }
+      - { event_id: EVENT-RATE-CHANGED, triggering_change_invalidated: true, direction: RED, amount: 1, origin_component_id: COMP-ENABLER-STC-IW-04 }
+      - { assertion: US_IW_04_processing_completes_once_after_response }
+    expected_final_state: { strategic_rate: { direction: RED_advantage, value: 1 }, triggering_BLUE_change: invalidated, adopted_US_IW_04_D4: 2, adopted_STC_IW_04_D4: 2, US_IW_04_card_disposition: reselectable, STC_IW_04_card_disposition: discarded, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-IW-04成功及びSTC-IW-04成功vectorの演算とイベント順を連結する承認済みvector。"
+
+  - vector_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001
+    title: "US-IW-04成功後にSTC-IW-04が失敗"
+    status: approved
+    initial_state: { strategic_rate_state_id: STATE-RATE-STRATEGIC, strategic_rate: { center: 0 }, RED_cyber_rate_state_id: STATE-RATE-CYBER-PRC, RED_cyber_rate: 2, holder_has_components: [COMP-ENABLER-US-IW-04, COMP-ENABLER-STC-IW-04], PRC_base_group_attack_hit_roll_failed: true }
+    operation: { type: resolve_strategic_rate_response_chain, source_component_id: COMP-ENABLER-US-IW-04, source_determination: resolve, response_component_id: COMP-ENABLER-STC-IW-04, RED_response: use_and_resolve }
+    fixed_randomness: { US_IW_04_D4: 2, STC_IW_04_D4: 3 }
+    expected_events:
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-US-IW-04 }
+      - { event_id: EVENT-RATE-CHANGED, direction: BLUE, amount: 1, origin_component_id: COMP-ENABLER-US-IW-04 }
+      - { assertion: response_window_opens_for_COMP_ENABLER_STC_IW_04 }
+      - { event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-IW-04 }
+      - { assertion: triggering_BLUE_change_remains }
+      - { assertion: US_IW_04_processing_completes_once_after_response }
+    expected_final_state: { strategic_rate: { direction: BLUE_advantage, value: 1 }, triggering_BLUE_change: remains, adopted_US_IW_04_D4: 2, adopted_STC_IW_04_D4: 3, US_IW_04_card_disposition: reselectable, STC_IW_04_card_disposition: discarded, source_processing_completed_count: 1 }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: response_window
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済みUS-IW-04成功及びSTC-IW-04失敗vectorの演算とイベント順を連結する承認済みvector。"

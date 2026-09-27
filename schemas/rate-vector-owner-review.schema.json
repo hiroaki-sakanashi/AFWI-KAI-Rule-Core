@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/rate-vector-owner-review.schema.json",
+  "title": "AFWI-KAI rate vector owner review metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_type",
+    "non_normative",
+    "generated_at",
+    "generator",
+    "target",
+    "fingerprint",
+    "fingerprint_migration",
+    "reviews"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "rule_vector_owner_review" },
+    "non_normative": { "const": true },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "generator": { "type": "string" },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_core_version", "source_set", "vector_file", "vector_file_sha256", "vector_count"],
+      "properties": {
+        "rule_core_version": { "type": "string" },
+        "source_set": { "type": "string" },
+        "vector_file": { "const": "rule-core/tests/rule-vectors/rates.yaml" },
+        "vector_file_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "vector_count": { "const": 18 }
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "normalization", "scope"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "normalization": { "type": "string" },
+        "scope": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    },
+    "fingerprint_migration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reason", "full_record", "normative_payload"],
+      "properties": {
+        "reason": { "type": "string" },
+        "full_record": { "$ref": "#/$defs/fingerprintMethod" },
+        "normative_payload": {
+          "allOf": [
+            { "$ref": "#/$defs/fingerprintMethod" },
+            {
+              "type": "object",
+              "required": ["excluded_fields"],
+              "properties": {
+                "excluded_fields": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_index",
+          "vector_id",
+          "title",
+          "status",
+          "reviewability",
+          "related_issues",
+          "branch",
+          "target_rate_ids",
+          "rule_core_ids",
+          "source_fragment_ids",
+          "fingerprint_sha256",
+          "legacy_full_record_fingerprint_before_approval",
+          "full_record_fingerprint",
+          "normative_payload_fingerprint_before_approval",
+          "normative_payload_fingerprint"
+        ],
+        "properties": {
+          "source_index": { "type": "integer", "minimum": 1, "maximum": 18 },
+          "vector_id": { "type": "string", "pattern": "^RV-RATE-[A-Z0-9-]+$" },
+          "title": { "type": "string" },
+          "status": { "enum": ["candidate", "approved"] },
+          "reviewability": {
+            "enum": [
+              "eligible_for_owner_review",
+              "blocked_by_card_transcription",
+              "blocked_by_geography",
+              "blocked_by_boundary_rule",
+              "blocked_by_dismissal_matrix",
+              "blocked_by_multiple_dependencies",
+              "needs_traceability_correction"
+            ]
+          },
+          "related_issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["issue_id", "blocking", "relation"],
+              "properties": {
+                "issue_id": { "type": "string", "pattern": "^ISSUE-[A-Z0-9-]+$" },
+                "blocking": { "type": "boolean" },
+                "relation": { "type": "string" }
+              }
+            }
+          },
+          "branch": { "type": "string" },
+          "target_rate_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^RATE-[A-Z0-9-]+$" } },
+          "rule_core_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^RC-RATE-[A-Z0-9-]+$" } },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^FRAG-[A-Z0-9-]+$" } },
+          "fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "legacy_full_record_fingerprint_before_approval": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "full_record_fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "normative_payload_fingerprint_before_approval": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "normative_payload_fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "fingerprintMethod": {
+      "type": "object",
+      "required": ["algorithm", "normalization", "scope"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "normalization": { "type": "string" },
+        "scope": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    }
+  }
+}

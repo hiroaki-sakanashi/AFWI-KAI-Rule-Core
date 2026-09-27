@@ -1,0 +1,91 @@
+schema_version: 0.1.0
+rule_core_version: 0.9.0-preview-emi
+source_set: SRCSET-20260923-INITIAL
+status: approved
+vectors:
+  - vector_id: RV-EMI-BELOW-THRESHOLD-001
+    title: 通常トークン6枚ではEMI状態にならない
+    status: approved
+    initial_state: { faction: BLUE, same_hex_normal_tokens: 6, same_hex_double_count_tokens: 0, excluded_markers: 0 }
+    operation: { type: evaluate_emi_condition }
+    fixed_randomness: none
+    expected_events: [{ assertion: "自軍EMSスタック値を6と数える" }]
+    expected_final_state: { self_ems_stack_value: 6, emi_state: false }
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: "正式ルール由来。ルール所有者承認済み。公開前に権利確認が必要。"
+
+  - vector_id: RV-EMI-AT-THRESHOLD-001
+    title: 通常トークン7枚でEMI状態になる
+    status: approved
+    initial_state: { faction: BLUE, same_hex_normal_tokens: 7, same_hex_double_count_tokens: 0, excluded_markers: 0 }
+    operation: { type: evaluate_emi_condition }
+    fixed_randomness: none
+    expected_events: [{ assertion: "自軍EMSスタック値を7と数える" }]
+    expected_final_state: { self_ems_stack_value: 7, emi_state: true }
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI, FRAG-EMI-0811-BLUE-COMPONENT]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: "正式ルール・EMI現物由来。ルール所有者承認済み。公開前に権利確認が必要。"
+
+  - vector_id: RV-EMI-DOUBLE-COUNT-001
+    title: 2カウント対象を含めて7へ到達する
+    status: approved
+    initial_state: { faction: BLUE, same_hex_normal_tokens: 5, same_hex_double_count_tokens: 1, double_count_token_type: AEW, excluded_markers: 0 }
+    operation: { type: evaluate_emi_condition }
+    fixed_randomness: none
+    expected_events: [{ assertion: "通常5カウントとAEWの2カウントを合計する" }]
+    expected_final_state: { self_ems_stack_value: 7, emi_state: true }
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: "正式ルール由来。ルール所有者承認済み。公開前に権利確認が必要。"
+
+  - vector_id: RV-EMI-EXCLUDED-MARKERS-001
+    title: 除外マーカーはEMSスタック値へ加算しない
+    status: approved
+    initial_state: { faction: RED, same_hex_normal_tokens: 6, same_hex_double_count_tokens: 0, damage_red_cubes: 1, cells: 1, dice: 1 }
+    operation: { type: evaluate_emi_condition }
+    fixed_randomness: none
+    expected_events: [{ assertion: "赤キューブ、セル、ダイスを自軍EMSスタック値から除外する" }]
+    expected_final_state: { self_ems_stack_value: 6, emi_state: false }
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: "正式ルール由来。ルール所有者承認済み。公開前に権利確認が必要。"
+
+  - vector_id: RV-EMI-DIS-EFFECT-001
+    title: EMI状態では捕捉・攻撃・MDロールへDISを適用する
+    status: approved
+    initial_state: { faction: RED, self_ems_stack_value: 7, acting_token_emi_state: true }
+    operation: { type: evaluate_roll_modifiers, roll_types: [acquisition, attack, missile_defense] }
+    fixed_randomness: none
+    expected_events:
+      - { assertion: "捕捉ロールへDISを適用する" }
+      - { assertion: "攻撃ロールへDISを適用する" }
+      - { assertion: "MDロールへDISを適用する" }
+    expected_final_state: { acquisition: DIS, attack: DIS, missile_defense: DIS }
+    rule_core_ids: [RC-EMI-STATE-001, RC-EMI-EFFECT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI, FRAG-EMI-0811-RED-COMPONENT]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: "正式ルール・EMI現物由来。ルール所有者承認済み。公開前に権利確認が必要。"
+
+  - vector_id: RV-EMI-CONDITION-CEASES-001
+    title: 自軍EMSスタック値が7未満になればEMI状態の成立条件を満たさない
+    status: approved
+    initial_state: { faction: BLUE, self_ems_stack_value: 7, emi_state: true }
+    operation: { type: change_same_hex_presence, resulting_self_ems_stack_value: 6 }
+    fixed_randomness: none
+    expected_events: [{ assertion: "所在するヘックスの自軍EMSスタック値を6として再評価する" }]
+    expected_final_state: { self_ems_stack_value: 6, emi_state: false }
+    rule_core_ids: [RC-EMI-STATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: "『7以上のヘックスに所在する間』に一対一で追跡し、ルール所有者承認済み。公開前に権利確認が必要。"

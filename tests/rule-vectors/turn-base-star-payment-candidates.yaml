@@ -1,0 +1,139 @@
+schema_version: 0.1.0
+rule_core_version: next-rc-candidate
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-TURN-BASE-STAR-AREA1-PAY-001
+    title: ①からターン基本★1を支払う
+    status: approved
+    initial_state: { area_1: 5, area_2: 8, area_3: 0, action: non_pass }
+    operation: { type: pay_turn_base_star, payment_source: area_1 }
+    fixed_randomness: not_applicable
+    expected_events: [{ assertion: star_transfer, from: area_1, to: area_3, amount: 1 }]
+    expected_final_state: { area_1: 4, area_2: 8, area_3: 1, cancelled_preparation: null, legal: true }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 正式ルールp.8の①支払いを検証するcandidate。
+
+  - vector_id: RV-TURN-BASE-STAR-AREA2-EIGHT-CANCEL-TWO-001
+    title: ②が★8のとき★2準備を選択して取り消す
+    status: approved
+    initial_state:
+      area_1: 0
+      area_2: 8
+      area_3: 0
+      action: non_pass
+      preparations: [{ preparation_id: squadron-plate-A, preparation_type: squadron, star_value: 2, status: prepared }]
+    operation: { type: pay_turn_base_star, payment_source: area_2, selected_preparation_id: squadron-plate-A }
+    fixed_randomness: not_applicable
+    expected_events:
+      - { assertion: player_selects_cancelled_preparation, preparation_id: squadron-plate-A }
+      - { assertion: star_transfer, from: area_2, to: area_3, amount: 2 }
+    expected_final_state: { area_1: 0, area_2: 6, area_3: 2, selected_preparation_status: cancelled, legal: true }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 正式ルールと所有者裁定による★2準備取消のcandidate。
+
+  - vector_id: RV-TURN-BASE-STAR-AREA2-EIGHT-DISTRIBUTED-ILLEGAL-001
+    title: ②が★8のとき★3分散配置準備は選択できない
+    status: approved
+    initial_state:
+      area_1: 0
+      area_2: 8
+      area_3: 0
+      action: non_pass
+      preparations: [{ preparation_id: distributed-deployment, preparation_type: distributed_deployment, star_value: 3, status: prepared }]
+    operation: { type: pay_turn_base_star, payment_source: area_2, selected_preparation_id: distributed-deployment }
+    fixed_randomness: not_applicable
+    expected_events: [{ assertion: payment_rejected, reason: post_payment_area_2_below_6 }]
+    expected_final_state: { area_1: 0, area_2: 8, area_3: 0, selected_preparation_status: prepared, legal: false }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 処理後②最低★6の境界を検証するcandidate。
+
+  - vector_id: RV-TURN-BASE-STAR-AREA2-NINE-DISTRIBUTED-CANCEL-001
+    title: ②が★9のとき★3分散配置準備を全取消できる
+    status: approved
+    initial_state:
+      area_1: 0
+      area_2: 9
+      area_3: 0
+      action: non_pass
+      preparations: [{ preparation_id: distributed-deployment, preparation_type: distributed_deployment, star_value: 3, status: prepared }]
+    operation: { type: pay_turn_base_star, payment_source: area_2, selected_preparation_id: distributed-deployment }
+    fixed_randomness: not_applicable
+    expected_events:
+      - { assertion: base_payment_transfer, from: area_2, to: area_3, amount: 2 }
+      - { assertion: residual_preparation_star_transfer, from: area_2, to: area_3, amount: 1 }
+      - { assertion: preparation_cancelled_as_indivisible_unit, preparation_id: distributed-deployment }
+    expected_final_state: { area_1: 0, area_2: 6, area_3: 3, selected_preparation_status: cancelled, legal: true }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 分散配置準備★3の一体取消を検証するcandidate。
+
+  - vector_id: RV-TURN-BASE-STAR-DISTRIBUTED-ALL-THREE-TO-AREA3-001
+    title: 分散配置準備取消時は★3全てを③へ移す
+    status: approved
+    initial_state:
+      area_1: 2
+      area_2: 10
+      area_3: 4
+      action: non_pass
+      preparations: [{ preparation_id: distributed-deployment, preparation_type: distributed_deployment, star_value: 3, status: prepared }]
+    operation: { type: pay_turn_base_star, payment_source: area_2, selected_preparation_id: distributed-deployment }
+    fixed_randomness: not_applicable
+    expected_events: [{ assertion: total_area_2_to_area_3_transfer, amount: 3 }]
+    expected_final_state: { area_1: 2, area_2: 7, area_3: 7, selected_preparation_status: cancelled, legal: true }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: ★2だけを移して★1を②へ残す誤実装を検出するcandidate。
+
+  - vector_id: RV-TURN-BASE-STAR-POSTCONDITION-SIX-001
+    title: ②支払い後も②合計★6以上を満たす
+    status: approved
+    initial_state:
+      area_1: 0
+      area_2: 9
+      area_3: 0
+      action: non_pass
+      preparations: [{ preparation_id: distributed-deployment, preparation_type: distributed_deployment, star_value: 3, status: prepared }]
+    operation: { type: pay_turn_base_star, payment_source: area_2, selected_preparation_id: distributed-deployment }
+    fixed_randomness: not_applicable
+    expected_events: [{ assertion: postcondition_area_2_minimum, minimum: 6, actual: 6 }]
+    expected_final_state: { area_1: 0, area_2: 6, area_3: 3, legal: true }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: A1後の②最低★6を明示するcandidate。
+
+  - vector_id: RV-TURN-BASE-STAR-MIXED-PAYMENT-ILLEGAL-001
+    title: ①と②の混合によるターン基本★支払いはできない
+    status: approved
+    initial_state: { area_1: 1, area_2: 8, area_3: 0, action: non_pass }
+    operation: { type: pay_turn_base_star, payment_source: mixed, area_1_amount: 1, area_2_amount: 1 }
+    fixed_randomness: not_applicable
+    expected_events: [{ assertion: payment_rejected, reason: mixed_payment_not_allowed }]
+    expected_final_state: { area_1: 1, area_2: 8, area_3: 0, legal: false }
+    interaction_type: sequential_action
+    rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 正式ルールの排他的支払元を検証するcandidate。

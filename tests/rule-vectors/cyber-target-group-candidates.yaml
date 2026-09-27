@@ -1,0 +1,97 @@
+schema_version: 0.1.0
+rule_core_version: next-rc-candidate
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-ENABLER-CYBER-TARGET-GROUP-MODEL-001
+    title: Cyber Target Groupの三層構造・陣営境界・一意所属を検証する
+    status: approved
+    initial_state:
+      normative_group_count: 33
+      us_group_count: 16
+      prc_group_count: 17
+      mapped_side_and_token_pairs: 38
+    operation:
+      type: validate_cyber_target_group_model
+      identity_fields: [internal_group_id, player_label, included_tokens]
+      membership_key: [side, token_name]
+    fixed_randomness: not_applicable
+    expected_events:
+      - { assertion: all_target_tokens_have_exactly_one_group, result: true }
+      - { assertion: cross_side_group_count, value: 0 }
+      - { assertion: unclassified_mapping_count, value: 0 }
+      - { assertion: duplicate_membership_count, value: 0 }
+    expected_final_state:
+      normative_group_count: 33
+      us_group_count: 16
+      prc_group_count: 17
+      mapped_side_and_token_pairs: 38
+      internal_group_id_is_player_label: false
+      runtime_type_id_is_normative_group_identity: false
+    interaction_type: not_applicable
+    rule_core_ids: [RC-CYBER-TARGET-GROUP-MODEL-001, RC-CYBER-TARGET-GROUP-MEMBERSHIP-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 正式カード・正式コンポーネントと所有者裁定から導くcandidate。Digital mappingは規範期待値に含めない。
+
+  - vector_id: RV-ENABLER-CYBER-TARGET-GROUP-ABSENT-SELECTION-001
+    title: 盤上に所属tokenがない敵Cyber Target Groupも指定できる
+    status: approved
+    initial_state:
+      actor_side: US
+      card_id: US-CY-02
+      target_side: PRC
+      target_group_id: prc.air.kj-500
+      target_group_tokens_on_map: 0
+    operation:
+      type: select_cyber_target_group
+      target_group_id: prc.air.kj-500
+      selected_function: detection
+    fixed_randomness: not_applicable
+    expected_events:
+      - { assertion: target_group_is_legal, result: true }
+      - { assertion: individual_token_presence_required, result: false }
+    expected_final_state:
+      selected_target_group_id: prc.air.kj-500
+      selected_target_side: PRC
+      selected_function: detection
+      card_duration_changed_by_group_rule: false
+    interaction_type: sequential_action
+    rule_core_ids: [RC-CYBER-TARGET-GROUP-SELECTION-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-02]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: 正式カード文言で一意でない盤上不在groupの選択可否を、所有者裁定により固定するcandidate。
+
+  - vector_id: RV-ENABLER-CYBER-TARGET-GROUP-PERSISTENCE-001
+    title: 当日持続中に後発生成された所属tokenへgroup効果を適用する
+    status: approved
+    initial_state:
+      target_side: PRC
+      target_group_id: prc.air.kj-500
+      selected_function: detection
+      duration_source: STC-CY-01
+      duration: end_of_day
+      group_effect_active: true
+      target_group_tokens_on_map: 0
+    operation:
+      type: generate_token_while_group_effect_active
+      generated_token_name: KJ-500
+      generated_token_group_id: prc.air.kj-500
+    fixed_randomness: not_applicable
+    expected_events:
+      - { assertion: generated_token_inherits_active_group_effect, result: true }
+      - { assertion: individual_card_effect_duration_redefined, result: false }
+    expected_final_state:
+      generated_token_function_status: stopped
+      affected_function: detection
+      effect_attached_to: prc.air.kj-500
+      duration: end_of_day
+      duration_authority: STC-CY-01
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-CYBER-TARGET-GROUP-MEMBERSHIP-001, RC-CYBER-TARGET-GROUP-PERSISTENCE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-27' }
+    rights_scope: groupへの効果帰属だけを検証し、カード固有durationを重複規定しないcandidate。

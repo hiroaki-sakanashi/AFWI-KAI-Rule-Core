@@ -1,0 +1,361 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-RATE-INITIALIZE-001
+    title: セットアップ時に5つのレートを規定値で初期化する
+    status: approved
+    initial_state: { phase: setup, rates: not_initialized }
+    initial_public_state: { rates: not_initialized }
+    target_rate_ids: [RATE-SPACE-US, RATE-SPACE-PRC, RATE-CYBER-US, RATE-CYBER-PRC, RATE-STRATEGIC]
+    trigger: { type: setup_rate_initialization }
+    required_context: { scenario: scenario_1 }
+    operation: { type: initialize_rates }
+    fixed_randomness: none
+    expected_events:
+      - { event_id: EVENT-RATE-INITIALIZED, rate_id: RATE-SPACE-US, value: 3 }
+      - { event_id: EVENT-RATE-INITIALIZED, rate_id: RATE-SPACE-PRC, value: 3 }
+      - { event_id: EVENT-RATE-INITIALIZED, rate_id: RATE-CYBER-US, value: 1 }
+      - { event_id: EVENT-RATE-INITIALIZED, rate_id: RATE-CYBER-PRC, value: 1 }
+      - { event_id: EVENT-RATE-INITIALIZED, rate_id: RATE-STRATEGIC, value: { center: 0 } }
+    expected_final_state: { space_US: 3, space_PRC: 3, cyber_US: 1, cyber_PRC: 1, strategic: { center: 0 } }
+    expected_public_state: { space_US: 3, space_PRC: 3, cyber_US: 1, cyber_PRC: 1, strategic: { center: 0 } }
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-SPACE-RANGE-001, RC-RATE-CYBER-RANGE-001, RC-RATE-STRATEGIC-RANGE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。公開前に権利確認が必要。
+
+  - vector_id: RV-RATE-SPACE-TWO-DIS-001
+    title: 宇宙レート2では自軍UASとUSVの各種ロールへDISを適用する
+    status: approved
+    initial_state: { faction: US, space_rate: 2, token_type: UAS }
+    initial_public_state: { state_id: STATE-RATE-SPACE-US, value: 2 }
+    target_rate_id: RATE-SPACE-US
+    trigger: { type: evaluate_roll_modifier, roll_type: attack }
+    required_context: { acting_unit: self_UAS }
+    operation: { type: evaluate_space_rate_penalty }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-DERIVED-MODIFIER-APPLIED, modifier: DIS }]
+    expected_final_state: { roll_modifier: DIS }
+    expected_public_state: { state_id: STATE-RATE-SPACE-US, value: 2 }
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-SPACE-ONE-MD-LONG-RANGE-001
+    title: 宇宙レート1では1ヘックス以上離れた攻撃への自軍MDが無効になる
+    status: approved
+    initial_state: { faction: PRC, space_rate: 1, attack_range_hexes: 1, self_missile_defense: available }
+    initial_public_state: { state_id: STATE-RATE-SPACE-PRC, value: 1 }
+    target_rate_id: RATE-SPACE-PRC
+    trigger: { type: declare_missile_defense }
+    required_context: { attack_range_hexes: 1 }
+    operation: { type: evaluate_space_rate_penalty }
+    fixed_randomness: none
+    expected_events: [{ assertion: 1ヘックス以上離れた攻撃に対する自軍MDを無効とする }]
+    expected_final_state: { missile_defense_valid: false }
+    expected_public_state: { state_id: STATE-RATE-SPACE-PRC, value: 1 }
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-SPACE-ONE-MD-SAME-HEX-001
+    title: 宇宙レート1でも同一ヘックスからの攻撃への自軍MDは無効化されない
+    status: approved
+    initial_state: { faction: PRC, space_rate: 1, attack_range_hexes: 0, self_missile_defense: available }
+    initial_public_state: { state_id: STATE-RATE-SPACE-PRC, value: 1 }
+    target_rate_id: RATE-SPACE-PRC
+    trigger: { type: declare_missile_defense }
+    required_context: { attack_range_hexes: 0 }
+    operation: { type: evaluate_space_rate_penalty }
+    fixed_randomness: none
+    expected_events: [{ assertion: 同一ヘックスからの攻撃は宇宙レートによるMD無効化の対象外とする }]
+    expected_final_state: { missile_defense_valid: true }
+    expected_public_state: { state_id: STATE-RATE-SPACE-PRC, value: 1 }
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-CYBER-INCREASE-BELOW-001
+    title: サイバーレート1からの上昇判定で出目2なら変化しない
+    status: approved
+    initial_state: { faction: US, cyber_rate: 1 }
+    initial_public_state: { state_id: STATE-RATE-CYBER-US, value: 1 }
+    target_rate_id: RATE-CYBER-US
+    trigger: { type: card_effect_requests_cyber_rate_increase }
+    required_context: { transition: "1_to_2" }
+    operation: { type: roll_for_cyber_rate_increase }
+    fixed_randomness: { die: D6, results: [2] }
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGE-ATTEMPTED, result: 2, threshold: 3 }
+      - { event_id: EVENT-RATE-UNCHANGED, rate_id: RATE-CYBER-US, value: 1 }
+    expected_final_state: { cyber_rate: 1 }
+    expected_public_state: { state_id: STATE-RATE-CYBER-US, value: 1 }
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-CYBER-INCREASE-AT-001
+    title: サイバーレート1からの上昇判定で出目3なら2へ上がる
+    status: approved
+    initial_state: { faction: US, cyber_rate: 1 }
+    initial_public_state: { state_id: STATE-RATE-CYBER-US, value: 1 }
+    target_rate_id: RATE-CYBER-US
+    trigger: { type: card_effect_requests_cyber_rate_increase }
+    required_context: { transition: "1_to_2" }
+    operation: { type: roll_for_cyber_rate_increase }
+    fixed_randomness: { die: D6, results: [3] }
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGE-ATTEMPTED, result: 3, threshold: 3 }
+      - { event_id: EVENT-RATE-CHANGED, rate_id: RATE-CYBER-US, from: 1, to: 2 }
+    expected_final_state: { cyber_rate: 2 }
+    expected_public_state: { state_id: STATE-RATE-CYBER-US, value: 2 }
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-CYBER-DOMINANCE-001
+    title: ATO終了時にサイバーレート4なら次ATOでサイバードミナンスとなる
+    status: approved
+    initial_state: { faction: PRC, cyber_rate: 4, cyber_dominance: false }
+    initial_public_state: { state_id: STATE-RATE-CYBER-PRC, value: 4 }
+    target_rate_id: RATE-CYBER-PRC
+    trigger: { type: ATO_cycle_end }
+    required_context: { next_ATO_cycle_exists: true }
+    operation: { type: evaluate_cyber_dominance }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-CYBER-DOMINANCE-ESTABLISHED, faction: PRC, applies_during: next_ATO_cycle }]
+    expected_final_state: { next_ATO_cyber_dominance: PRC, effects: [full_reveal, deployed_squadron_plates_acquired, usable_stars_minus_10] }
+    expected_public_state: { state_id: STATE-CYBER-DOMINANCE, holder: PRC, active_during: next_ATO_cycle }
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-INITIATIVE-DIFFERENCE-001
+    title: サイバーと宇宙の合計が上回る陣営だけが差分を加算する
+    status: approved
+    initial_state: { US: { cyber_rate: 3, space_rate: 3 }, PRC: { cyber_rate: 1, space_rate: 2 } }
+    initial_public_state: { US_rate_sum: 6, PRC_rate_sum: 3 }
+    target_rate_ids: [RATE-CYBER-US, RATE-SPACE-US, RATE-CYBER-PRC, RATE-SPACE-PRC]
+    trigger: { type: initiative_roll }
+    required_context: { rolling_faction: US }
+    operation: { type: calculate_initiative_result }
+    fixed_randomness: { die: D4, results: [2] }
+    expected_events: [{ event_id: EVENT-RATE-DERIVED-MODIFIER-APPLIED, faction: US, modifier: 3 }]
+    expected_final_state: { die_result: 2, rate_difference_modifier: 3, modified_result: 5 }
+    expected_public_state: { US_rate_sum: 6, PRC_rate_sum: 3 }
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-INITIATIVE-NO-ADVANTAGE-001
+    title: サイバーと宇宙の合計が同値ならどちらも差分を加算しない
+    status: approved
+    initial_state: { US: { cyber_rate: 2, space_rate: 3 }, PRC: { cyber_rate: 1, space_rate: 4 } }
+    initial_public_state: { US_rate_sum: 5, PRC_rate_sum: 5 }
+    target_rate_ids: [RATE-CYBER-US, RATE-SPACE-US, RATE-CYBER-PRC, RATE-SPACE-PRC]
+    trigger: { type: initiative_roll }
+    required_context: { rolling_faction: US }
+    operation: { type: calculate_initiative_result }
+    fixed_randomness: { die: D4, results: [2] }
+    expected_events: [{ assertion: レート差による加算を行わない }]
+    expected_final_state: { die_result: 2, rate_difference_modifier: 0, modified_result: 2 }
+    expected_public_state: { US_rate_sum: 5, PRC_rate_sum: 5 }
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-STRATEGIC-SQUADRON-SCENARIO1-001
+    title: シナリオ1でスコードロンプレート1個を撃破した陣営側へ戦略レートを1進める
+    status: approved
+    initial_state: { scenario: scenario_1, strategic_rate: { center: 0 }, achiever: US }
+    initial_public_state: { state_id: STATE-RATE-STRATEGIC, value: { center: 0 } }
+    target_rate_id: RATE-STRATEGIC
+    trigger: { type: one_squadron_plate_destroyed, achiever: US }
+    required_context: { scenario: scenario_1 }
+    operation: { type: apply_scenario_strategic_rate_change }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, rate_id: RATE-STRATEGIC, direction: US_advantage, amount: 1 }]
+    expected_final_state: { strategic_rate: { direction: US_advantage, value: 1 } }
+    expected_public_state: { state_id: STATE-RATE-STRATEGIC, value: { direction: US_advantage, value: 1 } }
+    rule_core_ids: [RC-RATE-STRATEGIC-SCENARIO-001]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-STRATEGIC-SQUADRON-SCENARIO2-001
+    title: シナリオ2でスコードロンプレート1個を撃破した陣営側へ戦略レートを1進める
+    status: approved
+    initial_state: { scenario: scenario_2, strategic_rate: { direction: PRC_advantage, value: 1 }, achiever: US }
+    initial_public_state: { state_id: STATE-RATE-STRATEGIC, value: { direction: PRC_advantage, value: 1 } }
+    target_rate_id: RATE-STRATEGIC
+    trigger: { type: one_squadron_plate_destroyed, achiever: US }
+    required_context: { scenario: scenario_2 }
+    operation: { type: apply_scenario_strategic_rate_change }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, rate_id: RATE-STRATEGIC, direction: US_advantage, amount: 1 }]
+    expected_final_state: { strategic_rate: { center: 0 } }
+    expected_public_state: { state_id: STATE-RATE-STRATEGIC, value: { center: 0 } }
+    rule_core_ids: [RC-RATE-STRATEGIC-SCENARIO-001]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-STRATEGIC-DISMISSAL-001
+    title: ATO終了時に戦略レートが6+なら劣勢側が更送されゲームが終了する
+    status: approved
+    initial_state: { scenario: scenario_1, strategic_rate: { direction: PRC_advantage, value: "6+" } }
+    initial_public_state: { state_id: STATE-RATE-STRATEGIC, value: { direction: PRC_advantage, value: "6+" } }
+    target_rate_id: RATE-STRATEGIC
+    trigger: { type: ATO_cycle_end }
+    required_context: { disadvantaged_side: US, exact_dismissed_role: scenario_table_defined }
+    operation: { type: evaluate_strategic_rate_dismissal }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-STRATEGIC-DISMISSAL, side: US }, { assertion: ゲームを終了する }]
+    expected_final_state: { game_over: true, disadvantaged_side_dismissed: US }
+    expected_public_state: { state_id: STATE-RATE-STRATEGIC, value: { direction: PRC_advantage, value: "6+" }, game_over: true }
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。具体的役職の二次元表判定は本vectorの対象外。
+
+  - vector_id: RV-RATE-CYBER-ZERO-TO-ONE-001
+    title: サイバーレート0からの上昇判定で出目2なら1へ上がる
+    status: approved
+    initial_state: { faction: PRC, cyber_rate: 0 }
+    initial_public_state: { state_id: STATE-RATE-CYBER-PRC, value: 0 }
+    target_rate_id: RATE-CYBER-PRC
+    trigger: { type: card_effect_requests_cyber_rate_increase }
+    required_context: { transition: "0_to_1" }
+    operation: { type: roll_for_cyber_rate_increase }
+    fixed_randomness: { die: D6, results: [2] }
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGE-ATTEMPTED, result: 2, threshold: 2 }
+      - { event_id: EVENT-RATE-CHANGED, rate_id: RATE-CYBER-PRC, from: 0, to: 1 }
+    expected_final_state: { cyber_rate: 1 }
+    expected_public_state: { state_id: STATE-RATE-CYBER-PRC, value: 1 }
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-CYBER-TWO-TO-THREE-001
+    title: サイバーレート2からの上昇判定で出目4なら3へ上がる
+    status: approved
+    initial_state: { faction: US, cyber_rate: 2 }
+    initial_public_state: { state_id: STATE-RATE-CYBER-US, value: 2 }
+    target_rate_id: RATE-CYBER-US
+    trigger: { type: card_effect_requests_cyber_rate_increase }
+    required_context: { transition: "2_to_3" }
+    operation: { type: roll_for_cyber_rate_increase }
+    fixed_randomness: { die: D6, results: [4] }
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGE-ATTEMPTED, result: 4, threshold: 4 }
+      - { event_id: EVENT-RATE-CHANGED, rate_id: RATE-CYBER-US, from: 2, to: 3 }
+    expected_final_state: { cyber_rate: 3 }
+    expected_public_state: { state_id: STATE-RATE-CYBER-US, value: 3 }
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-CYBER-THREE-TO-FOUR-001
+    title: サイバーレート3からの上昇判定で出目4なら4へ上がる
+    status: approved
+    initial_state: { faction: US, cyber_rate: 3 }
+    initial_public_state: { state_id: STATE-RATE-CYBER-US, value: 3 }
+    target_rate_id: RATE-CYBER-US
+    trigger: { type: card_effect_requests_cyber_rate_increase }
+    required_context: { transition: "3_to_4" }
+    operation: { type: roll_for_cyber_rate_increase }
+    fixed_randomness: { die: D6, results: [4] }
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGE-ATTEMPTED, result: 4, threshold: 4 }
+      - { event_id: EVENT-RATE-CHANGED, rate_id: RATE-CYBER-US, from: 3, to: 4 }
+    expected_final_state: { cyber_rate: 4 }
+    expected_public_state: { state_id: STATE-RATE-CYBER-US, value: 4 }
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-INTEL-COUNT-001
+    title: インテル確認数を自軍サイバーと宇宙レートの合計とする
+    status: approved
+    initial_state: { faction: US, cyber_rate: 2, space_rate: 3 }
+    initial_public_state: { state_id_cyber: STATE-RATE-CYBER-US, cyber_value: 2, state_id_space: STATE-RATE-SPACE-US, space_value: 3 }
+    target_rate_ids: [RATE-CYBER-US, RATE-SPACE-US]
+    trigger: { type: determine_intel_confirmation_count }
+    required_context: { cyber_dominance: false }
+    operation: { type: calculate_intel_confirmation_count }
+    fixed_randomness: none
+    expected_events: [{ assertion: サイバーレート2と宇宙レート3を合計する }]
+    expected_final_state: { confirmable_count: 5 }
+    expected_public_state: { cyber_rate: 2, space_rate: 3 }
+    rule_core_ids: [RC-RATE-INTEL-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+
+  - vector_id: RV-RATE-STRATEGIC-NORMAL-DRAW-001
+    title: 通常のゲーム終了時に戦略レート0なら引き分けとする
+    status: approved
+    initial_state: { strategic_rate: { center: 0 } }
+    initial_public_state: { state_id: STATE-RATE-STRATEGIC, value: { center: 0 } }
+    target_rate_id: RATE-STRATEGIC
+    trigger: { type: normal_game_end }
+    required_context: { strategic_dismissal_not_triggered: true }
+    operation: { type: evaluate_normal_strategic_result }
+    fixed_randomness: none
+    expected_events: [{ assertion: 戦略レート0を引き分けと判定する }]
+    expected_final_state: { result: draw }
+    expected_public_state: { state_id: STATE-RATE-STRATEGIC, value: { center: 0 }, result: draw }
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。
+
+  - vector_id: RV-RATE-STRATEGIC-NORMAL-ADVANTAGE-001
+    title: 通常のゲーム終了時に戦略レートがUS側ならUSを優勢とする
+    status: approved
+    initial_state: { strategic_rate: { direction: US_advantage, value: 1 } }
+    initial_public_state: { state_id: STATE-RATE-STRATEGIC, value: { direction: US_advantage, value: 1 } }
+    target_rate_id: RATE-STRATEGIC
+    trigger: { type: normal_game_end }
+    required_context: { strategic_dismissal_not_triggered: true }
+    operation: { type: evaluate_normal_strategic_result }
+    fixed_randomness: none
+    expected_events: [{ assertion: 戦略レートが寄っているUSを優勢と判定する }]
+    expected_final_state: { superior_faction: US }
+    expected_public_state: { state_id: STATE-RATE-STRATEGIC, value: { direction: US_advantage, value: 1 }, superior_faction: US }
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。

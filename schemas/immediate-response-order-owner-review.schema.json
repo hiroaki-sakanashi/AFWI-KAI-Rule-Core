@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/immediate-response-order-owner-review.schema.json",
+  "title": "Immediate response ordering owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_type",
+    "non_normative",
+    "generated_at",
+    "generator",
+    "scope",
+    "integrity",
+    "cards",
+    "same_trigger_groups",
+    "chain_edges",
+    "combinations",
+    "determinations",
+    "owner_questions",
+    "digital_observations"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "immediate_response_order_owner_review" },
+    "non_normative": { "const": true },
+    "generated_at": { "const": "2026-09-24" },
+    "generator": { "const": "rule-core/pipeline/generate-immediate-response-order-review.py" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["card_count", "card_ids", "rule_core_release", "source_set"],
+      "properties": {
+        "card_count": { "const": 18 },
+        "card_ids": {
+          "type": "array",
+          "minItems": 18,
+          "maxItems": 18,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^COMP-ENABLER-" }
+        },
+        "rule_core_release": { "type": "string" },
+        "source_set": { "const": "SRCSET-20260923-INITIAL" }
+      }
+    },
+    "integrity": { "type": "object" },
+    "cards": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "items": {
+        "type": "object",
+        "required": [
+          "component_id", "source_card_code", "side", "trigger", "actor", "target", "effect",
+          "effect_generated_event_ids", "effect_changed_state_or_roll",
+          "interaction_type", "visibility_effect", "scenario_scope", "source_fragment_ids",
+          "applicable_rule_vectors", "payload_fingerprint_sha256"
+        ]
+      }
+    },
+    "same_trigger_groups": { "type": "array", "minItems": 4 },
+    "chain_edges": { "type": "array", "minItems": 6 },
+    "combinations": { "type": "array", "minItems": 10 },
+    "determinations": {
+      "type": "object",
+      "required": ["source_rule", "not_stated", "not_applicable", "unresolved_candidate"]
+    },
+    "owner_questions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "analysis_id", "situation", "known", "unknown", "stop_point", "question",
+          "affected_cards", "source_fragment_candidates", "owner_response"
+        ],
+        "properties": {
+          "analysis_id": { "type": "string", "pattern": "^ANALYSIS-UNRESOLVED-" },
+          "situation": { "type": "string" },
+          "known": { "type": "string" },
+          "unknown": { "type": "string" },
+          "stop_point": { "type": "string" },
+          "question": { "type": "string" },
+          "affected_cards": { "type": "array", "items": { "type": "string" } },
+          "source_fragment_candidates": { "type": "array", "items": { "type": "string" } },
+          "owner_response": { "type": ["null", "object"] },
+          "resolution_status": { "enum": ["resolved", "unresolved"] },
+          "decision_id": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" }
+        }
+      }
+    },
+    "digital_observations": { "type": "object" },
+    "resolution_summary": { "type": "object" }
+  }
+}

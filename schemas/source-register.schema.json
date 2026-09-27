@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/source-register.schema.json",
+  "title": "AFWI-KAI Rule Core source register",
+  "type": "object",
+  "required": ["schema_version", "register_status", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "register_status": { "enum": ["provisional", "confirmed"] },
+    "created_at": { "type": "string" },
+    "governance_document": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id", "observed_filename", "normalized_display_name", "relative_path",
+          "extension", "size_bytes", "content_sha256", "document_version_or_date",
+          "origin_environment", "origin_location_or_channel", "first_observed_at",
+          "normative_status", "normative_scopes", "canonical_record",
+          "machine_extractability", "visual_reviewability", "transcription_status",
+          "assessment_status", "rights_review_status", "readability_evidence", "notes"
+        ],
+        "properties": {
+          "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+          "observed_filename": { "type": "string", "minLength": 1 },
+          "normalized_display_name": { "type": "string", "minLength": 1 },
+          "relative_path": { "type": "string", "pattern": "^sources/" },
+          "extension": { "type": "string", "pattern": "^\\." },
+          "size_bytes": { "type": "integer", "minimum": 1 },
+          "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "document_version_or_date": { "type": ["string", "null"] },
+          "origin_environment": { "type": "string" },
+          "origin_location_or_channel": { "type": "string" },
+          "first_observed_at": { "type": "string" },
+          "normative_status": { "enum": ["normative", "non_normative", "requires_confirmation"] },
+          "normative_scopes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": ["共通ルール", "シナリオ", "カード", "トークン", "マーカー", "スコードロン", "基地・ボード", "地理・マップ", "Digital参考資料", "ウォークスルー", "解説資料", "その他"]
+            }
+          },
+          "canonical_record": { "enum": [true, false, "pending"] },
+          "machine_extractability": { "enum": ["full", "partial", "none"] },
+          "visual_reviewability": { "enum": ["yes", "limited", "no"] },
+          "transcription_status": { "enum": ["not_required", "not_started", "draft", "verified"] },
+          "assessment_status": { "enum": ["provisional", "confirmed"] },
+          "rights_review_status": { "enum": ["pending", "blocked_pending_third_party_review", "reviewed"] },
+          "readability_evidence": { "type": "object" },
+          "relationship_candidates": { "type": "array", "items": { "type": "string" } },
+          "source_roles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "canonical_record",
+                "authoring_source",
+                "extraction_source",
+                "published_normative_source",
+                "distribution_derivative",
+                "superseded_source",
+                "supporting_normative_source"
+              ]
+            }
+          },
+          "current_version_status": {
+            "enum": ["current", "supporting", "distribution_derivative", "superseded", "pending"]
+          },
+          "related_source_ids": {
+            "type": "object",
+            "additionalProperties": {
+              "oneOf": [
+                { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+                {
+                  "type": "array",
+                  "items": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" }
+                }
+              ]
+            }
+          },
+          "citation_use": { "type": "string" },
+          "relationship_basis": { "type": "string" },
+          "component_ids": { "type": "array", "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

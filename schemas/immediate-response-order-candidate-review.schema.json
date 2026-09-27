@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/immediate-response-order-candidate-review.schema.json",
+  "title": "Immediate response order candidate owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_type", "non_normative", "generated_at", "generator", "vector_count", "status_counts", "approval_record", "fingerprint_method", "vectors"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "immediate_response_order_candidate_owner_review" },
+    "non_normative": { "const": true },
+    "generated_at": { "const": "2026-09-24" },
+    "generator": { "const": "rule-core/pipeline/generate-immediate-response-order-artifacts.py" },
+    "vector_count": { "const": 14 },
+    "status_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate", "approved"],
+      "properties": { "candidate": { "const": 0 }, "approved": { "const": 14 } }
+    },
+    "approval_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved_by", "approved_at", "approved_vector_count"],
+      "properties": {
+        "approved_by": { "const": "ルール所有者" },
+        "approved_at": { "const": "2026-09-24" },
+        "approved_vector_count": { "const": 14 }
+      }
+    },
+    "fingerprint_method": { "type": "object" },
+    "vectors": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["vector_id", "title", "status", "branch", "initial_state", "operation", "fixed_randomness", "expected_events", "expected_final_state", "visibility", "component_ids", "rule_core_ids", "source_fragment_ids", "decision_ids", "fingerprint_sha256", "owner_answer"],
+        "properties": {
+          "vector_id": { "type": "string", "pattern": "^RV-ENABLER-" },
+          "title": { "type": "string" },
+          "status": { "const": "approved" },
+          "branch": { "type": "string" },
+          "initial_state": { "type": "object" },
+          "operation": { "type": "object" },
+          "fixed_randomness": {},
+          "expected_events": { "type": "array" },
+          "expected_final_state": { "type": "object" },
+          "visibility": {},
+          "component_ids": { "type": "array", "items": { "type": "string" } },
+          "rule_core_ids": { "type": "array", "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "owner_answer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["answer", "approved_by", "approved_at"],
+            "properties": {
+              "answer": { "const": "この記述で正しい" },
+              "approved_by": { "const": "ルール所有者" },
+              "approved_at": { "const": "2026-09-24" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

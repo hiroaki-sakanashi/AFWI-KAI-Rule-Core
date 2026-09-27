@@ -1,0 +1,158 @@
+schema_version: 0.1.0
+rule_core_version: 0.15.0-preview-squadron-activation
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-SQUADRON-KJ-500-ACTIVATION-001
+    title: KJ-500を合法なPRC基地群からactivationし1 tokenを生成する
+    status: approved
+    initial_state:
+      scenario_id: scenario-1-day-1
+      day: 2
+      actor: PRC
+      component_id: COMP-SQUADRON-STC-SQ-04
+      digital_fixture_plate_id: PRC-SQ-KJ-500
+      plate_deployment:
+        state_id: STATE-SQUADRON-PLATE-DEPLOYMENT
+        deployed: true
+        acquisition_state: unacquired
+        selected_base_group_id: GUANGDONG
+        selected_base_hex: H2.5
+        input_classification: acceptance_fixture_choice
+        normative_scope: any_legal_prc_base_group
+        legal_base_group_ids: [HAINAN, GUANGDONG, HUNAN]
+        does_not_establish_component_home_base: true
+      base_state:
+        sortie_capacity: { state_id: STATE-BASE-SORTIE-CAPACITY, effective_capacity: 6, committed_cost: 0, remaining_capacity: 6 }
+        air_operations_infrastructure_damage: { state_id: STATE-BASE-AIR-OPERATIONS-INFRASTRUCTURE-DAMAGE, damage_level: 0, evidence: canonical_board_no_damage_start_and_fixture_omission_interpreted_as_zero }
+        maintenance_supply_damage: { state_id: STATE-BASE-MAINTENANCE-SUPPLY-DAMAGE, damage_level: 0, fixture_field: base.damage }
+      available_command_stars: { state_id: STATE-COMMAND-STARS-AVAILABLE, value: 33 }
+      token_custody:
+        state_id: STATE-SQUADRON-TOKEN-CUSTODY
+        token_id: PRC-SQ-KJ-500-1
+        zone: token_pool
+        same_token_on_map: false
+      maximum_generated_tokens: 1
+      normal_operation_candidate_count_for_component: 1
+      aar_projection_candidate_count_for_component: 1
+    operation:
+      type: activate_deployed_squadron_and_generate
+      actor: PRC
+      component_id: COMP-SQUADRON-STC-SQ-04
+      requested_token_count: 1
+      required_star_cost: 2
+      required_sortie_capacity: 2
+      maintenance_formula: "整備補給被害0: D4が2以上なら全数生成、D4が1なら生成数-1"
+      placement_hex: H2.5
+      activation_used_flag_written: false
+      random_input_use_count: 1
+    fixed_randomness: { maintenance_D4: 2 }
+    expected_events:
+      - { event_id: EVENT-SQUADRON-ACTIVATION-DECLARED, requested_token_count: 1, required_star_cost: 2 }
+      - { event_id: EVENT-SQUADRON-SORTIE-COST-PAID, required_star_cost: 2, paid_star_cost: 2, sortie_capacity_before: 6, sortie_capacity_after: 4 }
+      - { event_id: EVENT-SQUADRON-MAINTENANCE-RESOLVED, D4_result: 2, maintenance_damage_level: 0, actual_generated_count: 1, ground_abort_count: 0 }
+      - { event_id: EVENT-SQUADRON-GROUND-ABORT-RESOLVED, ground_abort_count: 0 }
+      - { event_id: EVENT-SQUADRON-TOKENS-GENERATED, actual_generated_count: 1, placement_hex_ids: [H2.5] }
+      - { event_id: EVENT-SQUADRON-ACTIVATION-COMPLETED, requested_token_count: 1, paid_star_cost: 2, actual_generated_count: 1, ground_abort_count: 0 }
+    expected_final_state:
+      available_command_stars: 31
+      base_sortie_capacity: { effective_capacity: 6, committed_cost: 2, remaining_capacity: 4 }
+      actual_generated_count: 1
+      ground_abort_count: 0
+      token_custody: { token_id: PRC-SQ-KJ-500-1, from: token_pool, to: map, hex_id: H2.5 }
+      acquisition_state: unacquired
+      activation_in_progress_cleared: true
+      activation_used_flag: not_applicable
+      duplicate_generation_of_same_token_legal: false
+      normal_operation_candidate_count_for_component_after_generation: 0
+    visibility:
+      managing_side:
+        side: PRC
+        fields: [component_id, plate_id, requested_token_count, required_star_cost, paid_star_cost, base_group_id, base_state, maintenance_D4, actual_generated_count, ground_abort_count, token_id, placement_hex, activation_completed]
+      opposing_side:
+        side: US
+        public_fields: [activation_occurred, requested_token_count, required_star_cost, paid_star_cost, maintenance_D4, actual_generated_count, ground_abort_count, generated_token_count, placement_hex, activation_completed, base_sortie_capacity, air_operations_infrastructure_damage, maintenance_supply_damage]
+        hidden_while_unacquired: [component_id, plate_id, plate_identity, token_id, token_identity, token_to_plate_mapping]
+    interaction_type: sequential_action
+    rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001, RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE, FRAG-SQUADRON-0901-P2-STC-SQ-04, FRAG-TOKEN-0901-1-P5-6-KJ-500]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-26' }
+    rights_scope: 正式資料・承認済み構造化データ・公開裁定を規範根拠とし、AAR fixtureは受入試験入力にだけ使用する。
+
+  - vector_id: RV-SQUADRON-KQ-200-ACTIVATION-001
+    title: KQ-200を合法なPRC基地群からactivationし1 tokenを生成する
+    status: approved
+    initial_state:
+      scenario_id: scenario-1-day-1
+      day: 2
+      actor: PRC
+      component_id: COMP-SQUADRON-STC-SQ-13
+      digital_fixture_plate_id: PRC-SQ-KQ-200
+      plate_deployment:
+        state_id: STATE-SQUADRON-PLATE-DEPLOYMENT
+        deployed: true
+        acquisition_state: unacquired
+        selected_base_group_id: GUANGDONG
+        selected_base_hex: H2.5
+        input_classification: acceptance_fixture_choice
+        normative_scope: any_legal_prc_base_group
+        legal_base_group_ids: [HAINAN, GUANGDONG, HUNAN]
+        does_not_establish_component_home_base: true
+      base_state:
+        sortie_capacity: { state_id: STATE-BASE-SORTIE-CAPACITY, effective_capacity: 6, committed_cost: 0, remaining_capacity: 6 }
+        air_operations_infrastructure_damage: { state_id: STATE-BASE-AIR-OPERATIONS-INFRASTRUCTURE-DAMAGE, damage_level: 0, evidence: canonical_board_no_damage_start_and_fixture_omission_interpreted_as_zero }
+        maintenance_supply_damage: { state_id: STATE-BASE-MAINTENANCE-SUPPLY-DAMAGE, damage_level: 0, fixture_field: base.damage }
+      available_command_stars: { state_id: STATE-COMMAND-STARS-AVAILABLE, value: 33 }
+      token_custody:
+        state_id: STATE-SQUADRON-TOKEN-CUSTODY
+        token_id: PRC-SQ-KQ-200-1
+        zone: token_pool
+        same_token_on_map: false
+      maximum_generated_tokens: 1
+      normal_operation_candidate_count_for_component: 1
+      aar_projection_candidate_count_for_component: 1
+    operation:
+      type: activate_deployed_squadron_and_generate
+      actor: PRC
+      component_id: COMP-SQUADRON-STC-SQ-13
+      requested_token_count: 1
+      required_star_cost: 2
+      required_sortie_capacity: 2
+      maintenance_formula: "整備補給被害0: D4が2以上なら全数生成、D4が1なら生成数-1"
+      placement_hex: H2.5
+      activation_used_flag_written: false
+      random_input_use_count: 1
+    fixed_randomness: { maintenance_D4: 2 }
+    expected_events:
+      - { event_id: EVENT-SQUADRON-ACTIVATION-DECLARED, requested_token_count: 1, required_star_cost: 2 }
+      - { event_id: EVENT-SQUADRON-SORTIE-COST-PAID, required_star_cost: 2, paid_star_cost: 2, sortie_capacity_before: 6, sortie_capacity_after: 4 }
+      - { event_id: EVENT-SQUADRON-MAINTENANCE-RESOLVED, D4_result: 2, maintenance_damage_level: 0, actual_generated_count: 1, ground_abort_count: 0 }
+      - { event_id: EVENT-SQUADRON-GROUND-ABORT-RESOLVED, ground_abort_count: 0 }
+      - { event_id: EVENT-SQUADRON-TOKENS-GENERATED, actual_generated_count: 1, placement_hex_ids: [H2.5] }
+      - { event_id: EVENT-SQUADRON-ACTIVATION-COMPLETED, requested_token_count: 1, paid_star_cost: 2, actual_generated_count: 1, ground_abort_count: 0 }
+    expected_final_state:
+      available_command_stars: 31
+      base_sortie_capacity: { effective_capacity: 6, committed_cost: 2, remaining_capacity: 4 }
+      actual_generated_count: 1
+      ground_abort_count: 0
+      token_custody: { token_id: PRC-SQ-KQ-200-1, from: token_pool, to: map, hex_id: H2.5 }
+      acquisition_state: unacquired
+      activation_in_progress_cleared: true
+      activation_used_flag: not_applicable
+      duplicate_generation_of_same_token_legal: false
+      normal_operation_candidate_count_for_component_after_generation: 0
+    visibility:
+      managing_side:
+        side: PRC
+        fields: [component_id, plate_id, requested_token_count, required_star_cost, paid_star_cost, base_group_id, base_state, maintenance_D4, actual_generated_count, ground_abort_count, token_id, placement_hex, activation_completed]
+      opposing_side:
+        side: US
+        public_fields: [activation_occurred, requested_token_count, required_star_cost, paid_star_cost, maintenance_D4, actual_generated_count, ground_abort_count, generated_token_count, placement_hex, activation_completed, base_sortie_capacity, air_operations_infrastructure_damage, maintenance_supply_damage]
+        hidden_while_unacquired: [component_id, plate_id, plate_identity, token_id, token_identity, token_to_plate_mapping]
+    interaction_type: sequential_action
+    rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001, RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE, FRAG-SQUADRON-0901-P3-STC-SQ-13, FRAG-TOKEN-0901-1-P5-6-KQ-200]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: '2026-09-26' }
+    rights_scope: 正式資料・承認済み構造化データ・公開裁定を規範根拠とし、AAR fixtureは受入試験入力にだけ使用する。

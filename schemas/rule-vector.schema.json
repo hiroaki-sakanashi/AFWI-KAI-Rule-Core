@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/rule-vector.schema.json",
+  "title": "AFWI-KAI candidate rule vectors",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "status", "vectors"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "source_set": { "type": "string" },
+    "status": { "enum": ["candidate", "approved", "mixed"] },
+    "vectors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "vector_id", "title", "status", "initial_state", "operation", "fixed_randomness",
+          "expected_events", "expected_final_state", "rule_core_ids", "source_fragment_ids",
+          "decision_ids", "approval", "rights_scope"
+        ],
+        "properties": {
+          "vector_id": { "type": "string", "pattern": "^RV-(EMI|RATE|MD|ENABLER|INTEL|SQUADRON|TURN)-[A-Z0-9-]+$" },
+          "title": { "type": "string" },
+          "status": { "enum": ["candidate", "approved"] },
+          "initial_state": { "type": "object" },
+          "initial_public_state": { "type": "object" },
+          "target_rate_id": { "type": "string", "pattern": "^RATE-[A-Z0-9-]+$" },
+          "target_rate_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^RATE-[A-Z0-9-]+$" } },
+          "trigger": { "type": "object" },
+          "required_context": { "type": "object" },
+          "operation": { "type": "object" },
+          "fixed_randomness": { "type": ["object", "string"] },
+          "expected_events": { "type": "array", "items": { "type": "object" } },
+          "expected_final_state": { "type": "object" },
+          "expected_public_state": { "type": "object" },
+          "duration": {},
+          "visibility": {},
+          "interaction_type": { "enum": ["response_window", "automatic_resolution", "sequential_action", "not_applicable", "not_stated"] },
+          "rule_core_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string" } },
+          "approval": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["approved_by", "approved_at"],
+            "properties": {
+              "approved_by": { "type": ["string", "null"] },
+              "approved_at": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+            }
+          },
+          "rights_scope": { "type": "string" }
+        }
+      }
+    }
+  }
+}

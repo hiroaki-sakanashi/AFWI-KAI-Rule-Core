@@ -1,0 +1,84 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-INTEL-HAND-REVEAL-001
+    title: 確認数1で相手手札1枚を公開する
+    status: approved
+    initial_state: { confirmations_remaining: 2, opponent_hand_card_revealed: false }
+    operation: { type: confirm_intel_target, target_type: opponent_hand_enabler }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-INTEL-TARGET-CONFIRMED }, { event_id: EVENT-COMPONENT-REVEALED }]
+    expected_final_state: { confirmations_remaining: 1, opponent_hand_card_revealed: true, visibility: public }
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。
+  - vector_id: RV-INTEL-SIGN-HEX-REVEAL-001
+    title: 確認数1で対象ヘックスの全兆候を公開する
+    status: approved
+    initial_state: { confirmations_remaining: 1, target_hex_signs: 3, revealed_signs: 0 }
+    operation: { type: confirm_intel_target, target_type: sign_hex }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-INTEL-TARGET-CONFIRMED }, { event_id: EVENT-COMPONENT-REVEALED, quantity: 3 }]
+    expected_final_state: { confirmations_remaining: 0, revealed_signs: 3, visibility: public }
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。
+  - vector_id: RV-INTEL-SQUADRON-SUCCESS-001
+    title: 確認数1で選択した配備済み未捕捉スコードロンプレート1枚だけを判定し、成功時に当該1枚を捕捉・公開する
+    status: approved
+    initial_state: { confirmations_remaining: 1, selected_squadron_plate_deployed: true, selected_squadron_plate_acquired: false, selected_squadron_plate_acquisition_value: 3, other_deployed_squadron_plates: existing_state }
+    operation: { type: confirm_intel_target, target_type: deployed_unacquired_squadron_plate, target_quantity: 1, confirmation_cost: 1 }
+    fixed_randomness: { D4: 3 }
+    expected_events: [{ event_id: EVENT-INTEL-ACQUISITION-SUCCEEDED, target_quantity: 1 }, { event_id: EVENT-COMPONENT-REVEALED, target_quantity: 1 }]
+    expected_final_state: { confirmations_remaining: 0, selected_squadron_plate_acquired: true, selected_squadron_plate_visibility: public, other_deployed_squadron_plates: existing_state }
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。
+  - vector_id: RV-INTEL-SQUADRON-FAILURE-001
+    title: 配備済み未捕捉スコードロンプレート1枚を選択して捕捉判定し、失敗時はスコードロン状態を変えず確認数1だけを消費する
+    status: approved
+    initial_state: { confirmations_remaining: 1, selected_squadron_plate_deployed: true, selected_squadron_plate_acquired: false, selected_squadron_plate_acquisition_value: 3, other_deployed_squadron_plates: existing_state }
+    operation: { type: confirm_intel_target, target_type: deployed_unacquired_squadron_plate, target_quantity: 1, confirmation_cost: 1 }
+    fixed_randomness: { D4: 2 }
+    expected_events: [{ event_id: EVENT-INTEL-ACQUISITION-FAILED, record_only: true, state_change: none }]
+    expected_final_state: { confirmations_remaining: 0, judged_squadron_plate_acquisition_state_change: none, judged_squadron_plate_reveal_state_change: none, judged_squadron_plate_visibility_change: none, all_squadron_plates_state_change: none }
+    expected_public_state: { judged_squadron_plate_public_state_change: none, all_squadron_plates_public_state_change: none, visibility_change: none }
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。
+  - vector_id: RV-INTEL-FAILURE-CONSUMES-001
+    title: 選択した配備済み未捕捉スコードロンプレート1枚の捕捉失敗でも確認数1を消費する
+    status: approved
+    initial_state: { confirmations_remaining: 2, selected_squadron_plate_deployed: true, selected_squadron_plate_acquired: false, selected_squadron_plate_acquisition_value: 4, other_deployed_squadron_plates: existing_state }
+    operation: { type: confirm_intel_target, target_type: deployed_unacquired_squadron_plate, target_quantity: 1, confirmation_cost: 1 }
+    fixed_randomness: { D4: 1 }
+    expected_events: [{ event_id: EVENT-INTEL-ACQUISITION-FAILED, target_quantity: 1 }]
+    expected_final_state: { confirmations_remaining: 1, selected_squadron_plate_acquired: false, other_deployed_squadron_plates: existing_state }
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。
+  - vector_id: RV-INTEL-LIMIT-001
+    title: 確認可能残数0では追加対象を選べない
+    status: approved
+    initial_state: { confirmations_remaining: 0 }
+    operation: { type: confirm_intel_target, target_type: opponent_hand_enabler }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal: false, confirmations_remaining: 0 }
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の未承認candidate。

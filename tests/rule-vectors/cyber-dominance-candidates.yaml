@@ -1,0 +1,35 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-RATE-CYBER-DOMINANCE-DETAIL-001
+    title: サイバードミナンスの具体的全開示・全捕捉と現在の★からの10減少
+    status: approved
+    initial_state: { holder: PRC, active_during: next_ATO_cycle, opponent_signs_revealed: false, opponent_selected_enablers_revealed: false, deployed_squadrons_acquired: false, opponent_current_command_stars: 40, other_star_reductions: none, other_star_constraints: none }
+    operation:
+      type: apply_cyber_dominance_effects
+      command_star_change: { operation: decrease, operator: subtract, amount: 10, operand: current_star_value, fixed_target_value: none, preserves_other_reductions: true, preserves_other_constraints: true }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-COMPONENT-REVEALED, targets: [opponent_sign_markers, opponent_selected_enablers_for_current_ATO] }]
+    expected_final_state: { opponent_signs_revealed: true, opponent_selected_enablers_revealed: true, deployed_squadrons_acquired: true, opponent_current_command_stars: 30, calculation_example: 40_minus_10_equals_30_only_when_no_other_reductions_or_constraints, other_star_reductions: preserved, other_star_constraints: preserved }
+    expected_public_state: { state_id: STATE-CYBER-DOMINANCE, holder: PRC, active_during: next_ATO_cycle }
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール・現行A3ボード由来の未承認candidate。
+  - vector_id: RV-RATE-CYBER-DOMINANCE-EXPIRY-001
+    title: 次ATO終了時にドミナンスのみ失効し公開・捕捉状態を自動巻戻ししない
+    status: approved
+    initial_state: { cyber_dominance: true, revealed_components: true, acquired_squadrons: true }
+    operation: { type: end_next_ATO_cycle }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-CYBER-DOMINANCE-EXPIRED }]
+    expected_final_state: { cyber_dominance: false, revealed_components: true, acquired_squadrons: true }
+    expected_public_state: { state_id: STATE-CYBER-DOMINANCE, active: false }
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルールにない巻戻しを追加しないことを確認する未承認candidate。

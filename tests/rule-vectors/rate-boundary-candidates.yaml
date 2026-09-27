@@ -1,0 +1,352 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-RATE-BOUNDARY-SPACE-LOWER-OPTIONAL-INELIGIBLE-001
+    title: "宇宙レート0で単独-1任意効果は不適格"
+    status: approved
+    initial_state: { rate_id: RATE-SPACE-US, rate_value: 0, optional_effect: { operation: decrease, amount: 1, only_effect: true }, card_state: available }
+    operation: { type: evaluate_optional_rate_effect_eligibility }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, determination_performed: false, card_state: available, use_count_consumed: false, rate_value: 0, actual_delta: 0, forbidden_event_ids: [EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の範囲と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-SPACE-UPPER-PLUS1-INELIGIBLE-001
+    title: "宇宙レート4で単独+1任意効果は不適格"
+    status: approved
+    initial_state: { rate_id: RATE-SPACE-PRC, rate_value: 4, optional_effect: { operation: increase, amount: 1, only_effect: true }, card_state: available }
+    operation: { type: evaluate_optional_rate_effect_eligibility }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, determination_performed: false, card_state: available, use_count_consumed: false, rate_value: 4, actual_delta: 0, hidden_overflow: none, forbidden_event_ids: [EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の範囲と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-SPACE-UPPER-PLUS2-INELIGIBLE-001
+    title: "宇宙レート4で単独+2任意効果は不適格"
+    status: approved
+    initial_state: { rate_id: RATE-SPACE-US, rate_value: 4, optional_effect: { operation: increase, amount: 2, only_effect: true }, card_state: available }
+    operation: { type: evaluate_optional_rate_effect_eligibility }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, determination_performed: false, card_state: available, use_count_consumed: false, rate_value: 4, actual_delta: 0, hidden_overflow: none, forbidden_event_ids: [EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の範囲と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-SPACE-DIRECT-COMMAND-REJECTED-001
+    title: "宇宙レート端点での不正な直接使用を状態不変で拒否"
+    status: approved
+    initial_state: { rate_id: RATE-SPACE-US, rate_value: 0, requested_optional_effect: { operation: decrease, amount: 1, only_effect: true }, card_state: available }
+    operation: { type: submit_direct_optional_rate_effect_command }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { command_accepted: false, state_changed: false, card_state: available, use_count_consumed: false, rate_value: 0, forbidden_event_ids: [EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "承認済み追加裁定に基づくcandidate。Digital固有Command形式は規範化しない。"
+
+  - vector_id: RV-RATE-BOUNDARY-SPACE-MULTI-EFFECT-001
+    title: "複数効果カードで端点側だけ停止し他方は変化"
+    status: approved
+    initial_state: { source_card_code: STC-SP-02, US_space_rate: 0, PRC_space_rate: 1, card_state: available, requested_effects: [{ rate_id: RATE-SPACE-US, operation: decrease, amount: 2 }, { rate_id: RATE-SPACE-PRC, operation: decrease, amount: 1 }] }
+    operation: { type: resolve_multiple_independent_rate_effects }
+    fixed_randomness: none
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGED, rate_id: RATE-SPACE-PRC, from: 1, to: 0, actual_delta: -1 }
+    expected_final_state: { legal_candidate: true, card_state: used, US_space_rate: 0, US_space_actual_delta: 0, PRC_space_rate: 0, PRC_space_actual_delta: -1, hidden_overflow: none, no_rate_changed_event_for: RATE-SPACE-US }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "STC-SP-02正式カード効果と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-CYBER-LOWER-OPTIONAL-INELIGIBLE-001
+    title: "サイバーレート0で単独-1任意効果は不適格"
+    status: approved
+    initial_state: { rate_id: RATE-CYBER-PRC, rate_value: 0, optional_effect: { operation: decrease, amount: 1, only_effect: true }, card_state: available }
+    operation: { type: evaluate_optional_rate_effect_eligibility }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, determination_performed: false, card_state: available, use_count_consumed: false, rate_value: 0, actual_delta: 0, forbidden_event_ids: [EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の範囲と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-CYBER-UPPER-OPTIONAL-INELIGIBLE-001
+    title: "サイバーレート4で単独+1任意効果は不適格かつ判定なし"
+    status: approved
+    initial_state: { rate_id: RATE-CYBER-US, rate_value: 4, optional_effect: { operation: increase, amount: 1, only_effect: true, normally_requires_determination: true }, card_state: available }
+    operation: { type: evaluate_optional_rate_effect_eligibility }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, determination_performed: false, random_rolls_consumed: 0, card_state: available, use_count_consumed: false, rate_value: 4, actual_delta: 0, hidden_overflow: none, forbidden_event_ids: [EVENT-RATE-CHANGE-ATTEMPTED, EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-CYBER-INCREASE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の範囲と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STC-CY-05-ZERO-001
+    title: "サイバーレート0でSTC-CY-05が上昇を取り消す"
+    status: approved
+    initial_state: { component_id: COMP-ENABLER-STC-CY-05, rate_id: RATE-CYBER-US, rate_value: 0, triggering_increase: { pending: true, amount: 1 }, card_state: available }
+    operation: { type: play_and_resolve_immediate_enabler, component_id: COMP-ENABLER-STC-CY-05, steps: [invalidate_triggering_increase, apply_additional_decrease] }
+    fixed_randomness: none
+    expected_events:
+      - event_id: EVENT-IMMEDIATE-ENABLER-PLAYED
+        component_id: COMP-ENABLER-STC-CY-05
+        resolved_effects:
+          - { step: invalidate_triggering_increase, result: invalidated }
+          - { step: additional_decrease, requested_amount: 1, actual_delta: 0, result: stopped_at_lower_boundary }
+    expected_final_state: { triggering_increase: invalidated, rate_value: 0, additional_decrease_actual_delta: 0, card_state: used, use_count_consumed: true, hidden_overflow: none, forbidden_event_ids_for_additional_decrease: [EVENT-RATE-CHANGED] }
+    duration: immediate
+    visibility: not_stated
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "STC-CY-05正式カード効果と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-OPTIONAL-INELIGIBLE-001
+    title: "US優勢6で同方向+1任意カードは不適格"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 }, component_id: COMP-ENABLER-US-SP-03, card_state: available }
+    operation: { type: evaluate_optional_rate_effect_eligibility, requested_change: { direction: US_advantage, amount: 1 } }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, card_state: available, use_count_consumed: false, strategic_rate: { direction: US_advantage, value: 6 }, hidden_overflow: none, forbidden_event_ids: [EVENT-IMMEDIATE-ENABLER-PLAYED, EVENT-RATE-CHANGED] }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-ENABLER-0830-1-US-SP-03]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "US-SP-03正式カード効果と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS1-001
+    title: "US優勢6で強制+1は6のまま"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 }, forced_origin: destroy_one_squadron_plate_or_one_SAG }
+    operation: { type: resolve_forced_rate_change, requested_change: { direction: US_advantage, amount: 1 } }
+    fixed_randomness: none
+    expected_events: [{ assertion: forced_origin_event_is_retained }]
+    expected_final_state: { origin_process_resolved: true, strategic_rate: { direction: US_advantage, value: 6 }, requested_delta: 1, actual_delta: 0, hidden_overflow: none, forbidden_event_ids: [EVENT-RATE-CHANGED], response_window_for_COMP_ENABLER_STC_IW_04: false }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-SCENARIO-001]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式シナリオ変更量と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS2-001
+    title: "US優勢6で強制+2は6のまま"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 }, forced_origin: destroy_PRC_CBG }
+    operation: { type: resolve_forced_rate_change, requested_change: { direction: US_advantage, amount: 2 } }
+    fixed_randomness: none
+    expected_events: [{ assertion: forced_origin_event_is_retained }]
+    expected_final_state: { origin_process_resolved: true, strategic_rate: { direction: US_advantage, value: 6 }, requested_delta: 2, actual_delta: 0, hidden_overflow: none, forbidden_event_ids: [EVENT-RATE-CHANGED], response_window_for_COMP_ENABLER_STC_IW_04: false }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-SCENARIO-001]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式シナリオ変更量と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS3-001
+    title: "PRC優勢6で強制+3は6のまま"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: PRC_advantage, value: 6 }, forced_origin: destroy_US_CSG }
+    operation: { type: resolve_forced_rate_change, requested_change: { direction: PRC_advantage, amount: 3 } }
+    fixed_randomness: none
+    expected_events: [{ assertion: forced_origin_event_is_retained }]
+    expected_final_state: { origin_process_resolved: true, strategic_rate: { direction: PRC_advantage, value: 6 }, requested_delta: 3, actual_delta: 0, hidden_overflow: none, forbidden_event_ids: [EVENT-RATE-CHANGED], rate_change_dependent_response_window: false }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-SCENARIO-001]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式シナリオ変更量と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC1-001
+    title: "US優勢6からPRC方向へ1点"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 } }
+    operation: { type: change_strategic_rate, direction: PRC_advantage, amount: 1 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, from: { direction: US_advantage, value: 6 }, to: { direction: US_advantage, value: 5 }, actual_delta: 1 }]
+    expected_final_state: { strategic_rate: { direction: US_advantage, value: 5 }, hidden_overflow: none }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の端点表示と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC2-001
+    title: "US優勢6からPRC方向へ2点"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 } }
+    operation: { type: change_strategic_rate, direction: PRC_advantage, amount: 2 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, from: { direction: US_advantage, value: 6 }, to: { direction: US_advantage, value: 4 }, actual_delta: 2 }]
+    expected_final_state: { strategic_rate: { direction: US_advantage, value: 4 }, hidden_overflow: none }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の端点表示と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC3-001
+    title: "US優勢6からPRC方向へ3点"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 } }
+    operation: { type: change_strategic_rate, direction: PRC_advantage, amount: 3 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, from: { direction: US_advantage, value: 6 }, to: { direction: US_advantage, value: 3 }, actual_delta: 3 }]
+    expected_final_state: { strategic_rate: { direction: US_advantage, value: 3 }, hidden_overflow: none }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の端点表示と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US1-001
+    title: "PRC優勢6からUS方向へ1点"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: PRC_advantage, value: 6 } }
+    operation: { type: change_strategic_rate, direction: US_advantage, amount: 1 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, from: { direction: PRC_advantage, value: 6 }, to: { direction: PRC_advantage, value: 5 }, actual_delta: 1 }]
+    expected_final_state: { strategic_rate: { direction: PRC_advantage, value: 5 }, hidden_overflow: none }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の端点表示と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US2-001
+    title: "PRC優勢6からUS方向へ2点"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: PRC_advantage, value: 6 } }
+    operation: { type: change_strategic_rate, direction: US_advantage, amount: 2 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, from: { direction: PRC_advantage, value: 6 }, to: { direction: PRC_advantage, value: 4 }, actual_delta: 2 }]
+    expected_final_state: { strategic_rate: { direction: PRC_advantage, value: 4 }, hidden_overflow: none }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の端点表示と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US3-001
+    title: "PRC優勢6からUS方向へ3点"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: PRC_advantage, value: 6 } }
+    operation: { type: change_strategic_rate, direction: US_advantage, amount: 3 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-RATE-CHANGED, from: { direction: PRC_advantage, value: 6 }, to: { direction: PRC_advantage, value: 3 }, actual_delta: 3 }]
+    expected_final_state: { strategic_rate: { direction: PRC_advantage, value: 3 }, hidden_overflow: none }
+    duration: immediate
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式資料の端点表示と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-RETURN5-NO-DISMISSAL-001
+    title: "戦略レート6到達後ATO終了前に5へ戻れば更迭なし"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 5 }, ATO_cycle_end: false }
+    operation: { type: resolve_sequence, steps: [{ change: { direction: US_advantage, amount: 1 } }, { change: { direction: PRC_advantage, amount: 1 } }, { evaluate_endpoint_effect: ATO_cycle_end }] }
+    fixed_randomness: none
+    expected_events:
+      - { event_id: EVENT-RATE-CHANGED, from: { direction: US_advantage, value: 5 }, to: { direction: US_advantage, value: 6 } }
+      - { event_id: EVENT-RATE-CHANGED, from: { direction: US_advantage, value: 6 }, to: { direction: US_advantage, value: 5 } }
+    expected_final_state: { strategic_rate: { direction: US_advantage, value: 5 }, dismissal: false, game_ended_by_strategic_rate: false, forbidden_event_ids: [EVENT-STRATEGIC-DISMISSAL] }
+    duration: through_ATO_cycle_end
+    visibility: public
+    interaction_type: sequential_action
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-END-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式端点効果と承認済み追加裁定に基づくcandidate。"
+
+  - vector_id: RV-RATE-BOUNDARY-STRATEGIC-AT6-DISMISSAL-001
+    title: "ATO終了時の実値6で更迭"
+    status: approved
+    initial_state: { rate_id: RATE-STRATEGIC, rate_value: { direction: US_advantage, value: 6 }, ATO_cycle_end: true }
+    operation: { type: evaluate_strategic_endpoint_effect }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-STRATEGIC-DISMISSAL, disadvantaged_faction: PRC }]
+    expected_final_state: { strategic_rate: { direction: US_advantage, value: 6 }, dismissal: true, game_ended_by_strategic_rate: true }
+    duration: game_end
+    visibility: public
+    interaction_type: automatic_resolution
+    rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-END-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-25" }
+    rights_scope: "正式端点効果と承認済み追加裁定に基づくcandidate。"

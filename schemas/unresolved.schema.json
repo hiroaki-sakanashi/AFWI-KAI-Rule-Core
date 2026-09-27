@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/unresolved.schema.json",
+  "title": "AFWI-KAI unresolved inventory issues",
+  "type": "object",
+  "required": ["schema_version", "register_status", "issues"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "register_status": { "enum": ["provisional", "confirmed"] },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["issue_id", "title", "category", "severity", "status", "affected_source_ids", "scope", "evidence", "impact", "temporary_measure", "owner", "due_date", "required_input"],
+        "properties": {
+          "issue_id": { "type": "string", "pattern": "^ISSUE-[A-Z0-9-]+$" },
+          "title": { "type": "string" },
+          "category": { "enum": ["source_version", "source_relationship", "normative_scope", "readability", "rights", "origin", "boundary_behavior", "dependency"] },
+          "severity": { "enum": ["high", "medium", "low"] },
+          "status": { "enum": ["open", "resolved"] },
+          "affected_source_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "scope": { "type": "string" },
+          "evidence": { "type": "string" },
+          "impact": { "type": "string" },
+          "temporary_measure": { "type": "string" },
+          "owner": { "type": "string" },
+          "due_date": { "type": ["string", "null"] },
+          "required_input": { "type": "string" }
+          ,"resolution": { "type": "string" }
+          ,"resolved_by": { "type": "string" }
+          ,"resolved_at": { "type": "string" }
+          ,"adopted_source_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" }
+          }
+          ,"decision_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" }
+          }
+          ,"superseded_or_derivative_treatment": { "type": "string" }
+        }
+        ,"allOf": [
+          {
+            "if": { "properties": { "status": { "const": "resolved" } } },
+            "then": {
+              "required": [
+                "resolution", "resolved_by", "resolved_at", "adopted_source_ids",
+                "superseded_or_derivative_treatment"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/geography.schema.json",
+  "title": "AFWI-KAI geography data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "status", "canonical_source", "hex_grid", "boundaries", "areas"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "source_set": { "type": "string" },
+    "status": { "enum": ["candidate", "approved"] },
+    "canonical_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "sha256", "width", "height", "coordinate_origin", "supporting_derivative_source_id"],
+      "properties": {
+        "source_id": { "const": "SRC-MAP-0808-0916-PNG" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "width": { "const": 3780 },
+        "height": { "const": 3780 },
+        "coordinate_origin": { "const": "top_left" },
+        "supporting_derivative_source_id": { "const": "SRC-MAP-0808-0916-JPG" }
+      }
+    },
+    "hex_grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hex_ids", "hex_count", "id_type", "source_fragment_ids", "verification_status"],
+      "properties": {
+        "hex_ids": { "type": "array", "minItems": 110, "maxItems": 110, "uniqueItems": true, "items": { "type": "string", "pattern": "^[C-M](?:[1-9]|10)(?:\\.5)?$" } },
+        "hex_count": { "const": 110 },
+        "id_type": { "const": "printed_string" },
+        "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "verification_status": { "enum": ["verified", "candidate", "ambiguous"] }
+      }
+    },
+    "boundaries": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["boundary_id", "semantic_meaning", "printed_color", "printed_label", "status", "source_fragment_ids", "source_locator", "boundary_segments", "verification"],
+        "properties": {
+          "boundary_id": { "type": "string", "pattern": "^BOUNDARY-[A-Z0-9-]+$" },
+          "semantic_meaning": { "type": "string" },
+          "printed_color": { "enum": ["purple", "orange_yellow"] },
+          "printed_label": { "type": "string" },
+          "status": { "enum": ["candidate", "approved", "ambiguous"] },
+          "approval": { "$ref": "#/$defs/approval" },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "source_locator": { "type": "object" },
+          "boundary_segments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["segment_id", "separates"],
+              "properties": {
+                "segment_id": { "type": "string" },
+                "edge": { "type": "string", "pattern": "^[C-M][0-9.]+/[C-M][0-9.]+$" },
+                "separates": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } },
+                "transcription_class": { "enum": ["owner_confirmed_anchor", "visually_transcribed_connector_candidate"] }
+              }
+            }
+          },
+          "verification": { "type": "object" },
+          "ambiguities": { "type": "array", "items": { "type": "object" } },
+          "owner_specified_edge_sequence": {
+            "type": "object",
+            "required": ["source", "received_at", "edges", "expected_terminal_edge", "interpretation"],
+            "properties": {
+              "source": { "const": "rule_owner_identification" },
+              "received_at": { "const": "2026-09-24" },
+              "edges": { "type": "array", "minItems": 27, "maxItems": 27, "uniqueItems": true, "items": { "type": "string" } },
+              "expected_terminal_edge": { "const": "I1/H1.5" },
+              "interpretation": { "type": "string" }
+            }
+          },
+          "connector_intervals": {
+            "type": "array",
+            "minItems": 14,
+            "maxItems": 14,
+            "items": {
+              "type": "object",
+              "required": ["from_anchor", "to_anchor", "connector_edges", "comparison_result"],
+              "properties": {
+                "from_anchor": { "type": "string" },
+                "to_anchor": { "type": "string" },
+                "connector_edges": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+                "comparison_result": { "const": "exact_match" }
+              }
+            }
+          },
+          "path_validation": { "type": "object" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "printed_color": { "const": "orange_yellow" } }, "required": ["printed_color"] },
+            "then": { "required": ["owner_specified_edge_sequence", "connector_intervals", "path_validation"] }
+          }
+        ]
+      }
+    },
+    "areas": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["area_id", "boundary_id", "direction_from_boundary", "status", "included_hex_ids", "excluded_adjacent_hex_ids", "hex_count", "source_fragment_ids", "verification_status"],
+        "properties": {
+          "area_id": { "type": "string", "pattern": "^AREA-[A-Z0-9-]+$" },
+          "boundary_id": { "type": "string", "pattern": "^BOUNDARY-[A-Z0-9-]+$" },
+          "direction_from_boundary": { "enum": ["east", "west"] },
+          "status": { "enum": ["candidate", "approved", "ambiguous"] },
+          "approval": { "$ref": "#/$defs/approval" },
+          "included_hex_ids": { "type": ["array", "null"], "uniqueItems": true, "items": { "type": "string" } },
+          "excluded_adjacent_hex_ids": { "type": ["array", "null"], "uniqueItems": true, "items": { "type": "string" } },
+          "hex_count": { "type": ["integer", "null"], "minimum": 0 },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "verification_status": { "enum": ["exact_match", "ambiguous"] },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved_by", "approved_at"],
+      "properties": {
+        "approved_by": { "const": "ルール所有者" },
+        "approved_at": { "const": "2026-09-24" }
+      }
+    }
+  }
+}

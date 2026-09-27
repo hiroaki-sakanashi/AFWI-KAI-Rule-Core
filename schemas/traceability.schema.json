@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/traceability.schema.json",
+  "title": "AFWI-KAI Rule Core traceability",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "mappings"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "source_set": { "type": "string" },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target_id", "target_type", "source_ids", "source_fragment_ids", "decision_ids", "rule_core_ids", "artifacts"],
+        "properties": {
+          "target_id": { "type": "string" },
+          "target_type": { "enum": ["component", "rate", "state", "event", "rule", "rule_vector", "hex_grid", "boundary", "area"] },
+          "rule_vector_status": { "enum": ["candidate", "approved"] },
+          "source_ids": { "type": "array", "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string" } },
+          "rule_core_ids": { "type": "array", "items": { "type": "string" } },
+          "artifacts": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

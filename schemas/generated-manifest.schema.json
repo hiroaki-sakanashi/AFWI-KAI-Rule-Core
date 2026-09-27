@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/generated-manifest.schema.json",
+  "title": "AFWI-KAI EMI generated artifact manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "manifestStatus", "ruleCoreVersion", "sourceSet", "generatorVersion",
+    "digitalContractVersion", "minDigitalVersion", "maxTestedDigitalVersion", "artifacts"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "manifestStatus": { "enum": ["candidate", "approved"] },
+    "ruleCoreVersion": { "type": "string" },
+    "sourceSet": { "type": "string" },
+    "generatorVersion": { "type": "string" },
+    "digitalContractVersion": { "type": "string" },
+    "minDigitalVersion": { "type": ["string", "null"] },
+    "maxTestedDigitalVersion": { "type": ["string", "null"] },
+    "approvedVectorCount": { "type": "integer", "minimum": 1 },
+    "approvedVectorSetFingerprintSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "role"],
+        "properties": {
+          "path": { "type": "string", "pattern": "^rule-core/" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "role": { "enum": ["normative_data", "normative_rules", "generated_human_reference", "digital_candidate", "rule_vector_approved", "rule_vector_candidate", "traceability", "governance"] }
+        }
+      }
+    }
+  }
+}

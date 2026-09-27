@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/geography-generation-boundaries-owner-review.schema.json",
+  "title": "AFWI-KAI geography generation boundaries owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_type", "non_normative", "internal_only", "generated_at", "canonical_source", "hex_count", "boundaries", "areas", "vectors", "connector_interval_reviews", "approval_record", "verification"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "geography_generation_boundaries_owner_review" },
+    "non_normative": { "const": true },
+    "internal_only": { "const": true },
+    "generated_at": { "const": "2026-09-24T00:00:00+09:00" },
+    "canonical_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "filename", "sha256", "width", "height", "supporting_derivative_source_id", "superseded_source_used"],
+      "properties": {
+        "source_id": { "const": "SRC-MAP-0808-0916-PNG" },
+        "filename": { "const": "マップ 0808-0916.png" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "width": { "const": 3780 },
+        "height": { "const": 3780 },
+        "supporting_derivative_source_id": { "const": "SRC-MAP-0808-0916-JPG" },
+        "superseded_source_used": { "const": false }
+      }
+    },
+    "hex_count": { "const": 110 },
+    "boundaries": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "object" } },
+    "areas": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "object" } },
+    "vectors": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "object" } },
+    "connector_interval_reviews": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "required": ["from_anchor", "to_anchor", "connector_edges", "comparison_result", "transcription_class", "owner_confirmation", "pass_1_edges", "pass_2_edges", "overlay_file"],
+        "properties": {
+          "from_anchor": { "type": "string" },
+          "to_anchor": { "type": "string" },
+          "connector_edges": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "comparison_result": { "const": "exact_match" },
+          "transcription_class": { "const": "visually_transcribed_connector_candidate" },
+          "owner_confirmation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["status", "approved_by", "approved_at"],
+            "properties": {
+              "status": { "const": "approved" },
+              "approved_by": { "const": "ルール所有者" },
+              "approved_at": { "const": "2026-09-24" }
+            }
+          },
+          "pass_1_edges": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "pass_2_edges": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "overlay_file": { "type": "string" }
+        }
+      }
+    },
+    "approval_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "approved_by", "approved_at", "approved_ids"],
+      "properties": {
+        "status": { "const": "approved" },
+        "approved_by": { "const": "ルール所有者" },
+        "approved_at": { "const": "2026-09-24" },
+        "approved_ids": { "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": { "type": "string" } }
+      }
+    },
+    "verification": { "type": "object" }
+  }
+}

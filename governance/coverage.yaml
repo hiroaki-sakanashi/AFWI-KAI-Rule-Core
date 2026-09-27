@@ -1,0 +1,368 @@
+schema_version: 0.1.0
+coverage_status: provisional
+inventories:
+  - inventory_id: INV-RULE-SECTIONS
+    category: 正式ルールの章・節
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: blocked_by_transcription
+    count: 11
+    unit: numbered_sections
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      parts: 2
+      numbered_sections: 11
+      appendix_or_abbreviation_sections: 1
+    notes: >-
+      0910-2 DOCXの目次から第1部8節、第2部3節を確認。PDFでも全23ページと構成を視覚確認した。
+      現行published normative sourceは0910-2 PDF、DOCXは編集元・抽出元として確定。命題転記は未着手。
+
+  - inventory_id: INV-CARDS
+    category: カード
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    count: 62
+    unit: enabler_cards
+    source_ids: [SRC-ENABLER-0830-1]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      enabler_cards: 62
+      immediate_cards_total: 18
+      immediate_cards_structured: 18
+      existing_approved_immediate_cards: 9
+      newly_transcribed_approved_immediate_cards: 9
+      immediate_cards_approved: 18
+      immediate_cards_candidate: 0
+      approved_trigger_vectors: 18
+      newly_approved_vectors: 29
+      newly_approved_trigger_vectors: 18
+      newly_approved_effect_vectors: 11
+      geography_approved_effect_vectors: 2
+      geography_reviewable_effect_vectors: 0
+      geography_blocked_effect_vectors: 0
+      simultaneous_resolution_order: approved_for_decided_combinations
+      immediate_response_order_decisions: 3
+      immediate_response_order_approved_vectors: 14
+      immediate_response_order_candidate_vectors: 0
+      strategic_rate_response_chain_approved_vectors: 7
+      strategic_rate_response_chain_candidate_vectors: 0
+    notes: >-
+      イネーブラーPDFの全62ページを二経路で視覚確認し、1ページ1カード、黄色稲妻の即応カード18枚を確認した。
+      既承認9枚と追加9枚の全18枚を構造化・転記承認済み。US-IW-01とSTC-IW-01の地理効果を含む追加29 vectorは2026-09-24承認済み。
+      紫境界・以東72ヘックス・US-IW-01効果vector、および橙境界45辺・以西51ヘックス・STC-IW-01効果vectorは、いずれも2026-09-24承認済み。
+      STC-NV-07/08、サイバー対抗範囲、US-AF-10とMDの順序は2026-09-24追加裁定で確定し、訂正後の両方の先行除去ケースを含む14件のvectorは同日承認済み。
+      US-SP-03／US-IW-04からSTC-IW-04へ至る戦略レート応答連鎖7分岐は2026-09-25にルール所有者承認済み。
+      EMIコンポーネントはカードではなく、独立した半透明六角形ボードとして別inventoryへ分離した。
+
+  - inventory_id: INV-EMI-COMPONENTS
+    category: EMIコンポーネント
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    count: 2
+    unit: physical_hex_components
+    source_ids: [SRC-EMI-0811]
+    vector_required: satisfied
+    required_outcomes:
+      - 自軍EMSスタック値7未満ではEMI状態にならない
+      - 自軍EMSスタック値7以上ではEMI状態になる
+      - 2カウント対象を含む場合の成立
+      - 除外マーカーがスタック値へ加算されない
+      - EMI状態中の捕捉・攻撃・MDロールへDISが適用される
+      - 成立条件を満たさなくなった場合の状態解除
+    subcounts:
+      blue: 1
+      red: 1
+      verified_fragments: 2
+      approved_vectors: 6
+      candidate_extension_vectors: 3
+    notes: >-
+      COMP-EMI-BLUEとCOMP-EMI-REDを各1個として確定。各々はマップ1ヘックスと同じ大きさの
+      半透明六角形ボードで、対応するEMIシールにより識別する。PDFのtop/bottomはゲーム属性ではない。
+      必須6 outcomeは2026-09-23にルール所有者承認済み。列挙済み2カウント対象を個別確認する3件は未承認candidate。
+
+  - inventory_id: INV-TOKEN-FACES
+    category: トークン面
+    inventory_status: not_started
+    denominator_status: pending_inventory
+    dependency_status: blocked_by_transcription
+    count: pending_transcription
+    unit: printed_token_faces
+    source_ids: [SRC-TOKEN-0901-1, SRC-BOARD-A3-0915]
+    vector_required: pending
+    required_outcomes: pending
+    notes: >-
+      12ページを視覚確認したが、複製数、一意面、表裏関係の転記を行っていないため母数を推測しない。
+
+  - inventory_id: INV-MARKERS
+    category: マーカー
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: blocked_by_transcription
+    count: 24
+    unit: physical_marker_faces
+    source_ids: [SRC-SIGN-MARKER-0831]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      physical_marker_faces: 24
+      distinct_printed_labels: 20
+    notes: >-
+      兆候マーカーPDFを視覚確認。複製を含む24面、印字ラベル20種。
+      印字内容の構造化転記と独立照合は未着手。
+
+  - inventory_id: INV-SQUADRONS
+    category: スコードロン
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: blocked_by_transcription
+    content_status: partial
+    vector_coverage: not_started
+    count: 24
+    unit: squadron_plates
+    source_ids: [SRC-SQUADRON-0901]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      us: 12
+      prc: 12
+      structured_components: 3
+      fully_transcribed_components: 2
+      identity_only_components: 1
+      verified_source_fragments: 9
+      activation_rule_core_ids: 4
+      activation_state_ids: 7
+      activation_event_ids: 8
+      activation_visibility_decisions: 1
+      activation_approved_application_examples: 2
+      activation_approved_vectors: 2
+      activation_candidate_vectors: 0
+      activation_blocked_components: 0
+    notes: >-
+      全3ページ各8件、合計24プレートの母数は維持する。2026-09-25にKJ-500（STC-SQ-04）とKQ-200（STC-SQ-13）の
+      プレート・トークン情報を独立二回照合し、Y-9G（STC-SQ-12）は名称、コード、別コンポーネントであることだけを登録した。
+      残る21件とY-9Gの性能は未転記。2026-09-25、共通activationのRule Core ID 4件、State ID 7件、Event ID 8件、
+      field-level visibility及びKJ-500／KQ-200適用例を承認・登録した。2026-09-25、AAR fixtureの合法な広東配備を
+        acceptance_fixture_choiceとして固定したend-to-end vector 2件は2026-09-26にルール所有者承認済み。広東を機種固有基地とは扱わない。
+
+  - inventory_id: INV-BASE-BOARD-AREAS
+    category: 基地・ボード領域
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: blocked_by_transcription
+    count: 6
+    unit: base_board_regions
+    source_ids: [SRC-BOARD-A4-0815-01]
+    vector_required: pending
+    required_outcomes: pending
+    notes: "全6ページを視覚確認し、1ページ1基地領域を確認。2026-09-25、SRC-BOARD-A4-0815-01を現行基地群ボードのcanonical published normative sourceとして確定。基地別の値・式の全件転記は未完了。A3ボード上の他領域は別途pending_inventory。"
+
+  - inventory_id: INV-MAP-GEOGRAPHY
+    category: マップ上の地理要素
+    inventory_status: provisional
+    denominator_status: pending_inventory
+    dependency_status: blocked_by_transcription
+    count: 114
+    unit: geographic_elements
+    source_ids: [SRC-MAP-0808-0916-PNG]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      visible_hex_labels: 110
+      verified_hex_labels: 110
+      regions: pending_transcription
+      boundary_approved: 2
+      boundary_candidates: 0
+      boundary_ambiguous: 0
+      area_approved: 2
+      area_candidates: 0
+      area_ambiguous: 0
+      geography_approved_vectors: 2
+      geography_reviewable_vectors: 0
+      geography_blocked_vectors: 0
+      flag_attributions: pending_transcription
+    notes: >-
+      C1からM10まで11行×10列の110ヘックスを独立二回視覚確認。紫のBLUE生成位置西端境界とその東側72ヘックスは2026-09-24承認済み。
+      橙黄のRED生成位置東端は、所有者アンカー27辺と正本PNGから視覚転記したconnector 18辺を含む45辺の完全経路として、以西51ヘックスとともに2026-09-24承認済み。地域全体と国旗帰属は未転記。
+      0916 PNGを現行canonical、JPGを同版の配布用派生物、0808-1(2)を旧版として確定した。
+      転記と出典座標はPNGに基づける。JPGとの意味的一致は全体視覚比較と画素差分で確認済み。
+
+  - inventory_id: INV-SCENARIOS
+    category: シナリオ
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    count: 2
+    unit: scenarios
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      scenario_common_rules_sections: 1
+      scenarios: 2
+    notes: >-
+      現行0910-2の目次でシナリオ共通、シナリオ1、シナリオ2を確認。
+      PDFをpublished normative source、DOCXを編集元・抽出元として確定済み。
+
+  - inventory_id: INV-RULE-VECTOR-JUDGMENTS
+    category: rule vectorを必要とする判定
+    inventory_status: not_started
+    denominator_status: pending_inventory
+    dependency_status: blocked_by_transcription
+    count: pending_transcription
+    unit: decision_families_and_required_outcomes
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-BOARD-A4-0815-01, SRC-EMI-0811]
+    vector_required: pending
+    required_outcomes: pending
+    subcounts:
+      governance_candidate_families: 9
+      confirmed_rule_source_families: pending_transcription
+      emi_approved_vectors: 6
+      emi_candidate_vectors: 3
+      rate_approved_vectors: 40
+      rate_candidate_vectors: 0
+      md_approved_vectors: 9
+      md_candidate_vectors: 0
+      md_visibility_owner_decisions: 1
+      md_visibility_vectors: 9
+      immediate_enabler_approved_vectors: 18
+      immediate_enabler_approved_vectors_expansion: 29
+      immediate_enabler_approved_vectors_response_order: 14
+      immediate_enabler_candidate_vectors: 0
+      immediate_enabler_response_order_candidate_vectors: 0
+      immediate_enabler_response_order_decisions: 3
+      strategic_rate_response_chain_approved_vectors: 7
+      strategic_rate_response_chain_candidate_vectors: 0
+      immediate_enabler_trigger_candidate_vectors: 18
+      immediate_enabler_effect_candidate_vectors: 0
+      immediate_enabler_geography_approved_vectors: 2
+      immediate_enabler_geography_reviewable_vectors: 0
+      immediate_enabler_geography_blocked_vectors: 0
+      intel_approved_vectors: 6
+      intel_candidate_vectors: 0
+      cyber_dominance_detail_approved_vectors: 2
+      cyber_dominance_detail_candidate_vectors: 0
+      squadron_activation_rule_core_ids: 4
+      squadron_activation_state_ids: 7
+      squadron_activation_event_ids: 8
+      squadron_activation_visibility_decisions: 1
+      squadron_activation_approved_vectors: 2
+      squadron_activation_candidate_vectors: 0
+    notes: >-
+      統治文書に9つの初期候補群が示されるが、統治文書はゲームルールの規範出典ではないため母数へ採用しない。
+      正式資料の命題抽出を行う次段階まで全体母数はpending_transcription。
+      スコードロン共通activation語彙19件とfield-level visibilityは2026-09-25承認済み。KJ-500／KQ-200適用例も承認済みだが、
+        AAR fixtureの広東配備を合法な受入試験入力として固定したKJ-500／KQ-200 vector各1件は2026-09-26承認済み。
+        normative_scopeはany_legal_prc_base_groupであり、機種固有基地を設定しない。
+      既承認即応47件は不変。追加裁定3件を検証する14件も2026-09-24にルール所有者が承認済み。
+      EMIについてはPDF 13ページ、DOCX段落313-324、EMI現物ページ1のverified fragmentに基づく
+      必須6件をルール所有者が承認済み。電子戦機、MDトークンを持つ艦艇、MDトークンを持つADAの
+      2カウント処理を個別確認する3件は、同じ正式ルールfragmentへ追跡する未承認candidateである。
+      レートの限定18件とCyber Dominance 2件に加え、境界処理20件は2026-09-25にルール所有者承認済み。
+      カード固有の未収録効果・地理依存・更送表セルは母数外ではなく未収録のままである。
+      VRC優先5件の35件は2026-09-23にルール所有者承認済み。MD判定のD4訂正対象4件も、
+      訂正後fingerprintとの一致確認後に同日再承認済みである。確認票に明示された分岐だけを
+      承認済みcoverageへ算入し、同時即応の選択・解決順および両陣営インテル活動の実施順は未収録のままとする。
+      MD visibilityは2026-09-24の追加裁定DEC-COMBAT-MD-VISIBILITY-001を、既承認MD vector 9件すべてへ
+      公開期待値として追記した。既存vectorの承認状態と2026-09-23の承認履歴は変更していない。
+      追加即応9枚の29件は2026-09-24承認済みの別集合であり、既承認VRC優先35件へは重複算入しない。
+      US-SP-03／US-IW-04からSTC-IW-04への複合連鎖7件は2026-09-25承認済みで、単独カードvectorとは別の連鎖coverageとして追跡する。
+
+  - inventory_id: INV-RATES
+    category: レート
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    content_status: partial
+    vector_coverage: partial
+    count: 5
+    unit: rate_instances
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1]
+    vector_required: "yes"
+    required_outcomes:
+      - initial_values
+      - space_threshold_effects
+      - cyber_increase_success_and_failure
+      - cyber_dominance
+      - initiative_rate_difference
+      - strategic_scenario_change
+      - strategic_terminal_effect
+      - upper_and_lower_boundary_behavior_candidate
+      - enabler_specific_increase_and_decrease_pending
+      - geography_dependent_scenario_branches_pending
+    subcounts:
+      rate_instances: 5
+      per_faction_space_rates: 2
+      per_faction_cyber_rates: 2
+      shared_strategic_rates: 1
+      verified_pdf_fragments: 5
+      verified_board_fragments: 3
+      candidate_vectors: 0
+      approved_vectors: 40
+      strategic_rate_response_chain_approved_vectors: 7
+      strategic_rate_response_chain_candidate_vectors: 0
+    notes: >-
+      宇宙・サイバーはUS/PRC別、戦略は共有のため5インスタンス。正式ルールPDFとA3ボードの
+      数値・条件・タイミングは独立二回照合済み。範囲外変更はDEC-RATE-BOUNDARY-001とRC-RATE-BOUNDARY-001で規範化し、
+      境界20分岐は2026-09-25にルール所有者承認済み。カード固有の未収録増減、地理IDを要するシナリオ分岐、
+      二次元更送表の役職マッピングは未完了で、内容coverageはpartial。
+      既存18件は2026-09-23にルール所有者承認済みであるが、未収録分岐をcoveredまたはsatisfiedとは扱わない。
+      Cyber Dominanceの具体的対象集合と失効境界を確認する2件は2026-09-23にルール所有者承認済み。
+      US-SP-03／US-IW-04からSTC-IW-04へ至る連鎖7件は2026-09-25承認済み。既存レート20件とは重複算入せず、複合連鎖coverageとして別計上する。
+
+  - inventory_id: INV-CYBER-TARGET-GROUPS
+    category: Cyber Target Group
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    content_status: verified
+    vector_coverage: satisfied
+    count: 33
+    unit: normative_groups
+    source_ids: [SRC-ENABLER-0830-1, SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    vector_required: "yes"
+    required_outcomes:
+      - three_layer_identity_and_unique_membership
+      - absent_group_selection
+      - later_generated_token_inherits_group_effect
+      - card_duration_is_not_redefined
+    subcounts:
+      us_groups: 16
+      prc_groups: 17
+      mapped_side_and_token_pairs: 38
+      candidate_vectors: 0
+      approved_vectors: 3
+    notes: >-
+      DEC-CYBER-TARGET-GROUP-001により第1～5節、第7節、第8節を規範化した。
+      第6節Digital mapping及び第9節実装案は非規範である。規範境界を確認する3件は2026-09-27にルール所有者承認済み。
+
+  - inventory_id: INV-TURN-BASE-STAR-PAYMENT
+    category: ターン基本★支払い
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    content_status: verified
+    vector_coverage: satisfied
+    count: 1
+    unit: rule_family
+    source_ids: [SRC-RULE-0910-2-PDF]
+    vector_required: "yes"
+    required_outcomes:
+      - area_1_one_star_payment
+      - area_2_eight_cancel_two_star_preparation
+      - area_2_eight_reject_distributed_deployment
+      - area_2_nine_cancel_distributed_deployment
+      - distributed_deployment_all_three_to_area_3
+      - postcondition_area_2_at_least_six
+      - mixed_payment_rejected
+    subcounts:
+      candidate_vectors: 0
+      approved_vectors: 7
+      owner_decisions: 1
+    notes: >-
+      SRC-RULE-0910-2-PDF p.8の支払元と閾値を維持し、DEC-TURN-BASE-STAR-PAYMENT-001で
+      取消準備の選択、分散配置準備★3の全取消し及び処理後②最低★6を確定した。境界7件は2026-09-27にルール所有者承認済み。

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/rule-id-registry.schema.json",
+  "title": "AFWI-KAI Rule Core ID registry",
+  "type": "object",
+  "required": ["schema_version", "registry_status", "naming_policy", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "registry_status": { "enum": ["provisional", "approved"] },
+    "naming_policy": { "type": "object" },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_core_id", "status", "introduced_in", "supersedes", "superseded_by"],
+        "properties": {
+          "rule_core_id": { "type": "string", "pattern": "^RC-[A-Z0-9-]+$" },
+          "status": { "enum": ["active", "deprecated"] },
+          "introduced_in": { "type": "string" },
+          "deprecated_in": { "type": ["string", "null"] },
+          "reason": { "type": ["string", "null"] },
+          "supersedes": { "type": "array", "items": { "type": "string" } },
+          "superseded_by": { "type": "array", "items": { "type": "string" } }
+          ,"authority_type": { "enum": ["source_rule", "correction_decision", "addition_decision"] }
+          ,"scope": { "type": "string" }
+          ,"source_fragment_ids": { "type": "array", "items": { "type": "string" } }
+          ,"decision_ids": { "type": "array", "items": { "type": "string" } }
+          ,"rule_vector_coverage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["status", "approved_vector_ids", "candidate_vector_ids"],
+            "properties": {
+              "status": { "enum": ["approved", "approved_with_candidates", "candidate", "not_applicable"] },
+              "approved_vector_ids": { "type": "array", "items": { "type": "string" } },
+              "candidate_vector_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

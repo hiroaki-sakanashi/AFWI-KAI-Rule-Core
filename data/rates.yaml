@@ -1,0 +1,290 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: reviewed
+rates:
+  - rate_id: RATE-SPACE-US
+    name_ja: US宇宙レート
+    rate_kind: space
+    holder: US
+    current_value: { carrier: STATE-RATE-SPACE-US, value_at_runtime: public_state }
+    initial_value: 3
+    bounds: { minimum: 0, maximum: 4, maximum_display: "4+" }
+    change:
+      increment_amount: not_stated
+      decrement_amount: not_stated
+      condition: enabler_card_effect
+      actor: card_defined
+      timing: card_defined
+      boundary_behavior: { policy_rule_core_id: RC-RATE-BOUNDARY-001, decision_id: DEC-RATE-BOUNDARY-001 }
+    state_id: STATE-RATE-SPACE-US
+    public: true
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-SPACE-RANGE-001, RC-RATE-SPACE-PENALTY-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    applicability: { scenarios: all_checked_scenarios, faction: US }
+    status: reviewed
+
+  - rate_id: RATE-SPACE-PRC
+    name_ja: PRC宇宙レート
+    rate_kind: space
+    holder: PRC
+    current_value: { carrier: STATE-RATE-SPACE-PRC, value_at_runtime: public_state }
+    initial_value: 3
+    bounds: { minimum: 0, maximum: 4, maximum_display: "4+" }
+    change:
+      increment_amount: not_stated
+      decrement_amount: not_stated
+      condition: enabler_card_effect
+      actor: card_defined
+      timing: card_defined
+      boundary_behavior: { policy_rule_core_id: RC-RATE-BOUNDARY-001, decision_id: DEC-RATE-BOUNDARY-001 }
+    state_id: STATE-RATE-SPACE-PRC
+    public: true
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-SPACE-RANGE-001, RC-RATE-SPACE-PENALTY-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    applicability: { scenarios: all_checked_scenarios, faction: PRC }
+    status: reviewed
+
+  - rate_id: RATE-CYBER-US
+    name_ja: USサイバーレート
+    rate_kind: cyber
+    holder: US
+    current_value: { carrier: STATE-RATE-CYBER-US, value_at_runtime: public_state }
+    initial_value: 1
+    bounds: { minimum: 0, maximum: 4, maximum_display: "4+" }
+    change:
+      increment_amount: 1
+      decrement_amount: not_stated
+      condition: enabler_card_effect_and_threshold_roll
+      actor: card_defined
+      timing: card_defined
+      threshold_by_transition: { "0_to_1": 2, "1_to_2": 3, "2_to_3": 4, "3_to_4": 4 }
+      boundary_behavior: { policy_rule_core_id: RC-RATE-BOUNDARY-001, decision_id: DEC-RATE-BOUNDARY-001 }
+    state_id: STATE-RATE-CYBER-US
+    public: true
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-CYBER-RANGE-001, RC-RATE-CYBER-INCREASE-001, RC-RATE-CYBER-DOMINANCE-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    applicability: { scenarios: all_checked_scenarios, faction: US }
+    status: reviewed
+
+  - rate_id: RATE-CYBER-PRC
+    name_ja: PRCサイバーレート
+    rate_kind: cyber
+    holder: PRC
+    current_value: { carrier: STATE-RATE-CYBER-PRC, value_at_runtime: public_state }
+    initial_value: 1
+    bounds: { minimum: 0, maximum: 4, maximum_display: "4+" }
+    change:
+      increment_amount: 1
+      decrement_amount: not_stated
+      condition: enabler_card_effect_and_threshold_roll
+      actor: card_defined
+      timing: card_defined
+      threshold_by_transition: { "0_to_1": 2, "1_to_2": 3, "2_to_3": 4, "3_to_4": 4 }
+      boundary_behavior: { policy_rule_core_id: RC-RATE-BOUNDARY-001, decision_id: DEC-RATE-BOUNDARY-001 }
+    state_id: STATE-RATE-CYBER-PRC
+    public: true
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-CYBER-RANGE-001, RC-RATE-CYBER-INCREASE-001, RC-RATE-CYBER-DOMINANCE-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    applicability: { scenarios: all_checked_scenarios, faction: PRC }
+    status: reviewed
+
+  - rate_id: RATE-STRATEGIC
+    name_ja: 戦略レート
+    rate_kind: strategic
+    holder: shared_between_factions
+    current_value: { carrier: STATE-RATE-STRATEGIC, value_at_runtime: public_state, value_model: center_and_faction_direction }
+    initial_value: { center: 0 }
+    bounds:
+      minimum: not_applicable
+      maximum: not_applicable
+      direction_limits: { US: 6, PRC: 6 }
+      direction_terminal_display: { US: "6+", PRC: "6+" }
+    change:
+      increment_amount: scenario_or_card_defined
+      decrement_amount: not_applicable
+      condition: scenario_table_or_enabler_card_effect
+      actor: cause_defined
+      timing: cause_defined
+      boundary_behavior: { policy_rule_core_id: RC-RATE-BOUNDARY-001, decision_id: DEC-RATE-BOUNDARY-001 }
+    state_id: STATE-RATE-STRATEGIC
+    public: true
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001, RC-RATE-STRATEGIC-SCENARIO-001, RC-RATE-STRATEGIC-END-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    applicability: { scenarios: [scenario_1, scenario_2], faction: shared }
+    status: reviewed
+
+rate_rules:
+  - rule_core_id: RC-RATE-MODEL-001
+    type: rate_ownership_and_initialization
+    parameters:
+      separate_by_faction: [space, cyber]
+      shared_between_factions: [strategic]
+      initialization_event_id: EVENT-RATE-INITIALIZED
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+  - rule_core_id: RC-RATE-SPACE-RANGE-001
+    type: range
+    parameters: { rate_kind: space, initial_value: 3, minimum: 0, maximum: 4, maximum_display: "4+" }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-SPACE-PENALTY-001
+    type: threshold_effects
+    parameters:
+      effects:
+        - { when: { maximum_value: 2 }, targets: [self_UAS, self_USV], result: { all_rolls: DIS } }
+        - { when: { maximum_value: 1 }, targets: [self_missile_defense], result: { against_attacks_from_range_at_least_hexes: 1, validity: invalid }, exception: { attack_from_same_hex: unaffected } }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-CYBER-RANGE-001
+    type: range
+    parameters: { rate_kind: cyber, initial_value: 1, minimum: 0, maximum: 4, maximum_display: "4+" }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-CYBER-INCREASE-001
+    type: threshold_roll
+    parameters:
+      die: D6
+      success_operator: greater_than_or_equal
+      increment_on_success: 1
+      unchanged_on_failure: true
+      thresholds: { "0_to_1": 2, "1_to_2": 3, "2_to_3": 4, "3_to_4": 4 }
+      attempted_event_id: EVENT-RATE-CHANGE-ATTEMPTED
+      changed_event_id: EVENT-RATE-CHANGED
+      unchanged_event_id: EVENT-RATE-UNCHANGED
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-CYBER-DOMINANCE-001
+    type: end_of_ato_threshold_effect
+    parameters:
+      threshold: 4
+      evaluated_at: ATO_cycle_end
+      applies_during: next_ATO_cycle
+      result_state_id: STATE-CYBER-DOMINANCE
+      event_id: EVENT-CYBER-DOMINANCE-ESTABLISHED
+      effects:
+        - { operation: reveal_all, target: opponent_sign_markers, visibility: public }
+        - { operation: reveal_all, target: opponent_enablers_selected_for_current_ATO, visibility: public }
+        - { operation: acquire_all, target: deployed_squadron_plates, state_id: STATE-SQUADRON-ACQUIRED, visibility: public }
+        - operation: decrease
+          operator: subtract
+          target: opponent_usable_command_stars
+          amount: 10
+          operand: current_star_value
+          fixed_target_value: none
+          preserves_other_reductions: true
+          preserves_other_constraints: true
+          examples:
+            - { current_star_value: 40, other_reductions: none, other_constraints: none, result: 30 }
+            - { current_star_value: 35, applied_reduction: undersea_cable_cut_minus_5, result: 25 }
+            - { active_constraint: distributed_deployment_star_3, constraint_after_operation: unchanged }
+      expires_at: next_ATO_cycle_end
+      expiry_event_id: EVENT-CYBER-DOMINANCE-EXPIRED
+      rollback_on_expiry: { revealed_components: false, acquired_squadrons: false }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-INITIATIVE-001
+    type: derived_roll_modifier
+    parameters:
+      base_die: D4
+      compared_sum: [cyber_rate, space_rate]
+      modifier: difference
+      applies_only_to: faction_with_strictly_greater_sum
+      event_id: EVENT-RATE-DERIVED-MODIFIER-APPLIED
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-INTEL-001
+    type: derived_count
+    parameters: { result: confirmable_count, formula: cyber_rate_plus_space_rate, dominance_override: full_reveal }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    status: reviewed
+  - rule_core_id: RC-RATE-STRATEGIC-RANGE-001
+    type: directional_range
+    parameters: { initial_center: 0, directions: [BLUE_advantage, RED_advantage], actual_limit_each_direction: 6, terminal_display_each_direction: "6+" }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    status: reviewed
+  - rule_core_id: RC-RATE-STRATEGIC-SCENARIO-001
+    type: scenario_change_table
+    parameters:
+      shared_causes:
+        - { cause: destroy_US_CSG, direction: PRC_advantage, amount: 3 }
+        - { cause: destroy_PRC_CBG, direction: US_advantage, amount: 2 }
+        - { cause: destroy_one_squadron_plate_or_one_SAG, direction: achiever_advantage, amount: 1 }
+      scenario_1:
+        - { timing: each_ATO_cycle_end, condition: only_one_factions_surface_unit_tokens_in_south_china_sea_contested_area, direction: sole_present_faction_advantage, amount: 2 }
+      scenario_2:
+        - { timing: each_ATO_cycle_end, condition: only_PRC_surface_unit_tokens_in_south_china_sea_contested_area, direction: PRC_advantage, amount: 1 }
+      geography_ids: pending_transcription
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE]
+    status: reviewed
+  - rule_core_id: RC-RATE-STRATEGIC-END-001
+    type: game_end
+    parameters:
+      normal_victory: { timing: game_end, result: side_of_zero_is_superior, zero_result: draw }
+      dismissal: { timing: ATO_cycle_end, threshold: "6+", result: disadvantaged_player_dismissed_and_game_ends, exact_role_matrix: scenario_table_defined }
+      scenario_2_additional_end: { timing: each_ATO_cycle_end_from_day_1, condition: only_US_surface_unit_tokens_in_south_china_sea_contested_area, result: US_victory, signs_ignored: true }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    status: reviewed
+  - rule_core_id: RC-RATE-VISIBILITY-001
+    type: public_state
+    parameters: { rate_values_public: true, separate_markers: [space_US, space_PRC, cyber_US, cyber_PRC], shared_marker: strategic }
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    status: reviewed
+
+  - rule_core_id: RC-RATE-BOUNDARY-001
+    type: boundary_resolution
+    parameters:
+      value_limits:
+        space: { minimum: 0, maximum: 4, terminal_display: "4+" }
+        cyber: { minimum: 0, maximum: 4, terminal_display: "4+" }
+        strategic: { center: 0, direction_limits: { US: 6, PRC: 6 }, terminal_display: "6+" }
+      retain_hidden_overflow: false
+      accumulate_same_direction_excess: false
+      actual_value_policy: clamp_to_displayed_range
+      optional_single_effect_at_same_direction_boundary:
+        legal_candidate: false
+        declaration_allowed: false
+        determination_performed: false
+        use_count_consumed: false
+        post_use_processing_performed: false
+        invalid_direct_command: reject_without_state_change
+      forced_change_at_same_direction_boundary:
+        origin_process_resolves: true
+        actual_delta: 0
+        rate_changed_event_emitted: false
+        downstream_rate_change_trigger_opens: false
+        origin_event_preserved: true
+      multiple_independent_effects:
+        legal_if_any_effect_changes_game_state: true
+        evaluate_each_effect_independently: true
+        unchanged_rate_effect_emits_rate_changed_event: false
+        other_effects_resolve_normally: true
+      opposite_direction_from_strategic_boundary:
+        operand: actual_boundary_value_6
+        operation: subtract_requested_amount_toward_center
+        symmetric_between_factions: true
+      event_policy:
+        rate_changed_event_id: EVENT-RATE-CHANGED
+        emit_only_when_actual_delta_nonzero: true
+        no_new_event_for_ineligible_or_zero_delta: true
+      endpoint_effect_evaluation:
+        timing: ATO_cycle_end
+        operand: actual_rate_value_at_evaluation
+        arrival_history_irrelevant: true
+      STC_CY_05_at_cyber_zero:
+        legal_when_triggering_increase_can_be_invalidated: true
+        invalidate_triggering_increase: true
+        additional_decrease_requested: 1
+        additional_decrease_actual: 0
+        final_value: 0
+        card_use_state_updates_normally: true
+        distinguish_invalidation_and_additional_decrease: true
+        additional_decrease_rate_changed_event_emitted: false
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    status: reviewed

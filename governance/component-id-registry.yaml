@@ -1,0 +1,76 @@
+schema_version: 0.1.0
+registry_status: approved
+naming_policy:
+  enabler_pattern: COMP-ENABLER-<PRINTED-CARD-CODE>
+  squadron_pattern: COMP-SQUADRON-<PRINTED-CODE>
+  printed_code_is_separate: true
+  lifecycle:
+    reuse: "一度採番したComponent IDは再利用しない。"
+    printed_code_change: "印字コードの表記変更だけではComponent IDを変更しない。"
+    identity_preserved: "コンポーネントの意味上の同一性が維持される限りComponent IDを維持する。"
+    split_merge_replacement: "分割・統合・意味上の置換では新IDを採番し、旧IDとの後継関係を記録する。"
+    deprecation: "廃止したIDは削除せずdeprecatedとして履歴を保持する。"
+components:
+  - { component_id: COMP-ENABLER-US-SP-03, category: enabler_card, printed_code: US-SP-03, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-SP-03即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-SP-04, category: enabler_card, printed_code: US-SP-04, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-SP-04即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-CY-04, category: enabler_card, printed_code: STC-CY-04, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-CY-04即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-CY-05, category: enabler_card, printed_code: STC-CY-05, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-CY-05即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-CY-03, category: enabler_card, printed_code: US-CY-03, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-CY-03即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-CY-05, category: enabler_card, printed_code: US-CY-05, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-CY-05即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-NV-07, category: enabler_card, printed_code: STC-NV-07, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-NV-07即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-NV-08, category: enabler_card, printed_code: STC-NV-08, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-NV-08即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-RF-05, category: enabler_card, printed_code: STC-RF-05, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-RF-05即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-AB-05, category: enabler_card, printed_code: US-AB-05, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-AB-05即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-EW-03, category: enabler_card, printed_code: US-EW-03, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-EW-03即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-AF-05, category: enabler_card, printed_code: US-AF-05, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-AF-05即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-AF-10, category: enabler_card, printed_code: US-AF-10, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-AF-10即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-IW-01, category: enabler_card, printed_code: US-IW-01, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-IW-01即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-IW-04, category: enabler_card, printed_code: US-IW-04, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-IW-04即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-US-IW-07, category: enabler_card, printed_code: US-IW-07, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "US-IW-07即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-IW-01, category: enabler_card, printed_code: STC-IW-01, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-IW-01即応カード", supersedes: [], superseded_by: [] }
+  - { component_id: COMP-ENABLER-STC-IW-04, category: enabler_card, printed_code: STC-IW-04, status: active, introduced_in: 0.11.0-preview-vrc, deprecated_in: null, meaning_identity: "STC-IW-04即応カード", supersedes: [], superseded_by: [] }
+  - component_id: COMP-SQUADRON-STC-SQ-04
+    category: squadron_plate
+    printed_code: STC-SQ-04
+    printed_name: KJ-500
+    faction: PRC
+    status: active
+    introduced_in: 0.15.0-preview-squadron-partial
+    deprecated_in: null
+    meaning_identity: "KJ-500スコードロンプレート"
+    supersedes: []
+    superseded_by: []
+    source_ids: [SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-SQUADRON-0901-P2-STC-SQ-04, FRAG-TOKEN-0901-1-P5-6-KJ-500]
+    digital_mappings: [PRC-SQ-KJ-500]
+    lifecycle: { rename_from: null, predecessor_id: null, successor_id: null, replacement_id: null }
+  - component_id: COMP-SQUADRON-STC-SQ-12
+    category: squadron_plate
+    printed_code: STC-SQ-12
+    printed_name: Y-9G
+    faction: PRC
+    status: active
+    introduced_in: 0.15.0-preview-squadron-partial
+    deprecated_in: null
+    meaning_identity: "Y-9Gスコードロンプレート"
+    supersedes: []
+    superseded_by: []
+    source_ids: [SRC-SQUADRON-0901]
+    source_fragment_ids: [FRAG-SQUADRON-0901-P3-STC-SQ-12]
+    digital_mappings: []
+    lifecycle: { rename_from: null, predecessor_id: null, successor_id: null, replacement_id: null }
+  - component_id: COMP-SQUADRON-STC-SQ-13
+    category: squadron_plate
+    printed_code: STC-SQ-13
+    printed_name: KQ-200
+    faction: PRC
+    status: active
+    introduced_in: 0.15.0-preview-squadron-partial
+    deprecated_in: null
+    meaning_identity: "KQ-200スコードロンプレート"
+    supersedes: []
+    superseded_by: []
+    source_ids: [SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-SQUADRON-0901-P3-STC-SQ-13, FRAG-TOKEN-0901-1-P5-6-KQ-200]
+    digital_mappings: [PRC-SQ-KQ-200]
+    lifecycle: { rename_from: null, predecessor_id: null, successor_id: null, replacement_id: null }

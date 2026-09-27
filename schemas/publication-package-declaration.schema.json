@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/publication-package-declaration.schema.json",
+  "title": "AFWI-KAI Publication Package declaration",
+  "description": "A Publication Package versions distribution state separately from Rule Core normative releases.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "package_id",
+    "package_status",
+    "release_id",
+    "release_manifest",
+    "publication_date",
+    "normative_content_changed",
+    "rights_clearance_record",
+    "license_declaration",
+    "artifacts",
+    "excluded_artifacts",
+    "package_integrity"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "package_id": { "type": "string", "pattern": "^PUB-[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}-[0-9]{2}$" },
+    "package_status": { "enum": ["proposal", "approved", "published", "withdrawn"] },
+    "release_id": { "type": "string", "pattern": "^RC-[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}-[0-9]{2}$" },
+    "release_manifest": { "$ref": "#/$defs/pathHashReference" },
+    "publication_date": { "type": ["string", "null"], "format": "date" },
+    "withdrawal": {
+      "anyOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/withdrawalRecord" }
+      ]
+    },
+    "normative_content_changed": { "const": false },
+    "rights_clearance_record": { "$ref": "#/$defs/pathHashReference" },
+    "license_declaration": { "$ref": "#/$defs/licenseDeclaration" },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/packageArtifact" },
+      "uniqueItems": true
+    },
+    "excluded_artifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/excludedArtifact" },
+      "uniqueItems": true
+    },
+    "public_source_receipts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/publicSourceReceipt" },
+      "uniqueItems": true
+    },
+    "package_integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hash_profile", "artifact_count", "aggregate_sha256"],
+      "properties": {
+        "hash_profile": { "const": "afwi-content-sha256-v1" },
+        "artifact_count": { "type": "integer", "minimum": 1 },
+        "aggregate_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "known_issues": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "package_status": { "enum": ["approved", "published", "withdrawn"] } }, "required": ["package_status"] },
+      "then": {
+        "properties": {
+          "license_declaration": {
+            "properties": { "status": { "const": "approved" } },
+            "required": ["status"]
+          },
+          "artifacts": {
+            "items": {
+              "allOf": [
+                { "$ref": "#/$defs/packageArtifact" },
+                { "properties": { "source_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" } } }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "package_status": { "enum": ["published", "withdrawn"] } }, "required": ["package_status"] },
+      "then": {
+        "properties": {
+          "publication_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "package_status": { "const": "withdrawn" } }, "required": ["package_status"] },
+      "then": {
+        "required": ["withdrawal"],
+        "properties": {
+          "withdrawal": { "$ref": "#/$defs/withdrawalRecord" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "contentHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hash_profile", "content_kind", "media_type", "sha256"],
+      "properties": {
+        "hash_profile": { "const": "afwi-content-sha256-v1" },
+        "content_kind": { "enum": ["text", "binary"] },
+        "media_type": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "withdrawalRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["withdrawn_at", "reason", "status_record_reference"],
+      "properties": {
+        "withdrawn_at": { "type": "string", "format": "date" },
+        "reason": { "type": "string", "minLength": 1 },
+        "status_record_reference": { "type": "string", "minLength": 1 }
+      }
+    },
+    "pathHashReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "hash"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "hash": { "$ref": "#/$defs/contentHash" }
+      }
+    },
+    "licenseDeclaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "copyright_holder", "copyright_year", "attribution_display_name", "official_url",
+        "non_software", "software", "automatic_license_exclusions"
+      ],
+      "properties": {
+        "status": { "enum": ["policy_approved_identity_pending", "approved"] },
+        "copyright_holder": { "type": ["string", "null"], "minLength": 1 },
+        "copyright_year": { "type": ["integer", "null"], "minimum": 2026 },
+        "attribution_display_name": { "type": ["string", "null"], "minLength": 1 },
+        "official_url": { "type": ["string", "null"], "format": "uri" },
+        "copyright_notice": { "type": ["string", "null"] },
+        "attribution_notice": { "type": ["string", "null"] },
+        "non_software": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["license_id", "license_url", "applies_to"],
+          "properties": {
+            "license_id": { "const": "CC-BY-SA-4.0" },
+            "license_url": { "const": "https://creativecommons.org/licenses/by-sa/4.0/" },
+            "applies_to": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "software": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["license_id", "scope_prefixes", "excluded_repository_prefixes"],
+          "properties": {
+            "license_id": { "const": "MIT" },
+            "scope_prefixes": {
+              "type": "array",
+              "minItems": 1,
+              "contains": { "const": "rule-core/pipeline/" },
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "excluded_repository_prefixes": {
+              "type": "array",
+              "minItems": 2,
+              "allOf": [
+                { "contains": { "const": "src/" } },
+                { "contains": { "const": "scripts/" } }
+              ],
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "automatic_license_exclusions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["raw-source", "map-or-board-image", "geography-image-evidence", "third-party-material", "original-afwi-derived-element", "individual-rights-declaration-required"] },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "approved" } }, "required": ["status"] },
+          "then": {
+            "properties": {
+              "copyright_holder": { "type": "string", "minLength": 1 },
+              "copyright_year": { "type": "integer", "minimum": 2026 },
+              "attribution_display_name": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      ]
+    },
+    "packageArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "artifact_class", "role", "source_commit", "hash", "rights_clearance_record_id", "license_id"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "artifact_class": { "enum": ["normative", "schema", "registry", "decision", "validator", "coverage", "traceability", "governance", "release-metadata"] },
+        "role": { "enum": ["normative-rule", "normative-data", "approved-vector", "schema", "registry", "decision", "coverage", "traceability", "field-ownership", "validator", "generator", "hash-processing", "governance", "release-metadata", "license", "notice", "source-metadata"] },
+        "source_commit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+        "hash": { "$ref": "#/$defs/contentHash" },
+        "rights_clearance_record_id": { "type": "string", "minLength": 1 },
+        "license_id": { "enum": ["CC-BY-SA-4.0", "MIT"] }
+      }
+    },
+    "excludedArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "exclusion_class", "reason"],
+      "properties": {
+        "identity": { "type": "string", "minLength": 1 },
+        "exclusion_class": { "enum": ["candidate-vector", "raw-source", "image-evidence", "owner-review", "digital-audit-history", "internal-validation-snapshot", "other"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "publicSourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "sha256", "media_type", "size_bytes", "authority_classification", "raw_file_included"],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "media_type": { "type": "string", "minLength": 1 },
+        "size_bytes": { "type": "integer", "minimum": 1 },
+        "authority_classification": { "type": "string", "minLength": 1 },
+        "raw_file_included": { "const": false }
+      }
+    }
+  }
+}

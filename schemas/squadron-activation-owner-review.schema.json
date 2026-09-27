@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/squadron-activation-owner-review.schema.json",
+  "title": "KJ-500 / KQ-200 activation candidate owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_type", "non_normative", "generated_at", "generator", "vector_count", "fixture_assessment", "fingerprint_method", "vectors"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "squadron_activation_candidate_owner_review" },
+    "non_normative": { "const": true },
+    "generated_at": { "const": "2026-09-26" },
+    "generator": { "const": "rule-core/pipeline/generate-squadron-activation-candidate-review.py" },
+    "vector_count": { "const": 2 },
+    "fixture_assessment": { "type": "object" },
+    "fingerprint_method": { "type": "object" },
+    "vectors": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["vector_id", "title", "status", "component_id", "selected_base", "input_classification", "normative_scope", "does_not_establish_component_home_base", "damage_state", "maintenance_formula", "fixed_D4", "expected_events", "expected_final_state", "visibility", "aar_projection", "rule_core_ids", "source_fragment_ids", "decision_ids", "fingerprint_sha256", "pre_approval_full_record_fingerprint_sha256", "approved_full_record_fingerprint_sha256", "owner_answer"],
+        "properties": {
+          "vector_id": { "type": "string", "pattern": "^RV-SQUADRON-(KJ-500|KQ-200)-ACTIVATION-001$" },
+          "title": { "type": "string" },
+          "status": { "const": "approved" },
+          "component_id": { "type": "string", "pattern": "^COMP-SQUADRON-" },
+          "selected_base": { "type": "object" },
+          "input_classification": { "const": "acceptance_fixture_choice" },
+          "normative_scope": { "const": "any_legal_prc_base_group" },
+          "does_not_establish_component_home_base": { "const": true },
+          "damage_state": { "type": "object" },
+          "maintenance_formula": { "type": "string" },
+          "fixed_D4": { "const": 2 },
+          "expected_events": { "type": "array", "minItems": 6, "maxItems": 6 },
+          "expected_final_state": { "type": "object" },
+          "visibility": { "type": "object" },
+          "aar_projection": { "type": "object" },
+          "rule_core_ids": { "type": "array", "minItems": 3, "uniqueItems": true },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "uniqueItems": true },
+          "decision_ids": { "type": "array", "items": { "type": "string", "pattern": "^DEC-" } },
+          "fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "pre_approval_full_record_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "approved_full_record_fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "owner_answer": {
+            "type": "object", "additionalProperties": false,
+            "required": ["answer", "approved_by", "approved_at"],
+            "properties": {
+              "answer": { "const": "この記述で正しい" },
+              "approved_by": { "const": "ルール所有者" },
+              "approved_at": { "const": "2026-09-26" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

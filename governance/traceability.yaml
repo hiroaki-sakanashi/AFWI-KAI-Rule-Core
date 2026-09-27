@@ -1,0 +1,1185 @@
+schema_version: 0.1.0
+rule_core_version: 0.15.0-preview-squadron-activation
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+mappings:
+  - target_id: COMP-SQUADRON-STC-SQ-04
+    target_type: component
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-SQUADRON-0901-P2-STC-SQ-04, FRAG-TOKEN-0901-1-P5-6-KJ-500]
+    decision_ids: []
+    rule_core_ids: []
+    artifacts: [rule-core/data/squadrons.yaml, rule-core/governance/component-id-registry.yaml, rule-core/generated/squadrons-reference.md, rule-core/generated/digital/squadrons.json]
+  - target_id: COMP-SQUADRON-STC-SQ-12
+    target_type: component
+    source_ids: [SRC-SQUADRON-0901]
+    source_fragment_ids: [FRAG-SQUADRON-0901-P3-STC-SQ-12]
+    decision_ids: []
+    rule_core_ids: []
+    artifacts: [rule-core/data/squadrons.yaml, rule-core/governance/component-id-registry.yaml]
+  - target_id: COMP-SQUADRON-STC-SQ-13
+    target_type: component
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-SQUADRON-0901, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-SQUADRON-0901-P3-STC-SQ-13, FRAG-TOKEN-0901-1-P5-6-KQ-200]
+    decision_ids: []
+    rule_core_ids: []
+    artifacts: [rule-core/data/squadrons.yaml, rule-core/governance/component-id-registry.yaml, rule-core/generated/squadrons-reference.md, rule-core/generated/digital/squadrons.json]
+  - target_id: COMP-EMI-BLUE
+    target_type: component
+    source_ids: [SRC-EMI-0811]
+    source_fragment_ids: [FRAG-EMI-0811-BLUE-COMPONENT]
+    decision_ids: [DEC-EMI-COMPONENT-001]
+    rule_core_ids: [RC-EMI-COMPONENT-001, RC-EMI-STATE-001, RC-EMI-EFFECT-001]
+    artifacts:
+      - rule-core/data/emi-components.yaml
+      - rule-core/generated/emi-components-reference.md
+      - rule-core/generated/digital/emi.json
+
+  - target_id: COMP-EMI-RED
+    target_type: component
+    source_ids: [SRC-EMI-0811]
+    source_fragment_ids: [FRAG-EMI-0811-RED-COMPONENT]
+    decision_ids: [DEC-EMI-COMPONENT-001]
+    rule_core_ids: [RC-EMI-COMPONENT-001, RC-EMI-STATE-001, RC-EMI-EFFECT-001]
+    artifacts:
+      - rule-core/data/emi-components.yaml
+      - rule-core/generated/emi-components-reference.md
+      - rule-core/generated/digital/emi.json
+
+  - target_id: RC-EMI-STACK-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI, FRAG-RULE-0910-2-DOCX-EMI-SECTION]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001]
+    artifacts: [rule-core/rules/emi.md, rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RC-EMI-STATE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-EMI-0811]
+    source_fragment_ids:
+      - FRAG-RULE-0910-2-PDF-P13-EMI
+      - FRAG-RULE-0910-2-DOCX-EMI-SECTION
+      - FRAG-EMI-0811-BLUE-COMPONENT
+      - FRAG-EMI-0811-RED-COMPONENT
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STATE-001]
+    artifacts: [rule-core/rules/emi.md, rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RC-EMI-EFFECT-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-EMI-0811]
+    source_fragment_ids:
+      - FRAG-RULE-0910-2-PDF-P13-EMI
+      - FRAG-RULE-0910-2-DOCX-EMI-SECTION
+      - FRAG-EMI-0811-BLUE-COMPONENT
+      - FRAG-EMI-0811-RED-COMPONENT
+    decision_ids: []
+    rule_core_ids: [RC-EMI-EFFECT-001]
+    artifacts: [rule-core/rules/emi.md, rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RC-EMI-COMPONENT-001
+    target_type: rule
+    source_ids: [SRC-EMI-0811]
+    source_fragment_ids: [FRAG-EMI-0811-BLUE-COMPONENT, FRAG-EMI-0811-RED-COMPONENT]
+    decision_ids: [DEC-EMI-COMPONENT-001]
+    rule_core_ids: [RC-EMI-COMPONENT-001]
+    artifacts: [rule-core/data/emi-components.yaml, rule-core/rules/emi.md]
+
+  - target_id: RV-EMI-BELOW-THRESHOLD-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RV-EMI-AT-THRESHOLD-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-EMI-0811]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI, FRAG-EMI-0811-BLUE-COMPONENT]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RV-EMI-DOUBLE-COUNT-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RV-EMI-EXCLUDED-MARKERS-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RV-EMI-DIS-EFFECT-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-EMI-0811]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI, FRAG-EMI-0811-RED-COMPONENT]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STATE-001, RC-EMI-EFFECT-001]
+    artifacts: [rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RV-EMI-CONDITION-CEASES-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi.yaml]
+
+  - target_id: RV-EMI-DOUBLE-COUNT-ELECTRONIC-WARFARE-AIRCRAFT-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi-double-count-candidates.yaml]
+
+  - target_id: RV-EMI-DOUBLE-COUNT-MD-SHIP-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi-double-count-candidates.yaml]
+
+  - target_id: RV-EMI-DOUBLE-COUNT-MD-ADA-001
+    target_type: rule_vector
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI]
+    decision_ids: []
+    rule_core_ids: [RC-EMI-STACK-001, RC-EMI-STATE-001]
+    artifacts: [rule-core/tests/rule-vectors/emi-double-count-candidates.yaml]
+
+  - target_id: RATE-SPACE-US
+    target_type: rate
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-SPACE-RANGE-001, RC-RATE-SPACE-PENALTY-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json]
+  - target_id: RATE-SPACE-PRC
+    target_type: rate
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-SPACE-RANGE-001, RC-RATE-SPACE-PENALTY-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json]
+  - target_id: RATE-CYBER-US
+    target_type: rate
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-CYBER-RANGE-001, RC-RATE-CYBER-INCREASE-001, RC-RATE-CYBER-DOMINANCE-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json]
+  - target_id: RATE-CYBER-PRC
+    target_type: rate
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-CYBER-RANGE-001, RC-RATE-CYBER-INCREASE-001, RC-RATE-CYBER-DOMINANCE-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json]
+  - target_id: RATE-STRATEGIC
+    target_type: rate
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001, RC-RATE-STRATEGIC-SCENARIO-001, RC-RATE-STRATEGIC-END-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md, rule-core/generated/rates-reference.md, rule-core/generated/digital/rates.json]
+
+  - target_id: STATE-RATE-SPACE-US
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/rates.yaml]
+  - target_id: STATE-RATE-SPACE-PRC
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/rates.yaml]
+  - target_id: STATE-RATE-CYBER-US
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/rates.yaml]
+  - target_id: STATE-RATE-CYBER-PRC
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/rates.yaml]
+  - target_id: STATE-RATE-STRATEGIC
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-BOUNDARY-001, RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/rates.yaml]
+  - target_id: STATE-CYBER-DOMINANCE
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/rates.yaml]
+
+  - target_id: EVENT-RATE-INITIALIZED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-MODEL-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: EVENT-RATE-CHANGE-ATTEMPTED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: EVENT-RATE-CHANGED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001, RC-RATE-STRATEGIC-SCENARIO-001, RC-RATE-BOUNDARY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: EVENT-RATE-UNCHANGED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: EVENT-CYBER-DOMINANCE-ESTABLISHED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: EVENT-RATE-DERIVED-MODIFIER-APPLIED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: EVENT-STRATEGIC-DISMISSAL
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001, RC-RATE-BOUNDARY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/tests/rule-vectors/rates.yaml]
+
+  - target_id: RC-RATE-MODEL-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-MODEL-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-SPACE-RANGE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-SPACE-RANGE-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-SPACE-PENALTY-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-CYBER-RANGE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-RANGE-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-CYBER-INCREASE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-CYBER-DOMINANCE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-INITIATIVE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-INTEL-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-STRATEGIC-RANGE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-RANGE-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-STRATEGIC-SCENARIO-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-SCENARIO-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-STRATEGIC-END-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+  - target_id: RC-RATE-VISIBILITY-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-VISIBILITY-001]
+    artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md]
+
+  - target_id: RV-RATE-INITIALIZE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-MODEL-001, RC-RATE-SPACE-RANGE-001, RC-RATE-CYBER-RANGE-001, RC-RATE-STRATEGIC-RANGE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-SPACE-TWO-DIS-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-SPACE-ONE-MD-LONG-RANGE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-SPACE-ONE-MD-SAME-HEX-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-SPACE-PENALTY-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-CYBER-INCREASE-BELOW-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-CYBER-INCREASE-AT-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-CYBER-DOMINANCE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-INITIATIVE-DIFFERENCE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-INITIATIVE-NO-ADVANTAGE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INITIATIVE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-STRATEGIC-SQUADRON-SCENARIO1-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-SCENARIO-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-STRATEGIC-SQUADRON-SCENARIO2-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-SCENARIO-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-STRATEGIC-DISMISSAL-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: COMP-ENABLER-US-SP-03
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-US-SP-04
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-04]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-STC-CY-04
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-STC-CY-05
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-US-CY-03
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-03]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-US-CY-05
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-STC-NV-07
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-STC-NV-08
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: COMP-ENABLER-STC-RF-05
+    target_type: component
+    source_ids: [SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml]
+
+  - target_id: RC-COMBAT-MD-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001]
+    artifacts: [rule-core/rules/combat.md, rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RC-COMBAT-MD-RESOLUTION-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001]
+    artifacts: [rule-core/rules/combat.md, rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RC-COMBAT-MD-LAYERED-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-LAYERED-001]
+    artifacts: [rule-core/rules/combat.md, rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RC-COMBAT-MD-VISIBILITY-001
+    target_type: rule
+    source_ids: []
+    source_fragment_ids: []
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/rules/interaction-and-visibility.md, rule-core/governance/decisions.yaml, rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RC-ENABLER-IMMEDIATE-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-US-SP-04, FRAG-ENABLER-0830-1-STC-CY-04, FRAG-ENABLER-0830-1-STC-CY-05, FRAG-ENABLER-0830-1-US-CY-03, FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001, DEC-ENABLER-NV-MULTIPLE-001, DEC-ENABLER-CYBER-COUNTER-SCOPE-001, DEC-ENABLER-US-AF-10-MD-TIMING-001]
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/rules/enablers.md, rule-core/data/enablers.yaml, rule-core/tests/rule-vectors/immediate-enablers.yaml, rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml, rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml]
+
+  - target_id: RC-INTEL-ACTIVITY-001
+    target_type: rule
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/rules/detection-and-intel.md, rule-core/tests/rule-vectors/intel.yaml]
+  - target_id: STATE-MD-LAYER-PENDING
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: STATE-MD-ANTI-AIR-AMMUNITION
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-TOKEN-0901-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-TOKEN-0901-1-ENTIRE]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: STATE-INTEL-CONFIRMATIONS-REMAINING
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: STATE-COMPONENT-REVEALED
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001, RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: STATE-SQUADRON-ACQUIRED
+    target_type: state
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001, RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-MD-DECLARED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-MD-PASSED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-MD-RESOLVED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-IMMEDIATE-ENABLER-PLAYED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-INTEL-TARGET-CONFIRMED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-COMPONENT-REVEALED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001, RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-INTEL-ACQUISITION-SUCCEEDED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-INTEL-ACQUISITION-FAILED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+
+  - target_id: EVENT-CYBER-DOMINANCE-EXPIRED
+    target_type: event
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/data/state-and-event-ids.yaml]
+  - target_id: RV-MD-DECLARED-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-DECLINED-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-FULL-INTERCEPT-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-PARTIAL-INTERCEPT-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-FAILURE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-AMMUNITION-SPENT-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-LAYERED-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-LAYERED-ADA-DECISION-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-MD-STC-RF-05-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001, RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/md.yaml]
+
+  - target_id: RV-ENABLER-US-SP-03-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-03]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-SP-03-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-03]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-SP-04-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-04]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-SP-04-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-04]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-CY-04-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-CY-04-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-CY-05-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-CY-05-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-CY-03-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-03]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-CY-03-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-03]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-CY-05-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-US-CY-05-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-NV-07-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-07]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-NV-07-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-07]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-NV-08-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-NV-08-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-RF-05-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-ENABLER-STC-RF-05-NO-TRIGGER-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: []
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    artifacts: [rule-core/tests/rule-vectors/immediate-enablers.yaml]
+
+  - target_id: RV-INTEL-HAND-REVEAL-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/tests/rule-vectors/intel.yaml]
+
+  - target_id: RV-INTEL-SIGN-HEX-REVEAL-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/tests/rule-vectors/intel.yaml]
+
+  - target_id: RV-INTEL-SQUADRON-SUCCESS-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/tests/rule-vectors/intel.yaml]
+
+  - target_id: RV-INTEL-SQUADRON-FAILURE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/tests/rule-vectors/intel.yaml]
+
+  - target_id: RV-INTEL-FAILURE-CONSUMES-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/tests/rule-vectors/intel.yaml]
+
+  - target_id: RV-INTEL-LIMIT-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001, RC-INTEL-ACTIVITY-001]
+    artifacts: [rule-core/tests/rule-vectors/intel.yaml]
+
+  - target_id: RV-RATE-CYBER-DOMINANCE-DETAIL-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/tests/rule-vectors/cyber-dominance-candidates.yaml]
+
+  - target_id: RV-RATE-CYBER-DOMINANCE-EXPIRY-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-DOMINANCE-001]
+    artifacts: [rule-core/tests/rule-vectors/cyber-dominance-candidates.yaml]
+
+
+  - target_id: RV-RATE-CYBER-ZERO-TO-ONE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-CYBER-TWO-TO-THREE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-CYBER-THREE-TO-FOUR-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-CYBER-INCREASE-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-INTEL-COUNT-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-INTEL-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-STRATEGIC-NORMAL-DRAW-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - target_id: RV-RATE-STRATEGIC-NORMAL-ADVANTAGE-001
+    target_type: rule_vector
+    rule_vector_status: approved
+    source_ids: [SRC-RULE-0910-2-PDF]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW]
+    decision_ids: []
+    rule_core_ids: [RC-RATE-STRATEGIC-END-001]
+    artifacts: [rule-core/tests/rule-vectors/rates.yaml]
+  - { target_id: COMP-ENABLER-US-AB-05, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AB-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-AB-05-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AB-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-AB-05-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AB-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-AB-05-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AB-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-US-EW-03, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-EW-03], decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-EW-03-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-EW-03], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-EW-03-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-EW-03], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-EW-03-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-EW-03], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-US-AF-05, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-AF-05-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-AF-05-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-AF-05-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-05], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-US-AF-10, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10], decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-AF-10-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-AF-10-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-AF-10-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-US-IW-01, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-01], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-IW-01-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-01], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-01-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-01], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-01-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1, SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-01, FRAG-MAP-0916-BLUE-GENERATION-WESTERN-LIMIT, FRAG-MAP-0916-AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml, rule-core/data/geography.yaml] }
+  - { target_id: COMP-ENABLER-US-IW-04, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-IW-04-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-04-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-04-SUCCESS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-04-FAILURE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-US-IW-07, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-07], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-INTEL-ACTIVITY-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-US-IW-07-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-07], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-INTEL-ACTIVITY-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-07-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-07], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-INTEL-ACTIVITY-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-US-IW-07-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-07], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-INTEL-ACTIVITY-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-STC-IW-01, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-01], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-01-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-01], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-01-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-01], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-01-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1, SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-01, FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml, rule-core/data/geography.yaml] }
+
+  - { target_id: MAP-HEX-GRID-0916, target_type: hex_grid, source_ids: [SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS], decision_ids: [], rule_core_ids: [], artifacts: [rule-core/data/geography.yaml] }
+  - { target_id: BOUNDARY-BLUE-GENERATION-WESTERN-LIMIT, target_type: boundary, source_ids: [SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-MAP-0916-BLUE-GENERATION-WESTERN-LIMIT], decision_ids: [], rule_core_ids: [], artifacts: [rule-core/data/geography.yaml] }
+  - { target_id: BOUNDARY-RED-GENERATION-EASTERN-LIMIT, target_type: boundary, source_ids: [SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT], decision_ids: [], rule_core_ids: [], artifacts: [rule-core/data/geography.yaml] }
+  - { target_id: AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT, target_type: area, source_ids: [SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-MAP-0916-AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/geography.yaml, rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT, target_type: area, source_ids: [SRC-MAP-0808-0916-PNG], source_fragment_ids: [FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/geography.yaml, rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: COMP-ENABLER-STC-IW-04, target_type: component, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/data/enablers.yaml, rule-core/governance/component-id-registry.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-04-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-04-NO-TRIGGER-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-04-SUCCESS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-STC-IW-04-FAILURE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml] }
+  - { target_id: RV-ENABLER-NV-BOTH-LEGAL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08], decision_ids: [DEC-ENABLER-NV-MULTIPLE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-NV-ORDER-07-08-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08], decision_ids: [DEC-ENABLER-NV-MULTIPLE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-NV-ORDER-08-07-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08], decision_ids: [DEC-ENABLER-NV-MULTIPLE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-NV-TARGET-REMAINS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08], decision_ids: [DEC-ENABLER-NV-MULTIPLE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-NV-TARGET-REMOVED-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08], decision_ids: [DEC-ENABLER-NV-MULTIPLE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-NV-TARGET-REMOVED-08-FIRST-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08], decision_ids: [DEC-ENABLER-NV-MULTIPLE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-NO-DETERMINATION-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-03, FRAG-ENABLER-0830-1-STC-CY-04], decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-US-CY-05-DAY1-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-CY-04], decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-US-CY-05-DAY2-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-CY-04], decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-US-CY-05-DAY3-CANCEL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-CY-04], decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-US-AF-10-PASS-BEFORE-MD-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-RULE-0910-2-PDF-P12-MD], decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-US-AF-10-DECLARED-BEFORE-MD-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-RULE-0910-2-PDF-P12-MD], decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-US-EW-03-AFTER-RED-MD-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-ENABLER-0830-1-US-EW-03, FRAG-RULE-0910-2-PDF-P12-MD], decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001, DEC-COMBAT-MD-VISIBILITY-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-001, RC-COMBAT-MD-RESOLUTION-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-US-AF-10-ADV-RESUMES-AFTER-MD-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10, FRAG-RULE-0910-2-PDF-P12-MD], decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001, DEC-COMBAT-MD-VISIBILITY-001], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001], artifacts: [rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-STC-IW-04], decision_ids: [], rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-RATE-MODEL-001, RC-RATE-STRATEGIC-RANGE-001], artifacts: [rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml, rule-core/generated/reviews/strategic-rate-response-chain-owner-review.md] }
+  - { target_id: RC-RATE-BOUNDARY-001, target_type: rule, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2, FRAG-ENABLER-0830-1-STC-CY-05], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/data/rates.yaml, rule-core/rules/rates.md, rule-core/tests/rule-vectors/rate-boundary-candidates.yaml, rule-core/generated/digital/rates.json] }
+  - { target_id: RV-RATE-BOUNDARY-SPACE-LOWER-OPTIONAL-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-SPACE-UPPER-PLUS1-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-SPACE-UPPER-PLUS2-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-SPACE-DIRECT-COMMAND-REJECTED-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-SPACE-MULTI-EFFECT-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-CYBER-LOWER-OPTIONAL-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-CYBER-UPPER-OPTIONAL-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-ENTIRE], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-CYBER-INCREASE-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STC-CY-05-ZERO-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-ENABLER-0830-1-STC-CY-05], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-OPTIONAL-INELIGIBLE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-ENABLER-0830-1-US-SP-03], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-ENABLER-IMMEDIATE-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS1-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-SCENARIO-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS2-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-SCENARIO-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS3-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-SCENARIO-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC1-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC2-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC3-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US1-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US2-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US3-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-RETURN5-NO-DISMISSAL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-END-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RV-RATE-BOUNDARY-STRATEGIC-AT6-DISMISSAL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1], decision_ids: [DEC-RATE-BOUNDARY-001], rule_core_ids: [RC-RATE-BOUNDARY-001, RC-RATE-STRATEGIC-END-001], artifacts: [rule-core/tests/rule-vectors/rate-boundary-candidates.yaml] }
+  - { target_id: RC-SQUADRON-DEPLOYMENT-001, target_type: rule, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001], artifacts: [rule-core/data/squadron-activation.yaml, rule-core/rules/squadron-activation.md] }
+  - { target_id: RC-SQUADRON-ACTIVATION-001, target_type: rule, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001], artifacts: [rule-core/data/squadron-activation.yaml, rule-core/rules/squadron-activation.md] }
+  - { target_id: RC-SQUADRON-GENERATION-001, target_type: rule, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/squadron-activation.yaml, rule-core/rules/squadron-activation.md] }
+  - { target_id: RC-SQUADRON-RETURN-001, target_type: rule, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-RETURN-001], artifacts: [rule-core/data/squadron-activation.yaml, rule-core/rules/squadron-activation.md] }
+  - { target_id: STATE-SQUADRON-PLATE-DEPLOYMENT, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: STATE-SQUADRON-TOKEN-CUSTODY, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-TOKEN-0901-1-P5-6-KJ-500, FRAG-TOKEN-0901-1-P5-6-KQ-200], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-GENERATION-001, RC-SQUADRON-RETURN-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: STATE-COMMAND-STARS-AVAILABLE, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: STATE-BASE-SORTIE-CAPACITY, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: STATE-BASE-AIR-OPERATIONS-INFRASTRUCTURE-DAMAGE, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: STATE-BASE-MAINTENANCE-SUPPLY-DAMAGE, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: STATE-SQUADRON-ACTIVATION-IN-PROGRESS, target_type: state, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml, rule-core/data/squadron-activation.yaml] }
+  - { target_id: EVENT-SQUADRON-PLATE-DEPLOYED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-ACTIVATION-DECLARED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-SORTIE-COST-PAID, target_type: event, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A3-0915, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-MAINTENANCE-RESOLVED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-GROUND-ABORT-RESOLVED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-TOKENS-GENERATED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-ACTIVATION-COMPLETED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF, SRC-RULE-0910-2-DOCX, SRC-BOARD-A4-0815-01], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: EVENT-SQUADRON-TOKENS-RETURNED, target_type: event, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-RETURN-001], artifacts: [rule-core/data/state-and-event-ids.yaml] }
+  - { target_id: RV-SQUADRON-KJ-500-ACTIVATION-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-BOARD-A4-0815-01, SRC-SQUADRON-0901, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE, FRAG-SQUADRON-0901-P2-STC-SQ-04, FRAG-TOKEN-0901-1-P5-6-KJ-500], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001, RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001], artifacts: [rule-core/tests/rule-vectors/squadron-activation-candidates.yaml, rule-core/generated/reviews/squadron-activation-owner-review.md, rule-core/generated/digital/squadron-activation-candidates.json] }
+  - { target_id: RV-SQUADRON-KQ-200-ACTIVATION-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF, SRC-BOARD-A3-0915, SRC-BOARD-A4-0815-01, SRC-SQUADRON-0901, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE, FRAG-BOARD-A4-0815-01-ENTIRE, FRAG-SQUADRON-0901-P3-STC-SQ-13, FRAG-TOKEN-0901-1-P5-6-KQ-200], decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001], rule_core_ids: [RC-SQUADRON-DEPLOYMENT-001, RC-SQUADRON-ACTIVATION-001, RC-SQUADRON-GENERATION-001], artifacts: [rule-core/tests/rule-vectors/squadron-activation-candidates.yaml, rule-core/generated/reviews/squadron-activation-owner-review.md, rule-core/generated/digital/squadron-activation-candidates.json] }
+  - { target_id: RC-CYBER-TARGET-GROUP-MODEL-001, target_type: rule, source_ids: [SRC-ENABLER-0830-1, SRC-SQUADRON-0901, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-MODEL-001], artifacts: [rule-core/rules/cyber-target-groups.md, rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RC-CYBER-TARGET-GROUP-MEMBERSHIP-001, target_type: rule, source_ids: [SRC-SQUADRON-0901, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-MEMBERSHIP-001], artifacts: [rule-core/rules/cyber-target-groups.md, rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RC-CYBER-TARGET-GROUP-SELECTION-001, target_type: rule, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-SELECTION-001], artifacts: [rule-core/rules/cyber-target-groups.md, rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RC-CYBER-TARGET-GROUP-PERSISTENCE-001, target_type: rule, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-PERSISTENCE-001], artifacts: [rule-core/rules/cyber-target-groups.md, rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RC-TURN-BASE-STAR-PAYMENT-001, target_type: rule, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/rules/turn-base-star-payment.md, rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-TARGET-GROUP-MODEL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1, SRC-SQUADRON-0901, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-MODEL-001, RC-CYBER-TARGET-GROUP-MEMBERSHIP-001], artifacts: [rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-TARGET-GROUP-ABSENT-SELECTION-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1], source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-02], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-SELECTION-001], artifacts: [rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RV-ENABLER-CYBER-TARGET-GROUP-PERSISTENCE-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-ENABLER-0830-1, SRC-SQUADRON-0901, SRC-TOKEN-0901-1], source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE], decision_ids: [DEC-CYBER-TARGET-GROUP-001], rule_core_ids: [RC-CYBER-TARGET-GROUP-MEMBERSHIP-001, RC-CYBER-TARGET-GROUP-PERSISTENCE-001], artifacts: [rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-AREA1-PAY-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-AREA2-EIGHT-CANCEL-TWO-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-AREA2-EIGHT-DISTRIBUTED-ILLEGAL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-AREA2-NINE-DISTRIBUTED-CANCEL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-DISTRIBUTED-ALL-THREE-TO-AREA3-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-POSTCONDITION-SIX-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }
+  - { target_id: RV-TURN-BASE-STAR-MIXED-PAYMENT-ILLEGAL-001, target_type: rule_vector, rule_vector_status: approved, source_ids: [SRC-RULE-0910-2-PDF], source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR], decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001], rule_core_ids: [RC-TURN-BASE-STAR-PAYMENT-001], artifacts: [rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml] }

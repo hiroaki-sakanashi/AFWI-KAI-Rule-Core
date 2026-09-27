@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/enablers.schema.json",
+  "title": "AFWI-KAI normative enabler data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "status", "components"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "source_set": { "type": "string" },
+    "status": { "enum": ["draft", "candidate", "reviewed", "mixed"] },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["component_id", "source_card_code", "side", "type", "timing_mark", "trigger", "actor", "target", "effect", "card_state", "interaction_type", "visibility_effect", "rule_core_ids", "source_fragment_ids", "status"],
+        "properties": {
+          "component_id": { "type": "string", "pattern": "^COMP-ENABLER-[A-Z0-9-]+$" },
+          "source_card_code": { "type": "string", "pattern": "^[A-Z]+-[A-Z]+-[0-9]{2}$" },
+          "card_name": { "type": "string" },
+          "card_name_ja": { "type": "string" },
+          "side": { "enum": ["US", "PRC"] },
+          "type": { "const": "immediate_enabler" },
+          "timing_mark": { "const": "yellow_lightning" },
+          "trigger": { "type": "object" },
+          "preconditions": { "type": "object" },
+          "determination": { "type": ["object", "string"] },
+          "actor": { "type": "string" },
+          "target": { "type": "object" },
+          "effect": { "type": "object" },
+          "duration": { "type": ["object", "string"] },
+          "consumption": { "type": "string" },
+          "card_state": { "enum": ["reselectable", "single_use"] },
+          "interaction_type": { "const": "response_window" },
+          "visibility_effect": { "enum": ["not_stated", "public_on_activation"] },
+          "response_policy": { "type": "object" },
+          "eligibility_policy": { "type": "object" },
+          "response_sequence": { "type": "array", "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" } },
+          "rule_core_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "status": { "enum": ["draft", "candidate", "reviewed"] }
+        }
+      }
+    }
+  }
+}

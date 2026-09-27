@@ -1,0 +1,2154 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "RIGHTS-RC-2026.09.27-01-01",
+  "record_status": "approved",
+  "release_id": "RC-2026.09.27-01",
+  "manifest_hash": {
+    "hash_profile": "afwi-content-sha256-v1",
+    "content_kind": "text",
+    "media_type": "application/json",
+    "sha256": "453c7196daddf09af131c853539fe01840521d33a9199735596c86778c758876"
+  },
+  "content_commit": "a8f5f0ab5bb96411142934c45a2b8ff0f0f9fc2f",
+  "decision_date": "2026-09-27",
+  "approved_by": "ルール所有者",
+  "normative_content_changed": false,
+  "previous_rights_record": "RIGHTS-RC-2026.09.26-01-01",
+  "decision_evidence": [
+    {
+      "path": "rule-core/generated/reviews/rights-clearance-publication-owner-review.md",
+      "hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "e847898f5e2fdccb19ab41118e88687dc5550768ce947f72a8f6b373a947f26c"
+      }
+    },
+    {
+      "path": "rule-core/generated/reviews/rights-clearance-publication-owner-review.json",
+      "hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "93ace89b20a94699438d27f14814cf2418219bf1b514ba933e1263cff4de0fa9"
+      }
+    },
+    {
+      "path": "rule-core/generated/reviews/publication-license-owner-review.md",
+      "hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "3e9a8159196b7f85c658958071b8a5e3c56c64f409489922ac6405b1f731f5a5"
+      }
+    },
+    {
+      "path": "rule-core/generated/reviews/publication-license-owner-review.json",
+      "hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "28ba0bc1da5c0405697fef34ff81f2b115ee0dc05c211454cd3979c735c3a654"
+      }
+    }
+  ],
+  "cleared_for_public_distribution": [
+    {
+      "path": "rule-core/LICENSES.md",
+      "artifact_class": "governance",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "beb7b51c31927ff68d454158a16ab7019c26348778986b2e05c5a4ec2b29fde0"
+      },
+      "clearance_basis": "publication license declaration; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/LICENSES/CC-BY-SA-4.0.txt",
+      "artifact_class": "governance",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/plain",
+        "sha256": "7c69f8f21746cfc382d43b94916cb0df6f5183e307c4ef003b2e91f52b3ddd81"
+      },
+      "clearance_basis": "publication license declaration; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/LICENSES/MIT.txt",
+      "artifact_class": "governance",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/plain",
+        "sha256": "a30ca9df2153b2e81cfb4a8c2e192acb8044e24f0ed7bcaa3d807ffd9a381012"
+      },
+      "clearance_basis": "MIT license notice; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/NOTICE.md",
+      "artifact_class": "governance",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "d9761bb75e8864801bbebb3324961169ae0fa80a0ab6c91ec8cd659cf83a5467"
+      },
+      "clearance_basis": "publication notice; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/emi-components.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "22ba7a2358281c1818b291f64808aef273511f0b976dbefc6d157393977ff775"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/enablers.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "ba92684465208611b9d5d9a313ddd425c18f0635250dbac985857f1e80cd2116"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/geography.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "ee4ec63a5d5d183d5862926378e5bff0d2a02bddbe03bf709e6db6b03848b382"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/rates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "f041c310a5ca9c34bb3d7b57d2f5d10a18070d16aa357cdd8e577d7ab64838b7"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/squadron-activation.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "30a3d5ad72ed643fec9df9412d7008c66a666bd71a0665e00a6b9245766d3b32"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/squadrons.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "a5f9de4e583f553faa7ce79bf70c004ecb5f135d0cb14b094174f1c84bce3676"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/data/state-and-event-ids.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "e3eb8044a3615f48c3fcd1da9755918fe333c9aa1d970f845152a970a92d4d50"
+      },
+      "clearance_basis": "normative Rule Core data; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/docs/design/AFWI-KAI_Rule_Core_バージョン管理・リリース方針-01.md",
+      "artifact_class": "governance",
+      "release_manifest_classification": "public",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "b8cf907ca153110b66ac7af1d9e6af3e46feb7265be44bcc16b9cf5db05b0953"
+      },
+      "clearance_basis": "Rule Core release governance; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/generated/releases/RC-2026.09.27-01-release-catalog-final.json",
+      "artifact_class": "release-metadata",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "ce8e2e1ba73524f8afbeeab696d7c8d178dc7fcff2e37b016fe46304b89c47e9"
+      },
+      "clearance_basis": "frozen release metadata; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/generated/releases/RC-2026.09.27-01-release-manifest-final.json",
+      "artifact_class": "release-metadata",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "453c7196daddf09af131c853539fe01840521d33a9199735596c86778c758876"
+      },
+      "clearance_basis": "frozen release metadata; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/component-id-registry.yaml",
+      "artifact_class": "registry",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "290c704f6d0daed590838fc4c2a4f30148400466cb96b7bd6a62cd9de0200ee2"
+      },
+      "clearance_basis": "Rule Core ID registry; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/coverage.yaml",
+      "artifact_class": "coverage",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "1f93da5181bd0b6e02fb3962c186906e806d7a5116bd64ee2c0bbf87bf7407fc"
+      },
+      "clearance_basis": "Rule Core coverage record; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/decisions.yaml",
+      "artifact_class": "decision",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "776068cd1f8c4ecfdf9488b6d9d31409b71e2aa10d88cfc5266f349fb5c32417"
+      },
+      "clearance_basis": "approved decision register; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/field-ownership.yaml",
+      "artifact_class": "governance",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "b59c20756370ca0864f497eb7e8f872b5142d210edacbe9a30e907a7c4ebf5ef"
+      },
+      "clearance_basis": "Rule Core field ownership; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/releases/RC-2026.09.27-01-technical-freeze.md",
+      "artifact_class": "governance",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "7393c83afce172c25e4ec8d155110ae2d7f5cd03363bad0f6702d06ad5a4bb00"
+      },
+      "clearance_basis": "Rule Core release governance; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/rule-id-registry.yaml",
+      "artifact_class": "registry",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "32067afafbd53fe030de46e7bebd3de05ce57c71e0964fd27cf45fa53c4b1021"
+      },
+      "clearance_basis": "Rule Core ID registry; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/scope-and-authority.md",
+      "artifact_class": "governance",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "882a2b61e20e706f572e8c08044e54f95aae58252d6664a76154847268f14c08"
+      },
+      "clearance_basis": "Rule Core release governance; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/governance/traceability.yaml",
+      "artifact_class": "traceability",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "c92f1ae6691498b7ea48afe411b9a12ba6561fb00798cee94443d0a9fbebc032"
+      },
+      "clearance_basis": "Rule Core traceability record; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-emi-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "b917e7f57f16226117c4b570c3756212ee24d91f0212b41fa44c03b2bc597d57"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-geography-generation-boundaries.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "d9e84be6be12e4f31a84fd08912b4c7c6335b7a5d85d65df085b2b6f283dd76e"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-immediate-enablers-expansion-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "4d5d27d172b5d7f2efd050523bf6e3b7d97a5dcda634b33bbf690d6453b058db"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-immediate-response-order-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "9b0eb7182ee9c04e483f6a32db404ac0f17164b2a0aebbd9b702b594725b7b15"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-immediate-response-order-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "7e2f1c2b3a1c6969fd94c8e115f6795224fbd9863f4d083ae1497a77e71ed9ad"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-md-d4-correction-owner-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "f5457c74ac31907fa664115beffb9a07807a5a06ab6a98b9c000fb2b9abe9a69"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-publication-package.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "18a17bd7f750fef05bc0e49f565c216228a76cbaf14d89fa97b4c48a01de072f"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-rate-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "f4607cd95a7cd8015d601a21eda1ec9507db20a1ad99fbd14d426a4e1ba98721"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-rate-boundary-candidate-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "09740578d75d9d3b0b99078d452f4b642a560239c1ace50906f4129b6452d1ed"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-rate-boundary-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "e8901bac6c90eef514ef945462f99c30c5e5866d05e8b5d753e6a14559eece49"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-rate-vector-owner-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "c690e7ad960548d99abbed239afd804b7b1f9ae7bda64355dcf22b848f3a3a6f"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-squadron-activation-candidate-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "9b9aa322682d2dac8aaf30ab0a1bac51f2237d6a28acabd6a244c4bbb6a0816a"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-squadron-activation-id-proposal.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "f8dee25702bf85d29aff30c2abd3730c3c4bd53ba0fec40d61583bba9313185f"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-squadron-component-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "9c5018d2ae64c2b1337aff7bae6280d1e79b348da881b71c3649c8d44bfc946b"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-strategic-rate-response-chain-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "694127cd56a0d546290090c3ea35d1c840af2f14b4c15d1eb3253a7cbab52605"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-vrc-priority-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "aae845e31b8f494d53fb92026844d05db00e920fc065a5fc1668912156a53eb0"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/generate-vrc-priority-vector-owner-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "7f980da3d94802f2ff6682a4beb7deb98b216c3a9c70c82c8546cb3034a7c4d0"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/hash_profiles.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "920957a7b5b79e524ec669d815a6ef09f9956f648cca238c7e953a9d4245b5f5"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/release_validation.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "7804e0e4e0f9199500293929087a74c8242671f068cacb1e368b58d8a944d5c4"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/sync-current-shared-manifest-hashes.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "72cebf1e7123da3c17d18646611242a41e1a1c3caa52e53fc30ed6b68db2f8c8"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-current-release.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "667b52e07ba0304aa315ebb2352a38c8124e64d45d441f4e5aa45180f67a488a"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-emi-prototype.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "cbe1c2f3a2eb58bb78e8f1fdea9eb6615098c353bb42ebe69e3e22b2662e4c47"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-geography-generation-boundaries.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "ea51c3d43ba41866565522211c184e37a7d3eb7707569376a8f319d747f97416"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-historical-snapshots.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "349f750c9eb8a64ea2b0b36732e666b94426842627fc04a733a8b500ac0ff082"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-immediate-enablers-expansion.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "d22df99044ca947595d0ac85c00c36f0a2e4762ed9b9d0b3a4a4861dd9871688"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-immediate-response-order-artifacts.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "4ea8a7ca2d311a7c59f5b97166f576e3552ff7ad8fd443ff27593da209ce5eed"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-immediate-response-order-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "749829351cae06309d117012c5ffd78cd03585deb9179c000be0d511455c6113"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-md-d4-correction-owner-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "3b1cd55cda239a7b30b5bae7f56c0e51a6460cbef01c21a04cb50b223bc27d1c"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-next-rc-candidate.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "4db99d7180018474ef8ed398b7b52028ec1729dccda072385edd2c4e012e3798"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-rate-prototype.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "63b2697da061ad7034cb337197967bb6e3e68535442bd7bdee0c8f85964c57d2"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-rate-vector-owner-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "f9d0ebd345e3c71e6373736d68d1dffa54eecd0d9ee5601dbea5270a79783423"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-squadron-activation-candidates.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "8d9c295648bf4f27cb8d8cb83afd9f429e55cd22c887f67605bf93d339174452"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-squadron-activation-id-proposal.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "a5384268edd01ce0a533979ab3487c02f68230f884af6157bb1b5774b4e09882"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-squadron-component-registration.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "e8f471d42fad45819bba39f773ed735a86e6d9ffa66bba79231dc7aeb88dcad6"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-strategic-rate-response-chain-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "e71c97cb3236ae2fd2590e910bd210bba8ac9e1ef492498053708e4d93141a8c"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-vrc-priority-vector-owner-review.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "c10781df1743bdb5ef8706654203d0eecea6d764dfa4094625b0342412476d46"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validate-vrc-priority.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "15dd42e97fada7ae64a82388d55b4f2858139c64916e06e1bf43ae4e51459fe6"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/pipeline/validation_scope.py",
+      "artifact_class": "validator",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/x-python",
+        "sha256": "b1557095ae8cdca4a158880c62783bf95cf2dcdf1ce8f192a854c4c2e5cfeec6"
+      },
+      "clearance_basis": "Rule Core pipeline software; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/MIT.txt"
+    },
+    {
+      "path": "rule-core/rules/combat.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "beb81d4d5757d232441ad0fb897969d5563b26ff95d826c829a77603170648c2"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/cyber-target-groups.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "c1523ed4d74d31f7987f11dca07d1d5d5b4a36df26a1f6b6247b9fbfbd040705"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/detection-and-intel.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "b87d9b48c597fdabbc5c6eff724391f1bc2e5f976a9829d6ef7743e2afaf66ab"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/emi.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "e77486851f2ff49ceda71e0105608bc1d415e3bd6918097e504d6e6daf205396"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/enablers.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "f6145079c5d4d97c8e49ea5c04e9eebdfc0810a0c151bff8101ed3c53e22ca87"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/interaction-and-visibility.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "f19f9f7e7abe9ea952c02bd1d384e346128c650d9c0f85ed4a193a16f1d9db2e"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/rates.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "3a2e5f2ef38ad2c980910c18bf720ae69982e44a9e325f423744b152548649fd"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/squadron-activation.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "6eeeb08ec973033a147024a54065d510f767da38c4cfa41a6bc4ea6c7ab92bc6"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/rules/turn-base-star-payment.md",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "text/markdown",
+        "sha256": "e80719df5d02da3dc65a942c9575e435a44d9342ac9a9e197ed2978c9a1cc54a"
+      },
+      "clearance_basis": "normative Rule Core text; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/component-id-registry.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "5cb9fa3e12b2d8895037b7ea12556b81201ba9df9dabf22fae5686b12a9b02ca"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/coverage.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "45d77de8175d10772c7c033c29906e9613eb86491179cc7734bac578c81db8b8"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/decision.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "1202ba79be0d7f9b4f0419db547d97bc3685052ed2b996421155a32f6433bdf1"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/digital-contract.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "296a03c2299cc3806112d1a318b2766b541e868fa66a4c98dc69d65bb458fe2b"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/emi-components.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "2a968a6514f00fe472b447631aa6538026a6a9b2508bb81de84edc0b825eeb06"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/enablers.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "04ee29178ab9df26cb1649df49c0e93f8aae939703a8cd6505b7d340d4b4c885"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/field-ownership.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "9a2c91bccf25e187363c25111a1584316789865e00ebcc66100668b03135a535"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/generated-manifest.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "059abd53fccb72353befaae80fd8721a46f8a47952c0861825bb3ae223efe608"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/geography-generation-boundaries-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "64f18c808104e898dd77fa07a2aad2d30fcc3657f182aa6f9f87ad41bb7a631c"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/geography.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "9e7477dee09564c305c207c6a71e4a9dffc8ebede88d020be96dfdf96bf76d1b"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/immediate-enablers-expansion-digital-contract.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "2025e4c9f5ecfe74a84d34a10911602102e685e676854eaad1cb76ff9b0a9522"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/immediate-enablers-expansion-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "e646b246acc7621445ae035bbfc03c902a3f0041c2f14ea90170ad60e6e5b6f4"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/immediate-response-order-candidate-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "fcf8cfe185e5d8096cebd2c79f85060a30f8e4560724cf76fa9ee7932fc9db35"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/immediate-response-order-digital.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "f48c885963d9e82878a108a66b208b5ff67968204233183bb8d38e9871f30a6a"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/immediate-response-order-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "a86d551b31b36e3ae6638f9bd875f1efdb65e9d963b20499e9c983cc374ad201"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/md-d4-correction-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "491af1709d33871b9d4b8292f321bb36ea3a2cfe853983266d810a56bec5ebc4"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/publication-package-declaration.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "4c2cc73c5ebef8d6f72c4d64f3bb3ccd96bd2f2dd8ed6b00a5fb8171405193f5"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rate-boundary-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "f4d837be86fda60409b6e85ed547a5d6978f510907a2b28b354ab15367e34697"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rate-vector-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "0d1025ffbe93c9761604f94abf45e198313d773118eecf7897aabf3995c8fd07"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rates-digital-contract.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "46caef10ad41f9ec51f3f02fe6e075031258b07622fb15ab34698f0c0ca0fa74"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rates.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "5a1de875e9010526e7f1f1e74f6d48d3439071c756e56905d9b54b4bd26510b1"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/release-catalog.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "22ed80fa5598917ff1dea0b90e89ade2277b51d497125b72daf725316a48870d"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/release-integrity-declarations.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "7957f53773c87b58bbfd393f6aa6d0e64b51e6582c7c0246aef93da78e690295"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/release-manifest.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "f98f499a7d6bd14ae143cf2abffeedce7c5882018c7063985d39d296b7805d25"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rights-clearance-record.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "not-in-frozen-manifest",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "4ad247a094d7d4dfd6bb593f963efc90e33f84dd1adb191f491cbc85586e51f6"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rule-id-registry.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "c512f54adffdb09d23fd00ad146b11911caed2e112166b941bcffa9249f12df4"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/rule-vector.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "66fefa0e45718542d3c8d9dc03ef47690a6ecc8775b2192299c6108cf0ed71f0"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/source-fragment-register.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "1b6bfcb38c315dbf961f99bb613f764f63d7bcef4084f46484b7c07a692d508a"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/source-register.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "2cdab40a6b49566059a1013cb5ac0e36f740616e15f7e6b62f1b2d624865c669"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/source-set-snapshot.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "992f7ddfb27531ed830e6214a637df7ccd7870c149a28b98824d7782028de0f8"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/squadron-activation-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "5e13f1460209da55b4f3ea38b44fbab8acfe30169bb6bf915ad5dfae64841a2a"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/squadron-activation.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "7c5b3c530e6f39c34b02a32e9cb1a560094acfffdcdbcf40a9ca73029300f700"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/squadrons-digital-contract.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "e1f2e8559aaa6e31c0e1e5f6f2216e26fb8d7c8499f7b10bb0bfda55259555d4"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/squadrons.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "7add4e5ce20a46d71f3af87531dc87b9e5a3351471dee0382310f0a8a0770080"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/state-event-ids.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "d60ef4ddae329e3b6e1a57b2f0e25712429e2c2628823866c570d2f75ddf5dd3"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/strategic-rate-response-chain-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "2b30c9d276d4b209cf1776cc1d60bda95824f09316468c2c8d6bc312c863aeaa"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/traceability.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "b3d536ce9cd5986c78e5a22e8fd1dd89bd58a061a4467a4c30a15af4563933c5"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/unresolved.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "80d7e0be591b8ac741b6f21cd93ef90eb720343fd60dd476b106f3f3d990f47d"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/vrc-priority-digital-contract.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "d53e31884c2ce5a0336739cef69fbd8ff4a9031e128b1007a6292bca7cf9b3d8"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/schemas/vrc-priority-vector-owner-review.schema.json",
+      "artifact_class": "schema",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/json",
+        "sha256": "acb0c462d3cc1f6cad289619753680f8c41e9219ee83bd64d945b3446e1320c7"
+      },
+      "clearance_basis": "Rule Core-specific schema; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/cyber-dominance-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "09c28ebbad23a179cbd144906ea631d97baaad9a66a4c21770aa79834da2fcc5"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "379ec727e0566ed9358e64fd7f53482b76e2f437048b411c999c6a2b30fc316c"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/emi.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "ce3514a6052864c60a2e06f29238ca787acab904cfcfdb2e73585d2bb87eeb8a"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "98b04938a3034432a798ffcc3ea0a173b26179a4a3459499fb5e5cc1545dd816"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/immediate-enablers.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "ee20dce887b514e5ad73786a2a681b8d56794ab953838920da504758e5a19715"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "a85b07b4855dcac756e704bc12e2bda4f01dda1a2dc4be03e63eac13e13be306"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/intel.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "44fb4c45a495eeee2734f51c917bca091ca25692f3726117de26bbd1698fbfff"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/md.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "c184fbd0883b0c473fedc74f60adc8e63746d90619babe210237928e0f913408"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/rate-boundary-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "ceff13928d3dc60c5208177a212b19d835600b76dbbf0d32e95e70a3d132fb4f"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/rates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "e1a0b0b400b376e09712d5a9d3bc03b4c2ed6d6a510be18ec6e281fe165da896"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/squadron-activation-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "5c1d0dff029ba58a0ea2f5f36cbb1bf8af7bc6b66789ded5ac6fe295e80db696"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "developer-only",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "31c793a2dfc4242549a21d387b9392a72a88229f360916df4e6c1b3de6202528"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    },
+    {
+      "path": "rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml",
+      "artifact_class": "normative",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "afwi-content-sha256-v1",
+        "content_kind": "text",
+        "media_type": "application/yaml",
+        "sha256": "c950225358f20696150603fbf09e0c30ec188fdf7210be20edf2226021691df0"
+      },
+      "clearance_basis": "approved Rule Core vector; owner-approved publication policy for original/normalized Rule Core artifacts",
+      "public_distribution_allowed": true,
+      "raw_source_included": false,
+      "license_reference": "rule-core/LICENSES/CC-BY-SA-4.0.txt"
+    }
+  ],
+  "still_restricted": [
+    {
+      "path": "sources/【A3判】ボード0915.pdf",
+      "artifact_class": "raw source",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "application/pdf",
+        "sha256": "b08634ad449bf84e0e4d92f8a54ad4a97f0133ccf394bafaaa43d6cdd678c18d"
+      },
+      "restriction_scope": "raw-source",
+      "reason": "Raw source redistribution remains outside the public Rule Core package.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "sources/マップ 0808-0916.png",
+      "artifact_class": "raw source",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "eccf4e9b0244ac6da087337f315210d079420a19602e4fc31fb9b908d8458691"
+      },
+      "restriction_scope": "raw-source",
+      "reason": "Raw source redistribution remains outside the public Rule Core package.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "sources/マップ 0808-0916.jpg",
+      "artifact_class": "raw source",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/jpeg",
+        "sha256": "c4f65ff186ace87239afeb9bf1c0b41dae12f3276b0eed831c6d4405b3db2112"
+      },
+      "restriction_scope": "raw-source",
+      "reason": "Raw source redistribution remains outside the public Rule Core package.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-overlay.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "c267b13e9733b0b190eb9072156f583acd9a377cf78f91058b041238fb82ad93"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-01.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "0e9a1e93babc067bd9119ffffc69fdb689755fd18b308ba455d339d90b807079"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-02.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "9abca66d23b525c9e74a2b4aef27869742b7087d3315b56f13fbca5e2061efb1"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-03.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "0eb52ff8f1f6a47e53c2e9b564f1fed90c0653b9a0aa0b29ad244c4b95b99e1a"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-04.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "3845112d7f6f030f2abf23de54ff71b8a4028c3db7caa261081632e63c4cfe00"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-05.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "35b62757c6aec75047b6baab9db405d4fc5b979a2cc64ebde737992f8a1e91b7"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-06.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "b4f53acf1eb05075e2034274d2ce31fe46334835d1949114c0c7fb304771585d"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-07.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "3b92e8243d2328d833053e6990378b5ead0a8650eff54417984bf282bf3c72ee"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-08.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "371c0d1c785a0f62d629f2422333022f863c54513391103607c9f386b764092a"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-09.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "194ac6d5a548653c14de219225a0ecceff961388a1f1dbcada635461c7c10f1c"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-10.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "eff5986fd764df42a1ee049dd6ae0dbaab40651771c0091198fb0739995ff722"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-11.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "346815324e8311dec137e3efebb585cf24741f281e522ec8bc424de7075608b6"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-12.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "b2bc631ed63e857a688c4eb2472e3cbb4c1d996dca5a0ad814e1d6ce8a660e61"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-13.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "b9454994e58a832c9a08f209c0410a6dfbde6d146f3baccd3448c6c0b3e620c3"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    },
+    {
+      "path": "rule-core/generated/reviews/geography-generation-boundaries-segments/orange-connector-14.png",
+      "artifact_class": "geography image evidence",
+      "release_manifest_classification": "rights-pending",
+      "artifact_hash": {
+        "hash_profile": "raw-binary-v1",
+        "content_kind": "binary",
+        "media_type": "image/png",
+        "sha256": "1d8abff700983195e7f46d849784dec3c07fb72a326588780615430d13397a3a"
+      },
+      "restriction_scope": "image-pixels",
+      "reason": "Image pixels and image-derived evidence remain restricted from public redistribution.",
+      "public_distribution_allowed": false
+    }
+  ],
+  "issue_updates": [
+    {
+      "issue_id": "ISSUE-RIGHTS-006",
+      "previous_scope": "raw source／原画像／第三者素材の画素を含む派生画像のpublic redistribution blocker",
+      "new_scope": "raw source／原画像／第三者素材の画素を含む派生画像のpublic redistribution blocker",
+      "resolution_status": "unchanged"
+    }
+  ],
+  "notes": [
+    "Owner-approved append-only rights clearance record for RC-2026.09.27-01.",
+    "It applies the approved standing license policy without changing the frozen Rule Core release.",
+    "Candidate vectors and Digital application artifacts are not cleared by this record."
+  ]
+}

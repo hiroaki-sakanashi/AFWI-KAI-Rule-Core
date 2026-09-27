@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/decision.schema.json",
+  "title": "AFWI-KAI approved decisions",
+  "type": "object",
+  "required": ["schema_version", "register_status", "decisions"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "register_status": { "enum": ["provisional", "approved"] },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["decision_id", "category", "owner_final_text", "scope", "affected_rule_core_ids", "original_decided_at", "reconfirmed_at", "registered_at", "approved_by", "status"],
+        "properties": {
+          "decision_id": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" },
+          "category": { "enum": ["correction", "addition"] },
+          "decision_type": { "enum": ["correction", "additional"] },
+          "owner_final_text": { "type": "string", "minLength": 1 },
+          "scope": { "type": "string" },
+          "affected_rule_core_ids": { "type": "array", "items": { "type": "string" } },
+          "applies_to_component_ids": { "type": "array", "items": { "type": "string" } },
+          "applies_to_rate_ids": { "type": "array", "items": { "type": "string", "pattern": "^RATE-[A-Z0-9-]+$" } },
+          "source_relationship": { "type": "string" },
+          "normative_information": { "type": "array", "items": { "type": "string" } },
+          "correction_history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["corrected_at", "corrected_by", "correction_scope", "reason", "effect_on_resolution_rule"],
+              "properties": {
+                "corrected_at": { "type": "string" },
+                "corrected_by": { "type": "string" },
+                "correction_scope": { "type": "string" },
+                "reason": { "type": "string" },
+                "effect_on_resolution_rule": { "type": "string" }
+              }
+            }
+          },
+          "manufacturing_information_boundary": { "type": "string" },
+          "source_ids": { "type": "array", "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "items": { "type": "string" } },
+          "original_decided_at": { "type": "string" },
+          "reconfirmed_at": { "type": "string" },
+          "registered_at": { "type": "string" },
+          "approved_by": { "type": "string", "minLength": 1 },
+          "status": { "const": "approved" }
+        }
+      }
+    }
+  }
+}

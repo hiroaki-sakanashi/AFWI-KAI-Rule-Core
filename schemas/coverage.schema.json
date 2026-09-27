@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/coverage.schema.json",
+  "title": "AFWI-KAI Rule Core coverage inventory",
+  "type": "object",
+  "required": ["schema_version", "coverage_status", "inventories"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "coverage_status": { "enum": ["provisional", "confirmed"] },
+    "inventories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["inventory_id", "category", "inventory_status", "denominator_status", "dependency_status", "count", "unit", "source_ids", "vector_required", "required_outcomes", "notes"],
+        "additionalProperties": false,
+        "properties": {
+          "inventory_id": { "type": "string", "pattern": "^INV-[A-Z0-9-]+$" },
+          "category": { "type": "string" },
+          "inventory_status": { "enum": ["not_started", "provisional", "confirmed"] },
+          "denominator_status": { "enum": ["pending_inventory", "provisional", "confirmed"] },
+          "dependency_status": { "enum": ["ready", "blocked_by_transcription", "blocked_by_decision"] },
+          "content_status": { "enum": ["not_started", "partial", "transcribed", "verified"] },
+          "vector_coverage": { "enum": ["not_started", "candidate", "partial", "satisfied"] },
+          "count": { "type": ["integer", "string"], "minimum": 0 },
+          "unit": { "type": "string" },
+          "source_ids": { "type": "array", "items": { "type": "string" } },
+          "vector_required": { "enum": ["yes", "no", "pending", "satisfied"] },
+          "required_outcomes": { "type": ["array", "string"] },
+          "subcounts": { "type": "object" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

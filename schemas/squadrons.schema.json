@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/squadrons.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "status", "scope", "squadrons", "identity_relationships", "activation_vector_status"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "rule_core_version": {"type": "string"},
+    "source_set": {"type": "string"},
+    "status": {"const": "partial"},
+    "scope": {"type": "string"},
+    "squadrons": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/squadron"}},
+    "identity_relationships": {"type": "array", "items": {"type": "object"}},
+    "activation_vector_status": {"type": "object", "additionalProperties": false, "required": ["status", "reason", "approved_vectors", "approved_vector_ids", "approved_by", "approved_at"], "properties": {"status": {"const": "approved"}, "reason": {"type": "string"}, "approved_vectors": {"const": 2}, "approved_vector_ids": {"type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true, "items": {"pattern": "^RV-SQUADRON-"}}, "approved_by": {"const": "ルール所有者"}, "approved_at": {"const": "2026-09-26"}}}
+  },
+  "$defs": {
+    "knownOrMarker": {"oneOf": [{"type": "integer", "minimum": 0}, {"enum": ["not_stated", "not_applicable"]}]},
+    "squadron": {
+      "type": "object", "additionalProperties": false,
+      "required": ["component_id", "printed_code", "printed_name", "faction", "physical_plate_count", "max_generated_tokens", "sortie_cost_stars", "normal_generation_location", "token", "digital_mapping", "source_fragment_ids", "status"],
+      "properties": {
+        "component_id": {"pattern": "^COMP-SQUADRON-[A-Z0-9-]+$"}, "printed_code": {"pattern": "^STC-SQ-[0-9]{2}$"}, "printed_name": {"type": "string"}, "faction": {"const": "PRC"},
+        "physical_plate_count": {"$ref": "#/$defs/knownOrMarker"}, "max_generated_tokens": {"$ref": "#/$defs/knownOrMarker"}, "sortie_cost_stars": {"$ref": "#/$defs/knownOrMarker"},
+        "normal_generation_location": {"enum": ["deployed_base_group_hex", "not_stated", "not_applicable"]},
+        "token": {"type": "object"}, "digital_mapping": {"type": "object"}, "source_fragment_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "status": {"enum": ["approved", "partial"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/component-id-registry.schema.json",
+  "title": "AFWI-KAI component ID registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_status", "naming_policy", "components"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "registry_status": { "enum": ["provisional", "approved"] },
+    "naming_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabler_pattern", "squadron_pattern", "printed_code_is_separate", "lifecycle"],
+      "properties": {
+        "enabler_pattern": { "const": "COMP-ENABLER-<PRINTED-CARD-CODE>" },
+        "squadron_pattern": { "const": "COMP-SQUADRON-<PRINTED-CODE>" },
+        "printed_code_is_separate": { "const": true },
+        "lifecycle": { "type": "object" }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["component_id", "category", "printed_code", "status", "introduced_in", "supersedes", "superseded_by"],
+        "properties": {
+          "component_id": { "type": "string", "pattern": "^COMP-[A-Z0-9-]+$" },
+          "category": { "type": "string" },
+          "printed_code": { "type": ["string", "null"] },
+          "status": { "enum": ["active", "deprecated"] },
+          "introduced_in": { "type": "string" },
+          "deprecated_in": { "type": ["string", "null"] },
+          "meaning_identity": { "type": "string" },
+          "printed_name": { "type": "string" },
+          "faction": { "enum": ["US", "PRC"] },
+          "source_ids": { "type": "array", "items": { "type": "string" } },
+          "source_fragment_ids": { "type": "array", "items": { "type": "string" } },
+          "digital_mappings": { "type": "array", "items": { "type": "string" } },
+          "lifecycle": { "type": "object" },
+          "supersedes": { "type": "array", "items": { "type": "string" } },
+          "superseded_by": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+schema_version: 0.1.0
+rule_core_version: 0.15.0-preview-squadron-partial
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: partial
+scope: KJ-500とKQ-200の承認済み転記、およびY-9Gの同定情報だけを収録する。全24プレートの完全転記ではない。
+squadrons:
+  - component_id: COMP-SQUADRON-STC-SQ-04
+    printed_code: STC-SQ-04
+    printed_name: KJ-500
+    faction: PRC
+    physical_plate_count: 1
+    max_generated_tokens: 1
+    sortie_cost_stars: 2
+    normal_generation_location: deployed_base_group_hex
+    token:
+      printed_face_name: AEW
+      movement_hexes: 1
+      sensor: 2
+      acquisition_modifier: ADV
+      checks_per_acquisition_step: 2
+      special_ability: not_applicable
+    digital_mapping: { existing_id: PRC-SQ-KJ-500, normative: false }
+    source_fragment_ids: [FRAG-SQUADRON-0901-P2-STC-SQ-04, FRAG-TOKEN-0901-1-P5-6-KJ-500, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS]
+    status: approved
+  - component_id: COMP-SQUADRON-STC-SQ-12
+    printed_code: STC-SQ-12
+    printed_name: Y-9G
+    faction: PRC
+    physical_plate_count: 1
+    max_generated_tokens: not_stated
+    sortie_cost_stars: not_stated
+    normal_generation_location: not_stated
+    token:
+      printed_face_name: not_stated
+      movement_hexes: not_stated
+      sensor: not_stated
+      acquisition_modifier: not_stated
+      checks_per_acquisition_step: not_stated
+      special_ability: not_stated
+    digital_mapping: { existing_id: null, normative: false }
+    source_fragment_ids: [FRAG-SQUADRON-0901-P3-STC-SQ-12]
+    status: partial
+  - component_id: COMP-SQUADRON-STC-SQ-13
+    printed_code: STC-SQ-13
+    printed_name: KQ-200
+    faction: PRC
+    physical_plate_count: 1
+    max_generated_tokens: 1
+    sortie_cost_stars: 2
+    normal_generation_location: deployed_base_group_hex
+    token:
+      printed_face_name: KQ-200
+      movement_hexes: 1
+      sensor: 1
+      acquisition_modifier: not_applicable
+      checks_per_acquisition_step: not_applicable
+      special_ability:
+        type: friendly_ship_submarine_attack_modifier
+        range_hexes: 1
+        modifier: DIS
+    digital_mapping: { existing_id: PRC-SQ-KQ-200, normative: false }
+    source_fragment_ids: [FRAG-SQUADRON-0901-P3-STC-SQ-13, FRAG-TOKEN-0901-1-P5-6-KQ-200, FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS]
+    status: approved
+identity_relationships:
+  - component_ids: [COMP-SQUADRON-STC-SQ-12, COMP-SQUADRON-STC-SQ-13]
+    relationship: none
+    approved_by: ルール所有者
+    approved_at: '2026-09-25'
+    notes: Y-9GとKQ-200は別コンポーネントであり、改名、前身、後継または置換の関係にない。
+activation_vector_status:
+  status: approved
+  reason: two_acceptance_fixture_choice_vectors_approved_by_rule_owner
+  approved_vectors: 2
+  approved_vector_ids: [RV-SQUADRON-KJ-500-ACTIVATION-001, RV-SQUADRON-KQ-200-ACTIVATION-001]
+  approved_by: ルール所有者
+  approved_at: '2026-09-26'

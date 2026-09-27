@@ -1,0 +1,49 @@
+schema_version: 0.1.0
+rule_core_version: 0.9.0-preview-emi
+source_set: SRCSET-20260923-INITIAL
+status: reviewed
+decision_ids: [DEC-EMI-COMPONENT-001]
+components:
+  - component_id: COMP-EMI-BLUE
+    name_ja: BLUE用EMIコンポーネント
+    component_type: emi_hex_overlay
+    faction: BLUE
+    quantity: 1
+    shape: hexagon
+    footprint:
+      unit: map_hex
+      count: 1
+      size_relation: same_as_one_map_hex
+    display:
+      transparency: translucent
+      identifier: "BLUE用EMIシール"
+    distinct_component:
+      from_component_id: COMP-EMI-RED
+      not_double_sided: true
+      not_stacked_as_one: true
+    source_fragment_ids: [FRAG-EMI-0811-BLUE-COMPONENT]
+    decision_id: DEC-EMI-COMPONENT-001
+    rule_core_ids: [RC-EMI-COMPONENT-001, RC-EMI-STATE-001, RC-EMI-EFFECT-001]
+    status: reviewed
+
+  - component_id: COMP-EMI-RED
+    name_ja: RED用EMIコンポーネント
+    component_type: emi_hex_overlay
+    faction: RED
+    quantity: 1
+    shape: hexagon
+    footprint:
+      unit: map_hex
+      count: 1
+      size_relation: same_as_one_map_hex
+    display:
+      transparency: translucent
+      identifier: "RED用EMIシール"
+    distinct_component:
+      from_component_id: COMP-EMI-BLUE
+      not_double_sided: true
+      not_stacked_as_one: true
+    source_fragment_ids: [FRAG-EMI-0811-RED-COMPONENT]
+    decision_id: DEC-EMI-COMPONENT-001
+    rule_core_ids: [RC-EMI-COMPONENT-001, RC-EMI-STATE-001, RC-EMI-EFFECT-001]
+    status: reviewed

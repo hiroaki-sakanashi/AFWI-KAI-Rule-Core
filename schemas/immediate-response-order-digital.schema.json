@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/immediate-response-order-digital.schema.json",
+  "title": "Immediate response order Digital intake candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "nonNormativeCandidate", "decisionIds", "componentIds", "approvedVectorIds", "candidateVectorIds", "components", "vectors"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "status": { "const": "candidate" },
+    "nonNormativeCandidate": { "const": true },
+    "decisionIds": { "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true },
+    "componentIds": { "type": "array", "uniqueItems": true },
+    "approvedVectorIds": { "type": "array", "minItems": 14, "maxItems": 14, "uniqueItems": true },
+    "candidateVectorIds": { "type": "array", "maxItems": 0, "uniqueItems": true },
+    "components": { "type": "array" },
+    "vectors": { "type": "array", "minItems": 14, "maxItems": 14 }
+  }
+}

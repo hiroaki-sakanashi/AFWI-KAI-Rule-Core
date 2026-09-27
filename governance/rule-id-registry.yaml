@@ -1,0 +1,493 @@
+schema_version: 0.1.0
+registry_status: provisional
+naming_policy:
+  pattern: "RC-<DOMAIN>-<TOPIC>-<NNN>"
+  examples_are_non_allocating: [RC-COMBAT-MD-001]
+  domains: pending_owner_approval
+  sequence: "各domain/topic内で3桁連番。採番済みIDは再利用しない。"
+  lifecycle:
+    active: "現行Rule Coreで有効"
+    deprecated: "削除せず履歴として保持"
+    split: "旧IDをdeprecatedにし、superseded_byへ新ID群を列挙"
+    merge: "統合先IDのsupersedesへ旧ID群を列挙"
+  allocation_gate: "命題抽出、出典fragment、適用範囲が確認されるまで発行しない"
+rules:
+  - rule_core_id: RC-EMI-STACK-001
+    status: active
+    introduced_in: 0.9.0-preview-emi
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "自軍EMSスタック値の計数と除外"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P13-EMI, FRAG-RULE-0910-2-DOCX-EMI-SECTION]
+    decision_ids: []
+    rule_vector_coverage:
+      status: approved_with_candidates
+      approved_vector_ids:
+        - RV-EMI-BELOW-THRESHOLD-001
+        - RV-EMI-AT-THRESHOLD-001
+        - RV-EMI-DOUBLE-COUNT-001
+        - RV-EMI-EXCLUDED-MARKERS-001
+      candidate_vector_ids:
+        - RV-EMI-DOUBLE-COUNT-ELECTRONIC-WARFARE-AIRCRAFT-001
+        - RV-EMI-DOUBLE-COUNT-MD-SHIP-001
+        - RV-EMI-DOUBLE-COUNT-MD-ADA-001
+
+  - rule_core_id: RC-EMI-STATE-001
+    status: active
+    introduced_in: 0.9.0-preview-emi
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "自軍EMSスタック値7以上のヘックスに所在する間のEMI状態"
+    source_fragment_ids:
+      - FRAG-RULE-0910-2-PDF-P13-EMI
+      - FRAG-RULE-0910-2-DOCX-EMI-SECTION
+      - FRAG-EMI-0811-BLUE-COMPONENT
+      - FRAG-EMI-0811-RED-COMPONENT
+    decision_ids: []
+    rule_vector_coverage:
+      status: approved_with_candidates
+      approved_vector_ids:
+        - RV-EMI-BELOW-THRESHOLD-001
+        - RV-EMI-AT-THRESHOLD-001
+        - RV-EMI-DOUBLE-COUNT-001
+        - RV-EMI-EXCLUDED-MARKERS-001
+        - RV-EMI-CONDITION-CEASES-001
+      candidate_vector_ids:
+        - RV-EMI-DOUBLE-COUNT-ELECTRONIC-WARFARE-AIRCRAFT-001
+        - RV-EMI-DOUBLE-COUNT-MD-SHIP-001
+        - RV-EMI-DOUBLE-COUNT-MD-ADA-001
+
+  - rule_core_id: RC-EMI-EFFECT-001
+    status: active
+    introduced_in: 0.9.0-preview-emi
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "EMI状態トークンの捕捉・攻撃・MDロールへのDIS"
+    source_fragment_ids:
+      - FRAG-RULE-0910-2-PDF-P13-EMI
+      - FRAG-RULE-0910-2-DOCX-EMI-SECTION
+      - FRAG-EMI-0811-BLUE-COMPONENT
+      - FRAG-EMI-0811-RED-COMPONENT
+    decision_ids: []
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids: [RV-EMI-DIS-EFFECT-001]
+      candidate_vector_ids: []
+
+  - rule_core_id: RC-EMI-COMPONENT-001
+    status: active
+    introduced_in: 0.9.0-preview-emi
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "BLUE／RED EMI物理コンポーネントの仕様と独立性"
+    source_fragment_ids: [FRAG-EMI-0811-BLUE-COMPONENT, FRAG-EMI-0811-RED-COMPONENT]
+    decision_ids: [DEC-EMI-COMPONENT-001]
+    rule_vector_coverage:
+      status: not_applicable
+      approved_vector_ids: []
+      candidate_vector_ids: []
+
+  - rule_core_id: RC-RATE-MODEL-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "宇宙・サイバーの陣営別レートと共有戦略レートの構成・初期化"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-INITIALIZE-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-SPACE-RANGE-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "宇宙レートの初期値と範囲"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-INITIALIZE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-SPACE-PENALTY-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "宇宙レート低下時のUAS/USVとMDへの効果"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-SPACE-TWO-DIS-001, RV-RATE-SPACE-ONE-MD-LONG-RANGE-001, RV-RATE-SPACE-ONE-MD-SAME-HEX-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-CYBER-RANGE-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "サイバーレートの初期値と範囲"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-INITIALIZE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-CYBER-INCREASE-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "サイバーレート上昇判定の遷移別閾値"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-CYBER-INCREASE-BELOW-001, RV-RATE-CYBER-INCREASE-AT-001, RV-RATE-CYBER-ZERO-TO-ONE-001, RV-RATE-CYBER-TWO-TO-THREE-001, RV-RATE-CYBER-THREE-TO-FOUR-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-CYBER-DOMINANCE-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "ATO終了時サイバーレートによる次ATOのサイバードミナンス"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P15-CYBER-DOMINANCE, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-CYBER-DOMINANCE-001, RV-RATE-CYBER-DOMINANCE-DETAIL-001, RV-RATE-CYBER-DOMINANCE-EXPIRY-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-INITIATIVE-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "宇宙・サイバーレート合計差によるイニシアチブ修正"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-INITIATIVE-DIFFERENCE-001, RV-RATE-INITIATIVE-NO-ADVANTAGE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-INTEL-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "宇宙・サイバーレート合計によるインテル確認数"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P5-INITIATIVE-INTEL, FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-BOARD-A3-0915-P1-RATE-BOARDS]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-INTEL-COUNT-001, RV-INTEL-HAND-REVEAL-001, RV-INTEL-SIGN-HEX-REVEAL-001, RV-INTEL-SQUADRON-SUCCESS-001, RV-INTEL-SQUADRON-FAILURE-001, RV-INTEL-FAILURE-CONSUMES-001, RV-INTEL-LIMIT-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-STRATEGIC-RANGE-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "共有戦略レートの中央値と陣営別優勢方向"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-INITIALIZE-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-STRATEGIC-SCENARIO-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "シナリオ1・2の戦略レート変更条件"
+    source_fragment_ids: [FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-STRATEGIC-SQUADRON-SCENARIO1-001, RV-RATE-STRATEGIC-SQUADRON-SCENARIO2-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-STRATEGIC-END-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "戦略レートによる優勢・更送・ゲーム終了"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P3-P4-RATE-OVERVIEW, FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-RULE-0910-2-PDF-P20-SCENARIO2-RATE, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-RATE-STRATEGIC-DISMISSAL-001, RV-RATE-STRATEGIC-NORMAL-DRAW-001, RV-RATE-STRATEGIC-NORMAL-ADVANTAGE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-VISIBILITY-001
+    status: active
+    introduced_in: 0.10.0-preview-rates
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "各レート現在値の公開状態"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-RATE-DISPLAY]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-SQUADRON-KJ-500-ACTIVATION-001, RV-SQUADRON-KQ-200-ACTIVATION-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-COMBAT-MD-001
+    status: active
+    introduced_in: 0.11.0-preview-vrc
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "MD使用資格、宣言タイミング、宣言時弾薬消費"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-MD-DECLARED-001, RV-MD-DECLINED-001, RV-MD-AMMUNITION-SPENT-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-COMBAT-MD-RESOLUTION-001
+    status: active
+    introduced_in: 0.11.0-preview-vrc
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "MDの完全迎撃、部分迎撃、失敗とカードによる自動失敗"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-MD-FULL-INTERCEPT-001, RV-MD-PARTIAL-INTERCEPT-001, RV-MD-FAILURE-001, RV-MD-STC-RF-05-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-COMBAT-MD-LAYERED-001
+    status: active
+    introduced_in: 0.11.0-preview-vrc
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "海軍アセットからADAの順によるレイヤードMD"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-MD-LAYERED-001, RV-MD-LAYERED-ADA-DECISION-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-COMBAT-MD-VISIBILITY-001
+    status: active
+    introduced_in: 0.11.0-preview-vrc
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "MD宣言・pass・アセットidentity・弾薬・D4・判定条件・結果・レイヤード結果の公開契約"
+    source_fragment_ids: []
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-MD-DECLARED-001, RV-MD-DECLINED-001, RV-MD-FULL-INTERCEPT-001, RV-MD-PARTIAL-INTERCEPT-001, RV-MD-FAILURE-001, RV-MD-AMMUNITION-SPENT-001, RV-MD-LAYERED-001, RV-MD-LAYERED-ADA-DECISION-001, RV-MD-STC-RF-05-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-ENABLER-IMMEDIATE-001
+    status: active
+    introduced_in: 0.11.0-preview-vrc
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "黄色稲妻の即応カードを印字triggerで手札から直接使用する共通則"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-03, FRAG-ENABLER-0830-1-US-SP-04, FRAG-ENABLER-0830-1-STC-CY-04, FRAG-ENABLER-0830-1-STC-CY-05, FRAG-ENABLER-0830-1-US-CY-03, FRAG-ENABLER-0830-1-US-CY-05, FRAG-ENABLER-0830-1-STC-NV-07, FRAG-ENABLER-0830-1-STC-NV-08, FRAG-ENABLER-0830-1-STC-RF-05, FRAG-ENABLER-0830-1-US-AB-05, FRAG-ENABLER-0830-1-US-EW-03, FRAG-ENABLER-0830-1-US-AF-05, FRAG-ENABLER-0830-1-US-AF-10, FRAG-ENABLER-0830-1-US-IW-01, FRAG-ENABLER-0830-1-US-IW-04, FRAG-ENABLER-0830-1-US-IW-07, FRAG-ENABLER-0830-1-STC-IW-01, FRAG-ENABLER-0830-1-STC-IW-04]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001, DEC-ENABLER-NV-MULTIPLE-001, DEC-ENABLER-CYBER-COUNTER-SCOPE-001, DEC-ENABLER-US-AF-10-MD-TIMING-001]
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids: [RV-ENABLER-US-SP-03-TRIGGER-001, RV-ENABLER-US-SP-03-NO-TRIGGER-001, RV-ENABLER-US-SP-04-TRIGGER-001, RV-ENABLER-US-SP-04-NO-TRIGGER-001, RV-ENABLER-STC-CY-04-TRIGGER-001, RV-ENABLER-STC-CY-04-NO-TRIGGER-001, RV-ENABLER-STC-CY-05-TRIGGER-001, RV-ENABLER-STC-CY-05-NO-TRIGGER-001, RV-ENABLER-US-CY-03-TRIGGER-001, RV-ENABLER-US-CY-03-NO-TRIGGER-001, RV-ENABLER-US-CY-05-TRIGGER-001, RV-ENABLER-US-CY-05-NO-TRIGGER-001, RV-ENABLER-STC-NV-07-TRIGGER-001, RV-ENABLER-STC-NV-07-NO-TRIGGER-001, RV-ENABLER-STC-NV-08-TRIGGER-001, RV-ENABLER-STC-NV-08-NO-TRIGGER-001, RV-ENABLER-STC-RF-05-TRIGGER-001, RV-ENABLER-STC-RF-05-NO-TRIGGER-001, RV-ENABLER-US-AB-05-TRIGGER-001, RV-ENABLER-US-AB-05-NO-TRIGGER-001, RV-ENABLER-US-EW-03-TRIGGER-001, RV-ENABLER-US-EW-03-NO-TRIGGER-001, RV-ENABLER-US-AF-05-TRIGGER-001, RV-ENABLER-US-AF-05-NO-TRIGGER-001, RV-ENABLER-US-AF-10-TRIGGER-001, RV-ENABLER-US-AF-10-NO-TRIGGER-001, RV-ENABLER-US-IW-01-TRIGGER-001, RV-ENABLER-US-IW-01-NO-TRIGGER-001, RV-ENABLER-US-IW-04-TRIGGER-001, RV-ENABLER-US-IW-04-NO-TRIGGER-001, RV-ENABLER-US-IW-07-TRIGGER-001, RV-ENABLER-US-IW-07-NO-TRIGGER-001, RV-ENABLER-STC-IW-01-TRIGGER-001, RV-ENABLER-STC-IW-01-NO-TRIGGER-001, RV-ENABLER-STC-IW-04-TRIGGER-001, RV-ENABLER-STC-IW-04-NO-TRIGGER-001, RV-ENABLER-US-AB-05-EFFECT-001, RV-ENABLER-US-EW-03-EFFECT-001, RV-ENABLER-US-AF-05-EFFECT-001, RV-ENABLER-US-AF-10-EFFECT-001, RV-ENABLER-US-IW-01-EFFECT-001, RV-ENABLER-US-IW-04-SUCCESS-001, RV-ENABLER-US-IW-04-FAILURE-001, RV-ENABLER-US-IW-07-EFFECT-001, RV-ENABLER-STC-IW-04-SUCCESS-001, RV-ENABLER-STC-IW-04-FAILURE-001, RV-ENABLER-STC-IW-01-EFFECT-001, RV-ENABLER-NV-BOTH-LEGAL-001, RV-ENABLER-NV-ORDER-07-08-001, RV-ENABLER-NV-ORDER-08-07-001, RV-ENABLER-NV-TARGET-REMAINS-001, RV-ENABLER-NV-TARGET-REMOVED-001, RV-ENABLER-NV-TARGET-REMOVED-08-FIRST-001, RV-ENABLER-CYBER-NO-DETERMINATION-INELIGIBLE-001, RV-ENABLER-CYBER-US-CY-05-DAY1-INELIGIBLE-001, RV-ENABLER-CYBER-US-CY-05-DAY2-INELIGIBLE-001, RV-ENABLER-CYBER-US-CY-05-DAY3-CANCEL-001, RV-ENABLER-US-AF-10-PASS-BEFORE-MD-001, RV-ENABLER-US-AF-10-DECLARED-BEFORE-MD-001, RV-ENABLER-US-EW-03-AFTER-RED-MD-001, RV-ENABLER-US-AF-10-ADV-RESUMES-AFTER-MD-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001, RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001, RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001]
+      candidate_vector_ids: []
+
+  - rule_core_id: RC-INTEL-ACTIVITY-001
+    status: active
+    introduced_in: 0.11.0-preview-vrc
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "インテル確認対象3種、消費、公開、スコードロン捕捉"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P6-INTEL-TARGETS, FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY]
+    decision_ids: []
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-INTEL-HAND-REVEAL-001, RV-INTEL-SIGN-HEX-REVEAL-001, RV-INTEL-SQUADRON-SUCCESS-001, RV-INTEL-SQUADRON-FAILURE-001, RV-INTEL-FAILURE-CONSUMES-001, RV-INTEL-LIMIT-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-RATE-BOUNDARY-001
+    status: active
+    introduced_in: 0.14.0-preview-rate-boundary
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "全5レートの実値制限、任意・強制・複数効果の端点処理、STC-CY-05及びATO終了時端点判定"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P15-RATES, FRAG-BOARD-A3-0915-P1-RATE-BOARDS, FRAG-BOARD-A3-0915-P2-STRATEGIC-SCENARIO1, FRAG-BOARD-A3-0915-P3-STRATEGIC-SCENARIO2, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: [DEC-RATE-BOUNDARY-001]
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids:
+        - RV-RATE-BOUNDARY-SPACE-LOWER-OPTIONAL-INELIGIBLE-001
+        - RV-RATE-BOUNDARY-SPACE-UPPER-PLUS1-INELIGIBLE-001
+        - RV-RATE-BOUNDARY-SPACE-UPPER-PLUS2-INELIGIBLE-001
+        - RV-RATE-BOUNDARY-SPACE-DIRECT-COMMAND-REJECTED-001
+        - RV-RATE-BOUNDARY-SPACE-MULTI-EFFECT-001
+        - RV-RATE-BOUNDARY-CYBER-LOWER-OPTIONAL-INELIGIBLE-001
+        - RV-RATE-BOUNDARY-CYBER-UPPER-OPTIONAL-INELIGIBLE-001
+        - RV-RATE-BOUNDARY-STC-CY-05-ZERO-001
+        - RV-RATE-BOUNDARY-STRATEGIC-OPTIONAL-INELIGIBLE-001
+        - RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS1-001
+        - RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS2-001
+        - RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS3-001
+        - RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC1-001
+        - RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC2-001
+        - RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC3-001
+        - RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US1-001
+        - RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US2-001
+        - RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US3-001
+        - RV-RATE-BOUNDARY-STRATEGIC-RETURN5-NO-DISMISSAL-001
+        - RV-RATE-BOUNDARY-STRATEGIC-AT6-DISMISSAL-001
+      candidate_vector_ids: []
+
+  - rule_core_id: RC-SQUADRON-DEPLOYMENT-001
+    status: active
+    introduced_in: 0.15.0-preview-squadron-activation
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "ATO準備でのスコードロンプレート配備、配備基地群及び初期未捕捉状態"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P19-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-RULE-0910-2-DOCX-P536-541-SCENARIO1-PRC-DAY1-SQUADRONS, FRAG-BOARD-A3-0915-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-SQUADRON-KJ-500-ACTIVATION-001, RV-SQUADRON-KQ-200-ACTIVATION-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-SQUADRON-ACTIVATION-001
+    status: active
+    introduced_in: 0.15.0-preview-squadron-activation
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "配備済みplateと生成予定数の宣言、合法性、出撃コスト算出・支払及び同一ATO中の再activation"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A3-0915-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-SQUADRON-KJ-500-ACTIVATION-001, RV-SQUADRON-KQ-200-ACTIVATION-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-SQUADRON-GENERATION-001
+    status: active
+    introduced_in: 0.15.0-preview-squadron-activation
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "支払済みactivationの整備補給D4、実生成数、地上断念及びtoken配置"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION, FRAG-RULE-0910-2-DOCX-P184-192-SQUADRON-ACTIVATION, FRAG-BOARD-A4-0815-01-ENTIRE]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-SQUADRON-KJ-500-ACTIVATION-001, RV-SQUADRON-KQ-200-ACTIVATION-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-SQUADRON-RETURN-001
+    status: active
+    introduced_in: 0.15.0-preview-squadron-activation
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: source_rule
+    scope: "スコードロン由来航空機tokenの通常帰還、pool復帰及び明記された状態reset"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-9-SQUADRON-ACTIVATION]
+    decision_ids: [DEC-SQUADRON-ACTIVATION-VISIBILITY-001]
+    rule_vector_coverage: { status: not_applicable, approved_vector_ids: [], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-CYBER-TARGET-GROUP-MODEL-001
+    status: active
+    introduced_in: next-rc-candidate
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "Cyber Target Groupの三層構造、陣営境界、一意所属及び非推論原則"
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02, FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-ENABLER-CYBER-TARGET-GROUP-MODEL-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-CYBER-TARGET-GROUP-MEMBERSHIP-001
+    status: active
+    introduced_in: next-rc-candidate
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "US 16 group、PRC 17 groupの正式membership及び新token所属の所有者確定"
+    source_fragment_ids: [FRAG-SQUADRON-0901-ENTIRE, FRAG-TOKEN-0901-1-ENTIRE]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-ENABLER-CYBER-TARGET-GROUP-MODEL-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-CYBER-TARGET-GROUP-SELECTION-001
+    status: active
+    introduced_in: next-rc-candidate
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "US-CY-02／STC-CY-01のgroup単位選択、Player Label及び盤上不在groupの指定"
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-ENABLER-CYBER-TARGET-GROUP-ABSENT-SELECTION-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-CYBER-TARGET-GROUP-PERSISTENCE-001
+    status: active
+    introduced_in: next-rc-candidate
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "選択groupへの当日持続効果帰属及び同日中の後発所属tokenへの適用。card effect duration自体は規定しない"
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-01, FRAG-ENABLER-0830-1-US-CY-02]
+    decision_ids: [DEC-CYBER-TARGET-GROUP-001]
+    rule_vector_coverage: { status: approved, approved_vector_ids: [RV-ENABLER-CYBER-TARGET-GROUP-PERSISTENCE-001], candidate_vector_ids: [] }
+
+  - rule_core_id: RC-TURN-BASE-STAR-PAYMENT-001
+    status: active
+    introduced_in: next-rc-candidate
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "ターン基本★の支払元、取消準備選択、分散配置準備全取消し及び処理後②最低★6"
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P8-TURN-BASE-STAR]
+    decision_ids: [DEC-TURN-BASE-STAR-PAYMENT-001]
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids: [RV-TURN-BASE-STAR-AREA1-PAY-001, RV-TURN-BASE-STAR-AREA2-EIGHT-CANCEL-TWO-001, RV-TURN-BASE-STAR-AREA2-EIGHT-DISTRIBUTED-ILLEGAL-001, RV-TURN-BASE-STAR-AREA2-NINE-DISTRIBUTED-CANCEL-001, RV-TURN-BASE-STAR-DISTRIBUTED-ALL-THREE-TO-AREA3-001, RV-TURN-BASE-STAR-POSTCONDITION-SIX-001, RV-TURN-BASE-STAR-MIXED-PAYMENT-ILLEGAL-001]
+      candidate_vector_ids: []

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/emi-components.schema.json",
+  "title": "AFWI-KAI EMI normative component data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "source_set", "status", "decision_ids", "components"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "source_set": { "type": "string" },
+    "status": { "enum": ["draft", "reviewed", "approved"] },
+    "decision_ids": { "type": "array", "items": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" } },
+    "components": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "component_id", "name_ja", "component_type", "faction", "quantity", "shape",
+          "footprint", "display", "distinct_component", "source_fragment_ids",
+          "decision_id", "rule_core_ids", "status"
+        ],
+        "properties": {
+          "component_id": { "type": "string", "pattern": "^COMP-EMI-(BLUE|RED)$" },
+          "name_ja": { "type": "string" },
+          "component_type": { "const": "emi_hex_overlay" },
+          "faction": { "enum": ["BLUE", "RED"] },
+          "quantity": { "const": 1 },
+          "shape": { "const": "hexagon" },
+          "footprint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["unit", "count", "size_relation"],
+            "properties": {
+              "unit": { "const": "map_hex" },
+              "count": { "const": 1 },
+              "size_relation": { "const": "same_as_one_map_hex" }
+            }
+          },
+          "display": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["transparency", "identifier"],
+            "properties": {
+              "transparency": { "const": "translucent" },
+              "identifier": { "type": "string" }
+            }
+          },
+          "distinct_component": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from_component_id", "not_double_sided", "not_stacked_as_one"],
+            "properties": {
+              "from_component_id": { "type": "string", "pattern": "^COMP-EMI-(BLUE|RED)$" },
+              "not_double_sided": { "const": true },
+              "not_stacked_as_one": { "const": true }
+            }
+          },
+          "source_fragment_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "decision_id": { "const": "DEC-EMI-COMPONENT-001" },
+          "rule_core_ids": { "type": "array", "items": { "type": "string" } },
+          "status": { "enum": ["draft", "reviewed", "approved"] }
+        }
+      }
+    }
+  }
+}

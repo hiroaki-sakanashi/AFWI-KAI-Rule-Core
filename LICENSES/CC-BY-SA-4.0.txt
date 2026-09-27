@@ -1,0 +1,17 @@
+Creative Commons Attribution-ShareAlike 4.0 International
+SPDX-License-Identifier: CC-BY-SA-4.0
+
+The AFWI-KAI Rule Core non-software materials identified in LICENSES.md are
+licensed under the Creative Commons Attribution-ShareAlike 4.0 International
+license.
+
+Canonical legal code:
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Human-readable summary:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+The canonical legal code at the URL above is the authoritative statement of
+the license. This notice does not extend the license to excluded raw sources,
+images, third-party materials, original-AFWI-derived elements, or artifacts
+subject to an individual rights declaration.

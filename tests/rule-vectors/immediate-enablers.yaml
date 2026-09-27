@@ -1,0 +1,239 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-ENABLER-US-SP-03-TRIGGER-001
+    title: US-SP-03の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-SP-03, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-SP-03, observed_condition: single_enabler_activation_reduced_BLUE_space_rate_by_2 }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-03]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-SP-03-NO-TRIGGER-001
+    title: US-SP-03の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-SP-03, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-SP-03, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-03]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-SP-04-TRIGGER-001
+    title: US-SP-04の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-SP-04, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-SP-04, observed_condition: RED_plays_space_enabler_interfering_with_BLUE_space_capability }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-SP-04-NO-TRIGGER-001
+    title: US-SP-04の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-SP-04, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-SP-04, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-SP-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-CY-04-TRIGGER-001
+    title: STC-CY-04の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-CY-04, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-CY-04, observed_condition: BLUE_plays_cyber_related_enabler }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-CY-04-NO-TRIGGER-001
+    title: STC-CY-04の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-CY-04, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-CY-04, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-CY-05-TRIGGER-001
+    title: STC-CY-05の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-CY-05, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-CY-05, observed_condition: BLUE_cyber_rate_increased }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-CY-05-NO-TRIGGER-001
+    title: STC-CY-05の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-CY-05, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-CY-05, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-CY-05]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-CY-03-TRIGGER-001
+    title: US-CY-03の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-CY-03, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-CY-03, observed_condition: RED_plays_cyber_related_enabler }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-03]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-CY-03-NO-TRIGGER-001
+    title: US-CY-03の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-CY-03, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-CY-03, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-03]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-CY-05-TRIGGER-001
+    title: US-CY-05の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-CY-05, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-CY-05, observed_condition: US-CY-01_NETWORK_INTRUSION_determination_roll }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-05]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-US-CY-05-NO-TRIGGER-001
+    title: US-CY-05の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-US-CY-05, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-US-CY-05, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-US-CY-05]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-NV-07-TRIGGER-001
+    title: STC-NV-07の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-NV-07, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-NV-07, observed_condition: BLUE_ship_finishes_move_within_adjacent_hex_of_marker }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-07]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-NV-07-NO-TRIGGER-001
+    title: STC-NV-07の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-NV-07, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-NV-07, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-07]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-NV-08-TRIGGER-001
+    title: STC-NV-08の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-NV-08, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-NV-08, observed_condition: BLUE_ship_finishes_move_within_adjacent_hex_of_marker }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-NV-08-NO-TRIGGER-001
+    title: STC-NV-08の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-NV-08, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-NV-08, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-RF-05-TRIGGER-001
+    title: STC-RF-05の印字trigger成立時にresponse windowが開く
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-RF-05, printed_trigger_condition: true }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-RF-05, observed_condition: BLUE_declares_MD }
+    fixed_randomness: none
+    expected_events: [{ assertion: response_window_opens_for_card_holder }]
+    expected_final_state: { legal_to_play: true, interaction_type: response_window }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。
+  - vector_id: RV-ENABLER-STC-RF-05-NO-TRIGGER-001
+    title: STC-RF-05の印字trigger不成立時にはresponse windowを開かない
+    status: approved
+    initial_state: { holder_has_component: COMP-ENABLER-STC-RF-05, printed_trigger_condition: false }
+    operation: { type: evaluate_immediate_enabler_trigger, component_id: COMP-ENABLER-STC-RF-05, observed_condition: non_matching_condition }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_to_play: false, interaction_type: not_applicable }
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P16-IMMEDIATE-PUBLIC-DISPLAY, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: []
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式カード印字由来の未承認candidate。

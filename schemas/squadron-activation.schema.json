@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/squadron-activation.schema.json",
+  "title": "AFWI-KAI squadron activation rules and visibility contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "status", "approved_by", "approved_at", "decision_ids", "rule_core_ids", "visibility_contract", "application_examples"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "rule_core_version": {"type": "string"},
+    "status": {"const": "approved"},
+    "approved_by": {"const": "ルール所有者"},
+    "approved_at": {"type": "string"},
+    "decision_ids": {"type": "array", "items": {"type": "string", "pattern": "^DEC-[A-Z0-9-]+$"}},
+    "rule_core_ids": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/rule"}},
+    "visibility_contract": {"$ref": "#/$defs/visibilityContract"},
+    "application_examples": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/example"}}
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "required": ["rule_core_id", "name_ja", "definition", "scope", "excludes", "actor", "target", "interaction_type", "source_fragment_ids", "status"],
+      "properties": {
+        "rule_core_id": {"type": "string", "pattern": "^RC-SQUADRON-[A-Z0-9-]+$"},
+        "name_ja": {"type": "string"}, "definition": {"type": "string"}, "scope": {"type": "string"}, "excludes": {"type": "string"},
+        "actor": {"type": "string"}, "target": {"type": "string"},
+        "interaction_type": {"enum": ["ordered_setup", "sequential_action", "automatic_resolution"]},
+        "placement_interaction_type": {"const": "sequential_action"},
+        "source_fragment_ids": {"type": "array", "items": {"type": "string", "pattern": "^FRAG-[A-Z0-9-]+$"}},
+        "status": {"const": "approved"}
+      },
+      "additionalProperties": false
+    },
+    "visibilityContract": {
+      "type": "object",
+      "required": ["managing_side", "opposing_side_public_fields", "opposing_side_hidden_until_acquired", "identity_reveal_governed_by", "internal_fields_excluded"],
+      "properties": {
+        "managing_side": {"const": "all_normative_fields"},
+        "opposing_side_public_fields": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "opposing_side_hidden_until_acquired": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "identity_reveal_governed_by": {"const": "STATE-SQUADRON-ACQUIRED"},
+        "internal_fields_excluded": {"const": ["continuation", "stack", "resume_token"]}
+      },
+      "additionalProperties": false
+    },
+    "example": {
+      "type": "object",
+      "required": ["component_id", "printed_name", "maximum_token_count", "sortie_cost", "requested_token_count", "placement", "rule_core_ids", "status"],
+      "properties": {
+        "component_id": {"enum": ["COMP-SQUADRON-STC-SQ-04", "COMP-SQUADRON-STC-SQ-13"]},
+        "printed_name": {"enum": ["KJ-500", "KQ-200"]},
+        "maximum_token_count": {"const": 1}, "sortie_cost": {"const": 2}, "requested_token_count": {"const": 1},
+        "placement": {"const": "correct_base_group_hex"},
+        "rule_core_ids": {"const": ["RC-SQUADRON-ACTIVATION-001", "RC-SQUADRON-GENERATION-001"]},
+        "status": {"const": "approved"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,372 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: reviewed
+components:
+  - component_id: COMP-ENABLER-US-SP-03
+    source_card_code: US-SP-03
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "single_enabler_activation_reduced_BLUE_space_rate_by_2" }
+    actor: US_player_holding_card
+    target: { type: strategic_rate }
+    effect: { operation: change_strategic_rate, direction: BLUE, amount: 1, context: condemn_irresponsible_action_in_space }
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-03]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-SP-04
+    source_card_code: US-SP-04
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "RED_plays_space_enabler_interfering_with_BLUE_space_capability" }
+    actor: US_player_holding_card
+    target: { type: triggering_determination }
+    effect: { operation: apply_DIS, uses: 1 }
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-SP-04]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-CY-04
+    source_card_code: STC-CY-04
+    card_name_ja: "サイバーカウンターメジャー"
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "BLUE_plays_cyber_related_enabler" }
+    actor: PRC_player_holding_card
+    target: { type: triggering_determination, restriction: no_effect_if_triggering_card_has_no_determination }
+    effect: { operation: apply_DIS }
+    eligibility_policy:
+      determination_required: true
+      no_determination: { legal_to_play: false, use_count_consumed: false, card_availability: unchanged }
+      US-CY-05:
+        day_1_2: { legal_to_play: false, reason: automatic_success_is_not_subject_to_DIS }
+        day_3_plus: { legal_to_play: true, target_roll: US-CY-01_determination, resolution: ADV_and_DIS_cancel_to_normal_D4 }
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-04]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-CY-05
+    source_card_code: STC-CY-05
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "BLUE_cyber_rate_increased" }
+    actor: PRC_player_holding_card
+    target: { type: BLUE_cyber_rate_increase }
+    effect: { operation: determination, die: D4, success_condition: "roll_lte_RED_cyber_rate", on_success: [invalidate_triggering_increase, decrease_BLUE_cyber_rate_by_1] }
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-CY-05]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-CY-03
+    source_card_code: US-CY-03
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "RED_plays_cyber_related_enabler" }
+    actor: US_player_holding_card
+    target: { type: triggering_determination, restriction: no_effect_if_triggering_card_has_no_determination }
+    effect: { operation: apply_DIS }
+    eligibility_policy:
+      determination_required: true
+      no_determination: { legal_to_play: false, use_count_consumed: false, card_availability: unchanged }
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-03]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-CY-05
+    source_card_code: US-CY-05
+    card_name_ja: "ミュトス"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_before, condition: "US-CY-01_NETWORK_INTRUSION_determination_roll" }
+    actor: US_player_holding_card
+    target: { type: US-CY-01_determination }
+    effect: { operation: day_branch, day_1_2: automatic_success, day_3_plus: ADV }
+    response_policy:
+      STC-CY-04:
+        day_1_2: { legal_to_play: false, reason: automatic_success_is_not_subject_to_DIS }
+        day_3_plus: { legal_to_play: true, target_roll: US-CY-01_determination, resolution: ADV_and_DIS_cancel_to_normal_D4, counter_use_count_consumed: true }
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-CY-05]
+    decision_ids: [DEC-ENABLER-CYBER-COUNTER-SCOPE-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-NV-07
+    source_card_code: STC-NV-07
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "BLUE_ship_finishes_move_within_adjacent_hex_of_marker" }
+    actor: PRC_player_holding_card
+    target: { type: triggering_BLUE_ship }
+    effect: { operation: attack, acquisition_required: false, hit_threshold: 2, damage: 1D4_hit, after_resolution: remove_marker }
+    response_policy:
+      simultaneous_pair: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08]
+      both_may_be_used: true
+      order_decider: RED_player
+      activation_and_resolution: sequential_one_card_at_a_time
+      revalidate_target_before_later_card: true
+      hit_expectation_by_order: unchanged
+      order_choice_consequence: { meaningful_to_RED_player: true, residual_card_and_marker_depend_on_selected_order_if_target_removed: true }
+      if_target_removed_before_later_card: { first_card: used, first_marker: process_as_printed_after_resolution, later_card_activation: not_started, later_card_location: hand, later_marker: remains_on_map, later_use_count_consumed: false, later_attack: not_executed }
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-07]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-NV-08
+    source_card_code: STC-NV-08
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "BLUE_ship_finishes_move_within_adjacent_hex_of_marker" }
+    actor: PRC_player_holding_card
+    target: { type: triggering_BLUE_ship }
+    effect: { operation: attack, acquisition_required: false, hit_threshold: 2, damage: 1D4_hit, after_resolution: remove_marker }
+    response_policy:
+      simultaneous_pair: [COMP-ENABLER-STC-NV-07, COMP-ENABLER-STC-NV-08]
+      both_may_be_used: true
+      order_decider: RED_player
+      activation_and_resolution: sequential_one_card_at_a_time
+      revalidate_target_before_later_card: true
+      hit_expectation_by_order: unchanged
+      order_choice_consequence: { meaningful_to_RED_player: true, residual_card_and_marker_depend_on_selected_order_if_target_removed: true }
+      if_target_removed_before_later_card: { first_card: used, first_marker: process_as_printed_after_resolution, later_card_activation: not_started, later_card_location: hand, later_marker: remains_on_map, later_use_count_consumed: false, later_attack: not_executed }
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-NV-08]
+    decision_ids: [DEC-ENABLER-NV-MULTIPLE-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-RF-05
+    source_card_code: STC-RF-05
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "BLUE_declares_MD" }
+    actor: PRC_player_holding_card
+    target: { type: declared_MD_layer, quantity: 1 }
+    effect: { operation: force_MD_failure, layers: 1 }
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-RF-05]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-AB-05
+    source_card_code: US-AB-05
+    card_name: "EXPEDITIONARY HARDENING, DISPERSAL & CAMOUFLAGE"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after_hit_roll_success_before_damage_roll, condition: "RED_ground_attack_hit_roll_succeeded" }
+    actor: US_player_holding_card
+    target: { type: triggering_RED_ground_attack, scope: all_hits_from_that_attack }
+    preconditions: { damage_roll_started: false }
+    determination: not_applicable
+    effect: { operation: invalidate_hits, quantity: all, effective_hits_from_attack: 0, damage_roll_execution: not_stated }
+    duration: immediate
+    consumption: discard_after_use
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AB-05]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-EW-03
+    source_card_code: US-EW-03
+    card_name: "AIR LAUNCHED DECOY"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "RED_declares_MD" }
+    actor: US_player_holding_card
+    target: { type: declared_RED_MD_layer, quantity: 1 }
+    preconditions: { MD_D4_roll_started: false }
+    determination: not_applicable
+    effect: { operation: force_MD_failure, layers: 1, other_layers: unchanged }
+    duration: immediate
+    consumption: discard_after_use
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    response_sequence:
+      - RED_declares_MD_after_US-AF-10_decision
+      - BLUE_receives_US-EW-03_response_opportunity
+      - selected_MD_layer_resolves
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-COMBAT-MD-RESOLUTION-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-EW-03]
+    decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-AF-05
+    source_card_code: US-AF-05
+    card_name: "LOW-OBSERVABLE PENETRATING ISR"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: at_attack_declaration, condition: "BLUE_declares_ground_attack_against_RED_base" }
+    actor: US_player_holding_card
+    target: { type: triggering_RED_base_ground_attack }
+    preconditions: { hit_roll_started: false }
+    determination: not_applicable
+    effect: { operation: skip_hit_roll_and_adopt_result, adopted_roll: 4, damage_roll: normal }
+    duration: immediate
+    consumption: discard_after_use
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-05]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-AF-10
+    source_card_code: US-AF-10
+    card_name: "SEAD / WILD WEASEL"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: when_attacking, condition: "BLUE_aircraft_token_attacks_ADA" }
+    actor: US_player_holding_card
+    target: { type: triggering_BLUE_aircraft_attack_against_ADA }
+    preconditions: {}
+    determination: not_applicable
+    effect: { operation: apply_ADV, target_roll: attack }
+    duration: triggering_attack
+    consumption: return_to_reselection_pool_after_use
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: public_on_activation
+    response_sequence:
+      - BLUE_declares_attack_against_ADA
+      - BLUE_decides_whether_to_use_US-AF-10
+      - if_used_BLUE_declares_US-AF-10
+      - RED_decides_whether_to_use_MD_knowing_US-AF-10_choice
+      - if_RED_declares_MD_BLUE_receives_US-EW-03_response_opportunity
+      - resolve_MD
+      - if_attack_not_ended_resume_attack_with_US-AF-10_ADV
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-AF-10]
+    decision_ids: [DEC-ENABLER-US-AF-10-MD-TIMING-001]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-IW-01
+    source_card_code: US-IW-01
+    card_name: "MILITARY DECEPTION (MILDEC)"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: during, condition: "sign_marker_placement" }
+    actor: US_player_holding_card
+    target: { type: false_sign_markers, quantity: 2, printed_geography: "紫ライン以東", geography_id: AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT }
+    preconditions: {}
+    determination: not_applicable
+    effect: { operation: place_false_sign_markers, quantity: 2, printed_geography: "紫ライン以東", geography_id: AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT }
+    duration: retain_card_in_hand_until_end_of_day
+    consumption: return_to_reselection_pool_after_day_end
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-01]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-IW-04
+    source_card_code: US-IW-04
+    card_name: "COLLATERAL DAMAGE CAMPAIGN"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "PRC_base_group_attack_hit_roll_failed" }
+    actor: US_player_holding_card
+    target: { type: strategic_rate }
+    preconditions: {}
+    determination: { die: D4, success_condition: roll_gte_2 }
+    effect: { operation: change_strategic_rate_on_success, direction: BLUE, amount: 1, on_failure: unchanged }
+    duration: immediate
+    consumption: return_to_reselection_pool_after_use
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-04]
+    status: reviewed
+  - component_id: COMP-ENABLER-US-IW-07
+    source_card_code: US-IW-07
+    card_name: "MAVEN SMART SYSTEM"
+    side: US
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: at_start, condition: "own_intel_activity_starts" }
+    actor: US_player_holding_card
+    target: { type: own_squadron_acquisition_determinations, includes: triggering_intel_activity }
+    preconditions: {}
+    determination: not_applicable
+    effect: { operation: automatic_success, target_determination: own_squadron_acquisition }
+    duration: until_end_of_day
+    consumption: return_to_reselection_pool_after_day_end
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: public_on_activation
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001, RC-INTEL-ACTIVITY-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-US-IW-07]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-IW-01
+    source_card_code: STC-IW-01
+    card_name: "軍事欺瞞 / Operational Deception"
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: during, condition: "sign_marker_placement" }
+    actor: PRC_player_holding_card
+    target: { type: false_sign_markers, quantity: 2, printed_geography: "橙ライン以西", geography_id: AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT }
+    preconditions: {}
+    determination: not_applicable
+    effect: { operation: place_false_sign_markers, quantity: 2, printed_geography: "橙ライン以西", geography_id: AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT }
+    duration: retain_card_in_hand_until_end_of_day
+    consumption: return_to_reselection_pool_after_day_end
+    card_state: reselectable
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-01]
+    status: reviewed
+  - component_id: COMP-ENABLER-STC-IW-04
+    source_card_code: STC-IW-04
+    card_name: "制脳作戦(虚偽信息戦) / Disinformation Campaign"
+    side: PRC
+    type: immediate_enabler
+    timing_mark: yellow_lightning
+    trigger: { timing: immediately_after, condition: "strategic_rate_changed_by_1_in_direction_unfavorable_to_RED" }
+    actor: PRC_player_holding_card
+    target: { type: triggering_strategic_rate_change }
+    preconditions: {}
+    determination: { die: D4, success_condition: roll_lte_RED_cyber_rate }
+    effect: { operation: determination, on_success: [invalidate_triggering_change, change_strategic_rate_toward_RED_by_1], on_failure: triggering_change_remains }
+    duration: immediate
+    consumption: discard_after_use
+    card_state: single_use
+    interaction_type: response_window
+    visibility_effect: not_stated
+    rule_core_ids: [RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-ENABLER-0830-1-STC-IW-04]
+    status: reviewed

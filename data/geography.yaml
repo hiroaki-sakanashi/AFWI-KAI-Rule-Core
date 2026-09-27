@@ -1,0 +1,214 @@
+schema_version: 0.1.0
+rule_core_version: 0.11.0-preview-vrc
+source_set: SRCSET-20260923-INITIAL
+status: approved
+canonical_source:
+  source_id: SRC-MAP-0808-0916-PNG
+  sha256: eccf4e9b0244ac6da087337f315210d079420a19602e4fc31fb9b908d8458691
+  width: 3780
+  height: 3780
+  coordinate_origin: top_left
+  supporting_derivative_source_id: SRC-MAP-0808-0916-JPG
+hex_grid:
+  hex_ids:
+    [C1, C2, C3, C4, C5, C6, C7, C8, C9, C10,
+     D1.5, D2.5, D3.5, D4.5, D5.5, D6.5, D7.5, D8.5, D9.5, D10.5,
+     E1, E2, E3, E4, E5, E6, E7, E8, E9, E10,
+     F1.5, F2.5, F3.5, F4.5, F5.5, F6.5, F7.5, F8.5, F9.5, F10.5,
+     G1, G2, G3, G4, G5, G6, G7, G8, G9, G10,
+     H1.5, H2.5, H3.5, H4.5, H5.5, H6.5, H7.5, H8.5, H9.5, H10.5,
+     I1, I2, I3, I4, I5, I6, I7, I8, I9, I10,
+     J1.5, J2.5, J3.5, J4.5, J5.5, J6.5, J7.5, J8.5, J9.5, J10.5,
+     K1, K2, K3, K4, K5, K6, K7, K8, K9, K10,
+     L1.5, L2.5, L3.5, L4.5, L5.5, L6.5, L7.5, L8.5, L9.5, L10.5,
+     M1, M2, M3, M4, M5, M6, M7, M8, M9, M10]
+  hex_count: 110
+  id_type: printed_string
+  source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+  verification_status: verified
+boundaries:
+  - boundary_id: BOUNDARY-BLUE-GENERATION-WESTERN-LIMIT
+    semantic_meaning: BLUE生成位置の西端
+    printed_color: purple
+    printed_label: "BLUE生成位置の西端"
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-09-24" }
+    source_fragment_ids: [FRAG-MAP-0916-BLUE-GENERATION-WESTERN-LIMIT]
+    source_locator:
+      image_size: [3780, 3780]
+      coordinate_origin: top_left
+      start_pixel: [2575, 0]
+      end_pixel: [0, 3318]
+      row_crossings: { C: [2575, 130], D: [2378, 468], E: [1786, 805], F: [1982, 1142], G: [1786, 1480], H: [1588, 1818], I: [603, 2155], J: [414, 2492], K: [612, 2830], L: [414, 3168] }
+    boundary_segments:
+      - { segment_id: SEG-BLUE-WEST-C, separates: [C7, C8] }
+      - { segment_id: SEG-BLUE-WEST-D, separates: [D6.5, D7.5] }
+      - { segment_id: SEG-BLUE-WEST-E, separates: [E5, E6] }
+      - { segment_id: SEG-BLUE-WEST-F, separates: [F5.5, F6.5] }
+      - { segment_id: SEG-BLUE-WEST-G, separates: [G5, G6] }
+      - { segment_id: SEG-BLUE-WEST-H, separates: [H4.5, H5.5] }
+      - { segment_id: SEG-BLUE-WEST-I, separates: [I2, I3] }
+      - { segment_id: SEG-BLUE-WEST-J, separates: [J1.5, J2.5] }
+      - { segment_id: SEG-BLUE-WEST-K, separates: [K2, K3] }
+      - { segment_id: SEG-BLUE-WEST-L, separates: [L1.5, L2.5] }
+    verification:
+      pass_1: { method: "PNG原寸3x3タイル・RGB基準色分離・ヘックス辺追跡", result: exact_candidate_set }
+      pass_2: { method: "PNG別倍率2x2タイル・HSV色相分離・JPG補助照合", result: exact_candidate_set }
+      comparison_result: exact_match
+  - boundary_id: BOUNDARY-RED-GENERATION-EASTERN-LIMIT
+    semantic_meaning: RED生成位置の東端
+    printed_color: orange_yellow
+    printed_label: "RED生成位置の東端"
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-09-24" }
+    source_fragment_ids: [FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT]
+    source_locator:
+      image_size: [3780, 3780]
+      coordinate_origin: top_left
+      start_pixel: [1786, 0]
+      end_pixel: [0, 1986]
+      observed_row_crossings:
+        C: [[1786, 130]]
+        D: [[1982, 468]]
+        E: [[2181, 805]]
+        F: [[3167, 1142]]
+        G: [[2969, 1480]]
+        H: [[1755, 1818], [2772, 1818]]
+        I: [[209, 2155], [1392, 2155], [1786, 2155], [2575, 2155]]
+        J: [[406, 2492], [1195, 2492], [1982, 2492], [2378, 2492]]
+        K: [[603, 2830], [1392, 2830]]
+        L: [[406, 3168], [1195, 3168]]
+    boundary_segments:
+      - { segment_id: SEG-RED-EAST-001, edge: C5/C6, separates: [C5, C6], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-002, edge: C6/D5.5, separates: [C6, D5.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-003, edge: D5.5/D6.5, separates: [D5.5, D6.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-004, edge: D6.5/E6, separates: [D6.5, E6], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-005, edge: E6/E7, separates: [E6, E7], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-006, edge: E7/F6.5, separates: [E7, F6.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-007, edge: E7/F7.5, separates: [E7, F7.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-008, edge: E8/F7.5, separates: [E8, F7.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-009, edge: E8/F8.5, separates: [E8, F8.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-010, edge: E9/F8.5, separates: [E9, F8.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-011, edge: F8.5/F9.5, separates: [F8.5, F9.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-012, edge: F8.5/G9, separates: [F8.5, G9], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-013, edge: G8/G9, separates: [G8, G9], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-014, edge: G8/H8.5, separates: [G8, H8.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-015, edge: H7.5/H8.5, separates: [H7.5, H8.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-016, edge: H7.5/I8, separates: [H7.5, I8], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-017, edge: I7/I8, separates: [I7, I8], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-018, edge: I7/J7.5, separates: [I7, J7.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-019, edge: J6.5/J7.5, separates: [J6.5, J7.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-020, edge: J6.5/K7, separates: [J6.5, K7], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-021, edge: J6.5/K6, separates: [J6.5, K6], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-022, edge: J6.5/J5.5, separates: [J6.5, J5.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-023, edge: I6/J5.5, separates: [I6, J5.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-024, edge: I5/I6, separates: [I5, I6], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-025, edge: I5/H5.5, separates: [I5, H5.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-026, edge: I5/H4.5, separates: [I5, H4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-027, edge: I4/I5, separates: [I4, I5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-028, edge: I4/J4.5, separates: [I4, J4.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-029, edge: J3.5/J4.5, separates: [J3.5, J4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-030, edge: J4.5/K4, separates: [J4.5, K4], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-031, edge: K4/K5, separates: [K4, K5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-032, edge: K4/L4.5, separates: [K4, L4.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-033, edge: L3.5/L4.5, separates: [L3.5, L4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-034, edge: L3.5/M4, separates: [L3.5, M4], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-035, edge: L3.5/M3, separates: [L3.5, M3], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-036, edge: L2.5/M3, separates: [L2.5, M3], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-037, edge: L2.5/M2, separates: [L2.5, M2], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-038, edge: L1.5/L2.5, separates: [L1.5, L2.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-039, edge: K2/L2.5, separates: [K2, L2.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-040, edge: K2/K3, separates: [K2, K3], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-041, edge: J2.5/K2, separates: [J2.5, K2], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-042, edge: J1.5/J2.5, separates: [J1.5, J2.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-043, edge: I2/J1.5, separates: [I2, J1.5], transcription_class: visually_transcribed_connector_candidate }
+      - { segment_id: SEG-RED-EAST-044, edge: I1/I2, separates: [I1, I2], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-RED-EAST-045, edge: I1/H1.5, separates: [I1, H1.5], transcription_class: owner_confirmed_anchor }
+    verification:
+      pass_1: { method: "PNG原寸・部分拡大・RGB画素確認によるアンカー間ヘックス辺追跡", result: exact_45_edge_candidate_path }
+      pass_2: { method: "PNG別倍率・HSV色相分離・JPG補助照合による再追跡", result: exact_45_edge_candidate_path }
+      comparison_result: exact_match
+    owner_specified_edge_sequence:
+      source: rule_owner_identification
+      received_at: "2026-09-24"
+      edges:
+        [C5/C6, D5.5/D6.5, E6/E7, F8.5/F9.5, G8/G9,
+         H7.5/H8.5, I7/I8, J6.5/J7.5, J6.5/K7, J6.5/K6,
+         J6.5/J5.5, I5/I6, I5/H5.5, I5/H4.5, I4/I5,
+         J3.5/J4.5, K4/K5, L3.5/L4.5, L3.5/M4, L3.5/M3,
+         L2.5/M3, L2.5/M2, L1.5/L2.5, K2/K3, J1.5/J2.5,
+         I1/I2, I1/H1.5]
+      expected_terminal_edge: I1/H1.5
+      interpretation: "橙ライン経路を特定する所有者確認済みアンカー辺。隣接アンカー間の印刷接続辺は省略されている。新規ゲーム規則ではない。"
+    connector_intervals:
+      - { from_anchor: C5/C6, to_anchor: D5.5/D6.5, connector_edges: [C6/D5.5], comparison_result: exact_match }
+      - { from_anchor: D5.5/D6.5, to_anchor: E6/E7, connector_edges: [D6.5/E6], comparison_result: exact_match }
+      - { from_anchor: E6/E7, to_anchor: F8.5/F9.5, connector_edges: [E7/F6.5, E7/F7.5, E8/F7.5, E8/F8.5, E9/F8.5], comparison_result: exact_match }
+      - { from_anchor: F8.5/F9.5, to_anchor: G8/G9, connector_edges: [F8.5/G9], comparison_result: exact_match }
+      - { from_anchor: G8/G9, to_anchor: H7.5/H8.5, connector_edges: [G8/H8.5], comparison_result: exact_match }
+      - { from_anchor: H7.5/H8.5, to_anchor: I7/I8, connector_edges: [H7.5/I8], comparison_result: exact_match }
+      - { from_anchor: I7/I8, to_anchor: J6.5/J7.5, connector_edges: [I7/J7.5], comparison_result: exact_match }
+      - { from_anchor: J6.5/J5.5, to_anchor: I5/I6, connector_edges: [I6/J5.5], comparison_result: exact_match }
+      - { from_anchor: I4/I5, to_anchor: J3.5/J4.5, connector_edges: [I4/J4.5], comparison_result: exact_match }
+      - { from_anchor: J3.5/J4.5, to_anchor: K4/K5, connector_edges: [J4.5/K4], comparison_result: exact_match }
+      - { from_anchor: K4/K5, to_anchor: L3.5/L4.5, connector_edges: [K4/L4.5], comparison_result: exact_match }
+      - { from_anchor: L1.5/L2.5, to_anchor: K2/K3, connector_edges: [K2/L2.5], comparison_result: exact_match }
+      - { from_anchor: K2/K3, to_anchor: J1.5/J2.5, connector_edges: [J2.5/K2], comparison_result: exact_match }
+      - { from_anchor: J1.5/J2.5, to_anchor: I1/I2, connector_edges: [I2/J1.5], comparison_result: exact_match }
+    path_validation:
+      status: candidate_exact_match
+      edge_existence: all_valid_shared_edges
+      continuous: true
+      complete_edge_count: 45
+      anchor_edge_count: 27
+      connector_candidate_edge_count: 18
+      duplicate_edges: []
+      self_intersections: []
+      terminal_edge: I1/H1.5
+      rule: "27アンカーは記載順を維持し、正本PNGから二経路で一致した接続候補18辺だけを挿入した。"
+areas:
+  - area_id: AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT
+    boundary_id: BOUNDARY-BLUE-GENERATION-WESTERN-LIMIT
+    direction_from_boundary: east
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-09-24" }
+    included_hex_ids:
+      [C8, C9, C10,
+       D7.5, D8.5, D9.5, D10.5,
+       E6, E7, E8, E9, E10,
+       F6.5, F7.5, F8.5, F9.5, F10.5,
+       G6, G7, G8, G9, G10,
+       H5.5, H6.5, H7.5, H8.5, H9.5, H10.5,
+       I3, I4, I5, I6, I7, I8, I9, I10,
+       J2.5, J3.5, J4.5, J5.5, J6.5, J7.5, J8.5, J9.5, J10.5,
+       K3, K4, K5, K6, K7, K8, K9, K10,
+       L2.5, L3.5, L4.5, L5.5, L6.5, L7.5, L8.5, L9.5, L10.5,
+       M1, M2, M3, M4, M5, M6, M7, M8, M9, M10]
+    excluded_adjacent_hex_ids: [C7, D6.5, E5, F5.5, G5, H4.5, I2, J1.5, K2, L1.5]
+    hex_count: 72
+    source_fragment_ids: [FRAG-MAP-0916-AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT]
+    verification_status: exact_match
+    notes: "独立二回一致した72ヘックス集合を、ルール所有者が2026-09-24に承認。"
+  - area_id: AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT
+    boundary_id: BOUNDARY-RED-GENERATION-EASTERN-LIMIT
+    direction_from_boundary: west
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-09-24" }
+    included_hex_ids:
+      [C1, C2, C3, C4, C5,
+       D1.5, D2.5, D3.5, D4.5, D5.5,
+       E1, E2, E3, E4, E5, E6,
+       F1.5, F2.5, F3.5, F4.5, F5.5, F6.5, F7.5, F8.5,
+       G1, G2, G3, G4, G5, G6, G7, G8,
+       H1.5, H2.5, H3.5, H4.5, H5.5, H6.5, H7.5,
+       I2, I3, I4, I6, I7,
+       J2.5, J3.5, J6.5,
+       K3, K4,
+       L2.5, L3.5]
+    excluded_adjacent_hex_ids:
+      [C6, D6.5, E7, E8, E9, F9.5, G9, H8.5, I1, I5, I8,
+       J1.5, J4.5, J5.5, J7.5, K2, K5, K6, K7, L1.5, L4.5, M2, M3, M4]
+    hex_count: 51
+    source_fragment_ids: [FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT]
+    verification_status: exact_match
+    notes: "45辺の完全経路を隣接グラフから除外し、C1を含む連結成分を『以西』として導出。独立二回一致した51ヘックス集合をルール所有者が2026-09-24に承認。"

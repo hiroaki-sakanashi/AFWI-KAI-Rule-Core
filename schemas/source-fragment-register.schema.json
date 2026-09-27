@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/source-fragment-register.schema.json",
+  "title": "AFWI-KAI source fragment register",
+  "type": "object",
+  "required": ["schema_version", "register_status", "fragments"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "register_status": { "enum": ["provisional", "confirmed"] },
+    "fragments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fragment_id", "source_id", "locator", "fragment_scope", "content_sha256", "transcription_status", "assessment_status"],
+        "properties": {
+          "fragment_id": { "type": "string", "pattern": "^FRAG-[A-Z0-9-]+$" },
+          "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+          "locator": { "type": "object" },
+          "fragment_scope": { "enum": ["entire_file", "page_range", "component", "region"] },
+          "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "anchor_text": { "type": ["string", "null"] },
+          "work_unit": { "type": "string" },
+          "normative_status": { "enum": ["published_normative", "supporting_normative", "normative_component", "non_normative"] },
+          "machine_extractability": { "enum": ["full", "partial", "none"] },
+          "visual_reviewability": { "enum": ["yes", "limited", "no"] },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "verification_need": { "type": "string" },
+          "printed_fields": { "type": "object" },
+          "transcription_status": { "enum": ["not_required", "not_started", "draft", "verified"] },
+          "assessment_status": { "enum": ["provisional", "confirmed"] },
+          "rule_core_ids": { "type": "array", "items": { "type": "string" } },
+          "component_ids": { "type": "array", "items": { "type": "string" } },
+          "rate_ids": { "type": "array", "items": { "type": "string" } },
+          "state_ids": { "type": "array", "items": { "type": "string" } },
+          "event_ids": { "type": "array", "items": { "type": "string" } },
+          "decision_ids": { "type": "array", "items": { "type": "string" } },
+          "faction": { "enum": ["BLUE", "RED"] },
+          "normalized_transcription": { "type": "string" },
+          "normalized_text_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "visual_identifiers": { "type": "array", "items": { "type": "string" } },
+          "page_render": { "type": "object" },
+          "region": { "type": "object" },
+          "transcriber": { "type": "string" },
+          "transcribed_at": { "type": "string" },
+          "verifier": { "type": "string" },
+          "verified_at": { "type": "string" },
+          "verification_method": { "type": "string" },
+          "independent_transcription_records": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "object" }
+          },
+          "comparison_result": { "enum": ["exact_match", "mismatch", "not_compared"] },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

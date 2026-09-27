@@ -1,0 +1,175 @@
+schema_version: 0.1.0
+rule_core_version: 0.14.0-preview-rate-boundary
+source_set: SRCSET-20260925-RATE-BOUNDARY-001
+status: approved
+vectors:
+  - vector_id: RV-MD-DECLARED-001
+    title: 適格なMDを命中ロール前に宣言する
+    status: approved
+    initial_state: { attack_type: anti_ship, hit_roll_started: false, md_asset_same_hex: true, anti_air_ammunition: 2 }
+    operation: { type: declare_MD, decision: declare }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-MD-DECLARED }, { assertion: anti_air_ammunition_decreased_by_1 }]
+    expected_final_state: { md_layer_pending: true, anti_air_ammunition: 1 }
+    visibility:
+      recipients: [BLUE, RED]
+      public_content: [MD_declared, anti_air_ammunition_spent_1, anti_air_ammunition_remaining]
+      owner_only_content: [MD_asset_identity]
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-DECLINED-001
+    title: MDを宣言しない場合は弾薬を消費せず攻撃を続ける
+    status: approved
+    initial_state: { attack_type: anti_ship, hit_roll_started: false, md_asset_same_hex: true, anti_air_ammunition: 2 }
+    operation: { type: declare_MD, decision: decline }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-MD-PASSED }]
+    expected_final_state: { md_layer_pending: false, anti_air_ammunition: 2, continue_attack: true }
+    visibility:
+      recipients: [BLUE, RED]
+      public_content: [MD_not_performed]
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-FULL-INTERCEPT-001
+    title: MD出目4は完全迎撃
+    status: approved
+    initial_state: { md_value: 3, md_layer_pending: true, attacker_ammunition: 1 }
+    operation: { type: resolve_MD }
+    fixed_randomness: { D4: 4 }
+    expected_events: [{ event_id: EVENT-MD-RESOLVED, result: full_intercept }]
+    expected_final_state: { attack_nullified: true, attacker_ammunition: 0, md_layer_pending: false }
+    visibility:
+      raw_D4: { defending_side: visible, opposing_side: hidden }
+      roll_conditions: { recipients: [BLUE, RED], content: [applied_ADV, applied_DIS, other_applied_roll_conditions], cause_disclosure: governed_by_separate_rule_core_contract }
+      outcome: { recipients: [BLUE, RED], value: full_intercept }
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-PARTIAL-INTERCEPT-001
+    title: MD値以上4未満は部分迎撃
+    status: approved
+    initial_state: { md_value: 3, md_layer_pending: true }
+    operation: { type: resolve_MD }
+    fixed_randomness: { D4: 3 }
+    expected_events: [{ event_id: EVENT-MD-RESOLVED, result: partial_intercept }]
+    expected_final_state: { attack_nullified: false, hit_roll: DIS, damage_roll: DIS, md_layer_pending: false }
+    visibility:
+      raw_D4: { defending_side: visible, opposing_side: hidden }
+      roll_conditions: { recipients: [BLUE, RED], content: [applied_ADV, applied_DIS, other_applied_roll_conditions], cause_disclosure: governed_by_separate_rule_core_contract }
+      outcome: { recipients: [BLUE, RED], value: partial_intercept }
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-FAILURE-001
+    title: MD値未満は失敗
+    status: approved
+    initial_state: { md_value: 3, md_layer_pending: true }
+    operation: { type: resolve_MD }
+    fixed_randomness: { D4: 2 }
+    expected_events: [{ event_id: EVENT-MD-RESOLVED, result: failure }]
+    expected_final_state: { continue_attack: true, hit_roll_modifier_from_MD: none, damage_roll_modifier_from_MD: none, md_layer_pending: false }
+    visibility:
+      raw_D4: { defending_side: visible, opposing_side: hidden }
+      roll_conditions: { recipients: [BLUE, RED], content: [applied_ADV, applied_DIS, other_applied_roll_conditions], cause_disclosure: governed_by_separate_rule_core_contract }
+      outcome: { recipients: [BLUE, RED], value: failure }
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-AMMUNITION-SPENT-001
+    title: MD宣言時に結果前でも弾薬を消費する
+    status: approved
+    initial_state: { anti_air_ammunition: 1, md_result_pending: true }
+    operation: { type: declare_MD, decision: declare }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-MD-DECLARED }]
+    expected_final_state: { anti_air_ammunition: 0, md_result_pending: true }
+    visibility:
+      recipients: [BLUE, RED]
+      public_content: [anti_air_ammunition_spent_1, anti_air_ammunition_remaining]
+      owner_only_content: [MD_asset_identity]
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-LAYERED-001
+    title: レイヤード防衛は海軍アセットからADAの順
+    status: approved
+    initial_state: { naval_MD_eligible: true, ADA_MD_eligible: true }
+    operation: { type: open_layered_MD_windows }
+    fixed_randomness: none
+    expected_events: [{ assertion: naval_MD_window_precedes_ADA_MD_window }]
+    expected_final_state: { interaction_order: [naval_MD_response_window, naval_MD_resolution, ADA_MD_response_window, ADA_MD_resolution] }
+    visibility:
+      common_contract: RC-COMBAT-MD-VISIBILITY-001
+      asset_identity: { controlling_side: visible, opposing_side: no_additional_reveal }
+      each_layer_outcome: { recipients: [BLUE, RED] }
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-LAYERED-ADA-DECISION-001
+    title: ADAの実施可否は海軍MD結果確認後に決める
+    status: approved
+    initial_state: { naval_MD_resolved: false, ADA_MD_eligible: true }
+    operation: { type: resolve_first_MD_then_offer_second }
+    fixed_randomness: { naval_D4: 2 }
+    expected_events: [{ event_id: EVENT-MD-RESOLVED, layer: naval, result: failure }, { assertion: ADA_response_window_opens_after_result }]
+    expected_final_state: { naval_MD_resolved: true, ADA_decision_available: true }
+    visibility:
+      first_layer_outcome: { recipients: [BLUE, RED], timing: before_ADA_response_window }
+      raw_D4: { defending_side: visible, opposing_side: hidden }
+      asset_identity: { controlling_side: visible, opposing_side: no_additional_reveal }
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-LAYERED-001, RC-COMBAT-MD-VISIBILITY-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD]
+    decision_ids: [DEC-COMBAT-MD-DICE-001, DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルール由来の承認済みvector。
+  - vector_id: RV-MD-STC-RF-05-001
+    title: STC-RF-05はBLUEのMD宣言直後に当該1層を自動失敗させる
+    status: approved
+    initial_state: { md_declared_by: BLUE, md_layer_pending: true, holder_has_component: COMP-ENABLER-STC-RF-05 }
+    operation: { type: play_immediate_enabler, component_id: COMP-ENABLER-STC-RF-05 }
+    fixed_randomness: none
+    expected_events: [{ event_id: EVENT-IMMEDIATE-ENABLER-PLAYED, component_id: COMP-ENABLER-STC-RF-05 }, { event_id: EVENT-MD-RESOLVED, result: failure }]
+    expected_final_state: { targeted_MD_layer: automatic_failure, continue_attack: true }
+    visibility:
+      triggering_MD_declaration: { recipients: [BLUE, RED], timing: before_STC-RF-05_response_window }
+      additional_visibility_from_trigger: none
+      outcome: { recipients: [BLUE, RED], value: failure }
+      duration: retained_as_known_information
+      revoke_trigger: not_applicable
+    rule_core_ids: [RC-COMBAT-MD-RESOLUTION-001, RC-COMBAT-MD-VISIBILITY-001, RC-ENABLER-IMMEDIATE-001]
+    source_fragment_ids: [FRAG-RULE-0910-2-PDF-P12-MD, FRAG-ENABLER-0830-1-STC-RF-05]
+    decision_ids: [DEC-COMBAT-MD-VISIBILITY-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-09-23" }
+    rights_scope: 正式ルールと正式カード由来の承認済みvector。

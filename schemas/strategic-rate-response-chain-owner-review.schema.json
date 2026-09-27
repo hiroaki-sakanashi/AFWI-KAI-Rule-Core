@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/strategic-rate-response-chain-owner-review.schema.json",
+  "title": "Strategic rate response chain owner approval record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_type", "non_normative", "generated_at", "generator", "vector_count", "status_counts", "fingerprint_method", "coverage_summary", "vectors"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "review_type": { "const": "strategic_rate_response_chain_owner_approval_record" },
+    "non_normative": { "const": true },
+    "generated_at": { "const": "2026-09-25" },
+    "generator": { "const": "rule-core/pipeline/generate-strategic-rate-response-chain-review.py" },
+    "vector_count": { "const": 7 },
+    "status_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate", "approved"],
+      "properties": { "candidate": { "const": 0 }, "approved": { "const": 7 } }
+    },
+    "fingerprint_method": { "type": "object" },
+    "coverage_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["covered", "partially_covered", "not_covered", "blocked", "approved_vectors"],
+      "properties": {
+        "covered": { "const": 7 },
+        "partially_covered": { "const": 0 },
+        "not_covered": { "const": 0 },
+        "blocked": { "const": 0 },
+        "approved_vectors": { "const": 7 }
+      }
+    },
+    "vectors": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["vector_id", "title", "status", "coverage_before", "initial_state", "operation", "fixed_randomness", "expected_events", "expected_final_state", "component_ids", "state_ids", "event_ids", "rule_core_ids", "source_fragment_ids", "decision_ids", "fingerprint_sha256", "owner_answer"],
+        "properties": {
+          "vector_id": { "type": "string", "pattern": "^RV-ENABLER-STRATEGIC-CHAIN-" },
+          "title": { "type": "string" },
+          "status": { "const": "approved" },
+          "coverage_before": { "const": "partially_covered" },
+          "initial_state": { "type": "object" },
+          "operation": { "type": "object" },
+          "fixed_randomness": {},
+          "expected_events": { "type": "array" },
+          "expected_final_state": { "type": "object" },
+          "component_ids": { "type": "array", "items": { "type": "string", "pattern": "^COMP-" } },
+          "state_ids": { "type": "array", "items": { "type": "string", "pattern": "^STATE-" } },
+          "event_ids": { "type": "array", "items": { "type": "string", "pattern": "^EVENT-" } },
+          "rule_core_ids": { "type": "array", "items": { "type": "string", "pattern": "^RC-" } },
+          "source_fragment_ids": { "type": "array", "items": { "type": "string", "pattern": "^FRAG-" } },
+          "decision_ids": { "type": "array", "items": { "type": "string", "pattern": "^DEC-" } },
+          "fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "owner_answer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["answer", "approved_by", "approved_at"],
+            "properties": {
+              "answer": { "const": "この記述で正しい" },
+              "approved_by": { "const": "ルール所有者" },
+              "approved_at": { "const": "2026-09-25" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

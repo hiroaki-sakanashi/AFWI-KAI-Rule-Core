@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/field-ownership.schema.json",
+  "title": "AFWI-KAI field ownership",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "policy", "fields"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "policy": { "type": "string" },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_pattern", "owner", "consumers", "notes"],
+        "properties": {
+          "field_pattern": { "type": "string" },
+          "owner": { "type": "string" },
+          "consumers": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

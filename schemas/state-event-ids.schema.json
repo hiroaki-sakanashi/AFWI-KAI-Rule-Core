@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/state-event-ids.schema.json",
+  "title": "AFWI-KAI public state and event IDs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rule_core_version", "states", "events"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "rule_core_version": { "type": "string" },
+    "states": { "type": "array", "items": { "$ref": "#/$defs/state" } },
+    "events": { "type": "array", "items": { "$ref": "#/$defs/event" } }
+  },
+  "$defs": {
+    "common": {
+      "type": "object",
+      "required": ["name_ja", "visibility", "rule_core_ids", "source_fragment_ids", "status"],
+      "properties": {
+        "name_ja": { "type": "string" },
+        "visibility": { "type": "string" },
+        "public_content": { "type": "array", "items": { "type": "string" } },
+        "owner_content": { "type": "array", "items": { "type": "string" } },
+        "hidden_from_opponent": { "type": "array", "items": { "type": "string" } },
+        "identity_reveal_state_id": { "type": "string", "pattern": "^STATE-[A-Z0-9-]+$" },
+        "public_projection": { "type": "string" },
+        "internal_fields_excluded": { "type": "array", "items": { "type": "string" } },
+        "value_type": { "type": "string" },
+        "allowed_values": {},
+        "persistence": { "type": "string" },
+        "rule_core_ids": { "type": "array", "items": { "type": "string", "pattern": "^RC-[A-Z0-9-]+$" } },
+        "source_fragment_ids": { "type": "array", "items": { "type": "string", "pattern": "^FRAG-[A-Z0-9-]+$" } },
+        "decision_ids": { "type": "array", "items": { "type": "string", "pattern": "^DEC-[A-Z0-9-]+$" } },
+        "duration": { "type": "string" },
+        "revoke_trigger": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    },
+    "state": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        { "type": "object", "required": ["state_id"], "properties": { "state_id": { "type": "string", "pattern": "^STATE-[A-Z0-9-]+$" } } }
+      ]
+    },
+    "event": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        { "type": "object", "required": ["event_id"], "properties": { "event_id": { "type": "string", "pattern": "^EVENT-[A-Z0-9-]+$" } } }
+      ]
+    }
+  }
+}

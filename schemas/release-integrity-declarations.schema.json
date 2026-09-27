@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/release-integrity-declarations.schema.json",
+  "title": "AFWI-KAI release integrity declarations",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "current_hash_profile",
+    "external_fixed_source_receipts",
+    "external_internal_evidence",
+    "legacy_manifest_compatibility"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "current_hash_profile": { "const": "afwi-content-sha256-v1" },
+    "external_fixed_source_receipts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/sourceReceipt" }
+    },
+    "external_internal_evidence": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": { "$ref": "#/$defs/externalEvidence" }
+    },
+    "legacy_manifest_compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["legacy_profile", "manifests", "default_reference_profile", "crlf_compatible_artifacts"],
+      "properties": {
+        "legacy_profile": { "const": "legacy-working-tree-sha256-v0" },
+        "default_reference_profile": { "const": "raw-bytes-v0" },
+        "manifests": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": { "$ref": "#/$defs/legacyManifest" }
+        },
+        "crlf_compatible_artifacts": {
+          "type": "array",
+          "minItems": 30,
+          "maxItems": 30,
+          "items": { "$ref": "#/$defs/crlfArtifact" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "distributionClass": {
+      "enum": ["public", "developer-only", "internal archive", "rights-pending"]
+    },
+    "sourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id", "filename", "relative_path", "sha256", "size_bytes", "media_type",
+        "content_kind", "hash_profile", "authority_classification", "availability_status",
+        "rights_status", "distribution_class", "received_at", "receipt_method",
+        "upstream_locator_status", "raw_file_in_git", "verification_method"
+      ],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+        "filename": { "type": "string", "minLength": 1 },
+        "relative_path": { "type": "string", "pattern": "^sources/" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "size_bytes": { "type": "integer", "minimum": 1 },
+        "media_type": { "enum": ["application/pdf", "image/jpeg", "image/png"] },
+        "content_kind": { "const": "binary" },
+        "hash_profile": { "const": "raw-binary-v1" },
+        "authority_classification": {
+          "enum": [
+            "canonical_published_normative_source",
+            "canonical_geography_normative_source",
+            "distribution_derivative_supporting_source"
+          ]
+        },
+        "availability_status": { "const": "external_fixed" },
+        "rights_status": { "enum": ["pending", "blocked_pending_third_party_review"] },
+        "distribution_class": { "const": "rights-pending" },
+        "received_at": { "type": "string", "format": "date-time" },
+        "receipt_method": { "type": "string", "minLength": 1 },
+        "upstream_locator_status": { "enum": ["unknown", "recorded"] },
+        "raw_file_in_git": { "const": false },
+        "verification_method": { "type": "string", "minLength": 1 }
+      }
+    },
+    "externalEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path", "sha256", "media_type", "content_kind", "hash_profile", "artifact_class",
+        "distribution_class", "rights_status", "public_normative_artifact", "raw_file_in_git"
+      ],
+      "properties": {
+        "path": { "type": "string", "pattern": "^rule-core/generated/reviews/.*\\.png$" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "media_type": { "const": "image/png" },
+        "content_kind": { "const": "binary" },
+        "hash_profile": { "const": "raw-binary-v1" },
+        "artifact_class": { "const": "external evidence" },
+        "distribution_class": { "const": "internal archive" },
+        "rights_status": { "const": "rights-pending" },
+        "public_normative_artifact": { "const": false },
+        "raw_file_in_git": { "const": false }
+      }
+    },
+    "legacyManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "hash_profile", "content_kind", "media_type", "immutable_historical_snapshot"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^rule-core/generated/.*manifest\\.json$" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "hash_profile": { "const": "afwi-content-sha256-v1" },
+        "content_kind": { "const": "text" },
+        "media_type": { "const": "application/json" },
+        "immutable_historical_snapshot": { "const": true }
+      }
+    },
+    "crlfArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "compatibility_profile", "content_kind", "media_type"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^rule-core/" },
+        "compatibility_profile": { "const": "legacy-text-crlf-v0" },
+        "content_kind": { "const": "text" },
+        "media_type": {
+          "enum": ["application/json", "application/yaml", "text/markdown", "text/x-mermaid"]
+        }
+      }
+    }
+  }
+}

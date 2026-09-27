@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afwi-kai.example/schemas/immediate-enablers-expansion-digital-contract.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "nonNormativeCandidate", "componentIds", "components", "approvedVectorIds", "candidateVectorIds", "vectors"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "status": { "const": "approved" },
+    "nonNormativeCandidate": { "const": true },
+    "componentIds": { "type": "array", "minItems": 9, "maxItems": 9, "uniqueItems": true, "items": { "type": "string", "pattern": "^COMP-ENABLER-" } },
+    "components": { "type": "array", "minItems": 9, "maxItems": 9, "items": { "type": "object" } },
+    "approvedVectorIds": { "type": "array", "minItems": 29, "maxItems": 29, "uniqueItems": true, "items": { "type": "string", "pattern": "^RV-ENABLER-" } },
+    "candidateVectorIds": { "type": "array", "minItems": 0, "maxItems": 0, "uniqueItems": true, "items": { "type": "string", "pattern": "^RV-ENABLER-" } },
+    "vectors": { "type": "array", "minItems": 29, "maxItems": 29, "items": { "type": "object" } }
+  }
+}

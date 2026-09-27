@@ -1,0 +1,1359 @@
+{
+  "approval": {
+    "approved_at": "2026-09-27",
+    "approved_by": "ルール所有者",
+    "evidence": []
+  },
+  "approved_fingerprint": "57e0d74701fc85d955886c60cb616986240a460daa9dce49c0b91189db19b1d2",
+  "approved_vector_count": 141,
+  "artifact_sets": [
+    {
+      "artifacts": [
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/docs/design/AFWI-KAI_Rule_Core_バージョン管理・リリース方針-01.md",
+          "sha256": "b8cf907ca153110b66ac7af1d9e6af3e46feb7265be44bcc16b9cf5db05b0953"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/release-catalog.schema.json",
+          "sha256": "22ed80fa5598917ff1dea0b90e89ade2277b51d497125b72daf725316a48870d"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/release-integrity-declarations.schema.json",
+          "sha256": "7957f53773c87b58bbfd393f6aa6d0e64b51e6582c7c0246aef93da78e690295"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/release-manifest.schema.json",
+          "sha256": "f98f499a7d6bd14ae143cf2abffeedce7c5882018c7063985d39d296b7805d25"
+        }
+      ],
+      "distribution_class": "public",
+      "role": "normative",
+      "set_id": "public-release-governance"
+    },
+    {
+      "artifacts": [
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/emi-components.yaml",
+          "sha256": "22ba7a2358281c1818b291f64808aef273511f0b976dbefc6d157393977ff775"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/enablers.yaml",
+          "sha256": "ba92684465208611b9d5d9a313ddd425c18f0635250dbac985857f1e80cd2116"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/geography.yaml",
+          "sha256": "ee4ec63a5d5d183d5862926378e5bff0d2a02bddbe03bf709e6db6b03848b382"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/rates.yaml",
+          "sha256": "f041c310a5ca9c34bb3d7b57d2f5d10a18070d16aa357cdd8e577d7ab64838b7"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/squadron-activation.yaml",
+          "sha256": "30a3d5ad72ed643fec9df9412d7008c66a666bd71a0665e00a6b9245766d3b32"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/squadrons.yaml",
+          "sha256": "a5f9de4e583f553faa7ce79bf70c004ecb5f135d0cb14b094174f1c84bce3676"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/data/state-and-event-ids.yaml",
+          "sha256": "e3eb8044a3615f48c3fcd1da9755918fe333c9aa1d970f845152a970a92d4d50"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/component-id-registry.yaml",
+          "sha256": "290c704f6d0daed590838fc4c2a4f30148400466cb96b7bd6a62cd9de0200ee2"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/decisions.yaml",
+          "sha256": "776068cd1f8c4ecfdf9488b6d9d31409b71e2aa10d88cfc5266f349fb5c32417"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/rule-id-registry.yaml",
+          "sha256": "32067afafbd53fe030de46e7bebd3de05ce57c71e0964fd27cf45fa53c4b1021"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/combat.md",
+          "sha256": "beb81d4d5757d232441ad0fb897969d5563b26ff95d826c829a77603170648c2"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/cyber-target-groups.md",
+          "sha256": "c1523ed4d74d31f7987f11dca07d1d5d5b4a36df26a1f6b6247b9fbfbd040705"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/detection-and-intel.md",
+          "sha256": "b87d9b48c597fdabbc5c6eff724391f1bc2e5f976a9829d6ef7743e2afaf66ab"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/emi.md",
+          "sha256": "e77486851f2ff49ceda71e0105608bc1d415e3bd6918097e504d6e6daf205396"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/enablers.md",
+          "sha256": "f6145079c5d4d97c8e49ea5c04e9eebdfc0810a0c151bff8101ed3c53e22ca87"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/interaction-and-visibility.md",
+          "sha256": "f19f9f7e7abe9ea952c02bd1d384e346128c650d9c0f85ed4a193a16f1d9db2e"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/rates.md",
+          "sha256": "3a2e5f2ef38ad2c980910c18bf720ae69982e44a9e325f423744b152548649fd"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/squadron-activation.md",
+          "sha256": "6eeeb08ec973033a147024a54065d510f767da38c4cfa41a6bc4ea6c7ab92bc6"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/rules/turn-base-star-payment.md",
+          "sha256": "e80719df5d02da3dc65a942c9575e435a44d9342ac9a9e197ed2978c9a1cc54a"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/cyber-target-group-candidates.yaml",
+          "sha256": "379ec727e0566ed9358e64fd7f53482b76e2f437048b411c999c6a2b30fc316c"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/turn-base-star-payment-candidates.yaml",
+          "sha256": "c950225358f20696150603fbf09e0c30ec188fdf7210be20edf2226021691df0"
+        }
+      ],
+      "distribution_class": "rights-pending",
+      "role": "normative",
+      "set_id": "rights-pending-normative-payload"
+    },
+    {
+      "artifacts": [
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/coverage.yaml",
+          "sha256": "1f93da5181bd0b6e02fb3962c186906e806d7a5116bd64ee2c0bbf87bf7407fc"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/field-ownership.yaml",
+          "sha256": "b59c20756370ca0864f497eb7e8f872b5142d210edacbe9a30e907a7c4ebf5ef"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/release-integrity-declarations.yaml",
+          "sha256": "fb328173113d82c0276530e77980490f119ad0f32bd39fdf1f517ddfe5a9b802"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/source-fragment-register.yaml",
+          "sha256": "19b8c23e3698bdddcd27504ab20e2ce43df2fbc753189b8f9418e7e582ae94cc"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/source-register.yaml",
+          "sha256": "f11db30a4859c1499af0d264e95fd3c55fe0b7fcc1c073e10610821e19ed5876"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/traceability.yaml",
+          "sha256": "c92f1ae6691498b7ea48afe411b9a12ba6561fb00798cee94443d0a9fbebc032"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/unresolved.yaml",
+          "sha256": "3c47ef86dd16ae67520d0c7b2b2526a1f971a505753feaff0316fce591f4bf6e"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/x-python",
+          "path": "rule-core/pipeline/hash_profiles.py",
+          "sha256": "920957a7b5b79e524ec669d815a6ef09f9956f648cca238c7e953a9d4245b5f5"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/x-python",
+          "path": "rule-core/pipeline/release_validation.py",
+          "sha256": "7804e0e4e0f9199500293929087a74c8242671f068cacb1e368b58d8a944d5c4"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/x-python",
+          "path": "rule-core/pipeline/validate-current-release.py",
+          "sha256": "667b52e07ba0304aa315ebb2352a38c8124e64d45d441f4e5aa45180f67a488a"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/x-python",
+          "path": "rule-core/pipeline/validate-historical-snapshots.py",
+          "sha256": "349f750c9eb8a64ea2b0b36732e666b94426842627fc04a733a8b500ac0ff082"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/x-python",
+          "path": "rule-core/pipeline/validate-next-rc-candidate.py",
+          "sha256": "4db99d7180018474ef8ed398b7b52028ec1729dccda072385edd2c4e012e3798"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/component-id-registry.schema.json",
+          "sha256": "5cb9fa3e12b2d8895037b7ea12556b81201ba9df9dabf22fae5686b12a9b02ca"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/coverage.schema.json",
+          "sha256": "45d77de8175d10772c7c033c29906e9613eb86491179cc7734bac578c81db8b8"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/decision.schema.json",
+          "sha256": "1202ba79be0d7f9b4f0419db547d97bc3685052ed2b996421155a32f6433bdf1"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/digital-contract.schema.json",
+          "sha256": "296a03c2299cc3806112d1a318b2766b541e868fa66a4c98dc69d65bb458fe2b"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/emi-components.schema.json",
+          "sha256": "2a968a6514f00fe472b447631aa6538026a6a9b2508bb81de84edc0b825eeb06"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/enablers.schema.json",
+          "sha256": "04ee29178ab9df26cb1649df49c0e93f8aae939703a8cd6505b7d340d4b4c885"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/field-ownership.schema.json",
+          "sha256": "9a2c91bccf25e187363c25111a1584316789865e00ebcc66100668b03135a535"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/generated-manifest.schema.json",
+          "sha256": "059abd53fccb72353befaae80fd8721a46f8a47952c0861825bb3ae223efe608"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/geography-generation-boundaries-owner-review.schema.json",
+          "sha256": "64f18c808104e898dd77fa07a2aad2d30fcc3657f182aa6f9f87ad41bb7a631c"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/geography.schema.json",
+          "sha256": "9e7477dee09564c305c207c6a71e4a9dffc8ebede88d020be96dfdf96bf76d1b"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/immediate-enablers-expansion-digital-contract.schema.json",
+          "sha256": "2025e4c9f5ecfe74a84d34a10911602102e685e676854eaad1cb76ff9b0a9522"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/immediate-enablers-expansion-owner-review.schema.json",
+          "sha256": "e646b246acc7621445ae035bbfc03c902a3f0041c2f14ea90170ad60e6e5b6f4"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/immediate-response-order-candidate-review.schema.json",
+          "sha256": "fcf8cfe185e5d8096cebd2c79f85060a30f8e4560724cf76fa9ee7932fc9db35"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/immediate-response-order-digital.schema.json",
+          "sha256": "f48c885963d9e82878a108a66b208b5ff67968204233183bb8d38e9871f30a6a"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/immediate-response-order-owner-review.schema.json",
+          "sha256": "a86d551b31b36e3ae6638f9bd875f1efdb65e9d963b20499e9c983cc374ad201"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/md-d4-correction-owner-review.schema.json",
+          "sha256": "491af1709d33871b9d4b8292f321bb36ea3a2cfe853983266d810a56bec5ebc4"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/rate-boundary-owner-review.schema.json",
+          "sha256": "f4d837be86fda60409b6e85ed547a5d6978f510907a2b28b354ab15367e34697"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/rate-vector-owner-review.schema.json",
+          "sha256": "0d1025ffbe93c9761604f94abf45e198313d773118eecf7897aabf3995c8fd07"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/rates-digital-contract.schema.json",
+          "sha256": "46caef10ad41f9ec51f3f02fe6e075031258b07622fb15ab34698f0c0ca0fa74"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/rates.schema.json",
+          "sha256": "5a1de875e9010526e7f1f1e74f6d48d3439071c756e56905d9b54b4bd26510b1"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/release-catalog.schema.json",
+          "sha256": "22ed80fa5598917ff1dea0b90e89ade2277b51d497125b72daf725316a48870d"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/release-integrity-declarations.schema.json",
+          "sha256": "7957f53773c87b58bbfd393f6aa6d0e64b51e6582c7c0246aef93da78e690295"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/release-manifest.schema.json",
+          "sha256": "f98f499a7d6bd14ae143cf2abffeedce7c5882018c7063985d39d296b7805d25"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/rule-id-registry.schema.json",
+          "sha256": "c512f54adffdb09d23fd00ad146b11911caed2e112166b941bcffa9249f12df4"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/rule-vector.schema.json",
+          "sha256": "66fefa0e45718542d3c8d9dc03ef47690a6ecc8775b2192299c6108cf0ed71f0"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/source-fragment-register.schema.json",
+          "sha256": "1b6bfcb38c315dbf961f99bb613f764f63d7bcef4084f46484b7c07a692d508a"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/source-register.schema.json",
+          "sha256": "2cdab40a6b49566059a1013cb5ac0e36f740616e15f7e6b62f1b2d624865c669"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/source-set-snapshot.schema.json",
+          "sha256": "992f7ddfb27531ed830e6214a637df7ccd7870c149a28b98824d7782028de0f8"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/squadron-activation-owner-review.schema.json",
+          "sha256": "5e13f1460209da55b4f3ea38b44fbab8acfe30169bb6bf915ad5dfae64841a2a"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/squadron-activation.schema.json",
+          "sha256": "7c5b3c530e6f39c34b02a32e9cb1a560094acfffdcdbcf40a9ca73029300f700"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/squadrons-digital-contract.schema.json",
+          "sha256": "e1f2e8559aaa6e31c0e1e5f6f2216e26fb8d7c8499f7b10bb0bfda55259555d4"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/squadrons.schema.json",
+          "sha256": "7add4e5ce20a46d71f3af87531dc87b9e5a3351471dee0382310f0a8a0770080"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/state-event-ids.schema.json",
+          "sha256": "d60ef4ddae329e3b6e1a57b2f0e25712429e2c2628823866c570d2f75ddf5dd3"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/strategic-rate-response-chain-owner-review.schema.json",
+          "sha256": "2b30c9d276d4b209cf1776cc1d60bda95824f09316468c2c8d6bc312c863aeaa"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/traceability.schema.json",
+          "sha256": "b3d536ce9cd5986c78e5a22e8fd1dd89bd58a061a4467a4c30a15af4563933c5"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/unresolved.schema.json",
+          "sha256": "80d7e0be591b8ac741b6f21cd93ef90eb720343fd60dd476b106f3f3d990f47d"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/vrc-priority-digital-contract.schema.json",
+          "sha256": "d53e31884c2ce5a0336739cef69fbd8ff4a9031e128b1007a6292bca7cf9b3d8"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/schemas/vrc-priority-vector-owner-review.schema.json",
+          "sha256": "acb0c462d3cc1f6cad289619753680f8c41e9219ee83bd64d945b3446e1320c7"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/cyber-dominance-candidates.yaml",
+          "sha256": "09c28ebbad23a179cbd144906ea631d97baaad9a66a4c21770aa79834da2fcc5"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/emi-double-count-candidates.yaml",
+          "sha256": "bb42d910c43801113f57640b7f2e593e9e0fcdf36cf1c1f91b00d31eaa0f1dc1"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/emi.yaml",
+          "sha256": "ce3514a6052864c60a2e06f29238ca787acab904cfcfdb2e73585d2bb87eeb8a"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/immediate-enablers-expansion.yaml",
+          "sha256": "98b04938a3034432a798ffcc3ea0a173b26179a4a3459499fb5e5cc1545dd816"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/immediate-enablers.yaml",
+          "sha256": "ee20dce887b514e5ad73786a2a681b8d56794ab953838920da504758e5a19715"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/immediate-response-order-candidates.yaml",
+          "sha256": "a85b07b4855dcac756e704bc12e2bda4f01dda1a2dc4be03e63eac13e13be306"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/intel.yaml",
+          "sha256": "44fb4c45a495eeee2734f51c917bca091ca25692f3726117de26bbd1698fbfff"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/md.yaml",
+          "sha256": "c184fbd0883b0c473fedc74f60adc8e63746d90619babe210237928e0f913408"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/rate-boundary-candidates.yaml",
+          "sha256": "ceff13928d3dc60c5208177a212b19d835600b76dbbf0d32e95e70a3d132fb4f"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/rates.yaml",
+          "sha256": "e1a0b0b400b376e09712d5a9d3bc03b4c2ed6d6a510be18ec6e281fe165da896"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/squadron-activation-candidates.yaml",
+          "sha256": "5c1d0dff029ba58a0ea2f5f36cbb1bf8af7bc6b66789ded5ac6fe295e80db696"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/tests/rule-vectors/strategic-rate-response-chain-candidates.yaml",
+          "sha256": "31c793a2dfc4242549a21d387b9392a72a88229f360916df4e6c1b3de6202528"
+        }
+      ],
+      "distribution_class": "developer-only",
+      "role": "developer",
+      "set_id": "developer-contracts-and-validation"
+    },
+    {
+      "artifacts": [
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/generated/reviews/content-commit-semantics-owner-review.json",
+          "sha256": "60e9e147e98f0d8479084da5c858c5ffdf0918cbe69ed2acb63cf1b217bb3507"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/generated/reviews/content-commit-semantics-owner-review.md",
+          "sha256": "d0a944e6621670ba5d79a16e4ac745f1967584304de700e8f9f59f2332924c37"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/generated/reviews/initial-release-candidate-owner-review.json",
+          "sha256": "a622f4bcc914261641fb6d8b03e522e875229a88c64f96443a7a6d463729998f"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/generated/reviews/initial-release-candidate-owner-review.md",
+          "sha256": "078a8e6163cfad08707bdc36fa4f8be007b16704fcd70d2c9e692c877964fcd3"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/digital-audit/afwi-kai-digital/vrc-priority-2026-09-23-md-boundary/implementation-report.md",
+          "sha256": "b06744afdd7b46a02d15799aaf22622f526e16c4f8798d161bb0c0e2de750316"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/digital-audit/afwi-kai-digital/vrc-priority-2026-09-23-r2/audit-report.md",
+          "sha256": "e25b77c9d6c2d1cc795a53a204dc8b411f834f2d19ceb1a78fe7471fed5bb7c9"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/digital-audit/afwi-kai-digital/vrc-priority-2026-09-23/audit-report.md",
+          "sha256": "c3c1b96d47971daba6d85949dca5d061efcfd8e665f3c368686da372c6e3a3a2"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/governance/normative-audit/next-rc-candidate/active-rule-id-set.json",
+          "sha256": "c6732d2f215898c2de8da45fc7a103e01a7dc962362d6d39d296b013a83d19d0"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/normative-audit/next-rc-candidate/differential-normative-audit-report.md",
+          "sha256": "1aa21f6ba327db3655041a1d4b0b6cb834caf17498b4a10c873e7636210ff7cb"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/yaml",
+          "path": "rule-core/governance/normative-audit/next-rc-candidate/differential-normative-audit-results.yaml",
+          "sha256": "bd57b6f4d4e009e7127e14e1fdcb1640bd6d19f49b4a62fdd8ba712b0c8e5e68"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/governance/normative-audit/next-rc-candidate/differential-normative-audit-summary.json",
+          "sha256": "4066842ba532dfc4e4826f9180d0ce215a95946bfdb6e00c214975b64295d9a2"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "application/json",
+          "path": "rule-core/governance/normative-audit/next-rc-candidate/normative-baseline-candidate.json",
+          "sha256": "6036ce71edc015ee60305ffe865c4f06426cb2bf1ce11bd387c3109461884a2a"
+        }
+      ],
+      "distribution_class": "internal archive",
+      "role": "review-evidence",
+      "set_id": "internal-approval-and-audit-history"
+    }
+  ],
+  "candidate_vector_count": 3,
+  "candidate_vectors_included_as_normative": false,
+  "content_commit": "a8f5f0ab5bb96411142934c45a2b8ff0f0f9fc2f",
+  "content_equivalent_to": null,
+  "coverage_snapshot": {
+    "content_kind": "text",
+    "hash_profile": "afwi-content-sha256-v1",
+    "media_type": "application/yaml",
+    "path": "rule-core/governance/coverage.yaml",
+    "sha256": "1f93da5181bd0b6e02fb3962c186906e806d7a5116bd64ee2c0bbf87bf7407fc"
+  },
+  "coverage_status": "provisional_with_explicit_exclusions",
+  "decisions_snapshot": {
+    "content_kind": "text",
+    "hash_profile": "afwi-content-sha256-v1",
+    "media_type": "application/yaml",
+    "path": "rule-core/governance/decisions.yaml",
+    "sha256": "776068cd1f8c4ecfdf9488b6d9d31409b71e2aa10d88cfc5266f349fb5c32417"
+  },
+  "digital_compatibility": [
+    {
+      "evidence": [
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/digital-audit/afwi-kai-digital/vrc-priority-2026-09-23/audit-report.md",
+          "sha256": "c3c1b96d47971daba6d85949dca5d061efcfd8e665f3c368686da372c6e3a3a2"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/digital-audit/afwi-kai-digital/vrc-priority-2026-09-23-r2/audit-report.md",
+          "sha256": "e25b77c9d6c2d1cc795a53a204dc8b411f834f2d19ceb1a78fe7471fed5bb7c9"
+        },
+        {
+          "content_kind": "text",
+          "hash_profile": "afwi-content-sha256-v1",
+          "media_type": "text/markdown",
+          "path": "rule-core/governance/digital-audit/afwi-kai-digital/vrc-priority-2026-09-23-md-boundary/implementation-report.md",
+          "sha256": "b06744afdd7b46a02d15799aaf22622f526e16c4f8798d161bb0c0e2de750316"
+        }
+      ],
+      "excluded_scope": [
+        "KNOWN-CREDENTIAL-SCANNER-SHAPE",
+        "KNOWN-ENVIRONMENT-WEB-LOCK-TIMEOUT",
+        "KNOWN-HISTORICAL-FIXTURE-0910-PAYLOAD-01",
+        "KNOWN-HISTORICAL-FIXTURE-PLAN-01",
+        "KNOWN-HISTORICAL-FIXTURE-PLAN-02",
+        "KNOWN-HISTORICAL-FIXTURE-SOURCE-ATTRIBUTE-HASH",
+        "RC-CYBER-TARGET-GROUP-MEMBERSHIP-001",
+        "RC-CYBER-TARGET-GROUP-MODEL-001",
+        "RC-CYBER-TARGET-GROUP-PERSISTENCE-001",
+        "RC-CYBER-TARGET-GROUP-SELECTION-001",
+        "RC-TURN-BASE-STAR-PAYMENT-001",
+        "candidate-vectors",
+        "digital-internal-behavior",
+        "untranscribed-components-and-markers",
+        "untranscribed-dismissal-matrix",
+        "untranscribed-rate-card-effects",
+        "unverified-disputed-area-geography",
+        "unverified-pdf-docx-ranges"
+      ],
+      "implementation_id": "AFWI-KAI-Digital",
+      "implementation_version": null,
+      "status": "partial",
+      "tested_vector_ids": [
+        "RV-EMI-AT-THRESHOLD-001",
+        "RV-EMI-BELOW-THRESHOLD-001",
+        "RV-EMI-CONDITION-CEASES-001",
+        "RV-EMI-DIS-EFFECT-001",
+        "RV-EMI-DOUBLE-COUNT-001",
+        "RV-EMI-EXCLUDED-MARKERS-001",
+        "RV-ENABLER-CYBER-NO-DETERMINATION-INELIGIBLE-001",
+        "RV-ENABLER-CYBER-US-CY-05-DAY1-INELIGIBLE-001",
+        "RV-ENABLER-CYBER-US-CY-05-DAY2-INELIGIBLE-001",
+        "RV-ENABLER-CYBER-US-CY-05-DAY3-CANCEL-001",
+        "RV-ENABLER-NV-BOTH-LEGAL-001",
+        "RV-ENABLER-NV-ORDER-07-08-001",
+        "RV-ENABLER-NV-ORDER-08-07-001",
+        "RV-ENABLER-NV-TARGET-REMAINS-001",
+        "RV-ENABLER-NV-TARGET-REMOVED-001",
+        "RV-ENABLER-NV-TARGET-REMOVED-08-FIRST-001",
+        "RV-ENABLER-STC-CY-04-NO-TRIGGER-001",
+        "RV-ENABLER-STC-CY-04-TRIGGER-001",
+        "RV-ENABLER-STC-CY-05-NO-TRIGGER-001",
+        "RV-ENABLER-STC-CY-05-TRIGGER-001",
+        "RV-ENABLER-STC-IW-01-EFFECT-001",
+        "RV-ENABLER-STC-IW-01-NO-TRIGGER-001",
+        "RV-ENABLER-STC-IW-01-TRIGGER-001",
+        "RV-ENABLER-STC-IW-04-FAILURE-001",
+        "RV-ENABLER-STC-IW-04-NO-TRIGGER-001",
+        "RV-ENABLER-STC-IW-04-SUCCESS-001",
+        "RV-ENABLER-STC-IW-04-TRIGGER-001",
+        "RV-ENABLER-STC-NV-07-NO-TRIGGER-001",
+        "RV-ENABLER-STC-NV-07-TRIGGER-001",
+        "RV-ENABLER-STC-NV-08-NO-TRIGGER-001",
+        "RV-ENABLER-STC-NV-08-TRIGGER-001",
+        "RV-ENABLER-STC-RF-05-NO-TRIGGER-001",
+        "RV-ENABLER-STC-RF-05-TRIGGER-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001",
+        "RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001",
+        "RV-ENABLER-US-AB-05-EFFECT-001",
+        "RV-ENABLER-US-AB-05-NO-TRIGGER-001",
+        "RV-ENABLER-US-AB-05-TRIGGER-001",
+        "RV-ENABLER-US-AF-05-EFFECT-001",
+        "RV-ENABLER-US-AF-05-NO-TRIGGER-001",
+        "RV-ENABLER-US-AF-05-TRIGGER-001",
+        "RV-ENABLER-US-AF-10-ADV-RESUMES-AFTER-MD-001",
+        "RV-ENABLER-US-AF-10-DECLARED-BEFORE-MD-001",
+        "RV-ENABLER-US-AF-10-EFFECT-001",
+        "RV-ENABLER-US-AF-10-NO-TRIGGER-001",
+        "RV-ENABLER-US-AF-10-PASS-BEFORE-MD-001",
+        "RV-ENABLER-US-AF-10-TRIGGER-001",
+        "RV-ENABLER-US-CY-03-NO-TRIGGER-001",
+        "RV-ENABLER-US-CY-03-TRIGGER-001",
+        "RV-ENABLER-US-CY-05-NO-TRIGGER-001",
+        "RV-ENABLER-US-CY-05-TRIGGER-001",
+        "RV-ENABLER-US-EW-03-AFTER-RED-MD-001",
+        "RV-ENABLER-US-EW-03-EFFECT-001",
+        "RV-ENABLER-US-EW-03-NO-TRIGGER-001",
+        "RV-ENABLER-US-EW-03-TRIGGER-001",
+        "RV-ENABLER-US-IW-01-EFFECT-001",
+        "RV-ENABLER-US-IW-01-NO-TRIGGER-001",
+        "RV-ENABLER-US-IW-01-TRIGGER-001",
+        "RV-ENABLER-US-IW-04-FAILURE-001",
+        "RV-ENABLER-US-IW-04-NO-TRIGGER-001",
+        "RV-ENABLER-US-IW-04-SUCCESS-001",
+        "RV-ENABLER-US-IW-04-TRIGGER-001",
+        "RV-ENABLER-US-IW-07-EFFECT-001",
+        "RV-ENABLER-US-IW-07-NO-TRIGGER-001",
+        "RV-ENABLER-US-IW-07-TRIGGER-001",
+        "RV-ENABLER-US-SP-03-NO-TRIGGER-001",
+        "RV-ENABLER-US-SP-03-TRIGGER-001",
+        "RV-ENABLER-US-SP-04-NO-TRIGGER-001",
+        "RV-ENABLER-US-SP-04-TRIGGER-001",
+        "RV-INTEL-FAILURE-CONSUMES-001",
+        "RV-INTEL-HAND-REVEAL-001",
+        "RV-INTEL-LIMIT-001",
+        "RV-INTEL-SIGN-HEX-REVEAL-001",
+        "RV-INTEL-SQUADRON-FAILURE-001",
+        "RV-INTEL-SQUADRON-SUCCESS-001",
+        "RV-MD-AMMUNITION-SPENT-001",
+        "RV-MD-DECLARED-001",
+        "RV-MD-DECLINED-001",
+        "RV-MD-FAILURE-001",
+        "RV-MD-FULL-INTERCEPT-001",
+        "RV-MD-LAYERED-001",
+        "RV-MD-LAYERED-ADA-DECISION-001",
+        "RV-MD-PARTIAL-INTERCEPT-001",
+        "RV-MD-STC-RF-05-001",
+        "RV-RATE-BOUNDARY-CYBER-LOWER-OPTIONAL-INELIGIBLE-001",
+        "RV-RATE-BOUNDARY-CYBER-UPPER-OPTIONAL-INELIGIBLE-001",
+        "RV-RATE-BOUNDARY-SPACE-DIRECT-COMMAND-REJECTED-001",
+        "RV-RATE-BOUNDARY-SPACE-LOWER-OPTIONAL-INELIGIBLE-001",
+        "RV-RATE-BOUNDARY-SPACE-MULTI-EFFECT-001",
+        "RV-RATE-BOUNDARY-SPACE-UPPER-PLUS1-INELIGIBLE-001",
+        "RV-RATE-BOUNDARY-SPACE-UPPER-PLUS2-INELIGIBLE-001",
+        "RV-RATE-BOUNDARY-STC-CY-05-ZERO-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-AT6-DISMISSAL-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS1-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS2-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS3-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-OPTIONAL-INELIGIBLE-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US1-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US2-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US3-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-RETURN5-NO-DISMISSAL-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC1-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC2-001",
+        "RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC3-001",
+        "RV-RATE-CYBER-DOMINANCE-001",
+        "RV-RATE-CYBER-DOMINANCE-DETAIL-001",
+        "RV-RATE-CYBER-DOMINANCE-EXPIRY-001",
+        "RV-RATE-CYBER-INCREASE-AT-001",
+        "RV-RATE-CYBER-INCREASE-BELOW-001",
+        "RV-RATE-CYBER-THREE-TO-FOUR-001",
+        "RV-RATE-CYBER-TWO-TO-THREE-001",
+        "RV-RATE-CYBER-ZERO-TO-ONE-001",
+        "RV-RATE-INITIALIZE-001",
+        "RV-RATE-INITIATIVE-DIFFERENCE-001",
+        "RV-RATE-INITIATIVE-NO-ADVANTAGE-001",
+        "RV-RATE-INTEL-COUNT-001",
+        "RV-RATE-SPACE-ONE-MD-LONG-RANGE-001",
+        "RV-RATE-SPACE-ONE-MD-SAME-HEX-001",
+        "RV-RATE-SPACE-TWO-DIS-001",
+        "RV-RATE-STRATEGIC-DISMISSAL-001",
+        "RV-RATE-STRATEGIC-NORMAL-ADVANTAGE-001",
+        "RV-RATE-STRATEGIC-NORMAL-DRAW-001",
+        "RV-RATE-STRATEGIC-SQUADRON-SCENARIO1-001",
+        "RV-RATE-STRATEGIC-SQUADRON-SCENARIO2-001",
+        "RV-SQUADRON-KJ-500-ACTIVATION-001",
+        "RV-SQUADRON-KQ-200-ACTIVATION-001"
+      ]
+    }
+  ],
+  "effective_date": "2026-09-27",
+  "excluded_scope": [
+    {
+      "blocking_issue_ids": [
+        "ISSUE-EMI-DEPENDENCY-008",
+        "ISSUE-EMI-COMPONENT-CLASSIFICATION-010"
+      ],
+      "reason": "Three candidate vectors remain in the repository but are excluded from the approved normative set.",
+      "scope_id": "candidate-vectors"
+    },
+    {
+      "blocking_issue_ids": [
+        "ISSUE-TRANSCRIPTION-005"
+      ],
+      "reason": "Untranscribed component, token-side and marker content is excluded.",
+      "scope_id": "untranscribed-components-and-markers"
+    },
+    {
+      "blocking_issue_ids": [
+        "ISSUE-RULE-PDF-DOCX-ALIGNMENT-009"
+      ],
+      "reason": "Unverified PDF and DOCX ranges are excluded.",
+      "scope_id": "unverified-pdf-docx-ranges"
+    },
+    {
+      "blocking_issue_ids": [
+        "ISSUE-RATE-CARD-TRANSCRIPTION-011"
+      ],
+      "reason": "Untranscribed rate-card-specific effects are excluded.",
+      "scope_id": "untranscribed-rate-card-effects"
+    },
+    {
+      "blocking_issue_ids": [
+        "ISSUE-RATE-GEOGRAPHY-012"
+      ],
+      "reason": "Unverified disputed-area geography is excluded.",
+      "scope_id": "unverified-disputed-area-geography"
+    },
+    {
+      "blocking_issue_ids": [
+        "ISSUE-RATE-DISMISSAL-MATRIX-014"
+      ],
+      "reason": "Untranscribed role/cell dismissal matrix results are excluded.",
+      "scope_id": "untranscribed-dismissal-matrix"
+    },
+    {
+      "blocking_issue_ids": [],
+      "reason": "Digital internal state, UI, AI, persistence and transport mechanisms are non-normative.",
+      "scope_id": "digital-internal-behavior"
+    }
+  ],
+  "external_fixed_sources": [
+    {
+      "availability_status": "external_fixed",
+      "distribution_class": "rights-pending",
+      "included_in_public_package": false,
+      "receipt_path": "rule-core/governance/release-integrity-declarations.yaml",
+      "source_id": "SRC-BOARD-A3-0915"
+    },
+    {
+      "availability_status": "external_fixed",
+      "distribution_class": "rights-pending",
+      "included_in_public_package": false,
+      "receipt_path": "rule-core/governance/release-integrity-declarations.yaml",
+      "source_id": "SRC-MAP-0808-0916-PNG"
+    },
+    {
+      "availability_status": "external_fixed",
+      "distribution_class": "rights-pending",
+      "included_in_public_package": false,
+      "receipt_path": "rule-core/governance/release-integrity-declarations.yaml",
+      "source_id": "SRC-MAP-0808-0916-JPG"
+    }
+  ],
+  "external_internal_evidence": {
+    "count": 15,
+    "declaration_path": "rule-core/governance/release-integrity-declarations.yaml",
+    "distribution_class": "internal archive",
+    "public_normative_artifact": false,
+    "rights_status": "rights-pending"
+  },
+  "field_ownership_snapshot": {
+    "content_kind": "text",
+    "hash_profile": "afwi-content-sha256-v1",
+    "media_type": "application/yaml",
+    "path": "rule-core/governance/field-ownership.yaml",
+    "sha256": "b59c20756370ca0864f497eb7e8f872b5142d210edacbe9a30e907a7c4ebf5ef"
+  },
+  "git_tag": "RC-2026.09.27-01",
+  "issued_at": "2026-09-27",
+  "known_issues": [
+    {
+      "classification": "historical_validation",
+      "description": "Legacy save-fixture hash difference caused by the later source attribute.",
+      "issue_id": "KNOWN-HISTORICAL-FIXTURE-SOURCE-ATTRIBUTE-HASH",
+      "release_impact": "none_for_declared_scope"
+    },
+    {
+      "classification": "historical_validation",
+      "description": "Historical 0910 replay/payload differs from the current reducer.",
+      "issue_id": "KNOWN-HISTORICAL-FIXTURE-0910-PAYLOAD-01",
+      "release_impact": "none_for_declared_scope"
+    },
+    {
+      "classification": "historical_validation",
+      "description": "Historical Plan snapshot difference 1.",
+      "issue_id": "KNOWN-HISTORICAL-FIXTURE-PLAN-01",
+      "release_impact": "none_for_declared_scope"
+    },
+    {
+      "classification": "historical_validation",
+      "description": "Historical Plan snapshot difference 2.",
+      "issue_id": "KNOWN-HISTORICAL-FIXTURE-PLAN-02",
+      "release_impact": "none_for_declared_scope"
+    },
+    {
+      "classification": "environmental",
+      "description": "Environment-dependent Web Lock timeout.",
+      "issue_id": "KNOWN-ENVIRONMENT-WEB-LOCK-TIMEOUT",
+      "release_impact": "limits_digital_compatibility"
+    },
+    {
+      "classification": "non_blocking",
+      "description": "Existing credential-shape scanner defect.",
+      "issue_id": "KNOWN-CREDENTIAL-SCANNER-SHAPE",
+      "release_impact": "limits_digital_compatibility"
+    },
+    {
+      "classification": "non_blocking",
+      "description": "Digital conformance for RC-TURN-BASE-STAR-PAYMENT-001 and the Cyber Target Group rules is not yet verified.",
+      "issue_id": "KNOWN-DIGITAL-A1-CYBER-CONFORMANCE-PENDING",
+      "release_impact": "limits_digital_compatibility"
+    }
+  ],
+  "normative_scope": {
+    "component_ids": [
+      "COMP-ENABLER-STC-CY-04",
+      "COMP-ENABLER-STC-CY-05",
+      "COMP-ENABLER-STC-IW-01",
+      "COMP-ENABLER-STC-IW-04",
+      "COMP-ENABLER-STC-NV-07",
+      "COMP-ENABLER-STC-NV-08",
+      "COMP-ENABLER-STC-RF-05",
+      "COMP-ENABLER-US-AB-05",
+      "COMP-ENABLER-US-AF-05",
+      "COMP-ENABLER-US-AF-10",
+      "COMP-ENABLER-US-CY-03",
+      "COMP-ENABLER-US-CY-05",
+      "COMP-ENABLER-US-EW-03",
+      "COMP-ENABLER-US-IW-01",
+      "COMP-ENABLER-US-IW-04",
+      "COMP-ENABLER-US-IW-07",
+      "COMP-ENABLER-US-SP-03",
+      "COMP-ENABLER-US-SP-04",
+      "COMP-SQUADRON-STC-SQ-04",
+      "COMP-SQUADRON-STC-SQ-13"
+    ],
+    "description": "Approved Rule Core normative scope for RC-2026.09.27-01; candidate vectors are excluded.",
+    "rule_core_ids": [
+      "RC-COMBAT-MD-001",
+      "RC-COMBAT-MD-LAYERED-001",
+      "RC-COMBAT-MD-RESOLUTION-001",
+      "RC-COMBAT-MD-VISIBILITY-001",
+      "RC-CYBER-TARGET-GROUP-MEMBERSHIP-001",
+      "RC-CYBER-TARGET-GROUP-MODEL-001",
+      "RC-CYBER-TARGET-GROUP-PERSISTENCE-001",
+      "RC-CYBER-TARGET-GROUP-SELECTION-001",
+      "RC-EMI-COMPONENT-001",
+      "RC-EMI-EFFECT-001",
+      "RC-EMI-STACK-001",
+      "RC-EMI-STATE-001",
+      "RC-ENABLER-IMMEDIATE-001",
+      "RC-INTEL-ACTIVITY-001",
+      "RC-RATE-BOUNDARY-001",
+      "RC-RATE-CYBER-DOMINANCE-001",
+      "RC-RATE-CYBER-INCREASE-001",
+      "RC-RATE-CYBER-RANGE-001",
+      "RC-RATE-INITIATIVE-001",
+      "RC-RATE-INTEL-001",
+      "RC-RATE-MODEL-001",
+      "RC-RATE-SPACE-PENALTY-001",
+      "RC-RATE-SPACE-RANGE-001",
+      "RC-RATE-STRATEGIC-END-001",
+      "RC-RATE-STRATEGIC-RANGE-001",
+      "RC-RATE-STRATEGIC-SCENARIO-001",
+      "RC-RATE-VISIBILITY-001",
+      "RC-SQUADRON-ACTIVATION-001",
+      "RC-SQUADRON-DEPLOYMENT-001",
+      "RC-SQUADRON-GENERATION-001",
+      "RC-SQUADRON-RETURN-001",
+      "RC-TURN-BASE-STAR-PAYMENT-001"
+    ],
+    "scenario_ids": [],
+    "vector_ids": [
+      "RV-EMI-AT-THRESHOLD-001",
+      "RV-EMI-BELOW-THRESHOLD-001",
+      "RV-EMI-CONDITION-CEASES-001",
+      "RV-EMI-DIS-EFFECT-001",
+      "RV-EMI-DOUBLE-COUNT-001",
+      "RV-EMI-EXCLUDED-MARKERS-001",
+      "RV-ENABLER-CYBER-NO-DETERMINATION-INELIGIBLE-001",
+      "RV-ENABLER-CYBER-TARGET-GROUP-ABSENT-SELECTION-001",
+      "RV-ENABLER-CYBER-TARGET-GROUP-MODEL-001",
+      "RV-ENABLER-CYBER-TARGET-GROUP-PERSISTENCE-001",
+      "RV-ENABLER-CYBER-US-CY-05-DAY1-INELIGIBLE-001",
+      "RV-ENABLER-CYBER-US-CY-05-DAY2-INELIGIBLE-001",
+      "RV-ENABLER-CYBER-US-CY-05-DAY3-CANCEL-001",
+      "RV-ENABLER-NV-BOTH-LEGAL-001",
+      "RV-ENABLER-NV-ORDER-07-08-001",
+      "RV-ENABLER-NV-ORDER-08-07-001",
+      "RV-ENABLER-NV-TARGET-REMAINS-001",
+      "RV-ENABLER-NV-TARGET-REMOVED-001",
+      "RV-ENABLER-NV-TARGET-REMOVED-08-FIRST-001",
+      "RV-ENABLER-STC-CY-04-NO-TRIGGER-001",
+      "RV-ENABLER-STC-CY-04-TRIGGER-001",
+      "RV-ENABLER-STC-CY-05-NO-TRIGGER-001",
+      "RV-ENABLER-STC-CY-05-TRIGGER-001",
+      "RV-ENABLER-STC-IW-01-EFFECT-001",
+      "RV-ENABLER-STC-IW-01-NO-TRIGGER-001",
+      "RV-ENABLER-STC-IW-01-TRIGGER-001",
+      "RV-ENABLER-STC-IW-04-FAILURE-001",
+      "RV-ENABLER-STC-IW-04-NO-TRIGGER-001",
+      "RV-ENABLER-STC-IW-04-SUCCESS-001",
+      "RV-ENABLER-STC-IW-04-TRIGGER-001",
+      "RV-ENABLER-STC-NV-07-NO-TRIGGER-001",
+      "RV-ENABLER-STC-NV-07-TRIGGER-001",
+      "RV-ENABLER-STC-NV-08-NO-TRIGGER-001",
+      "RV-ENABLER-STC-NV-08-TRIGGER-001",
+      "RV-ENABLER-STC-RF-05-NO-TRIGGER-001",
+      "RV-ENABLER-STC-RF-05-TRIGGER-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-PASS-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-SOURCE-FAILURE-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-FAILURE-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-IW-04-STC-IW-04-SUCCESS-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-PASS-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-FAILURE-001",
+      "RV-ENABLER-STRATEGIC-CHAIN-US-SP-03-STC-IW-04-SUCCESS-001",
+      "RV-ENABLER-US-AB-05-EFFECT-001",
+      "RV-ENABLER-US-AB-05-NO-TRIGGER-001",
+      "RV-ENABLER-US-AB-05-TRIGGER-001",
+      "RV-ENABLER-US-AF-05-EFFECT-001",
+      "RV-ENABLER-US-AF-05-NO-TRIGGER-001",
+      "RV-ENABLER-US-AF-05-TRIGGER-001",
+      "RV-ENABLER-US-AF-10-ADV-RESUMES-AFTER-MD-001",
+      "RV-ENABLER-US-AF-10-DECLARED-BEFORE-MD-001",
+      "RV-ENABLER-US-AF-10-EFFECT-001",
+      "RV-ENABLER-US-AF-10-NO-TRIGGER-001",
+      "RV-ENABLER-US-AF-10-PASS-BEFORE-MD-001",
+      "RV-ENABLER-US-AF-10-TRIGGER-001",
+      "RV-ENABLER-US-CY-03-NO-TRIGGER-001",
+      "RV-ENABLER-US-CY-03-TRIGGER-001",
+      "RV-ENABLER-US-CY-05-NO-TRIGGER-001",
+      "RV-ENABLER-US-CY-05-TRIGGER-001",
+      "RV-ENABLER-US-EW-03-AFTER-RED-MD-001",
+      "RV-ENABLER-US-EW-03-EFFECT-001",
+      "RV-ENABLER-US-EW-03-NO-TRIGGER-001",
+      "RV-ENABLER-US-EW-03-TRIGGER-001",
+      "RV-ENABLER-US-IW-01-EFFECT-001",
+      "RV-ENABLER-US-IW-01-NO-TRIGGER-001",
+      "RV-ENABLER-US-IW-01-TRIGGER-001",
+      "RV-ENABLER-US-IW-04-FAILURE-001",
+      "RV-ENABLER-US-IW-04-NO-TRIGGER-001",
+      "RV-ENABLER-US-IW-04-SUCCESS-001",
+      "RV-ENABLER-US-IW-04-TRIGGER-001",
+      "RV-ENABLER-US-IW-07-EFFECT-001",
+      "RV-ENABLER-US-IW-07-NO-TRIGGER-001",
+      "RV-ENABLER-US-IW-07-TRIGGER-001",
+      "RV-ENABLER-US-SP-03-NO-TRIGGER-001",
+      "RV-ENABLER-US-SP-03-TRIGGER-001",
+      "RV-ENABLER-US-SP-04-NO-TRIGGER-001",
+      "RV-ENABLER-US-SP-04-TRIGGER-001",
+      "RV-INTEL-FAILURE-CONSUMES-001",
+      "RV-INTEL-HAND-REVEAL-001",
+      "RV-INTEL-LIMIT-001",
+      "RV-INTEL-SIGN-HEX-REVEAL-001",
+      "RV-INTEL-SQUADRON-FAILURE-001",
+      "RV-INTEL-SQUADRON-SUCCESS-001",
+      "RV-MD-AMMUNITION-SPENT-001",
+      "RV-MD-DECLARED-001",
+      "RV-MD-DECLINED-001",
+      "RV-MD-FAILURE-001",
+      "RV-MD-FULL-INTERCEPT-001",
+      "RV-MD-LAYERED-001",
+      "RV-MD-LAYERED-ADA-DECISION-001",
+      "RV-MD-PARTIAL-INTERCEPT-001",
+      "RV-MD-STC-RF-05-001",
+      "RV-RATE-BOUNDARY-CYBER-LOWER-OPTIONAL-INELIGIBLE-001",
+      "RV-RATE-BOUNDARY-CYBER-UPPER-OPTIONAL-INELIGIBLE-001",
+      "RV-RATE-BOUNDARY-SPACE-DIRECT-COMMAND-REJECTED-001",
+      "RV-RATE-BOUNDARY-SPACE-LOWER-OPTIONAL-INELIGIBLE-001",
+      "RV-RATE-BOUNDARY-SPACE-MULTI-EFFECT-001",
+      "RV-RATE-BOUNDARY-SPACE-UPPER-PLUS1-INELIGIBLE-001",
+      "RV-RATE-BOUNDARY-SPACE-UPPER-PLUS2-INELIGIBLE-001",
+      "RV-RATE-BOUNDARY-STC-CY-05-ZERO-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-AT6-DISMISSAL-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS1-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS2-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-FORCED-PLUS3-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-OPTIONAL-INELIGIBLE-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US1-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US2-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-PRC6-TO-US3-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-RETURN5-NO-DISMISSAL-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC1-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC2-001",
+      "RV-RATE-BOUNDARY-STRATEGIC-US6-TO-PRC3-001",
+      "RV-RATE-CYBER-DOMINANCE-001",
+      "RV-RATE-CYBER-DOMINANCE-DETAIL-001",
+      "RV-RATE-CYBER-DOMINANCE-EXPIRY-001",
+      "RV-RATE-CYBER-INCREASE-AT-001",
+      "RV-RATE-CYBER-INCREASE-BELOW-001",
+      "RV-RATE-CYBER-THREE-TO-FOUR-001",
+      "RV-RATE-CYBER-TWO-TO-THREE-001",
+      "RV-RATE-CYBER-ZERO-TO-ONE-001",
+      "RV-RATE-INITIALIZE-001",
+      "RV-RATE-INITIATIVE-DIFFERENCE-001",
+      "RV-RATE-INITIATIVE-NO-ADVANTAGE-001",
+      "RV-RATE-INTEL-COUNT-001",
+      "RV-RATE-SPACE-ONE-MD-LONG-RANGE-001",
+      "RV-RATE-SPACE-ONE-MD-SAME-HEX-001",
+      "RV-RATE-SPACE-TWO-DIS-001",
+      "RV-RATE-STRATEGIC-DISMISSAL-001",
+      "RV-RATE-STRATEGIC-NORMAL-ADVANTAGE-001",
+      "RV-RATE-STRATEGIC-NORMAL-DRAW-001",
+      "RV-RATE-STRATEGIC-SQUADRON-SCENARIO1-001",
+      "RV-RATE-STRATEGIC-SQUADRON-SCENARIO2-001",
+      "RV-SQUADRON-KJ-500-ACTIVATION-001",
+      "RV-SQUADRON-KQ-200-ACTIVATION-001",
+      "RV-TURN-BASE-STAR-AREA1-PAY-001",
+      "RV-TURN-BASE-STAR-AREA2-EIGHT-CANCEL-TWO-001",
+      "RV-TURN-BASE-STAR-AREA2-EIGHT-DISTRIBUTED-ILLEGAL-001",
+      "RV-TURN-BASE-STAR-AREA2-NINE-DISTRIBUTED-CANCEL-001",
+      "RV-TURN-BASE-STAR-DISTRIBUTED-ALL-THREE-TO-AREA3-001",
+      "RV-TURN-BASE-STAR-MIXED-PAYMENT-ILLEGAL-001",
+      "RV-TURN-BASE-STAR-POSTCONDITION-SIX-001"
+    ]
+  },
+  "release_id": "RC-2026.09.27-01",
+  "release_notes": {
+    "breaking_change": "non_breaking",
+    "changes": [
+      "Approved vector set increased to 141; three candidate vectors remain excluded.",
+      "Active Rule Core ID set regenerated from the registry and fixed at 32 IDs.",
+      "Cyber Target Group and turn base-star payment rules were added to the normative scope.",
+      "Normative Audit status VERIFIED with audit fingerprint 5945bbe6c43c758b9a49a54a08593367efa8fb6989fc445a4262030c848f72e6.",
+      "Current validator canonical SHA-256 70b243b3d018c1a0697cf474461b2334c3b306fe43a4a1cc7d861df8bd17bf6c.",
+      "Historical validator canonical SHA-256 f17355ee1cb4cfe772273be77b2b91f90d24f445107202369d7f78a5a88f8646.",
+      "Next-RC canonical result fingerprint 6ba3478c0da264d26df871f3af9e98dc91b99d4fc39365ed06b4ce0dcb61721f.",
+      "Digital conformance for A1 and Cyber Target Group remains pending; this release does not claim full Digital conformance."
+    ],
+    "summary": "RC-2026.09.27-01 freezes the VERIFIED next-RC normative baseline and supersedes RC-2026.09.26-01."
+  },
+  "repository": null,
+  "rights_status": {
+    "declarations": [
+      {
+        "artifact_class": "release governance and release schemas",
+        "basis": "Owner-approved governance and original release schemas.",
+        "distribution_class": "public",
+        "status": "cleared"
+      },
+      {
+        "artifact_class": "normative rules and data transcriptions",
+        "basis": "ISSUE-RIGHTS-006; retained for internal technical RC only.",
+        "distribution_class": "rights-pending",
+        "status": "pending"
+      },
+      {
+        "artifact_class": "approved rule vectors and validation tooling",
+        "basis": "Approved validation contracts; publication remains separately gated.",
+        "distribution_class": "developer-only",
+        "status": "restricted"
+      },
+      {
+        "artifact_class": "owner review and Digital audit history",
+        "basis": "Immutable approval-time and audit-time history.",
+        "distribution_class": "internal archive",
+        "status": "restricted"
+      },
+      {
+        "artifact_class": "external fixed sources and geography visual evidence",
+        "basis": "ISSUE-RIGHTS-006; excluded from the public package.",
+        "distribution_class": "rights-pending",
+        "status": "pending"
+      }
+    ],
+    "release_package_status": "partially_cleared"
+  },
+  "schema_version": "1.0.0",
+  "source_aggregate": "6290bc5ff64a44003e34bdd19d7eefb9ebe4d0519aa3b8766c91ce98ce690786",
+  "source_set_count": 20,
+  "source_set_snapshot": {
+    "content_kind": "text",
+    "hash_profile": "afwi-content-sha256-v1",
+    "id": "SRCSET-20260925-RATE-BOUNDARY-001",
+    "media_type": "application/yaml",
+    "path": "rule-core/governance/source-set-snapshots/source-set-2026-09-25-rate-boundary-001.yaml",
+    "sha256": "b08f62b2a50c1b721f70545fed17a1b2ee3eaaec6adc8f51b6d71803f380c850"
+  },
+  "specification_version": "v0.9.1",
+  "status": "release-candidate",
+  "supersedes": "RC-2026.09.26-01",
+  "technical_rc_freeze_validation": {
+    "canonical_result_fingerprint": "6ba3478c0da264d26df871f3af9e98dc91b99d4fc39365ed06b4ce0dcb61721f",
+    "clean_checkout_required": true,
+    "historical_validators_invoked": false,
+    "independent_run_count": 2,
+    "status": "pass",
+    "validated_content_commit": "a8f5f0ab5bb96411142934c45a2b8ff0f0f9fc2f",
+    "validator_json_sha256": "70b243b3d018c1a0697cf474461b2334c3b306fe43a4a1cc7d861df8bd17bf6c"
+  },
+  "traceability_snapshot": {
+    "content_kind": "text",
+    "hash_profile": "afwi-content-sha256-v1",
+    "media_type": "application/yaml",
+    "path": "rule-core/governance/traceability.yaml",
+    "sha256": "c92f1ae6691498b7ea48afe411b9a12ba6561fb00798cee94443d0a9fbebc032"
+  },
+  "unresolved_snapshot": {
+    "content_kind": "text",
+    "hash_profile": "afwi-content-sha256-v1",
+    "media_type": "application/yaml",
+    "path": "rule-core/governance/unresolved.yaml",
+    "sha256": "3c47ef86dd16ae67520d0c7b2b2526a1f971a505753feaff0316fce591f4bf6e"
+  }
+}
