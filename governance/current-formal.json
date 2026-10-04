@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "current-formal-provenance",
+  "identity": {
+    "version": 1,
+    "revision": 0,
+    "status": "formal"
+  },
+  "provenance": {
+    "repository": "private:AFWI-KAI-Solo",
+    "content_commit": "560922eb2036a6f72ec3355427df89e9d4f79544",
+    "governance_commit": "c27837eb64924da6deb05ea7539b828deeb1f463",
+    "recorded_at": "2026-10-04",
+    "distribution_repository": "https://github.com/hiroaki-sakanashi/AFWI-KAI-Rule-Core",
+    "provenance_note": "content_commitはprivate一方向生成元のcommit。publicの内容commitはこの記録を含むGit履歴から取得する。"
+  },
+  "source_set_snapshot": {
+    "id": "SRCSET-20260925-RATE-BOUNDARY-001",
+    "historical_manifest_path": "generated/releases/RC-2026.09.27-01-release-manifest-final.json",
+    "historical_manifest_field": "source_set_snapshot",
+    "hash_profile": "afwi-content-sha256-v1",
+    "sha256": "b08f62b2a50c1b721f70545fed17a1b2ee3eaaec6adc8f51b6d71803f380c850"
+  },
+  "correction": {
+    "decision_id": "DEC-D07-IDENTITY-ESTABLISHMENT-001",
+    "source_commit": "560922eb2036a6f72ec3355427df89e9d4f79544",
+    "correction_type": "documentation-clarification",
+    "semantic_change": false,
+    "revision_unchanged": true,
+    "corrected_at": "2026-10-04"
+  },
+  "historical_distribution_snapshot": {
+    "release_id": "RC-2026.09.27-01",
+    "publication_package_id": "PUB-2026.09.27-01",
+    "repository": "https://github.com/hiroaki-sakanashi/AFWI-KAI-Rule-Core",
+    "public_commit": "7429f898c66370535c9a55bbab9a1a84e375d69d",
+    "git_tag": "RC-2026.09.27-01",
+    "release_url": "https://github.com/hiroaki-sakanashi/AFWI-KAI-Rule-Core/releases/tag/RC-2026.09.27-01",
+    "manifest_path": "generated/releases/RC-2026.09.27-01-release-manifest-final.json",
+    "immutable": true
+  },
+  "content_hashes": {
+    "scope": "correction-target-files-only",
+    "hash_profile": "afwi-content-sha256-v1",
+    "content_kind": "text",
+    "media_type": "text/markdown",
+    "artifacts": [
+      {
+        "path": "rules/squadron-activation.md",
+        "sha256": "86dc585d864bbdc097d86d9741b1a91ee7a6fd4ad600516e8671ffd88440bcd8"
+      },
+      {
+        "path": "rules/combat.md",
+        "sha256": "a2a57f9fdda523d7d1dbf3308d85850e6ae7ef16dfa39f42907e8442ce3e9511"
+      },
+      {
+        "path": "rules/detection-and-intel.md",
+        "sha256": "30c62b7f8bce1be5091f9059c95e28eaf2fa2a328b90b81e860691419beedce0"
+      },
+      {
+        "path": "rules/enablers.md",
+        "sha256": "2085b94b562d82fa86a6f58cfac1e4b2d1a660e384bd2539445f6382093bc042"
+      }
+    ],
+    "scope_note": "Correction対象4 Markdownの個別内容hash。historical snapshot全体及びcurrent formal全体のhashではない。記録自身はhash対象外。"
+  }
+}

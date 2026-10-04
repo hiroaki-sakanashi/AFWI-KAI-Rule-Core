@@ -2,7 +2,13 @@
 
 AFWI-KAI Rule Coreは、AFWI-KAIのルールを実装非依存の文書、データ、Schema、rule vectorとして扱うための規範仕様です。このrepository候補は公開配布専用であり、private development repositoryで承認・freezeされたRule Core ReleaseとPublication Packageから一方向に生成します。public側で規範を直接編集しません。
 
-## 現在の公開候補
+## Current formal content
+
+`main`は **Version 1 / revision 0 / formal** のCorrection反映済みcurrent contentです。D1／D2／D3は既存意味の訂正・明確化であり、Version／revisionを変更しません。[Current formal identity / provenance](governance/current-formal.json)及び[作者Decision](governance/decisions.yaml)を参照してください。
+
+`RC-2026.09.27-01 / PUB-2026.09.27-01`は訂正前のhistorical distribution snapshotです。旧tag、Release、manifest及び配布物は不変で、現在の`main`の内容hashを証明するものではありません。以下の旧制度metadataはそのsnapshotについての記録であり、D07 identityとは別です。
+
+## Historical distribution snapshot（2026-09-27）
 
 - Latest Release Candidate: `RC-2026.09.27-01`
 - Specification Version: `v0.9.1`
@@ -45,7 +51,7 @@ AFWI-KAI Rule Coreは、AFWI-KAIのルールを実装非依存の文書、デー
 
 上記は宣言済みRule Core scopeのtechnical freezeを妨げない既知事項です。Digital全体のreadinessは別工程です。
 
-## Release metadata
+## Historical release metadata
 
 - [Release Manifest](generated/releases/RC-2026.09.27-01-release-manifest-final.json)
 - [Release Catalog](generated/releases/RC-2026.09.27-01-release-catalog-final.json)
@@ -56,7 +62,7 @@ AFWI-KAI Rule Coreは、AFWI-KAIのルールを実装非依存の文書、デー
 
 ## Download
 
-実公開後はGitHub Releaseから`AFWI-KAI-Rule-Core_RC-2026.09.27-01_PUB-2026.09.27-01.zip`と`SHA256SUMS.txt`を取得できる予定です。現時点では未公開です。
+旧公開snapshotのZIP及び`SHA256SUMS.txt`は[既存GitHub Release](https://github.com/hiroaki-sakanashi/AFWI-KAI-Rule-Core/releases/tag/RC-2026.09.27-01)から取得できます。今回のCorrectionを含む新しい配布artifactは作成していません。
 
 ## License
 

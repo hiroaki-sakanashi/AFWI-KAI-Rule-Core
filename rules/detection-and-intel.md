@@ -18,7 +18,7 @@ Target: 相手手札イネーブラー1枚、兆候マーカー所在ヘック�
 Cost: 対象1つにつき確認可能数1。  
 Procedure: 対象を選択する。手札カードは当該カードを公開する。兆候ヘックスはヘックス内の全兆候を公開する。スコードロンは、確認数1につき選択したプレート1枚だけについてD4を振り、印字捕捉値以上なら当該1枚を捕捉・公開する。スコードロン判定は成否にかかわらず確認可能数を1消費する。  
 Result: 公開が生じた対象を`STATE-COMPONENT-REVEALED`とする。成功した場合は選択したスコードロンプレート1枚だけを`STATE-SQUADRON-ACQUIRED`とする。他の配備済みスコードロンプレートの状態は変更しない。残確認数を更新する。  
-Exceptions: not_stated  
+Exceptions: US-IW-07 MAVEN SMART SYSTEMが有効な間は、自軍スコードロンプレート捕捉判定をダイスを振らずに自動成功とする。発動時機、持続期間及び対象範囲は[イネーブラーのMAVEN固有効果](enablers.md#us-iw-07-maven-smart-system)に従う。<br>
 Interaction-Type: 対象選択はsequential_action。スコードロン捕捉ロールはautomatic_resolution。  
 Visibility-Effect: インテル活動で公開された対象は面を上にして公開し、publicとなる。明示的な再非公開化契機はnot_stated。  
 State-IDs: STATE-INTEL-CONFIRMATIONS-REMAINING; STATE-COMPONENT-REVEALED; STATE-SQUADRON-ACQUIRED  

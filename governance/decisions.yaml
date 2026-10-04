@@ -1,6 +1,31 @@
 schema_version: 0.1.0
 register_status: approved
 decisions:
+  - decision_id: DEC-D07-IDENTITY-ESTABLISHMENT-001
+    category: correction
+    owner_final_text: |-
+      D07 Identity Establishment Ruling
+      現在公開中のAFWI-KAI Rule Coreを、D07体系における Version 1 / revision 0 / formal の初回formal baselineとして対応付ける。
+      旧制度のRC-2026.09.27-01およびPUB-2026.09.27-01は、Version/revision identityではなくhistorical distribution snapshot IDとして保持する。
+      2026-10-04のD1/D2/D3修正は既存意味の訂正・明確化であるCorrectionであり、Version 1 / revision 0を変更しない。Git commitおよび内容hashの差はprovenanceとして記録する。
+    scope: "Rule CoreのD07 identity対応付け及びD1/D2/D3 documentation Correctionのprovenance。ゲーム意味の変更はない。"
+    affected_rule_core_ids: []
+    source_relationship: >-
+      作者指定の02_RuleCore_D07.docx、03_Architecture_D07.docx及び01_Concept_D06.docxに従う統治裁定。
+      Correction source commitは560922eb2036a6f72ec3355427df89e9d4f79544。
+      historical distribution snapshotはRC-2026.09.27-01 / PUB-2026.09.27-01、
+      public commitは7429f898c66370535c9a55bbab9a1a84e375d69d。
+      current formal記録はrule-core/governance/current-formal.jsonを参照。
+      対象はrule-core/rules/squadron-activation.md、rule-core/rules/combat.md、
+      rule-core/rules/detection-and-intel.md及びrule-core/rules/enablers.md。
+      統治identityの対応付けであり、新しいゲームRule IDを付与しない。
+    manufacturing_information_boundary: "Digital固有のMAVEN手札自動適用裁定を含めない。旧manifest、tag、Release及び配布物を変更しない。"
+    original_decided_at: "2026-10-04"
+    reconfirmed_at: "2026-10-04"
+    registered_at: "2026-10-04"
+    approved_by: ルール所有者
+    status: approved
+
   - decision_id: DEC-COMBAT-MD-VISIBILITY-001
     category: addition
     owner_final_text: >-
