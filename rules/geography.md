@@ -1,29 +1,31 @@
 ---
 title: 地理・配置境界
-rule_core_version: 0.16.0-preview-prc-naval-boundary
+rule_core_version: 0.17.0-preview-naval-geography-boundaries
 source_set: SRCSET-20260925-RATE-BOUNDARY-001
 status: reviewed
 license: CC-BY-SA-4.0
-last_verified: 2026-10-08
+last_verified: 2026-10-09
 ---
 
 # 地理・配置境界
 
-### RC-GEOGRAPHY-PRC-NAVAL-INLAND-001 PRC海軍の内陸配置・生成禁止
+### RC-GEOGRAPHY-NAVAL-BOUNDARIES-001 海軍の黒線制約及びPRC橙ライン制約
 
-Rule: PRCの海軍アセットに係る兆候及びその海軍アセットは、中国大陸の黒線より西側には配置・生成できない。
-When: STC-NV-01〜08の兆候を新規配置するとき、又はPRC海軍アセットを新規生成するとき。
-Actor: PRC。
-Target: 兆候又は海軍アセットの配置・生成Hex。
-Procedure: 中国大陸Hexの隣接グラフからMAP上の黒線共有辺を除き、C1を含む西側連結成分を不適格とする。
-Result: 西側連結成分を合法候補集合から除外する。
-Exceptions: 既存saveですでに西側へ配置済みのPRC海軍兆候は、その既存未解決chainに限り解決を完了できる。PRC航空兆候、偽兆候、ADA、陸上・宇宙・サイバー、US側は対象外。
+Rule: PRC海軍に係る兆候及び海軍アセットは、橙ラインの西側かつ中国大陸黒線の東側にのみ配置・生成できる。中国大陸黒線より西側には、いずれの陣営の海軍も配置・生成・進入できない。
+When: STC-NV-01〜08の兆候を新規配置するとき、海軍アセットを新規生成するとき、又は海軍ユニットが移動するとき。
+Actor: 全陣営。橙ライン条件はPRCのみ。
+Target: 兆候又は海軍アセットの配置・生成Hex、及び海軍移動先Hex。
+Procedure: 橙ライン西側は`AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT`、中国大陸黒線東側・西側は完全な黒線共有辺でHex隣接グラフを分割した各Areaを用いる。PRC海軍合法範囲は橙ライン西側と黒線東側の積集合とする。
+Result: 黒線西側を全陣営海軍の合法候補から除外し、PRC海軍については橙ライン外側も除外する。
+Exceptions: 既存saveですでに旧合法性で配置・生成済みの兆候及び海軍アセットはReplay可能とし、既存未解決chainに限り完了できる。PRC航空兆候、偽兆候、ADA、陸上・宇宙・サイバーは橙ライン条件の対象外。
 Interaction-Type: legality
 Visibility-Effect: none
 State-IDs: existing omen/card/unit state only
 Event-IDs: existing placement/generation events only
-Authority-Type: addition_decision
-Source-Fragments: FRAG-MAP-0916-ALL-HEX-IDS
+Authority-Type: correction_decision
+Source-Fragments: FRAG-MAP-0916-ALL-HEX-IDS, FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE
 Sources: SRC-MAP-0808-0916-PNG
-Decision: DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001
+Decision: DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001
 Status: approved
+
+`RC-GEOGRAPHY-PRC-NAVAL-INLAND-001`は、黒線共有辺を不完全に機械化して西側を20 Hexへ誤拡張したため、本Ruleにより置換される。

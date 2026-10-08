@@ -1,5 +1,5 @@
 schema_version: 0.1.0
-rule_core_version: 0.11.0-preview-vrc
+rule_core_version: 0.17.0-preview-naval-geography-boundaries
 source_set: SRCSET-20260923-INITIAL
 status: approved
 canonical_source:
@@ -166,6 +166,40 @@ boundaries:
       self_intersections: []
       terminal_edge: I1/H1.5
       rule: "27アンカーは記載順を維持し、正本PNGから二経路で一致した接続候補18辺だけを挿入した。"
+  - boundary_id: BOUNDARY-PRC-MAINLAND-NAVAL-BLACK-LINE
+    semantic_meaning: 中国大陸黒線の海軍進入禁止境界
+    printed_color: black
+    printed_label: "艦船通過不可"
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-10-09" }
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    source_locator:
+      image_size: [3780, 3780]
+      coordinate_origin: top_left
+      interpretation: "中国大陸沿岸の黒い艦船通過不可線。旧v244で省略された北側共有辺を含む完全な東西分割辺。"
+    boundary_segments:
+      - { segment_id: SEG-PRC-NAVAL-BLACK-001, edge: C3/C4, separates: [C3, C4], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-002, edge: D3.5/C4, separates: [D3.5, C4], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-003, edge: D3.5/D4.5, separates: [D3.5, D4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-004, edge: E4/D4.5, separates: [E4, D4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-005, edge: E4/E5, separates: [E4, E5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-006, edge: E4/F4.5, separates: [E4, F4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-007, edge: F3.5/F4.5, separates: [F3.5, F4.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-008, edge: F3.5/G4, separates: [F3.5, G4], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-009, edge: G3/G4, separates: [G3, G4], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-010, edge: G3/H3.5, separates: [G3, H3.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-011, edge: G3/H2.5, separates: [G3, H2.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-012, edge: G2/H2.5, separates: [G2, H2.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-013, edge: G2/H1.5, separates: [G2, H1.5], transcription_class: owner_confirmed_anchor }
+      - { segment_id: SEG-PRC-NAVAL-BLACK-014, edge: G1/H1.5, separates: [G1, H1.5], transcription_class: owner_confirmed_anchor }
+    verification:
+      method: "原マップ黒線共有辺、Acceptance例及びHex隣接グラフを照合"
+      result: exact_14_edge_mainland_partition
+    path_validation:
+      continuous: true
+      complete_edge_count: 14
+      west_seed: C1
+      correction_of: "v244の不完全な共有辺集合による20 Hex回り込み導出"
 areas:
   - area_id: AREA-EAST-OF-BLUE-GENERATION-WESTERN-LIMIT
     boundary_id: BOUNDARY-BLUE-GENERATION-WESTERN-LIMIT
@@ -212,3 +246,41 @@ areas:
     source_fragment_ids: [FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT]
     verification_status: exact_match
     notes: "45辺の完全経路を隣接グラフから除外し、C1を含む連結成分を『以西』として導出。独立二回一致した51ヘックス集合をルール所有者が2026-09-24に承認。"
+  - area_id: AREA-WEST-OF-PRC-MAINLAND-NAVAL-BLACK-LINE
+    boundary_id: BOUNDARY-PRC-MAINLAND-NAVAL-BLACK-LINE
+    direction_from_boundary: west
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-10-09" }
+    included_hex_ids:
+      [C1, C2, C3,
+       D1.5, D2.5, D3.5,
+       E1, E2, E3, E4,
+       F1.5, F2.5, F3.5,
+       G1, G2, G3]
+    excluded_adjacent_hex_ids: [C4, D4.5, E5, F4.5, G4, H1.5, H2.5, H3.5]
+    hex_count: 16
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE, FRAG-MAP-0916-ALL-HEX-IDS]
+    verification_status: exact_match
+    notes: "完全な14共有辺を隣接グラフから除外し、C1を含む連結成分を西側として導出。旧v244の20 Hex導出を訂正。"
+  - area_id: AREA-EAST-OF-PRC-MAINLAND-NAVAL-BLACK-LINE
+    boundary_id: BOUNDARY-PRC-MAINLAND-NAVAL-BLACK-LINE
+    direction_from_boundary: east
+    status: approved
+    approval: { approved_by: "ルール所有者", approved_at: "2026-10-09" }
+    included_hex_ids:
+      [C4, C5, C6, C7, C8, C9, C10,
+       D4.5, D5.5, D6.5, D7.5, D8.5, D9.5, D10.5,
+       E5, E6, E7, E8, E9, E10,
+       F4.5, F5.5, F6.5, F7.5, F8.5, F9.5, F10.5,
+       G4, G5, G6, G7, G8, G9, G10,
+       H1.5, H2.5, H3.5, H4.5, H5.5, H6.5, H7.5, H8.5, H9.5, H10.5,
+       I1, I2, I3, I4, I5, I6, I7, I8, I9, I10,
+       J1.5, J2.5, J3.5, J4.5, J5.5, J6.5, J7.5, J8.5, J9.5, J10.5,
+       K1, K2, K3, K4, K5, K6, K7, K8, K9, K10,
+       L1.5, L2.5, L3.5, L4.5, L5.5, L6.5, L7.5, L8.5, L9.5, L10.5,
+       M1, M2, M3, M4, M5, M6, M7, M8, M9, M10]
+    excluded_adjacent_hex_ids: [C3, D3.5, E4, F3.5, G1, G2, G3]
+    hex_count: 94
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE, FRAG-MAP-0916-ALL-HEX-IDS]
+    verification_status: exact_match
+    notes: "全110 Hexから黒線西側16 Hexを除いた東側領域。"

@@ -37,15 +37,15 @@
     },
     "boundaries": {
       "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
+      "minItems": 3,
+      "maxItems": 3,
       "items": {
         "type": "object",
         "required": ["boundary_id", "semantic_meaning", "printed_color", "printed_label", "status", "source_fragment_ids", "source_locator", "boundary_segments", "verification"],
         "properties": {
           "boundary_id": { "type": "string", "pattern": "^BOUNDARY-[A-Z0-9-]+$" },
           "semantic_meaning": { "type": "string" },
-          "printed_color": { "enum": ["purple", "orange_yellow"] },
+          "printed_color": { "enum": ["purple", "orange_yellow", "black"] },
           "printed_label": { "type": "string" },
           "status": { "enum": ["candidate", "approved", "ambiguous"] },
           "approval": { "$ref": "#/$defs/approval" },
@@ -104,8 +104,8 @@
     },
     "areas": {
       "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
+      "minItems": 4,
+      "maxItems": 4,
       "items": {
         "type": "object",
         "required": ["area_id", "boundary_id", "direction_from_boundary", "status", "included_hex_ids", "excluded_adjacent_hex_ids", "hex_count", "source_fragment_ids", "verification_status"],
@@ -132,7 +132,7 @@
       "required": ["approved_by", "approved_at"],
       "properties": {
         "approved_by": { "const": "ルール所有者" },
-        "approved_at": { "const": "2026-09-24" }
+        "approved_at": { "type": "string", "pattern": "^2026-[0-9]{2}-[0-9]{2}$" }
       }
     }
   }
