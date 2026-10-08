@@ -491,3 +491,23 @@ rules:
       status: approved
       approved_vector_ids: [RV-TURN-BASE-STAR-AREA1-PAY-001, RV-TURN-BASE-STAR-AREA2-EIGHT-CANCEL-TWO-001, RV-TURN-BASE-STAR-AREA2-EIGHT-DISTRIBUTED-ILLEGAL-001, RV-TURN-BASE-STAR-AREA2-NINE-DISTRIBUTED-CANCEL-001, RV-TURN-BASE-STAR-DISTRIBUTED-ALL-THREE-TO-AREA3-001, RV-TURN-BASE-STAR-POSTCONDITION-SIX-001, RV-TURN-BASE-STAR-MIXED-PAYMENT-ILLEGAL-001]
       candidate_vector_ids: []
+
+  - rule_core_id: RC-GEOGRAPHY-PRC-NAVAL-INLAND-001
+    status: active
+    introduced_in: 0.16.0-preview-prc-naval-boundary
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "STC-NV-01〜08の兆候配置及びPRC海軍アセット生成に対する中国大陸黒線西側の禁止"
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    decision_ids: [DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids:
+        - RV-ENABLER-PRC-NAVAL-OMEN-INLAND-INELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-OMEN-COASTAL-ELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-GENERATION-INLAND-INELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-GRANDFATHER-COMPLETION-001
+      candidate_vector_ids: []

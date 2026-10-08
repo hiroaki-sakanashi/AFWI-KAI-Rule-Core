@@ -379,3 +379,27 @@ decisions:
     registered_at: "2026-09-27"
     approved_by: ルール所有者
     status: approved
+
+  - decision_id: DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001
+    category: addition
+    decision_type: additional
+    owner_final_text: >-
+      PRCの海軍アセットに係る兆候及びその海軍アセットは、中国大陸の黒線より西側には配置・生成できない。
+    scope: "STC-NV-01〜08の兆候配置及びPRC海軍アセット生成に対する中国大陸黒線西側の禁止"
+    affected_rule_core_ids: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
+    applies_to_component_ids: []
+    source_relationship: >-
+      SRC-MAP-0808-0916-PNGは中国大陸の黒線とHex地理を示すが、当該線より西側に対するPRC海軍系兆候及び
+      海軍アセットの配置・生成禁止を本文として明示しない。本追加裁定がその合法性だけを補う。
+    normative_information:
+      - "STC-NV-01〜08の新規兆候配置は中国大陸黒線西側で不適格"
+      - "PRC海軍アセットの新規生成は中国大陸黒線西側で不適格"
+      - "既存saveの配置済み内陸兆候は、その既存未解決chainに限り完了可能"
+      - "PRC航空、偽兆候及びUS側の配置・生成は非対象"
+    source_ids: [SRC-MAP-0808-0916-PNG]
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    original_decided_at: "2026-10-08"
+    reconfirmed_at: "2026-10-08"
+    registered_at: "2026-10-08"
+    approved_by: ルール所有者
+    status: approved

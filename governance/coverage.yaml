@@ -366,3 +366,26 @@ inventories:
     notes: >-
       SRC-RULE-0910-2-PDF p.8の支払元と閾値を維持し、DEC-TURN-BASE-STAR-PAYMENT-001で
       取消準備の選択、分散配置準備★3の全取消し及び処理後②最低★6を確定した。境界7件は2026-09-27にルール所有者承認済み。
+
+  - inventory_id: INV-GEOGRAPHY-PRC-NAVAL-INLAND
+    category: PRC海軍配置・生成境界
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    content_status: verified
+    vector_coverage: satisfied
+    count: 1
+    unit: rule_family
+    source_ids: [SRC-MAP-0808-0916-PNG]
+    vector_required: "yes"
+    required_outcomes:
+      - inland_omen_placement_rejected
+      - coastal_omen_placement_retained
+      - inland_naval_generation_rejected
+      - existing_save_chain_grandfathered
+    subcounts:
+      approved_vectors: 4
+      owner_decisions: 1
+    notes: >-
+      DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001により、STC-NV-01〜08及びPRC海軍アセットの
+      中国大陸黒線西側への新規配置・生成を禁止し、既存saveの未解決chainだけをgrandfatherする。
