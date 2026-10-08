@@ -368,7 +368,7 @@ inventories:
       取消準備の選択、分散配置準備★3の全取消し及び処理後②最低★6を確定した。境界7件は2026-09-27にルール所有者承認済み。
 
   - inventory_id: INV-GEOGRAPHY-PRC-NAVAL-INLAND
-    category: PRC海軍配置・生成境界
+    category: 海軍黒線境界及びPRC橙ライン境界
     inventory_status: confirmed
     denominator_status: confirmed
     dependency_status: ready
@@ -383,9 +383,13 @@ inventories:
       - coastal_omen_placement_retained
       - inland_naval_generation_rejected
       - existing_save_chain_grandfathered
+      - prc_orange_outside_rejected
+      - prc_orange_blackline_intersection_retained
+      - all_sides_blackline_west_rejected
+      - naval_movement_blackline_west_rejected
     subcounts:
-      approved_vectors: 4
-      owner_decisions: 1
+      approved_vectors: 8
+      owner_decisions: 2
     notes: >-
-      DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001により、STC-NV-01〜08及びPRC海軍アセットの
-      中国大陸黒線西側への新規配置・生成を禁止し、既存saveの未解決chainだけをgrandfatherする。
+      DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001により旧20 Hex派生を16 Hexへ訂正し、全陣営海軍の黒線西側への
+      配置・生成・進入を禁止する。PRC海軍は承認済み橙ライン西側との積集合を合法範囲とし、既存saveの未解決chainだけをgrandfatherする。

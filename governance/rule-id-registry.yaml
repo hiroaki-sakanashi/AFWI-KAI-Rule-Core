@@ -493,12 +493,12 @@ rules:
       candidate_vector_ids: []
 
   - rule_core_id: RC-GEOGRAPHY-PRC-NAVAL-INLAND-001
-    status: active
+    status: deprecated
     introduced_in: 0.16.0-preview-prc-naval-boundary
-    deprecated_in: null
-    reason: null
+    deprecated_in: 0.17.0-preview-naval-geography-boundaries
+    reason: "不完全な黒線共有辺からC1側を20 Hexへ誤拡張したため、完全な東西Areaと橙ライン積集合を持つ後継Ruleへ置換"
     supersedes: []
-    superseded_by: []
+    superseded_by: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
     authority_type: addition_decision
     scope: "STC-NV-01〜08の兆候配置及びPRC海軍アセット生成に対する中国大陸黒線西側の禁止"
     source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
@@ -510,4 +510,28 @@ rules:
         - RV-ENABLER-PRC-NAVAL-OMEN-COASTAL-ELIGIBLE-001
         - RV-ENABLER-PRC-NAVAL-GENERATION-INLAND-INELIGIBLE-001
         - RV-ENABLER-PRC-NAVAL-GRANDFATHER-COMPLETION-001
+      candidate_vector_ids: []
+
+  - rule_core_id: RC-GEOGRAPHY-NAVAL-BOUNDARIES-001
+    status: active
+    introduced_in: 0.17.0-preview-naval-geography-boundaries
+    deprecated_in: null
+    reason: null
+    supersedes: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
+    superseded_by: []
+    authority_type: correction_decision
+    scope: "全陣営海軍の中国大陸黒線制約及びPRC海軍の橙ライン西側・黒線東側積集合"
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS, FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids:
+        - RV-ENABLER-PRC-NAVAL-OMEN-INLAND-INELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-OMEN-COASTAL-ELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-GENERATION-INLAND-INELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-GRANDFATHER-COMPLETION-001
+        - RV-ENABLER-PRC-NAVAL-OMEN-ORANGE-OUTSIDE-INELIGIBLE-001
+        - RV-ENABLER-PRC-NAVAL-INTERSECTION-ELIGIBLE-001
+        - RV-ENABLER-US-NAVAL-INLAND-INELIGIBLE-001
+        - RV-ENABLER-NAVAL-MOVEMENT-INLAND-INELIGIBLE-001
       candidate_vector_ids: []

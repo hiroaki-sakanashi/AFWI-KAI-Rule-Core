@@ -33,7 +33,7 @@ AFWI-KAI Rule Coreは、AFWI-KAIのルールを実装非依存の文書、デー
 - `RC-CYBER-TARGET-GROUP-MEMBERSHIP-001`
 - `RC-CYBER-TARGET-GROUP-SELECTION-001`
 - `RC-CYBER-TARGET-GROUP-PERSISTENCE-001`
-- `RC-GEOGRAPHY-PRC-NAVAL-INLAND-001`
+- `RC-GEOGRAPHY-NAVAL-BOUNDARIES-001`
 
 この表示は、Digital全体またはrepository全体のrelease readinessを意味しません。Digital全体のRC suiteには、既存dirty tree由来のFAILが残っています。本packageはRule Core公開用であり、Digitalアプリのdeploy packageではありません。
 

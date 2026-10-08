@@ -1,5 +1,5 @@
 schema_version: 0.1.0
-rule_core_version: 0.16.0-preview-prc-naval-boundary
+rule_core_version: 0.17.0-preview-naval-geography-boundaries
 source_set: SRCSET-20260925-RATE-BOUNDARY-001
 status: approved
 vectors:
@@ -14,13 +14,13 @@ vectors:
     duration: not_applicable
     visibility: public
     interaction_type: not_applicable
-    rule_core_ids: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
-    decision_ids: [DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    approval: { approved_by: ルール所有者, approved_at: "2026-10-08" }
-    rights_scope: "2026-10-08承認済み追加裁定。"
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
   - vector_id: RV-ENABLER-PRC-NAVAL-OMEN-COASTAL-ELIGIBLE-001
-    title: "PRC海軍兆候は黒線東側の従来合法Hexを維持する"
+    title: "PRC海軍兆候は橙線西側かつ黒線東側のHexを維持する"
     status: approved
     initial_state: { source_id: STC-NV-01, placement_kind: new }
     operation: { type: evaluate_omen_placement, hex: G4 }
@@ -30,11 +30,11 @@ vectors:
     duration: not_applicable
     visibility: public
     interaction_type: not_applicable
-    rule_core_ids: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
-    decision_ids: [DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    approval: { approved_by: ルール所有者, approved_at: "2026-10-08" }
-    rights_scope: "2026-10-08承認済み追加裁定。"
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
   - vector_id: RV-ENABLER-PRC-NAVAL-GENERATION-INLAND-INELIGIBLE-001
     title: "PRC海軍アセットは中国大陸黒線西側へ新規生成できない"
     status: approved
@@ -46,24 +46,88 @@ vectors:
     duration: not_applicable
     visibility: public
     interaction_type: not_applicable
-    rule_core_ids: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
-    decision_ids: [DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    approval: { approved_by: ルール所有者, approved_at: "2026-10-08" }
-    rights_scope: "2026-10-08承認済み追加裁定。"
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
   - vector_id: RV-ENABLER-PRC-NAVAL-GRANDFATHER-COMPLETION-001
-    title: "既存saveの配置済み内陸兆候は既存chainだけ完了できる"
+    title: "既存saveの内陸兆候・海軍アセットはReplay可能で新規候補にはならない"
     status: approved
     initial_state: { side: PRC, omen_hex: E3, omen_origin: existing_save, pending_chain: true }
-    operation: { type: complete_existing_naval_generation, generation_hex: E3 }
+    operation: { type: replay_existing_naval_state }
     fixed_randomness: none
-    expected_events: [{ assertion: existing_pending_chain_completes }]
-    expected_final_state: { pending_chain: false, new_inland_placement_legal: false }
+    expected_events: [{ assertion: existing_events_replay_without_revalidation }]
+    expected_final_state: { replay_succeeds: true, new_inland_placement_legal: false }
     duration: not_applicable
     visibility: public
     interaction_type: not_applicable
-    rule_core_ids: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
-    decision_ids: [DEC-GEOGRAPHY-PRC-NAVAL-INLAND-001]
-    approval: { approved_by: ルール所有者, approved_at: "2026-10-08" }
-    rights_scope: "2026-10-08承認済み追加裁定。"
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
+  - vector_id: RV-ENABLER-PRC-NAVAL-OMEN-ORANGE-OUTSIDE-INELIGIBLE-001
+    title: "STC-NV-01〜08は橙線東側へ新規配置できない"
+    status: approved
+    initial_state: { source_ids: [STC-NV-01, STC-NV-02, STC-NV-03, STC-NV-04, STC-NV-05, STC-NV-06, STC-NV-07, STC-NV-08], placement_kind: new }
+    operation: { type: evaluate_omen_placement_set, hexes: [M1, M2, L1.5, K1, K2, J1.5, I1] }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { all_legal_candidates: false }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
+  - vector_id: RV-ENABLER-PRC-NAVAL-INTERSECTION-ELIGIBLE-001
+    title: "PRC海軍は橙線西側かつ黒線東側の境界Hexを候補に保つ"
+    status: approved
+    initial_state: { side: PRC, placement_kind: new }
+    operation: { type: evaluate_naval_geography_set, hexes: [C4, C5, D4.5, E5, F4.5, G4] }
+    fixed_randomness: none
+    expected_events: [{ assertion: all_geography_candidates_retained }]
+    expected_final_state: { all_legal_candidates: true }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
+  - vector_id: RV-ENABLER-US-NAVAL-INLAND-INELIGIBLE-001
+    title: "US海軍も中国大陸黒線西側へ新規配置・生成できない"
+    status: approved
+    initial_state: { side: US, generation_kind: new }
+    operation: { type: evaluate_naval_generation, generation_hex: E3 }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, unit_generated: false }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"
+  - vector_id: RV-ENABLER-NAVAL-MOVEMENT-INLAND-INELIGIBLE-001
+    title: "いずれの陣営の海軍も中国大陸黒線西側へ進入できない"
+    status: approved
+    initial_state: { sides: [US, PRC], movement_kind: new }
+    operation: { type: evaluate_naval_movement, destination_hex: E3 }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { legal_candidate: false, entered_inland_area: false }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    source_fragment_ids: [FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
+    rights_scope: "2026-10-09承認済み訂正裁定。"

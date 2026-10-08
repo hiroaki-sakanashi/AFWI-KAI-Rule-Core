@@ -403,3 +403,37 @@ decisions:
     registered_at: "2026-10-08"
     approved_by: ルール所有者
     status: approved
+
+  - decision_id: DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001
+    category: correction
+    decision_type: correction
+    owner_final_text: >-
+      PRC海軍に係る兆候及び海軍アセットは、橙ラインの西側かつ中国大陸黒線の東側にのみ配置・生成できる。
+      中国大陸黒線より西側には、いずれの陣営の海軍も配置・生成・進入できない。
+    scope: "PRC海軍の橙ライン・黒線合法範囲、及び全陣営海軍の黒線西側配置・生成・進入禁止"
+    affected_rule_core_ids: [RC-GEOGRAPHY-PRC-NAVAL-INLAND-001, RC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
+    applies_to_component_ids: []
+    source_relationship: >-
+      承認済み橙ライン45共有辺・51 Hex Areaを維持し、中国大陸黒線は原マップ上の完全な14共有辺で東西Areaを定義する。
+      v244のC1側20 Hexは共有辺不足による回り込みを含むため16 Hexへ訂正する。
+    normative_information:
+      - "橙ライン西側はAREA-WEST-OF-RED-GENERATION-EASTERN-LIMITを正本とする"
+      - "中国大陸黒線西側は完全な14共有辺を除いた隣接グラフでC1から到達する16 Hex"
+      - "中国大陸黒線東側は全110 Hexから西側16 Hexを除いた94 Hex"
+      - "PRC海軍合法範囲は橙ライン西側と黒線東側の積集合"
+      - "黒線西側は全陣営海軍の配置・生成・進入不可"
+      - "既存Event及びsaveは書き換えずReplay・既存chainを継続可能"
+    correction_history:
+      - corrected_at: "2026-10-09"
+        corrected_by: ルール所有者
+        correction_scope: "v244の黒線西側20 Hex派生定義"
+        reason: "北側共有辺の省略によりC4、C5、D4.5、E5へ連結成分が回り込み、黒線西側を広く導出していた"
+        effect_on_resolution_rule: "黒線西側を16 Hexへ訂正し、全陣営海軍及びPRC橙ラインとの積集合へ適用範囲を統一"
+    manufacturing_information_boundary: "Digitalのhelper名、UI及び保存実装はRule本文へ含めない。"
+    source_ids: [SRC-MAP-0808-0916-PNG]
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS, FRAG-MAP-0916-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-AREA-WEST-OF-RED-GENERATION-EASTERN-LIMIT, FRAG-MAP-0916-PRC-MAINLAND-NAVAL-BLACK-LINE]
+    original_decided_at: "2026-10-09"
+    reconfirmed_at: "2026-10-09"
+    registered_at: "2026-10-09"
+    approved_by: ルール所有者
+    status: approved
