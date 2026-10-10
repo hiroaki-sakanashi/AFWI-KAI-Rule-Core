@@ -22,7 +22,7 @@
           "decision_ids", "approval", "rights_scope"
         ],
         "properties": {
-          "vector_id": { "type": "string", "pattern": "^RV-(EMI|RATE|MD|ENABLER|INTEL|SQUADRON|TURN)-[A-Z0-9-]+$" },
+          "vector_id": { "type": "string", "pattern": "^RV-(EMI|RATE|MD|ENABLER|INTEL|SQUADRON|TURN|GEOGRAPHY)-[A-Z0-9-]+$" },
           "title": { "type": "string" },
           "status": { "enum": ["candidate", "approved"] },
           "initial_state": { "type": "object" },

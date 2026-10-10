@@ -393,3 +393,26 @@ inventories:
     notes: >-
       DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001により旧20 Hex派生を16 Hexへ訂正し、全陣営海軍の黒線西側への
       配置・生成・進入を禁止する。PRC海軍は承認済み橙ライン西側との積集合を合法範囲とし、既存saveの未解決chainだけをgrandfatherする。
+
+  - inventory_id: INV-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT
+    category: 進入禁止Hex
+    inventory_status: confirmed
+    denominator_status: confirmed
+    dependency_status: ready
+    content_status: verified
+    vector_coverage: satisfied
+    count: 2
+    unit: prohibited_hexes
+    source_ids: [SRC-MAP-0808-0916-PNG]
+    vector_required: "yes"
+    required_outcomes:
+      - prohibited_endpoint_rejected
+      - prohibited_intermediate_transit_rejected
+      - legal_alternate_route_retained
+    subcounts:
+      prohibited_hexes: 2
+      approved_vectors: 3
+      owner_decisions: 1
+    notes: >-
+      DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001により、G5・H4.5への進入と中間通過を両陣営について禁止する。
+      所定の移動力内に両Hexを経由しない経路が存在する移動は維持する。

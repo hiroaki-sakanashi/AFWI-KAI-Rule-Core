@@ -437,3 +437,28 @@ decisions:
     registered_at: "2026-10-09"
     approved_by: ルール所有者
     status: approved
+
+  - decision_id: DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001
+    category: addition
+    decision_type: additional
+    owner_final_text: >-
+      G5・H4.5は、両陣営の部隊が進入できないHexである。移動の終点として指定することだけでなく、
+      移動途中に通過することもできない。ただし、所定の移動力の範囲内で進入禁止Hexを経由しない経路が存在する場合、その移動は可能である。
+    scope: "G5・H4.5への進入及び中間通過の禁止と、移動力内の合法な代替経路による移動許可"
+    affected_rule_core_ids: [RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    applies_to_component_ids: []
+    source_relationship: >-
+      SRC-MAP-0808-0916-PNGはG5・H4.5を進入禁止Hexとして示すが、複数Hex移動時の中間通過と代替経路の扱いを本文として一意に定めない。
+      本追加裁定がその移動合法性を確定する。
+    normative_information:
+      - "G5・H4.5は両陣営の部隊の移動終点として不適格"
+      - "G5・H4.5は移動途中の通過Hexとして不適格"
+      - "移動力内に進入禁止Hexを経由しない経路があれば移動可能"
+      - "進入禁止Hexを経由しない経路がなければ移動不可能"
+    source_ids: [SRC-MAP-0808-0916-PNG]
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    original_decided_at: "2026-10-10"
+    reconfirmed_at: "2026-10-10"
+    registered_at: "2026-10-10"
+    approved_by: ルール所有者
+    status: approved
