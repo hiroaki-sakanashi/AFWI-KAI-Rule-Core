@@ -535,3 +535,22 @@ rules:
         - RV-ENABLER-US-NAVAL-INLAND-INELIGIBLE-001
         - RV-ENABLER-NAVAL-MOVEMENT-INLAND-INELIGIBLE-001
       candidate_vector_ids: []
+
+  - rule_core_id: RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001
+    status: active
+    introduced_in: 0.18.0-preview-prohibited-hex-movement
+    deprecated_in: null
+    reason: null
+    supersedes: []
+    superseded_by: []
+    authority_type: addition_decision
+    scope: "G5・H4.5への進入及び中間通過の禁止と、移動力内の合法な代替経路による移動許可"
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    decision_ids: [DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    rule_vector_coverage:
+      status: approved
+      approved_vector_ids:
+        - RV-GEOGRAPHY-PROHIBITED-HEX-ENDPOINTS-001
+        - RV-GEOGRAPHY-PROHIBITED-HEX-TRANSIT-NO-ROUTE-001
+        - RV-GEOGRAPHY-PROHIBITED-HEX-ALTERNATE-ROUTES-001
+      candidate_vector_ids: []

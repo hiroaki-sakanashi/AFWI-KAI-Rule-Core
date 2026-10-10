@@ -1,5 +1,5 @@
 schema_version: 0.1.0
-rule_core_version: 0.17.0-preview-naval-geography-boundaries
+rule_core_version: 0.18.0-preview-prohibited-hex-movement
 source_set: SRCSET-20260923-INITIAL
 status: approved
 canonical_source:

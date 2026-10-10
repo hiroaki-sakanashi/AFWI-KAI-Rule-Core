@@ -26,7 +26,7 @@ AFWI-KAI Rule Coreは、AFWI-KAIのルールを実装非依存の文書、デー
 
 `Digital compatibility: conformant_for_declared_scope`
 
-確認済みscopeは次の6 Rule Core IDです。
+確認済みscopeは次の7 Rule Core IDです。
 
 - `RC-TURN-BASE-STAR-PAYMENT-001`
 - `RC-CYBER-TARGET-GROUP-MODEL-001`
@@ -34,6 +34,7 @@ AFWI-KAI Rule Coreは、AFWI-KAIのルールを実装非依存の文書、デー
 - `RC-CYBER-TARGET-GROUP-SELECTION-001`
 - `RC-CYBER-TARGET-GROUP-PERSISTENCE-001`
 - `RC-GEOGRAPHY-NAVAL-BOUNDARIES-001`
+- `RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001`
 
 この表示は、Digital全体またはrepository全体のrelease readinessを意味しません。Digital全体のRC suiteには、既存dirty tree由来のFAILが残っています。本packageはRule Core公開用であり、Digitalアプリのdeploy packageではありません。
 

@@ -1,6 +1,6 @@
 ---
 title: 地理・配置境界
-rule_core_version: 0.17.0-preview-naval-geography-boundaries
+rule_core_version: 0.18.0-preview-prohibited-hex-movement
 source_set: SRCSET-20260925-RATE-BOUNDARY-001
 status: reviewed
 license: CC-BY-SA-4.0
@@ -29,3 +29,22 @@ Decision: DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001
 Status: approved
 
 `RC-GEOGRAPHY-PRC-NAVAL-INLAND-001`は、黒線共有辺を不完全に機械化して西側を20 Hexへ誤拡張したため、本Ruleにより置換される。
+
+### RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001 進入禁止Hex
+
+Rule: G5及びH4.5は、両陣営の部隊が進入できないHexである。移動の終点として指定することも、移動途中に通過することもできない。
+When: 部隊が移動するとき。
+Actor: 全陣営。
+Target: 移動の終点及び移動途中に通過するHex。
+Procedure: 所定の移動力の範囲内で、G5及びH4.5を経由しない経路が存在するかを確認する。
+Result: 進入禁止Hexを経由しない経路が存在する場合、その移動は可能である。存在しない場合、その移動は不可能である。
+Exceptions: none
+Interaction-Type: legality
+Visibility-Effect: none
+State-IDs: none
+Event-IDs: none
+Authority-Type: addition_decision
+Source-Fragments: FRAG-MAP-0916-ALL-HEX-IDS
+Sources: SRC-MAP-0808-0916-PNG
+Decision: DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001
+Status: approved

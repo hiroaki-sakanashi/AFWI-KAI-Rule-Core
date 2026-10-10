@@ -1,5 +1,5 @@
 schema_version: 0.1.0
-rule_core_version: 0.17.0-preview-naval-geography-boundaries
+rule_core_version: 0.18.0-preview-prohibited-hex-movement
 source_set: SRCSET-20260925-RATE-BOUNDARY-001
 status: approved
 vectors:
@@ -131,3 +131,51 @@ vectors:
     decision_ids: [DEC-GEOGRAPHY-NAVAL-BOUNDARIES-001]
     approval: { approved_by: ルール所有者, approved_at: "2026-10-09" }
     rights_scope: "2026-10-09承認済み訂正裁定。"
+  - vector_id: RV-GEOGRAPHY-PROHIBITED-HEX-ENDPOINTS-001
+    title: "G5及びH4.5は移動の終点にできない"
+    status: approved
+    initial_state: { sides: [US, PRC], origin_hex: G4, movement_allowance: 2 }
+    operation: { type: evaluate_movement_destinations, destination_hexes: [G5, H4.5] }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { all_legal_candidates: false }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    decision_ids: [DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-10" }
+    rights_scope: "2026-10-10承認済み追加裁定。"
+  - vector_id: RV-GEOGRAPHY-PROHIBITED-HEX-TRANSIT-NO-ROUTE-001
+    title: "進入禁止Hexを通らなければ到達できない移動先は不適格"
+    status: approved
+    initial_state: { sides: [US, PRC], origin_hex: G4, movement_allowance: 2 }
+    operation: { type: evaluate_movement_destinations, destination_hexes: [G6, H5.5, I5] }
+    fixed_randomness: none
+    expected_events: []
+    expected_final_state: { all_legal_candidates: false }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    decision_ids: [DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-10" }
+    rights_scope: "2026-10-10承認済み追加裁定。"
+  - vector_id: RV-GEOGRAPHY-PROHIBITED-HEX-ALTERNATE-ROUTES-001
+    title: "進入禁止Hexを避ける移動力内の経路があれば移動できる"
+    status: approved
+    initial_state: { sides: [US, PRC], origin_hex: G4, movement_allowance: 2 }
+    operation: { type: evaluate_movement_routes, destinations: [{ hex: I4, route: [H3.5, I4] }, { hex: F5.5, route: [F4.5, F5.5] }] }
+    fixed_randomness: none
+    expected_events: [{ assertion: both_routes_allowed }]
+    expected_final_state: { all_legal_candidates: true, prohibited_hex_transited: false }
+    duration: not_applicable
+    visibility: public
+    interaction_type: not_applicable
+    rule_core_ids: [RC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    source_fragment_ids: [FRAG-MAP-0916-ALL-HEX-IDS]
+    decision_ids: [DEC-GEOGRAPHY-PROHIBITED-HEX-MOVEMENT-001]
+    approval: { approved_by: ルール所有者, approved_at: "2026-10-10" }
+    rights_scope: "2026-10-10承認済み追加裁定。"
